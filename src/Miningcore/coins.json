@@ -1439,6 +1439,33 @@
         "explorerTxLink": "http://157.245.248.32:3000/#/tx/{0}",
         "explorerAccountLink": "http://157.245.248.32:3000/#/address/{0}"
     },
+    "kylacoin": {
+        "name": "Kylacoin",
+        "symbol": "KCN",
+        "family": "bitcoin",
+        "website": "https://kylacoin.com/",
+        "market": "https://coinpaprika.com/coin/kcn-kylacoin",
+        "twitter": "https://twitter.com/kylacoin",
+        "telegram": "https://t.me/kylacoingroup",
+        "discord": "https://discord.gg/SHZr5zQVDT",
+        "coinbaseHasher": {
+            "hash": "sha3-256d"
+        },
+        "headerHasher": {
+            "hash": "sha3-256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha3-256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "https://kcnxp.com/block/$height$",
+        "explorerTxLink": "https://kcnxp.com/tx/{0}",
+        "explorerAccountLink": "https://kcnxp.com/address/{0}"
+    },
     "lanacoin": {
         "name": "Lanacoin",
         "canonicalName": "Lana",
