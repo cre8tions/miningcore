@@ -4380,6 +4380,57 @@
         "explorerTxLink": "https://ubiqscan.io/tx/{0}",
         "explorerAccountLink": "https://ubiqscan.io/address/{0}"
     },
+    "jibchain": {
+        "name": "JIB Chain",
+        "canonicalName": "JIB-Chain",
+        "symbol": "JBC",
+        "family": "ethereum",
+        "website": "https://jibchain.net/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/SYzkWm4RXE",
+        "explorerBlockLinks": {
+            "block": "https://exp-l1.jibchain.net/block/$height$",
+            "uncle": "https://exp-l1.jibchain.net/block/$hash$"
+        },
+        "explorerTxLink": "https://exp-l1.jibchain.net/tx/{0}",
+        "explorerAccountLink": "https://exp-l1.jibchain.net/address/{0}"
+    },
+    "altcoinchain": {
+        "name": "Altcoin Chain",
+        "canonicalName": "AltcoinChain",
+        "symbol": "ALT",
+        "family": "ethereum",
+        "website": "https://www.altcoinchain.org/",
+        "market": "",
+        "twitter": "https://twitter.com/chainAltcoin",
+        "telegram": "https://t.me/AltcoinchainNews",
+        "discord": "https://discord.com/invite/hcXHyQP4Je",
+        "explorerBlockLinks": {
+            "block": "http://expedition.altcoinchain.org/block/$hash$?network=Altcoinchain",
+            "uncle": "http://expedition.altcoinchain.org/block/$hash$?network=Altcoinchain"
+        },
+        "explorerTxLink": "http://expedition.altcoinchain.org/tx/{0}?network=Altcoinchain",
+        "explorerAccountLink": "http://expedition.altcoinchain.org/address/{0}?network=Altcoinchain"
+    },
+    "pom": {
+        "name": "Proof of Memmes",
+        "canonicalName": "Proof-of-Memmes",
+        "symbol": "POM",
+        "family": "ethereum",
+        "website": "https://www.proofofmemes.org/",
+        "market": "https://www.coingecko.com/en/coins/proof-of-memes-pomchain",
+        "twitter": "https://twitter.com/Proof_Of_Memes",
+        "telegram": "https://t.me/proofofmemes",
+        "discord": "https://discord.com/invite/eZAUgfQWau",
+        "explorerBlockLinks": {
+            "block": "https://memescan.io/block/$height$/transactions",
+            "uncle": "https://memescan.io/block/$hash$/transactions"
+        },
+        "explorerTxLink": "https://memescan.io/tx/{0}",
+        "explorerAccountLink": "https://memescan.io/address/{0}"
+    },
     "ergo": {
         "name": "Ergo",
         "canonicalName": "Ergo",
