@@ -87,6 +87,21 @@ public class UbiqConstants
     public const decimal BaseRewardInitial = 8.0m;
 }
 
+public class JibChainConstants
+{
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
+public class AltcoinConstants
+{
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
+public class PomConstants
+{
+    public const decimal BaseRewardInitial = 9.0m;
+}
+
 public enum EthereumNetworkType
 {
     Main = 1,
@@ -98,6 +113,9 @@ public enum EthereumNetworkType
     MainPow = 10001,
     EtherOne = 4949,
     Pink = 10100,
+    JibChain = 8899,
+    Altcoin = 2330,
+    Pom = 18159,
 
     Unknown = -1,
 }
@@ -113,6 +131,9 @@ public enum GethChainType
     MainPow = 10001,
     EtherOne = 4949,
     Pink = 10100,
+    JibChain = 8899,
+    Altcoin = 2330,
+    Pom = 18159,
     
     Unknown = -1,
 }

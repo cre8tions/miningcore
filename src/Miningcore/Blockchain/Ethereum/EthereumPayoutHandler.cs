@@ -160,7 +160,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                             var gasUsed = blockHashResponse.Response.GasUsed;
 
                             var burnedFee = (decimal) 0;
-                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink")
+                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom")
                                 burnedFee = (baseGas * gasUsed / EthereumConstants.Wei);
 
                             block.Hash = blockHash;
@@ -291,7 +291,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
         // ensure we have peers
         var infoResponse = await rpcClient.ExecuteAsync<string>(logger, EC.GetPeerCount, ct);
 
-        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink") &&
+        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom") &&
            (infoResponse.Error != null || string.IsNullOrEmpty(infoResponse.Response) ||
                infoResponse.Response.IntegralFromHex<int>() < EthereumConstants.MinPayoutPeerCount))
         {
@@ -400,6 +400,15 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                     return UbiqConstants.YearOneBlockReward;
                 
                 return UbiqConstants.BaseRewardInitial;
+
+	    case GethChainType.JibChain:
+               return JibChainConstants.BaseRewardInitial;
+
+	    case GethChainType.Altcoin:
+               return AltcoinConstants.BaseRewardInitial;
+
+	    case GethChainType.Pom:
+               return PomConstants.BaseRewardInitial;
             
             default:
                 throw new Exception("Unable to determine block reward: Unsupported chain type");
