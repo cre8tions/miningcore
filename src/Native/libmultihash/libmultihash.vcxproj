@@ -246,6 +246,7 @@
     <ClInclude Include="sha3\SWIFFTX.h" />
     <ClInclude Include="shavite3.h" />
     <ClInclude Include="skein.h" />
+    <ClInclude Include="skydoge.h" />
     <ClInclude Include="Sponge.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="stdint.h" />
@@ -342,6 +343,7 @@
     <ClCompile Include="sha3\SWIFFTX.c" />
     <ClCompile Include="shavite3.c" />
     <ClCompile Include="skein.c" />
+    <ClCompile Include="skydoge.c" />
     <ClCompile Include="Sponge.c" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="verthash\h2.c" />
