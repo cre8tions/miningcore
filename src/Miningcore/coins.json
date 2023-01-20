@@ -2268,6 +2268,40 @@
         "explorerTxLink": "https://block.gecko.mn/tx/{0}",
         "explorerAccountLink": "https://block.gecko.mn/address/{0}"
     },
+"babacoin": {
+        "name": "Babacoin",
+        "canonicalName": "Babacoin",
+        "symbol": "BBC",
+        "family": "bitcoin",
+        "website": "https://www.babacoin.network/",
+        "market": "https://www.coingecko.com/en/coins/babacoin",
+        "twitter": "https://twitter.com/babacoinbbc",
+        "telegram": "",
+        "discord": "https://discord.gg/U4Z8znMV",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+                    ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "foundersRewardAddress": [
+            "BLbWwABzjJGsSeibe6oJvTK5aEq8Sx7rU9"
+        ],
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.babacoin.network/block/$height$",
+        "explorerTxLink": "https://explorer.babacoin.network/tx/{0}",
+        "explorerAccountLink": "https://explorer.babacoin.network/address/{0}"
+    },
     "gspcoin": {
         "name": "Gsp Coin",
         "canonicalName": "GspCoin",
@@ -2580,6 +2614,34 @@
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/smly/address.dws?{0}.htm"
+    },
+    "skydoge": {
+        "name": "Skydoge",
+        "canonicalName": "Skydoge",
+        "symbol": "SKYDOGE",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "skydoge"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "https://explorer.skydogepool.xyz/block/$hash$",
+        "explorerTxLink": "https://explorer.skydogepool.xyz/tx/{0}",
+        "explorerAccountLink": "https://explorer.skydogepool.xyz/address/{0}"
     },
     "smileycoin-groestl": {
         "name": "Smileycoin Groestl",
