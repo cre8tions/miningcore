@@ -56,6 +56,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "verthash/h2.h"
 #include "equi/equihashverify.h"
 #include "heavyhash/heavyhash.h"
+#include "skydoge.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -333,3 +334,9 @@ extern "C" MODULE_API bool equihash_verify_96_5_export(const char* header, int h
 
     return verifyEH_96_5(header, vecSolution, personalization);
 }
+
+extern "C" MODULE_API void skydoge_export(const char* input, char* output, uint32_t input_len)
+{
+	skydoge_hash(input, output, input_len);
+}
+
