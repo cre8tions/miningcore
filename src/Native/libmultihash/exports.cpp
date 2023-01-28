@@ -57,6 +57,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "equi/equihashverify.h"
 #include "heavyhash/heavyhash.h"
 #include "skydoge.h"
+#include "yescrypt/yescrypt.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -340,3 +341,22 @@ extern "C" MODULE_API void skydoge_export(const char* input, char* output, uint3
 	skydoge_hash(input, output, input_len);
 }
 
+extern "C" MODULE_API void yescrypt_export(const char* input, char* output, uint32_t input_len)
+{
+    yescrypt_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR8_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR8_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR16_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR16_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR32_hash(input, output, input_len);
+}

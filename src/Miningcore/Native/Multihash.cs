@@ -154,4 +154,16 @@ public static unsafe class Multihash
     [DllImport("libmultihash", EntryPoint = "skydoge_export", CallingConvention = CallingConvention.Cdecl)]
     public static extern void skydoge(byte* input, void* output, uint inputLength);
 
+    [DllImport("libmultihash", EntryPoint = "yescrypt_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yescrypt(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yescryptR8_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yescryptR8(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yescryptR16_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yescryptR16(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yescryptR32_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yescryptR32(byte* input, void* output, uint inputLength);
+
 }
