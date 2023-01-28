@@ -253,6 +253,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="verthash\h2.h" />
     <ClInclude Include="verthash\tiny_sha3\sha3.h" />
+    <ClInclude Include="yescrypt\sha256.h" />
+    <ClInclude Include="yescrypt\yescrypt.h" />
     <ClInclude Include="x11.h" />
     <ClInclude Include="x13.h" />
     <ClInclude Include="x14.h" />
@@ -348,6 +350,9 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="verthash\h2.c" />
     <ClCompile Include="verthash\tiny_sha3\sha3.c" />
+    <ClCompile Include="yescrypt\sha256.c" />
+    <ClCompile Include="yescrypt\yescrypt.c" />
+    <ClCompile Include="yescrypt\yescrypt-opt.c" />
     <ClCompile Include="x11.c" />
     <ClCompile Include="x13.c" />
     <ClCompile Include="x14.c" />
