@@ -1114,6 +1114,34 @@
         "explorerTxLink": "https://chainz.cryptoid.info/ftc/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/ftc/address.dws?{0}.htm"
     },
+    "fennec": {
+        "name": "Fennec",
+        "symbol": "FNNC",
+        "family": "bitcoin",
+        "website": "https://www.fennecblockchain.com/",
+        "market": "",
+        "twitter": "https://twitter.com/Fennec_Crypto",
+        "telegram": "https://t.me/FennecPortal",
+        "discord": "https://discord.com/invite/97xvrQPchn",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yescryptr16"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 1048576,
+        "explorerBlockLink": "https://scan.fennecblockchain.com/block/$hash$",
+        "explorerTxLink": "https://scan.fennecblockchain.com/tx/{0}",
+        "explorerAccountLink": "https://scan.fennecblockchain.com/address/{0}"
+    },
     "flapx": {
         "name": "Flapx Coin",
         "symbol": "FLAPX",
