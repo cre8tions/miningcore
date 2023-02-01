@@ -1327,6 +1327,34 @@
         "explorerTxLink": "http://explorer.geekcash.org/tx/{0}",
         "explorerAccountLink": "http://explorer.geekcash.org/address/{0}"
     },
+    "goldcash": {
+        "name": "Gold Cash",
+        "symbol": "GOLD",
+        "family": "bitcoin",
+        "website": "https://gold-cash.org/",
+        "market": "",
+        "twitter": "https://twitter.com/GOLD_Cash_Coin",
+        "telegram": "https://t.me/goldcashcoin",
+        "discord": "https://discord.com/invite/mDk8VS7wgG",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yescryptr16"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://chainz.cryptoid.info/gold/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/gold/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/gold/address.dws?{0}.htm"
+    },
     "groestlcoin": {
         "name": "Groestlcoin",
         "canonicalName": "Groestlcoin",
