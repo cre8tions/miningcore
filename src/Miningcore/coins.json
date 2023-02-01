@@ -1137,7 +1137,7 @@
                 }
             ]
         },
-        "shareMultiplier": 1048576,
+        "shareMultiplier": 65536,
         "explorerBlockLink": "https://scan.fennecblockchain.com/block/$hash$",
         "explorerTxLink": "https://scan.fennecblockchain.com/tx/{0}",
         "explorerAccountLink": "https://scan.fennecblockchain.com/address/{0}"
