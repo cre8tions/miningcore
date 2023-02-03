@@ -169,6 +169,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="allium.h" />
+    <ClInclude Include="argon2d.h" />
+    <ClInclude Include="ar2/argon2.h" />
+    <ClInclude Include="ar2/core.h" />
+    <ClInclude Include="ar2/encoding.h" />
+    <ClInclude Include="ar2/thread.h" />
     <ClInclude Include="bcrypt.h" />
     <ClInclude Include="blake.h" />
     <ClInclude Include="blake2\ref\blake2-impl.h" />
@@ -269,7 +274,13 @@
     <ClInclude Include="sha512_256.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="allium.c" />
+    <ClCompile Include="allium.c" />  
+    <ClCompile Include="argon2d.c" />
+    <ClCompile Include="ar2/argon2.c" />
+    <ClCompile Include="ar2/core.c" />
+    <ClCompile Include="ar2/encoding.c" />
+    <ClCompile Include="ar2/opt.c" />
+    <ClCompile Include="ar2/thread.c" />
     <ClCompile Include="bcrypt.c" />
     <ClCompile Include="blake.c" />
     <ClCompile Include="blake2\ref\blake2b-ref.c" />
