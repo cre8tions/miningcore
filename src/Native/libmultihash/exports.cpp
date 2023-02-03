@@ -16,6 +16,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include "allium.h"
+#include "argon2d.h"
 #include "bcrypt.h"
 #include "keccak.h"
 #include "quark.h"
@@ -60,11 +61,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "skydoge.h"
 #include "yescrypt/yescrypt.h"
 
-#ifdef _WIN32
-#include "blake2/ref/blake2.h"
-#else
-#include "blake2/sse/blake2.h"
-#endif
+#include "blake2-ref/blake2.h"
 
 #ifdef _WIN32
 #define MODULE_API __declspec(dllexport)
@@ -365,4 +362,19 @@ extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, u
 extern "C" MODULE_API void allium_export(const char* input, char* output, uint32_t input_len)
 {
 	allium_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void argon2d250_export(const char* input, char* output, uint32_t input_len)
+{
+	argon2d250_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void argon2d500_export(const char* input, char* output, uint32_t input_len)
+{
+	argon2d500_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void argon2d16000_export(const char* input, char* output, uint32_t input_len)
+{
+	argon2d16000_hash(input, output, input_len);
 }
