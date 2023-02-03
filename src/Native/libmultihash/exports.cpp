@@ -16,7 +16,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include "allium.h"
-#include "argon2d.h"
 #include "bcrypt.h"
 #include "keccak.h"
 #include "quark.h"
@@ -366,19 +365,4 @@ extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, u
 extern "C" MODULE_API void allium_export(const char* input, char* output, uint32_t input_len)
 {
 	allium_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void argon2d250_export(const char* input, char* output)
-{
-	argon2d250_hash(input, output);
-}
-
-extern "C" MODULE_API void argon2d500_export(const char* input, char* output)
-{
-	argon2d500_hash(input, output);
-}
-
-extern "C" MODULE_API void argon2d250_export(const char* input, char* output)
-{
-	argon2d16000_hash(input, output);
 }

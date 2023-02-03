@@ -4,8 +4,7 @@ LDFLAGS = -shared
 LDLIBS = -lsodium
 TARGET  = libmultihash.so
 
-OBJECTS = allium.o argon2d.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \ 
-	ar2/argon2.o ar2/core.o ar2/encoding.o ar2/opt.o ar2/thread.o \
+OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
 	fugue.o groestl.o hefty1.o jh.o keccak.o neoscrypt.o exports.o nist5.o quark.o qubit.o s3.o scryptn.o \
 	sha256csm.o hmq17.o phi.o \
 	sha3/aes_helper.o sha3/hamsi.o sha3/hamsi_helper.o sha3/sph_blake.o sha3/sph_bmw.o sha3/sph_cubehash.o \
