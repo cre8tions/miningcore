@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="allium.h" />
     <ClInclude Include="bcrypt.h" />
     <ClInclude Include="blake.h" />
     <ClInclude Include="blake2\ref\blake2-impl.h" />
@@ -268,6 +269,7 @@
     <ClInclude Include="sha512_256.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="allium.c" />
     <ClCompile Include="bcrypt.c" />
     <ClCompile Include="blake.c" />
     <ClCompile Include="blake2\ref\blake2b-ref.c" />

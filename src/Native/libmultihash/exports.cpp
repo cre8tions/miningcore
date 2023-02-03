@@ -15,6 +15,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include "allium.h"
 #include "bcrypt.h"
 #include "keccak.h"
 #include "quark.h"
@@ -359,4 +360,9 @@ extern "C" MODULE_API void yescryptR16_export(const char* input, char* output, u
 extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, uint32_t input_len)
 {
     yescryptR32_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void allium_export(const char* input, char* output, uint32_t input_len)
+{
+	allium_hash(input, output, input_len);
 }
