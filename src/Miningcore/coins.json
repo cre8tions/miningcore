@@ -2391,6 +2391,39 @@
         "explorerTxLink": "https://explorer.globalsocialpost.com/tx/{0}",
         "explorerAccountLink": "https://explorer.globalsocialpost.com/address/{0}"
     },
+    "jagoancoin": {
+        "name": "JagoanCoin",
+        "canonicalName": "JagoanCoin",
+        "symbol": "JGC",
+        "family": "bitcoin",
+        "website": "https://jagoancoin.org/",
+        "market": "https://xeggex.com/market/JGC_USDT",
+        "twitter": "https://twitter.com/jagoanpilot",
+        "discord": "https://discord.com/invite/a3brezx9vD",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "foundersRewardAddress": [
+            "JQx6yy4rST5rD1joXWqBsZ6E3ZhFk6gWBk"
+        ],
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.jagoancoin.org/block/$height$",
+        "explorerTxLink": "https://explorer.jagoancoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.jagoancoin.org/address/{0}"
+    },
     "radiant": {
         "name": "Radiant",
         "symbol": "RXD",
