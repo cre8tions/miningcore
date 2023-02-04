@@ -36,39 +36,6 @@
         "explorerTxLink": "https://explorer.fiveg.cash/tx/{0}",
         "explorerAccountLink": "https://explorer.fiveg.cash/address/{0}"
     },
-    "alterdot": {
-        "name": "Alterdot",
-        "symbol": "ADOT",
-        "family": "bitcoin",
-        "website": "https://alterdot.network/",
-        "market": "",
-        "twitter": "https://twitter.com/alter_dot",
-        "telegram": "",
-        "discord": "https://discord.com/invite/Kd3Cr8s7sC",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "argon2d16000"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "argon2d16000"
-                }
-            ]
-        },
-        "hasFounderFee": true,
-        "hasMasterNodes": true,
-        "foundersRewardAddress": [
-            "CKNvCGE3g3v1299oNraXnEUDBe3zwMj8E9"
-        ],
-        "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.alterdot.network/block/$hash$",
-        "explorerTxLink": "https://explorer.alterdot.network/tx/{0}",
-        "explorerAccountLink": "https://explorer.alterdot.network/address/{0}"
-    },
     "auroracoin-sha256": {
         "name": "Auroracoin Sha256",
         "canonicalName": "Auroracoin",

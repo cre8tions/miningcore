@@ -5,8 +5,6 @@ LDLIBS = -lsodium
 TARGET  = libmultihash.so
 
 OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
-	argon2d.o ar2/argon2.o ar2/core.o ar2/encoding.o ar2/opt.o ar2/thread.o \
-	blake2-ref/blake2b.o blake2-ref/blake2s.o \
 	fugue.o groestl.o hefty1.o jh.o keccak.o neoscrypt.o exports.o nist5.o quark.o qubit.o s3.o scryptn.o \
 	sha256csm.o hmq17.o phi.o \
 	sha3/aes_helper.o sha3/hamsi.o sha3/hamsi_helper.o sha3/sph_blake.o sha3/sph_bmw.o sha3/sph_cubehash.o \
@@ -15,6 +13,7 @@ OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
 	sha3/sph_haval.o sha3/sph_sha2.o sha3/sph_sha2big.o sha3/sm3.o sha3/panama.o \
 	sha3/extra.o sha3/gost_streebog.o sha3/sph_tiger.o sha3/SWIFFTX.o KeccakP-800-reference.o \
 	shavite3.o skein.o x11.o x13.o x15.o x17.o x16r.o x16rv2.o x16s.o x21s.o x22i.o \
+	blake2/sse/blake2s.o blake2/sse/blake2b.o \
 	Lyra2.o Lyra2RE.o Sponge.o geek.o  \
 	heavyhash/heavyhash.o heavyhash/keccak_tiny.o \
 	verthash/tiny_sha3/sha3.o verthash/h2.o \
@@ -23,7 +22,7 @@ OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
 	equi/crypto/sha1.o equi/crypto/sha512.o equi/crypto/sha256.o \
 	equi/crypto/hmac_sha256.o equi/crypto/equihash.o equi/crypto/ripemd160.o \
 	equi/equihashverify.o sha512_256.o sha256dt.o skydoge.o \
-	yescrypt/sha256.o yescrypt/yescrypt.o yescrypt/yescrypt-opt.o 
+	yescrypt/sha256.o yescrypt/yescrypt.o yescrypt/yescrypt-opt.o  
 
 all: $(TARGET)
 
