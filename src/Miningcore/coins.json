@@ -31,7 +31,7 @@
             ]
         },
         "hasMasterNodes": true,
-        "shareMultiplier": 4096,
+        "shareMultiplier": 256,
         "explorerBlockLink": "https://explorer.fiveg.cash/block/$hash$",
         "explorerTxLink": "https://explorer.fiveg.cash/tx/{0}",
         "explorerAccountLink": "https://explorer.fiveg.cash/address/{0}"
@@ -1265,7 +1265,7 @@
                 }
             ]
         },
-        "shareMultiplier": 4096,
+        "shareMultiplier": 256,
         "explorerBlockLink": "https://explorer.foxdcoin.com/block-height/$height$",
         "explorerTxLink": "https://explorer.foxdcoin.com/tx/{0}",
         "explorerAccountLink": "https://explorer.foxdcoin.com/address/{0}"
@@ -1516,7 +1516,7 @@
                 }
             ]
         },
-        "shareMultiplier": 4096,
+        "shareMultiplier": 256,
         "hasMasterNodes": true,
         "explorerBlockLink": "http://157.245.248.32:3000/#/block/$hash$",
         "explorerTxLink": "http://157.245.248.32:3000/#/tx/{0}",
@@ -2565,6 +2565,42 @@
         "explorerTxLink": "https://be.rosebird.org/tx/{0}",
         "explorerAccountLink": "https://be.rosebird.org/address/{0}"
     },
+    "shahepay": {
+        "name": "Shahepay",
+        "symbol": "SHAHE",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "x16r-v2"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "x16r-v2"
+                }
+            ]
+        },
+        "posBlockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "x16r-v2"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://explorer.shahepay.site/block/$hash$",
+        "explorerTxLink": "https://explorer.shahepay.site/tx/{0}",
+        "explorerAccountLink": "https://explorer.shahepay.site/address/{0}"
+    },
     "shroud": {
         "name": "ShroudX",
         "symbol": "SHRX",
@@ -2597,7 +2633,7 @@
             ]
         },
         "hasMasterNodes": true,
-        "shareMultiplier": 4096,
+        "shareMultiplier": 256,
         "explorerBlockLink": "https://explorer.shroudx.eu/block/$hash$",
         "explorerTxLink": "https://explorer.shroudx.eu/tx/{0}",
         "explorerAccountLink": "https://explorer.shroudx.eu/address/{0}"
