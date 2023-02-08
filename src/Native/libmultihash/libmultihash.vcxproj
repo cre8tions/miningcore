@@ -220,6 +220,7 @@
     <ClInclude Include="scryptn.h" />
     <ClInclude Include="sha256.h" />
     <ClInclude Include="sha256csm.h" />
+    <ClInclude Include="sha256-d.h" />
     <ClInclude Include="sha3\extra.h" />
     <ClInclude Include="sha3\gost_streebog.h" />
     <ClInclude Include="sha3\sph_blake.h" />
@@ -261,6 +262,7 @@
     <ClInclude Include="x14.h" />
     <ClInclude Include="x15.h" />
     <ClInclude Include="x16r.h" />
+    <ClInclude Include="x16rt.h" />
     <ClInclude Include="x16rv2.h" />
     <ClInclude Include="x16s.h" />
     <ClInclude Include="x17.h" />
@@ -319,6 +321,7 @@
     <ClCompile Include="scryptn.c" />
     <ClCompile Include="sha256csm.c" />
     <ClCompile Include="sha256dt.c" />
+    <ClCompile Include="sha256-d.c" />
     <ClCompile Include="sha3\aes_helper.c" />
     <ClCompile Include="sha3\extra.c" />
     <ClCompile Include="sha3\gost_streebog.c" />
@@ -360,6 +363,7 @@
     <ClCompile Include="x14.c" />
     <ClCompile Include="x15.c" />
     <ClCompile Include="x16r.c" />
+    <ClCompile Include="x16rt.c" />
     <ClCompile Include="x16rv2.c" />
     <ClCompile Include="x16s.c" />
     <ClCompile Include="x17.c" />
