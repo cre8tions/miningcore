@@ -46,6 +46,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Lyra2RE.h"
 #include "Lyra2.h"
 #include "x16r.h"
+#include "x16rt.h"
 #include "x16s.h"
 #include "x16rv2.h"
 #include "x21s.h"
@@ -365,4 +366,9 @@ extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, u
 extern "C" MODULE_API void allium_export(const char* input, char* output, uint32_t input_len)
 {
 	allium_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x16rt_export(const char* input, char* output, uint32_t input_len)
+{
+    x16rt_hash(input, output, input_len);
 }
