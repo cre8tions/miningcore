@@ -172,4 +172,19 @@ public static unsafe class Multihash
     [DllImport("libmultihash", EntryPoint = "allium_export", CallingConvention = CallingConvention.Cdecl)]
     public static extern void allium(byte* input, void* output, uint inputLength);
 
+    [DllImport("libmultihash", EntryPoint = "cpupower_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void cpupower(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "power2b_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void power2b(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yespower_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yespower(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yespowerR16_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yespowerR16(byte* input, void* output, uint inputLength);
+
+    [DllImport("libmultihash", EntryPoint = "yespowerTIDE_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void yespowerTIDE(byte* input, void* output, uint inputLength);
+
 }
