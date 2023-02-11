@@ -257,6 +257,12 @@
     <ClInclude Include="verthash\tiny_sha3\sha3.h" />
     <ClInclude Include="yescrypt\sha256.h" />
     <ClInclude Include="yescrypt\yescrypt.h" />
+    <ClInclude Include="yespower\crypto\blake2b-yp.h" />
+    <ClInclude Include="yespower\crypto\sph_types.h" />
+    <ClInclude Include="yespower\insecure_memzero.h" />
+    <ClInclude Include="yespower\sha256.h" />
+    <ClInclude Include="yespower\sysendian.h" />
+    <ClInclude Include="yespower\yespower.h" />
     <ClInclude Include="x11.h" />
     <ClInclude Include="x13.h" />
     <ClInclude Include="x14.h" />
@@ -358,6 +364,11 @@
     <ClCompile Include="yescrypt\sha256.c" />
     <ClCompile Include="yescrypt\yescrypt.c" />
     <ClCompile Include="yescrypt\yescrypt-opt.c" />
+    <ClCompile Include="yescrypt\yescrypt.c" />
+    <ClCompile Include="yespower\crypto\blake2b-yp.c" />
+    <ClCompile Include="yespower\yespower-blake2b.c" />
+    <ClCompile Include="yespower\yespower-combined.c" />
+    <ClCompile Include="yespower\yespower-platform.c" />
     <ClCompile Include="x11.c" />
     <ClCompile Include="x13.c" />
     <ClCompile Include="x14.c" />

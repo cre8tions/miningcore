@@ -22,7 +22,8 @@ OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
 	equi/crypto/sha1.o equi/crypto/sha512.o equi/crypto/sha256.o \
 	equi/crypto/hmac_sha256.o equi/crypto/equihash.o equi/crypto/ripemd160.o \
 	equi/equihashverify.o sha512_256.o sha256dt.o skydoge.o \
-	yescrypt/sha256.o yescrypt/yescrypt.o yescrypt/yescrypt-opt.o  
+	yescrypt/sha256.o yescrypt/yescrypt.o yescrypt/yescrypt-opt.o \
+	yespower/yespower-platform.o yespower/yespower-combined.o yespower/yespower-blake2b.o yespower/crypto/blake2b-yp.o 
 
 all: $(TARGET)
 
