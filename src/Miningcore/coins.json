@@ -1522,6 +1522,33 @@
         "explorerTxLink": "http://157.245.248.32:3000/#/tx/{0}",
         "explorerAccountLink": "http://157.245.248.32:3000/#/address/{0}"
     },
+    "isotopec": {
+        "name": "IsotopeC",
+        "symbol": "ISO",
+        "family": "bitcoin",
+        "website": "https://isotopec.org/",
+        "twitter": "https://twitter.com/isotopec_org",
+        "telegram": "",
+        "discord": "https://discordapp.com/invite/BdDkEVZ",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespoweric",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.isotopec.org/block/$hash$",
+        "explorerTxLink": "https://explorer.isotopec.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.isotopec.org/address/{0}"
+    },
     "kylacoin": {
         "name": "Kylacoin",
         "symbol": "KCN",
