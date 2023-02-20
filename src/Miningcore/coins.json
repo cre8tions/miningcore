@@ -2159,36 +2159,6 @@
         "explorerTxLink": "hhttps://eksplorator.polcoin.pl/tx/{0}",
         "explorerAccountLink": "https://eksplorator.polcoin.pl/address/{0}"
     },
-    "pozoqo": {
-        "name": "Pozoqo",
-        "canonicalName": "Pozoqo",
-        "symbol": "PZQ",
-        "family": "bitcoin",
-        "website": "",
-        "market": "",
-        "twitter": "",
-        "telegram": "",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "ghostrider"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "shareMultiplier": 65536,
-        "coinbaseMinConfimations": 501,
-        "explorerBlockLink": "https://explorer.pozoqo.tech/block/$hash$",
-        "explorerTxLink": "https://explorer.pozoqo.tech/tx/{0}",
-        "explorerAccountLink": "https://explorer.pozoqo.tech/https://explorer.pozoqo.tech/address/{0}"
-    },
     "profithunters": {
         "name": "Profit Hunters",
         "symbol": "PHC",
