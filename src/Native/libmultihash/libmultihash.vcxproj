@@ -208,6 +208,7 @@
     <ClInclude Include="lane.h" />
     <ClInclude Include="Lyra2.h" />
     <ClInclude Include="Lyra2RE.h" />
+    <ClInclude Include="minotaurx.h" />
     <ClInclude Include="neoscrypt.h" />
     <ClInclude Include="nist5.h" />
     <ClInclude Include="odocrypt.h" />
@@ -317,6 +318,7 @@
     <ClCompile Include="lane.c" />
     <ClCompile Include="Lyra2.c" />
     <ClCompile Include="Lyra2RE.c" />
+    <ClCompile Include="minotaurx.c" />
     <ClCompile Include="neoscrypt.c" />
     <ClCompile Include="exports.cpp" />
     <ClCompile Include="nist5.c" />

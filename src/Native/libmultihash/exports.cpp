@@ -35,6 +35,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "shavite3.h"
 #include "x13.h"
 #include "x14.h"
+#include "minotaurx.h"
 #include "nist5.h"
 #include "x15.h"
 #include "x17.h"
@@ -407,5 +408,10 @@ extern "C" MODULE_API void yespowerTIDE_export(const char* input, char* output, 
 extern "C" MODULE_API void yespowerURX_export(const char* input, char* output, uint32_t input_len)
 {
     yespowerURX_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void minotaurx_export(const char* input, char* output, uint32_t input_len)
+{
+    minotaurx_hash(input, output, input_len);
 }
 
