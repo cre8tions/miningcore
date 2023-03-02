@@ -75,7 +75,7 @@ public class ShareRepository : IShareRepository
         return con.QuerySingleAsync<long>(new CommandDefinition(query, new { poolId, miner}, tx, cancellationToken: ct));
     }
 
-    public Task<double?> GetEffortBetweenCreatedAsync(IDbConnection con, string poolId, double DateTime start, DateTime end)
+    public Task<double?> GetEffortBetweenCreatedAsync(IDbConnection con, string poolId, DateTime start, DateTime end)
     {
         const string query = "SELECT SUM((difficulty) / networkdifficulty) FROM shares WHERE poolid = @poolId AND created > @start AND created < @end";
 
