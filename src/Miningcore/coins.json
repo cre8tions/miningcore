@@ -9,7 +9,7 @@
         "telegram": "https://t.me/VGC_5GCASH",
         "discord": "https://discord.gg/uXHvyBT",
         "coinbaseHasher": {
-            "hash": "sha256d"
+            "hash": "sha256d",
         },
         "headerHasher": {
             "hash": "x16r-v2"
@@ -60,9 +60,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "sha256d"
-        ],
+        "blockTemplateRpcExtraParams": ["sha256d"],
         "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
@@ -82,10 +80,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -95,9 +90,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "scrypt"
-        ],
+        "blockTemplateRpcExtraParams": ["scrypt"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
@@ -127,9 +120,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "skein"
-        ],
+        "blockTemplateRpcExtraParams": ["skein"],
         "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
@@ -158,9 +149,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "qubit"
-        ],
+        "blockTemplateRpcExtraParams": ["qubit"],
         "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
@@ -190,9 +179,7 @@
             ]
         },
         "shareMultiplier": 4096,
-        "blockTemplateRpcExtraParams": [
-            "groestl"
-        ],
+        "blockTemplateRpcExtraParams": ["groestl"],
         "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
@@ -212,10 +199,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -273,10 +257,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -542,9 +523,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "sha256d"
-        ],
+        "blockTemplateRpcExtraParams": ["sha256d"],
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "explorerBlockLink": "https://blocks.butcoin.tech/block/$hash$",
@@ -566,10 +545,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -584,10 +560,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -707,9 +680,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "sha256d"
-        ],
+        "blockTemplateRpcExtraParams": ["sha256d"],
         "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
@@ -729,10 +700,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -743,9 +711,7 @@
             ]
         },
         "shareMultiplier": 65536,
-        "blockTemplateRpcExtraParams": [
-            "scrypt"
-        ],
+        "blockTemplateRpcExtraParams": ["scrypt"],
         "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
@@ -774,9 +740,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "skein"
-        ],
+        "blockTemplateRpcExtraParams": ["skein"],
         "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
@@ -805,9 +769,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "qubit"
-        ],
+        "blockTemplateRpcExtraParams": ["qubit"],
         "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
@@ -837,9 +799,7 @@
             ]
         },
         "shareMultiplier": 256,
-        "blockTemplateRpcExtraParams": [
-            "groestl"
-        ],
+        "blockTemplateRpcExtraParams": ["groestl"],
         "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
@@ -859,10 +819,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1094,18 +1051,14 @@
         },
         "headerHasher": {
             "hash": "neoscrypt",
-            "args": [
-                0
-            ]
+            "args": [0]
         },
         "blockHasher": {
             "hash": "reverse",
             "args": [
                 {
                     "hash": "neoscrypt",
-                    "args": [
-                        0
-                    ]
+                    "args": [0]
                 }
             ]
         },
@@ -1156,10 +1109,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1174,10 +1124,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -1201,10 +1148,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1219,10 +1163,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -1455,10 +1396,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1473,10 +1411,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -1647,10 +1582,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1665,10 +1597,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -1719,18 +1648,14 @@
         },
         "headerHasher": {
             "hash": "neoscrypt",
-            "args": [
-                0
-            ]
+            "args": [0]
         },
         "blockHasher": {
             "hash": "reverse",
             "args": [
                 {
                     "hash": "neoscrypt",
-                    "args": [
-                        0
-                    ]
+                    "args": [0]
                 }
             ]
         },
@@ -1810,10 +1735,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1872,10 +1794,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1890,10 +1809,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -1945,10 +1861,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1963,10 +1876,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -2044,10 +1954,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -2062,10 +1969,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -2173,10 +2077,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -2191,10 +2092,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -2248,10 +2146,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -2266,10 +2161,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -2334,9 +2226,8 @@
         },
         "hasFounderFee": true,
         "hasMasterNodes": true,
-        "foundersRewardAddress": [
-            "RTtyQU6DoSuNWetT4WUem5qXP5jNYGpwat"
-        ],
+        "hasSmartNodes": true,
+        "foundersRewardAddress": ["RTtyQU6DoSuNWetT4WUem5qXP5jNYGpwat"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://explorer.raptoreum.com/block-height/$height$",
         "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
@@ -2435,9 +2326,7 @@
         },
         "hasFounderFee": true,
         "hasMasterNodes": true,
-        "foundersRewardAddress": [
-            "GZBNAiLokyYvSwNLftReXuYbvdmzNoorGj"
-        ],
+        "foundersRewardAddress": ["GZBNAiLokyYvSwNLftReXuYbvdmzNoorGj"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://explorer.globalsocialpost.com/block/$height$",
         "explorerTxLink": "https://explorer.globalsocialpost.com/tx/{0}",
@@ -2488,29 +2377,49 @@
         },
         "blockHasher": {
             "hash": "reverse",
-            "args": [ { "hash": "sha512/256d" } ]
+            "args": [{ "hash": "sha512/256d" }]
         },
         "explorerBlockLink": "https://explorer.radiantblockchain.org/block-height/$height$",
         "explorerTxLink": "https://explorer.radiantblockchain.org/tx/{0}",
         "explorerAccountLink": "https://explorer.radiantblockchain.org/address/{0}"
     },
+    "ravencoin": {
+        "name": "Ravencoin",
+        "symbol": "RVN",
+        "family": "ravencoin",
+        "website": "https://www.bitcoin.org/",
+        "market": "https://coinmarketcap.com/currencies/bitcoin/",
+        "twitter": "https://twitter.com/bitcoin",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://ravencoin.network/rvn/block/$hash$",
+        "explorerTxLink": "https://ravencoin.network/rvn/transaction/{0}",
+        "explorerAccountLink": "https://ravencoin.network/rvn/address/{0}"
+    },
     "novo": {
-      "name": "Novo",
-      "symbol": "NOVO",
-      "family": "bitcoin",
-      "coinbaseHasher": {
-        "hash": "sha256d"
-      },
-      "headerHasher": {
-        "hash": "sha256dt"
-      },
-      "blockHasher": {
-        "hash": "reverse",
-        "args": [ { "hash": "sha256dt" } ]
-      },
-      "explorerBlockLink": "https://explorer.novochain.ovh/block/$height$",
-      "explorerTxLink": "https://explorer.novochain.ovh/tx/{0}",
-      "explorerAccountLink": "https://explorer.novochain.ovh/address/{0}"
+        "name": "Novo",
+        "symbol": "NOVO",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256dt"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [{ "hash": "sha256dt" }]
+        },
+        "explorerBlockLink": "https://explorer.novochain.ovh/block/$height$",
+        "explorerTxLink": "https://explorer.novochain.ovh/tx/{0}",
+        "explorerAccountLink": "https://explorer.novochain.ovh/address/{0}"
     },
     "bitoreum": {
         "name": "Bitoreum",
@@ -2537,9 +2446,8 @@
         },
         "hasFounderFee": true,
         "hasMasterNodes": true,
-        "foundersRewardAddress": [
-            "BanxgMPcMpXnuWQ2ogfQqEkwwVtjhAhXBR"
-        ],
+        "hasSmartNodes": true,
+        "foundersRewardAddress": ["BanxgMPcMpXnuWQ2ogfQqEkwwVtjhAhXBR"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://explorer.bitoreum.org/block/$hash$",
         "explorerTxLink": "https://explorer.bitoreum.org/tx/{0}",
@@ -2560,10 +2468,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -2578,10 +2483,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -2687,9 +2589,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "sha256d"
-        ],
+        "blockTemplateRpcExtraParams": ["sha256d"],
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/smly/address.dws?{0}.htm"
@@ -2709,10 +2609,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -2722,9 +2619,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "scrypt"
-        ],
+        "blockTemplateRpcExtraParams": ["scrypt"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
@@ -2754,9 +2649,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "skein"
-        ],
+        "blockTemplateRpcExtraParams": ["skein"],
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/smly/address.dws?{0}.htm"
@@ -2785,9 +2678,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "qubit"
-        ],
+        "blockTemplateRpcExtraParams": ["qubit"],
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/smly/address.dws?{0}.htm"
@@ -2845,9 +2736,7 @@
             ]
         },
         "shareMultiplier": 4096,
-        "blockTemplateRpcExtraParams": [
-            "groestl"
-        ],
+        "blockTemplateRpcExtraParams": ["groestl"],
         "explorerBlockLink": "https://chainz.cryptoid.info/smly/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/smly/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/smly/address.dws?{0}.htm"
@@ -2867,18 +2756,14 @@
         },
         "headerHasher": {
             "hash": "neoscrypt",
-            "args": [
-                0
-            ]
+            "args": [0]
         },
         "blockHasher": {
             "hash": "reverse",
             "args": [
                 {
                     "hash": "neoscrypt",
-                    "args": [
-                        0
-                    ]
+                    "args": [0]
                 }
             ]
         },
@@ -3042,10 +2927,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3060,10 +2942,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -3145,10 +3024,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3207,10 +3083,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3225,10 +3098,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -3259,17 +3129,12 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
         "isPseudoPoS": true,
-        "blockTemplateRpcExtraParams": [
-            "lyra"
-        ],
+        "blockTemplateRpcExtraParams": ["lyra"],
         "shareMultiplier": 256,
         "explorerBlockLink": "https://verge-blockchain.info/block/$hash$",
         "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
@@ -3290,27 +3155,19 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
         "isPseudoPoS": true,
-        "blockTemplateRpcExtraParams": [
-            "scrypt"
-        ],
+        "blockTemplateRpcExtraParams": ["scrypt"],
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://verge-blockchain.info/block/$hash$",
         "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
@@ -3337,17 +3194,12 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
         "isPseudoPoS": true,
-        "blockTemplateRpcExtraParams": [
-            "x17"
-        ],
+        "blockTemplateRpcExtraParams": ["x17"],
         "explorerBlockLink": "https://verge-blockchain.info/block/$hash$",
         "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
         "explorerAccountLink": "https://verge-blockchain.info/address/{0}"
@@ -3373,17 +3225,12 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
         "isPseudoPoS": true,
-        "blockTemplateRpcExtraParams": [
-            "blake"
-        ],
+        "blockTemplateRpcExtraParams": ["blake"],
         "explorerBlockLink": "https://verge-blockchain.info/block/$hash$",
         "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
         "explorerAccountLink": "https://verge-blockchain.info/address/{0}"
@@ -3409,17 +3256,12 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
         "isPseudoPoS": true,
-        "blockTemplateRpcExtraParams": [
-            "groestl"
-        ],
+        "blockTemplateRpcExtraParams": ["groestl"],
         "explorerBlockLink": "https://verge-blockchain.info/block/$hash$",
         "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
         "explorerAccountLink": "https://verge-blockchain.info/address/{0}"
@@ -3467,10 +3309,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3485,10 +3324,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -3512,10 +3348,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3530,10 +3363,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -3585,10 +3415,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -3736,11 +3563,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -3751,11 +3574,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -3766,11 +3585,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -3799,11 +3614,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -3814,11 +3625,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -3829,11 +3636,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BgoldPoW"
-                    ]
+                    "args": [144, 5, "BgoldPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -3861,11 +3664,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -3876,11 +3675,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -3891,11 +3686,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -3923,11 +3714,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BethdPoW"
-                    ]
+                    "args": [144, 5, "BethdPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -3938,11 +3725,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BethdPoW"
-                    ]
+                    "args": [144, 5, "BethdPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -3953,11 +3736,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        144,
-                        5,
-                        "BethdPoW"
-                    ]
+                    "args": [144, 5, "BethdPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -3985,11 +3764,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        96,
-                        5,
-                        "ZcashPoW"
-                    ]
+                    "args": [96, 5, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -4000,11 +3775,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        96,
-                        5,
-                        "ZcashPoW"
-                    ]
+                    "args": [96, 5, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -4015,11 +3786,7 @@
                 "solutionPreambleSize": 1,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        96,
-                        5,
-                        "ZcashPoW"
-                    ]
+                    "args": [96, 5, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -4047,11 +3814,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "Verushash"
-                    ]
+                    "args": [200, 9, "Verushash"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false,
@@ -4068,11 +3831,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "Verushash"
-                    ]
+                    "args": [200, 9, "Verushash"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -4083,11 +3842,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "Verushash"
-                    ]
+                    "args": [200, 9, "Verushash"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -4115,11 +3870,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "zcash-main",
                 "payFoundersReward": true,
@@ -4190,11 +3941,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "zcash-test",
                 "payFoundersReward": true,
@@ -4265,11 +4012,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "zcash-reg",
                 "payFoundersReward": true,
@@ -4302,11 +4045,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": false
@@ -4317,11 +4056,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": false
@@ -4332,11 +4067,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": false
@@ -4364,11 +4095,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "main",
                 "payFoundersReward": true,
@@ -4441,11 +4168,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "testnet",
                 "payFoundersReward": true,
@@ -4518,11 +4241,7 @@
                 "solutionPreambleSize": 3,
                 "solver": {
                     "hash": "equihash",
-                    "args": [
-                        200,
-                        9,
-                        "ZcashPoW"
-                    ]
+                    "args": [200, 9, "ZcashPoW"]
                 },
                 "coinbaseTxNetwork": "regtest",
                 "payFoundersReward": true,
@@ -4570,7 +4289,7 @@
         "explorerBlockLink": "https://www.exploremonero.com/block/$height$",
         "explorerTxLink": "https://www.exploremonero.com/transaction/{0}"
     },
-     "conceal": {
+    "conceal": {
         "name": "Conceal",
         "canonicalName": "Conceal",
         "symbol": "CCX",
