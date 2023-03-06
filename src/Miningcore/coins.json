@@ -2761,11 +2761,11 @@
         "canonicalName": "Skydoge",
         "symbol": "SKYDOGE",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://skydoge.net/",
         "market": "",
         "twitter": "",
         "telegram": "",
-        "discord": "",
+        "discord": "https://discord.com/invite/GKHGDGbt8S",
         "coinbaseHasher": {
             "hash": "sha256d"
         },
@@ -2776,10 +2776,11 @@
             "hash": "reverse",
             "args": [
                 {
-                    "hash": "sha256d"
+                    "hash": "skydoge"
                 }
             ]
         },
+        "coinbaseTxVersion": 9,
         "explorerBlockLink": "https://explorer.skydogepool.xyz/block/$hash$",
         "explorerTxLink": "https://explorer.skydogepool.xyz/tx/{0}",
         "explorerAccountLink": "https://explorer.skydogepool.xyz/address/{0}"
