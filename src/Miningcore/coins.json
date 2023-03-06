@@ -1978,6 +1978,27 @@
         "explorerTxLink": "https://chainz.cryptoid.info/pak/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/pak/address.dws?{0}.htm"
     },
+    "paprikacoin": {
+        "name": "Paprikacoin",
+        "symbol": "PAPRY",
+        "family": "ravencoin",
+        "website": "https://paprikacoin.paprikaex.com/",
+        "market": "",
+        "twitter": "https://twitter.com/paprikaex",
+        "telegram": "",
+        "discord": "https://discord.com/invite/jgrXwraV65",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.paprikaex.com/block/$hash$",
+        "explorerTxLink": "https://explorer.paprikaex.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.paprikaex.com/address/{0}"
+    },
     "peercoin": {
         "name": "Peercoin",
         "canonicalName": "Peercoin",
