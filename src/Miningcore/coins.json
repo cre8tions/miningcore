@@ -1846,6 +1846,27 @@
         "explorerTxLink": "https://explorer.namecoin.info/tx/{0}",
         "explorerAccountLink": "https://explorer.namecoin.info/a/{0}"
     },
+    "neoxa": {
+        "name": "Neoxa",
+        "symbol": "NEOX",
+        "family": "ravencoin",
+        "website": "https://www.neoxa.net/",
+        "market": "https://www.coingecko.com/en/coins/neoxa",
+        "twitter": "https://twitter.com/NeoxaNet",
+        "telegram": "https://t.me/Neoxanet",
+        "discord": "https://discord.com/invite/frYkQqrAwR",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.neoxa.net/block/$hash$",
+        "explorerTxLink": "https://explorer.neoxa.net/tx/{0}",
+        "explorerAccountLink": "https://explorer.neoxa.net/address/{0}"
+    },
     "note-blockchain": {
         "name": "Note Blockchain",
         "canonicalName": "Note-Blockchain",
