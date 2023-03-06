@@ -1420,6 +1420,27 @@
         "explorerTxLink": "http://hfrco.in/blockcrawler/tx/{0}",
         "explorerAccountLink": "http://hfrco.in/blockcrawler/address/{0}"
     },
+    "hivecoin": {
+        "name": "Hivecoin",
+        "symbol": "HVQ",
+        "family": "ravencoin",
+        "website": "https://www.hivecoin.org/",
+        "market": "https://coinpaprika.com/coin/hvq-hivecoin",
+        "twitter": "https://twitter.com/Hive_Coin_HVQ",
+        "telegram": "",
+        "discord": "https://discord.com/invite/BBQnctGdHK",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://hvq.althashers.com/block/$hash$",
+        "explorerTxLink": "https://hvq.althashers.com/tx/{0}",
+        "explorerAccountLink": "https://hvq.althashers.com/address/{0}"
+    },
     "indexchain": {
         "name": "IndexChain",
         "symbol": "IDX",
