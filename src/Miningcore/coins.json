@@ -2294,6 +2294,35 @@
         "explorerTxLink": "https://explorer.pyrk.org/tx/{0}",
         "explorerAccountLink": "https://explorer.pyrk.org/address/{0}"
     },
+    "pulsar-minotaurx": {
+        "name": "PulsarCoin",
+        "canonicalName": "PulsarCoin",
+        "symbol": "PLSR",
+        "family": "bitcoin",
+        "website": "https://pulsarcoin.org/",
+        "market": "https://www.coingecko.com/en/coins/pulsar-coin",
+        "twitter": "https://twitter.com/PulsarCoin",
+        "telegram": "https://t.me/pulsarcoin1",
+        "discord": "https://discord.com/invite/7feEVsvDj9",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "minotaurx"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "minotaurx"
+                }
+            ]
+        },
+        "isPseudoPoS": true,
+        "explorerBlockLink": "https://explorer.pulsarcoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.pulsarcoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.pulsarcoin.org/address/{0}"
+    },
     "raptoreum": {
         "name": "Raptoreum",
         "canonicalName": "Raptoreum",
