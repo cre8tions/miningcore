@@ -39,6 +39,7 @@ public enum CoinFamily
 
     [EnumMember(Value = "ravencoin")]
     Ravencoin,
+
 }
 
 public abstract partial class CoinTemplate
@@ -203,6 +204,9 @@ public partial class BitcoinTemplate : CoinTemplate
     public bool HasFounderFee { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasFounderReward { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] 
     public bool HasMinerFund { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
