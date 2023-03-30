@@ -3479,6 +3479,35 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
+	"volkshash": {
+		"name": "VolksHash",
+		"symbol": "VHH",
+		"family": "bitcoin",
+		"website": "https://volkshash.org/",
+		"twitter": "https://twitter.com/Volks617958711",
+		"telegram": "",
+		"discord": "https://discord.com/invite/F4ZjTqzsjx",
+		"coinbaseHasher": {
+			"hash": "sha256d"
+		},
+		"headerHasher": {
+			"hash": "yespower"
+		},
+		"blockHasher": {
+			"hash": "reverse",
+			"args": [
+				{
+					"hash": "yespower"
+				}
+			]
+		},
+		"hasFounderReward": true,
+		"hasMasterNodes": true,
+		"shareMultiplier": 65536,
+		"explorerBlockLink": "http://explorer.volkshash.org/block/$hash$",
+		"explorerTxLink": "http://explorer.volkshash.org/tx/{0}",
+		"explorerAccountLink": "http://explorer.volkshash.org/address/{0}"
+    },
     "voltpotcoin": {
         "name": "Volt Pot Coin",
         "canonicalName": "Auroracoin",
