@@ -1528,6 +1528,7 @@
                 }
             ]
         },
+        "hasCoinbaseDevReward": true,
         "explorerBlockLink": "https://kcnxp.com/block/$height$",
         "explorerTxLink": "https://kcnxp.com/tx/{0}",
         "explorerAccountLink": "https://kcnxp.com/address/{0}"
