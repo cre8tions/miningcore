@@ -258,6 +258,9 @@ public class BitcoinJob
         if(coin.HasFounderReward)
             rewardToPool = CreateFounderRewardOutputs(tx, rewardToPool);
 
+        if (coin.HasProofOfGameplayAddress)
+            rewardToPool = CreateProofOfGameplayAddressOutputs(tx, rewardToPool);
+
         // Remaining amount goes to pool
         tx.Outputs.Add(rewardToPool, poolAddressDestination);
 
@@ -627,6 +630,21 @@ public class BitcoinJob
     }
 
     #endregion // CoinbaseDevReward
+
+    #region ProofOfGameplayAddress
+
+    protected virtual Money CreateProofOfGameplayAddressOutputs(Transaction tx, Money reward)
+    {
+        if(BlockTemplate.ProofOfGameplayAddress != null && BlockTemplate.ProofOfGameplayValue > 0)
+        {
+        	var payeeReward = BlockTemplate.ProofOfGameplayValue;
+        	reward -= payeeReward;
+        	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.ProofOfGameplayAddress, network);
+        	tx.Outputs.Add(payeeReward, payeeAddress);
+        }
+        return reward;
+    }
+    #endregion // ProofOfGameplayAddress
 
     #region API-Surface
 
