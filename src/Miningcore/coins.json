@@ -1441,6 +1441,28 @@
         "explorerTxLink": "https://hvq.althashers.com/tx/{0}",
         "explorerAccountLink": "https://hvq.althashers.com/address/{0}"
     },
+    "gamepass": {
+        "name": "Gamepass",
+        "symbol": "GPN",
+        "family": "ravencoin",
+        "website": "https://gamepass.network/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.com/invite/8TSkNhaDpS",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "hasProofOfGameplayAddress": true,
+        "hasDevFundAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.gamepass.network/block/$hash$",
+        "explorerTxLink": "https://explorer.gamepass.network/tx/{0}",
+        "explorerAccountLink": "https://explorer.gamepass.network/address/{0}"
+    },
     "indexchain": {
         "name": "IndexChain",
         "symbol": "IDX",
