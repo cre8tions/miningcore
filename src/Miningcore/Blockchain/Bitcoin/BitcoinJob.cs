@@ -261,6 +261,9 @@ public class BitcoinJob
         if (coin.HasProofOfGameplayAddress)
             rewardToPool = CreateProofOfGameplayAddressOutputs(tx, rewardToPool);
 
+        if (coin.HasDevFundAddress)
+            rewardToPool = CreateDevFundAddressOutputs(tx, rewardToPool);
+
         // Remaining amount goes to pool
         tx.Outputs.Add(rewardToPool, poolAddressDestination);
 
@@ -645,6 +648,21 @@ public class BitcoinJob
         return reward;
     }
     #endregion // ProofOfGameplayAddress
+
+    #region DevFundAddress
+
+    protected virtual Money CreateDevFundAddressOutputs(Transaction tx, Money reward)
+    {
+        if(BlockTemplate.DevFundAddress != null && BlockTemplate.DevFundValue > 0)
+        {
+        	var payeeReward = BlockTemplate.DevFundValue;
+        	reward -= payeeReward;
+        	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.DevFundAddress, network);
+        	tx.Outputs.Add(payeeReward, payeeAddress);
+        }
+        return reward;
+    }
+    #endregion // DevFundAddress
 
     #region API-Surface
 
