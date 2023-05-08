@@ -415,3 +415,7 @@ extern "C" MODULE_API void minotaurx_export(const char* input, char* output, uin
     minotaurx_hash(input, output, input_len);
 }
 
+extern "C" MODULE_API void yespowerLTNCG_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerLTNCG_hash(input, output, input_len);
+}
