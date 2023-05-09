@@ -599,6 +599,33 @@
         "explorerTxLink": "https://cann.tokenview.com/en/tx/{0}",
         "explorerAccountLink": "https://cann.tokenview.com/en/address/{0}"
     },
+    "crionic": {
+        "name": "Crionic",
+        "symbol": "CRNC",
+        "family": "bitcoin",
+        "website": "https://coin.crionic.org/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.com/invite/SKDkjcJTKM",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespowerltncg",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.crionic.org/block/$hash$",
+        "explorerTxLink": "https://explorer.crionic.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.crionic.org/address/{0}"
+    },
     "danecoin": {
         "name": "Danecoin",
         "canonicalName": "Danecoin",
