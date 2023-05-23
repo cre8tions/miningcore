@@ -14,7 +14,7 @@ OBJECTS = allium.o bcrypt.o blake.o c11.o dcrypt.o fresh.o lane.o \
 	sha3/extra.o sha3/gost_streebog.o sha3/sph_tiger.o sha3/SWIFFTX.o KeccakP-800-reference.o \
 	shavite3.o skein.o x11.o x13.o x15.o x17.o x16r.o x16rt.o x16rv2.o x16s.o x21s.o x22i.o \
 	blake2/sse/blake2s.o blake2/sse/blake2b.o \
-	Lyra2.o Lyra2RE.o Sponge.o geek.o minotaurx.o \
+	Lyra2.o Lyra2RE.o Sponge.o geek.o minotaurx.o memehash.o \
 	heavyhash/heavyhash.o heavyhash/keccak_tiny.o \
 	verthash/tiny_sha3/sha3.o verthash/h2.o \
 	equi/util.o equi/support/cleanse.o equi/random.o \
