@@ -62,6 +62,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "skydoge.h"
 #include "yescrypt/yescrypt.h"
 #include "yespower/yespower.h"
+#include "memehash.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -418,4 +419,9 @@ extern "C" MODULE_API void minotaurx_export(const char* input, char* output, uin
 extern "C" MODULE_API void yespowerLTNCG_export(const char* input, char* output, uint32_t input_len)
 {
     yespowerLTNCG_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void memehash_export(const char* input, char* output, uint32_t input_len)
+{
+    meme_hash(input, output, input_len);
 }
