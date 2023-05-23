@@ -2091,6 +2091,35 @@
         "explorerTxLink": "https://explorer.paprikaex.com/tx/{0}",
         "explorerAccountLink": "https://explorer.paprikaex.com/address/{0}"
     },
+    "pepepow": {
+        "name": "PepePow",
+        "canonicalName": "PepePow",
+        "symbol": "PEPEW",
+        "family": "bitcoin",
+        "website": "https://pepecore.com/",
+        "market": "",
+        "twitter": "https://twitter.com/pepepow_coin",
+        "telegram": "",
+        "discord": "https://discord.com/invite/jJgV73w8Zs",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "memehash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "memehash"
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "explorerBlockLink": "https://explorer.pepecore.com/block/$hash$",
+        "explorerTxLink": "https://explorer.pepecore.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.pepecore.com/address/{0}"
+    },
     "peercoin": {
         "name": "Peercoin",
         "canonicalName": "Peercoin",
