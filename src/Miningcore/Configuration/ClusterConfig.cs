@@ -19,6 +19,9 @@ namespace Miningcore.Configuration;
 
 public enum CoinFamily
 {
+    [EnumMember(Value = "beam")]
+    Beam,
+
     [EnumMember(Value = "bitcoin")]
     Bitcoin,
 
@@ -137,6 +140,7 @@ public abstract partial class CoinTemplate
     [JsonIgnore]
     public static readonly Dictionary<CoinFamily, Type> Families = new()
     {
+        {CoinFamily.Beam, typeof(BeamCoinTemplate)},
         {CoinFamily.Bitcoin, typeof(BitcoinTemplate)},
         {CoinFamily.Equihash, typeof(EquihashCoinTemplate)},
         {CoinFamily.Conceal, typeof(ConcealCoinTemplate)},
@@ -145,6 +149,10 @@ public abstract partial class CoinTemplate
         {CoinFamily.Ergo, typeof(ErgoCoinTemplate)},
         {CoinFamily.Ravencoin, typeof(RavencoinTemplate)},
     };
+}
+
+public partial class BeamCoinTemplate : CoinTemplate
+{
 }
 
 public enum BitcoinSubfamily
@@ -193,9 +201,6 @@ public partial class BitcoinTemplate : CoinTemplate
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool HasMasterNodes { get; set; }
-
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-    public bool HasSmartNodes { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool HasBrokenSendMany { get; set; } = false;
