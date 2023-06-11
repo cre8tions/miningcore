@@ -25,18 +25,6 @@ public abstract partial class CoinTemplate
     public string Source { get; set; }
 }
 
-public partial class BeamCoinTemplate
-{
-    #region Overrides of CoinTemplate
-
-    public override string GetAlgorithmName()
-    {
-        return "BeamHash";
-    }
-
-    #endregion
-}
-
 public partial class BitcoinTemplate
 {
     public BitcoinTemplate()
