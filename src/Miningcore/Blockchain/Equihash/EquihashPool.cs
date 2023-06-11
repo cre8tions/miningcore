@@ -7,7 +7,6 @@ using AutoMapper;
 using Microsoft.IO;
 using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Equihash.Configuration;
-using Miningcore.Blockchain.Equihash.Custom.Veruscoin;
 using Miningcore.Configuration;
 using Miningcore.Extensions;
 using Miningcore.JsonRpc;
@@ -60,21 +59,10 @@ public class EquihashPool : PoolBase
             throw new PoolStartupException("Pool z-address is not configured", pc.Id);
     }
 
-    private EquihashJobManager createEquihashExtraNonceProvider()
-    {
-        switch(coin.Symbol)
-        {
-            case "VRSC":
-                return ctx.Resolve<EquihashJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new VeruscoinExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
-            
-            default:
-                return ctx.Resolve<EquihashJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new EquihashExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
-        }
-    }
-
     protected override async Task SetupJobManager(CancellationToken ct)
     {
-        manager = ctx.Resolve<EquihashJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new EquihashExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+        manager = ctx.Resolve<EquihashJobManager>(
+            new TypedParameter(typeof(IExtraNonceProvider), new EquihashExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
 
         manager.Configure(poolConfig, clusterConfig);
 
@@ -392,7 +380,7 @@ public class EquihashPool : PoolBase
     {
         var multiplier = BitcoinConstants.Pow2x32;
         var result = shares * multiplier / interval / 1000000 * 2;
-        
+
         result /= hashrateDivisor;
         return result;
     }

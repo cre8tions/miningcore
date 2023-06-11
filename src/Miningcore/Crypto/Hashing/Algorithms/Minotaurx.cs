@@ -4,7 +4,7 @@ using Miningcore.Native;
 namespace Miningcore.Crypto.Hashing.Algorithms;
 
 [Identifier("minotaurx")]
-public unsafe class MinotaurX : IHashAlgorithm
+public unsafe class Minotaurx : IHashAlgorithm
 {
     public void Digest(ReadOnlySpan<byte> data, Span<byte> result, params object[] extra)
     {
@@ -14,7 +14,7 @@ public unsafe class MinotaurX : IHashAlgorithm
         {
             fixed (byte* output = result)
             {
-                Multihash.minotaurx(input, output);
+                Multihash.minotaurx(input, output, (uint) data.Length);
             }
         }
     }
