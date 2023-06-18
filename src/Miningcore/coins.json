@@ -2116,6 +2116,7 @@
             ]
         },
         "hasMasterNodes": true,
+        "hasFoundation": true,
         "explorerBlockLink": "https://explorer.pepecore.com/block/$hash$",
         "explorerTxLink": "https://explorer.pepecore.com/tx/{0}",
         "explorerAccountLink": "https://explorer.pepecore.com/address/{0}"
