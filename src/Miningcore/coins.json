@@ -36,6 +36,38 @@
         "explorerTxLink": "https://explorer.fiveg.cash/tx/{0}",
         "explorerAccountLink": "https://explorer.fiveg.cash/address/{0}"
     },
+    "arsagility": {
+        "name": "Arsagility",
+        "canonicalName": "Arsagility",
+        "symbol": "ARGY",
+        "family": "bitcoin",
+        "website": "https://arsagility.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/X2wY7gWwza",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.arsagility.org/block/$hash$",
+        "explorerTxLink": "https://explorer.arsagility.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.arsagility.org/address/{0}"
+    },
     "auroracoin-sha256": {
         "name": "Auroracoin Sha256",
         "canonicalName": "Auroracoin",
