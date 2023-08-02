@@ -97,9 +97,21 @@ public class AltcoinConstants
     public const decimal BaseRewardInitial = 2.0m;
 }
 
+public class MaxxChainConstants
+{
+    public const ulong MaxxHardForkHeight = 103307;
+    public const decimal MaxxBlockReward = 5.0m;
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
 public class PomConstants
 {
-    public const decimal BaseRewardInitial = 9.0m;
+    public const decimal BaseRewardInitial = 7.0m;
+}
+
+public class CanxiumConstants
+{
+    public const decimal BaseRewardInitial = 0.1875m;
 }
 
 public enum EthereumNetworkType
@@ -115,7 +127,9 @@ public enum EthereumNetworkType
     Pink = 10100,
     JibChain = 8899,
     Altcoin = 2330,
-    Pom = 18159,
+    MaxxChain = 10201,
+    Pom = 801921,
+    Canxium = 3003,
 
     Unknown = -1,
 }
@@ -133,7 +147,9 @@ public enum GethChainType
     Pink = 10100,
     JibChain = 8899,
     Altcoin = 2330,
-    Pom = 18159,
+    MaxxChain = 10201,
+    Pom = 801921,
+    Canxium = 3003,
     
     Unknown = -1,
 }

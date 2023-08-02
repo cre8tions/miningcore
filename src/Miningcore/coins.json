@@ -4788,6 +4788,40 @@
         "explorerTxLink": "https://memescan.io/tx/{0}",
         "explorerAccountLink": "https://memescan.io/address/{0}"
     },
+    "maxxchain": {
+        "name": "MaxxChain",
+        "canonicalName": "MaxxChain",
+        "symbol": "PWR",
+        "family": "ethereum",
+        "website": "https://www.maxxchain.org/",
+        "market": "",
+        "twitter": "https://twitter.com/Maxx_Chain",
+        "telegram": "https://t.me/MaxxChain",
+        "discord": "https://discord.gg/9eTHAGkBMU",
+        "explorerBlockLinks": {
+            "block": "https://scan.maxxchain.org/block/$height$/transactions",
+            "uncle": "https://scan.maxxchain.org/block/$hash$/transactions"
+        },
+        "explorerTxLink": "https://scan.maxxchain.org/tx/{0}",
+        "explorerAccountLink": "https://scan.maxxchain.org/address/{0}"
+    },
+    "canxium": {
+        "name": "Canxium",
+        "canonicalName": "Canxium",
+        "symbol": "CAU",
+        "family": "ethereum",
+        "website": "https://canxium.org/",
+        "market": "https://coinpaprika.com/coin/cau-canxium",
+        "twitter": "https://twitter.com/canxiumchain",
+        "telegram": "https://t.me/canxium",
+        "discord": "https://discord.com/invite/SbxSPJ8FkD",
+        "explorerBlockLinks": {
+            "block": "https://explorer.canxium.org/block/$height$/transactions",
+            "uncle": "https://explorer.canxium.org/block/$hash$/transactions"
+        },
+        "explorerTxLink": "https://explorer.canxium.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.canxium.org/address/{0}"
+    },
     "ergo": {
         "name": "Ergo",
         "canonicalName": "Ergo",
