@@ -19,12 +19,12 @@ using Miningcore.Time;
 using Newtonsoft.Json;
 using static Miningcore.Util.ActionUtils;
 
-namespace Miningcore.Blockchain.Ravencoin;
+namespace Miningcore.Blockchain.Progpow;
 
-[CoinFamily(CoinFamily.Ravencoin)]
-public class RavencoinPool : PoolBase
+[CoinFamily(CoinFamily.Progpow)]
+public class ProgpowPool : PoolBase
 {
-    public RavencoinPool(IComponentContext ctx,
+    public ProgpowPool(IComponentContext ctx,
         JsonSerializerSettings serializerSettings,
         IConnectionFactory cf,
         IStatsRepository statsRepo,
@@ -37,10 +37,22 @@ public class RavencoinPool : PoolBase
     {
     }
 
-    private RavencoinJobParams currentJobParams;
+    private ProgpowJobParams currentJobParams;
     private long currentJobId;
-    private RavencoinJobManager manager;
-    private RavencoinTemplate coin;
+    private ProgpowJobManager manager;
+    private ProgpowTemplate coin;
+    
+    private string createEncodeTarget(double difficulty)
+    {
+        switch(coin.Symbol)
+        {
+            case "FIRO":
+                return ProgpowUtils.FiroEncodeTarget(difficulty);
+            
+            default:
+                return ProgpowUtils.RavencoinEncodeTarget(difficulty);
+        }
+    }
 
     protected virtual async Task OnSubscribeAsync(StratumConnection connection, Timestamped<JsonRpcRequest> tsRequest)
     {
@@ -49,15 +61,15 @@ public class RavencoinPool : PoolBase
         if(request.Id == null)
             throw new StratumException(StratumError.MinusOne, "missing request id");
 
-        var context = connection.ContextAs<RavencoinWorkerContext>();
+        var context = connection.ContextAs<ProgpowWorkerContext>();
         var requestParams = request.ParamsAs<string[]>();
 
         var data = new object[]
         {
             new object[]
             {
-                new object[] { RavencoinStratumMethods.SetDifficulty, connection.ConnectionId },
-                new object[] { RavencoinStratumMethods.MiningNotify, connection.ConnectionId }
+                new object[] { ProgpowStratumMethods.SetDifficulty, connection.ConnectionId },
+                new object[] { ProgpowStratumMethods.MiningNotify, connection.ConnectionId }
             }
         }
         .Concat(manager.GetSubscriberData(connection))
@@ -82,8 +94,8 @@ public class RavencoinPool : PoolBase
 
         var minerJobParams = CreateWorkerJob(connection, currentJobParams.CleanJobs);
         // send intial update
-        await connection.NotifyAsync(RavencoinStratumMethods.SetDifficulty, new object[] { RavencoinUtils.EncodeTarget(context.Difficulty) });
-        await connection.NotifyAsync(RavencoinStratumMethods.MiningNotify, minerJobParams);
+        await connection.NotifyAsync(ProgpowStratumMethods.SetDifficulty, new object[] { createEncodeTarget(context.Difficulty) });
+        await connection.NotifyAsync(ProgpowStratumMethods.MiningNotify, minerJobParams);
     }
 
     protected virtual async Task OnAuthorizeAsync(StratumConnection connection, Timestamped<JsonRpcRequest> tsRequest, CancellationToken ct)
@@ -93,7 +105,7 @@ public class RavencoinPool : PoolBase
         if(request.Id == null)
             throw new StratumException(StratumError.MinusOne, "missing request id");
 
-        var context = connection.ContextAs<RavencoinWorkerContext>();
+        var context = connection.ContextAs<ProgpowWorkerContext>();
         var requestParams = request.ParamsAs<string[]>();
         var workerValue = requestParams?.Length > 0 ? requestParams[0] : null;
         var password = requestParams?.Length > 1 ? requestParams[1] : null;
@@ -130,7 +142,7 @@ public class RavencoinPool : PoolBase
 
                 logger.Info(() => $"[{connection.ConnectionId}] Setting static difficulty of {staticDiff.Value}");
 
-                await connection.NotifyAsync(RavencoinStratumMethods.SetDifficulty, new object[] { RavencoinUtils.EncodeTarget(context.Difficulty) });
+                await connection.NotifyAsync(ProgpowStratumMethods.SetDifficulty, new object[] { createEncodeTarget(context.Difficulty) });
             }
         }
 
@@ -152,8 +164,8 @@ public class RavencoinPool : PoolBase
 
     private object CreateWorkerJob(StratumConnection connection, bool update)
     {
-        var context = connection.ContextAs<RavencoinWorkerContext>();
-        var job = new RavencoinWorkerJob(NextJobId(), context.ExtraNonce1);
+        var context = connection.ContextAs<ProgpowWorkerContext>();
+        var job = new ProgpowWorkerJob(NextJobId(), context.ExtraNonce1);
 
         manager.PrepareWorkerJob(job, out var headerHash);
 
@@ -162,7 +174,7 @@ public class RavencoinPool : PoolBase
              job.Id,
              headerHash,
              job.SeedHash,
-             RavencoinUtils.EncodeTarget(context.Difficulty),
+             createEncodeTarget(context.Difficulty),
              update,
              job.Height,
              job.Bits
@@ -185,7 +197,7 @@ public class RavencoinPool : PoolBase
     protected virtual async Task OnSubmitAsync(StratumConnection connection, Timestamped<JsonRpcRequest> tsRequest, CancellationToken ct)
     {
         var request = tsRequest.Value;
-        var context = connection.ContextAs<RavencoinWorkerContext>();
+        var context = connection.ContextAs<ProgpowWorkerContext>();
 
         try
         {
@@ -254,19 +266,19 @@ public class RavencoinPool : PoolBase
     {
         logger.Info(() => $"Broadcasting jobs");
 
-        currentJobParams = job as RavencoinJobParams;
+        currentJobParams = job as ProgpowJobParams;
 
         await Guard(() => ForEachMinerAsync(async (connection, _) =>
         {
-            var context = connection.ContextAs<RavencoinWorkerContext>();
+            var context = connection.ContextAs<ProgpowWorkerContext>();
 
             var minerJobParams = CreateWorkerJob(connection, currentJobParams.CleanJobs);
 
             if(context.ApplyPendingDifficulty())
-                await connection.NotifyAsync(RavencoinStratumMethods.SetDifficulty, new object[] { RavencoinUtils.EncodeTarget(context.Difficulty) });
+                await connection.NotifyAsync(ProgpowStratumMethods.SetDifficulty, new object[] { createEncodeTarget(context.Difficulty) });
 
             // send job
-            await connection.NotifyAsync(RavencoinStratumMethods.MiningNotify, minerJobParams);
+            await connection.NotifyAsync(ProgpowStratumMethods.MiningNotify, minerJobParams);
         }));
     }
 
@@ -282,20 +294,31 @@ public class RavencoinPool : PoolBase
     }
 
     public override double ShareMultiplier => coin.ShareMultiplier;
+    
+    private ProgpowJobManager createProgpowExtraNonceProvider()
+    {
+        switch(coin.Symbol)
+        {
+            case "FIRO":
+                return ctx.Resolve<ProgpowJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new FiroExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+            
+            default:
+                return ctx.Resolve<ProgpowJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new RavencoinExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+        }
+    }
 
     #region Overrides
 
     public override void Configure(PoolConfig pc, ClusterConfig cc)
     {
-        coin = pc.Template.As<RavencoinTemplate>();
+        coin = pc.Template.As<ProgpowTemplate>();
 
         base.Configure(pc, cc);
     }
-
+    
     protected override async Task SetupJobManager(CancellationToken ct)
     {
-        manager = ctx.Resolve<RavencoinJobManager>(
-            new TypedParameter(typeof(IExtraNonceProvider), new RavencoinExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+        manager = createProgpowExtraNonceProvider();
 
         manager.Configure(poolConfig, clusterConfig);
 
@@ -333,7 +356,7 @@ public class RavencoinPool : PoolBase
 
     protected override WorkerContextBase CreateWorkerContext()
     {
-        return new RavencoinWorkerContext();
+        return new ProgpowWorkerContext();
     }
 
     protected override async Task OnRequestAsync(StratumConnection connection,
@@ -345,30 +368,34 @@ public class RavencoinPool : PoolBase
         {
             switch(request.Method)
             {
-                case RavencoinStratumMethods.Subscribe:
+                case ProgpowStratumMethods.Subscribe:
                     await OnSubscribeAsync(connection, tsRequest);
                     break;
 
-                case RavencoinStratumMethods.Authorize:
+                case ProgpowStratumMethods.Authorize:
                     await OnAuthorizeAsync(connection, tsRequest, ct);
                     break;
-
-                case RavencoinStratumMethods.SubmitShare:
+                
+                case ProgpowStratumMethods.SubmitShare:
                     await OnSubmitAsync(connection, tsRequest, ct);
-                    break;
-
-                case BitcoinStratumMethods.GetTransactions:
-                    // ignored
                     break;
 
                 case BitcoinStratumMethods.MiningMultiVersion:
                     // ignored
                     break;
-
-                default:
+                
+                case BitcoinStratumMethods.ExtraNonceSubscribe:
+                case BitcoinStratumMethods.GetTransactions:
+                case ProgpowStratumMethods.SubmitHashrate:
                     logger.Debug(() => $"[{connection.ConnectionId}] Unsupported RPC request: {JsonConvert.SerializeObject(request, serializerSettings)}");
 
                     await connection.RespondErrorAsync(StratumError.Other, $"Unsupported request {request.Method}", request.Id);
+                    break;
+                
+                default:
+                    logger.Debug(() => $"[{connection.ConnectionId}] Unknown RPC request: {JsonConvert.SerializeObject(request, serializerSettings)}");
+
+                    await connection.NotifyAsync(ProgpowStratumMethods.UnknownMethod, request);
                     break;
             }
         }
@@ -386,8 +413,8 @@ public class RavencoinPool : PoolBase
         if(connection.Context.ApplyPendingDifficulty())
         {
             var minerJobParams = CreateWorkerJob(connection, currentJobParams.CleanJobs);
-            await connection.NotifyAsync(RavencoinStratumMethods.SetDifficulty, new object[] { RavencoinUtils.EncodeTarget(connection.Context.Difficulty) });
-            await connection.NotifyAsync(RavencoinStratumMethods.MiningNotify, minerJobParams);
+            await connection.NotifyAsync(ProgpowStratumMethods.SetDifficulty, new object[] { createEncodeTarget(connection.Context.Difficulty) });
+            await connection.NotifyAsync(ProgpowStratumMethods.MiningNotify, minerJobParams);
         }
     }
 

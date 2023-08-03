@@ -2,6 +2,7 @@ using Autofac;
 using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Bitcoin.Configuration;
 using Miningcore.Blockchain.Bitcoin.DaemonResponses;
+using Miningcore.Blockchain.Progpow.Custom.Firo;
 using Miningcore.Configuration;
 using Miningcore.Contracts;
 using Miningcore.Crypto;
@@ -14,11 +15,11 @@ using Miningcore.Time;
 using Newtonsoft.Json;
 using NLog;
 
-namespace Miningcore.Blockchain.Ravencoin;
+namespace Miningcore.Blockchain.Progpow;
 
-public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
+public class ProgpowJobManager : BitcoinJobManagerBase<ProgpowJob>
 {
-    public RavencoinJobManager(
+    public ProgpowJobManager(
         IComponentContext ctx,
         IMasterClock clock,
         IMessageBus messageBus,
@@ -27,7 +28,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
     {
     }
 
-    private RavencoinTemplate coin;
+    private ProgpowTemplate coin;
 
     private async Task<RpcResponse<BlockTemplate>> GetBlockTemplateAsync(CancellationToken ct)
     {
@@ -44,9 +45,15 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
         return new RpcResponse<BlockTemplate>(result!.ResultAs<BlockTemplate>());
     }
 
-    private static RavencoinJob CreateJob()
+    private ProgpowJob CreateJob()
     {
-        return new RavencoinJob();
+        switch(coin.Symbol)
+        {
+            case "FIRO":
+                return new FiroJob();
+        }
+        
+        return new ProgpowJob();
     }
 
     private double ShareMultiplier => coin.ShareMultiplier;
@@ -78,7 +85,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
                 {
                     logger.Info(() => "Loading current light cache ...");
 
-                    await coin.KawpowHasher.GetCacheAsync(logger, (int) blockTemplate.Response.Height);
+                    await coin.ProgpowHasher.GetCacheAsync(logger, (int) blockTemplate.Response.Height);
 
                     logger.Info(() => "Loaded current light cache");
                     break;
@@ -125,11 +132,11 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
 
                 var blockHeight = blockTemplate?.Height ?? currentJob.BlockTemplate.Height;
 
-                var kawpowHasher = await coin.KawpowHasher.GetCacheAsync(logger, (int) blockHeight);
+                var progpowHasher = await coin.ProgpowHasher.GetCacheAsync(logger, (int) blockHeight);
 
                 job.Init(blockTemplate, NextJobId(),
                     poolConfig, extraPoolConfig, clusterConfig, clock, poolAddressDestination, network, isPoS,
-                    ShareMultiplier, coin.CoinbaseHasherValue, coin.HeaderHasherValue, kawpowHasher);
+                    ShareMultiplier, coin.CoinbaseHasherValue, coin.HeaderHasherValue, coin.BlockHasherValue, progpowHasher);
 
                 if(isNew)
                 {
@@ -183,7 +190,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
 
     public override void Configure(PoolConfig pc, ClusterConfig cc)
     {
-        coin = pc.Template.As<RavencoinTemplate>();
+        coin = pc.Template.As<ProgpowTemplate>();
         extraPoolConfig = pc.Extra.SafeExtensionDataAs<BitcoinPoolConfigExtra>();
         extraPoolPaymentProcessingConfig = pc.PaymentProcessing?.Extra?.SafeExtensionDataAs<BitcoinPoolPaymentProcessingConfigExtra>();
 
@@ -194,7 +201,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
 
         if(pc.EnableInternalStratum == true)
         {
-            coin.KawpowHasher.Setup(3);
+            coin.ProgpowHasher.Setup(3);
         }
 
         base.Configure(pc, cc);
@@ -204,7 +211,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
     {
         Contract.RequiresNonNull(worker);
 
-        var context = worker.ContextAs<RavencoinWorkerContext>();
+        var context = worker.ContextAs<ProgpowWorkerContext>();
 
         // assign unique ExtraNonce1 to worker (miner)
         context.ExtraNonce1 = extraNonceProvider.Next();
@@ -218,7 +225,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
         return responseData;
     }
 
-    public void PrepareWorkerJob(RavencoinWorkerJob workerJob, out string headerHash)
+    public void PrepareWorkerJob(ProgpowWorkerJob workerJob, out string headerHash)
     {
         headerHash = null;
 
@@ -242,7 +249,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
         if(submission is not object[] submitParams)
             throw new StratumException(StratumError.Other, "invalid params");
 
-        var context = worker.ContextAs<RavencoinWorkerContext>();
+        var context = worker.ContextAs<ProgpowWorkerContext>();
 
         // extract params
         var workerValue = (submitParams[0] as string)?.Trim();
@@ -254,7 +261,7 @@ public class RavencoinJobManager : BitcoinJobManagerBase<RavencoinJob>
         if(string.IsNullOrEmpty(workerValue))
             throw new StratumException(StratumError.Other, "missing or invalid workername");
 
-        RavencoinWorkerJob job;
+        ProgpowWorkerJob job;
 
         lock(context)
         {

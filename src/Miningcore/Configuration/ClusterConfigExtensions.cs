@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Miningcore.Crypto;
 using Miningcore.Crypto.Hashing.Algorithms;
 using Miningcore.Crypto.Hashing.Ethash;
+using Miningcore.Crypto.Hashing.Progpow;
 using NBitcoin;
 using Newtonsoft.Json;
 
@@ -84,24 +85,6 @@ public partial class BitcoinTemplate
 
     #endregion
 }
-
-public partial class RavencoinTemplate
-{
-    public RavencoinTemplate() : base()
-    {
-        KawpowHasher = new Crypto.Hashing.Kawpow.EthashLight();
-    }
-
-    #region Overrides of CoinTemplate
-
-    public override string GetAlgorithmName()
-    {
-        return KawpowHasher.AlgoName;
-    }
-
-    #endregion
-}
-
 
 public partial class EquihashCoinTemplate
 {
@@ -232,6 +215,28 @@ public partial class ErgoCoinTemplate
     public override string GetAlgorithmName()
     {
         return "Autolykos";
+    }
+
+    #endregion
+}
+
+public partial class ProgpowTemplate
+{
+    #region Overrides of CoinTemplate
+    
+    public ProgpowTemplate() : base()
+    {
+        progpowLightValue = new Lazy<IProgpowLight>(() =>
+            ProgpowFactory.GetProgpow(ComponentContext, Progpower));
+    }
+
+    private readonly Lazy<IProgpowLight> progpowLightValue;
+
+    public IProgpowLight ProgpowHasher => progpowLightValue.Value;
+
+    public override string GetAlgorithmName()
+    {
+        return ProgpowHasher.AlgoName;
     }
 
     #endregion
