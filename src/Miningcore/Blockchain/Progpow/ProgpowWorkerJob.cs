@@ -5,18 +5,18 @@ using Miningcore.Stratum;
 using NLog;
 using Contract = Miningcore.Contracts.Contract;
 
-namespace Miningcore.Blockchain.Ravencoin;
+namespace Miningcore.Blockchain.Progpow;
 
-public class RavencoinWorkerJob
+public class ProgpowWorkerJob
 {
-    public RavencoinWorkerJob(string jobId, string extraNonce1)
+    public ProgpowWorkerJob(string jobId, string extraNonce1)
     {
         Id = jobId;
         ExtraNonce1 = extraNonce1;
     }
 
     public string Id { get; }
-    public RavencoinJob Job { get; set; }
+    public ProgpowJob Job { get; set; }
     public uint Height { get; set; }
     public string ExtraNonce1 { get; set; }
     public string Bits { get; set; }
@@ -40,7 +40,7 @@ public class RavencoinWorkerJob
         Contract.RequiresNonNull(worker);
         Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(nonce));
 
-        var context = worker.ContextAs<RavencoinWorkerContext>();
+        var context = worker.ContextAs<ProgpowWorkerContext>();
 
         // mixHash
         if(mixHash.Length != 64)

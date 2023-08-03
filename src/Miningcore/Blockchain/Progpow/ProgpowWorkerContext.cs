@@ -1,8 +1,8 @@
 using Miningcore.Mining;
 
-namespace Miningcore.Blockchain.Ravencoin;
+namespace Miningcore.Blockchain.Progpow;
 
-public class RavencoinWorkerContext : WorkerContextBase
+public class ProgpowWorkerContext : WorkerContextBase
 {
     /// <summary>
     /// Usually a wallet address
@@ -19,9 +19,9 @@ public class RavencoinWorkerContext : WorkerContextBase
     /// </summary>
     public string ExtraNonce1 { get; set; }
 
-    private List<RavencoinWorkerJob> ValidJobs { get; } = new();
+    private List<ProgpowWorkerJob> ValidJobs { get; } = new();
 
-    public void AddJob(RavencoinWorkerJob job)
+    public void AddJob(ProgpowWorkerJob job)
     {
         ValidJobs.Insert(0, job);
 
@@ -29,7 +29,7 @@ public class RavencoinWorkerContext : WorkerContextBase
             ValidJobs.RemoveAt(ValidJobs.Count - 1);
     }
 
-    public RavencoinWorkerJob FindJob(string jobId)
+    public ProgpowWorkerJob FindJob(string jobId)
     {
         return ValidJobs.FirstOrDefault(x => x.Id == jobId);
     }
