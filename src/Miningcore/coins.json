@@ -1482,7 +1482,8 @@
     "hivecoin": {
         "name": "Hivecoin",
         "symbol": "HVQ",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://www.hivecoin.org/",
         "market": "https://coinpaprika.com/coin/hvq-hivecoin",
         "twitter": "https://twitter.com/Hive_Coin_HVQ",
@@ -1494,6 +1495,14 @@
         "headerHasher": {
             "hash": "sha256d"
         },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
         "hasCommunityAddress": true,
         "shareMultiplier": 1,
         "explorerBlockLink": "https://hvq.althashers.com/block/$hash$",
@@ -1503,7 +1512,8 @@
     "gamepass": {
         "name": "Gamepass",
         "symbol": "GPN",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://gamepass.network/",
         "market": "",
         "twitter": "",
@@ -1514,6 +1524,14 @@
         },
         "headerHasher": {
             "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
         },
         "hasProofOfGameplayAddress": true,
         "hasDevFundAddress": true,
@@ -1952,7 +1970,8 @@
     "neoxa": {
         "name": "Neoxa",
         "symbol": "NEOX",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://www.neoxa.net/",
         "market": "https://www.coingecko.com/en/coins/neoxa",
         "twitter": "https://twitter.com/NeoxaNet",
@@ -1963,6 +1982,14 @@
         },
         "headerHasher": {
             "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
         },
         "hasCommunityAddress": true,
         "shareMultiplier": 1,
@@ -2105,7 +2132,8 @@
     "paprikacoin": {
         "name": "Paprikacoin",
         "symbol": "PAPRY",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://paprikacoin.paprikaex.com/",
         "market": "",
         "twitter": "https://twitter.com/paprikaex",
@@ -2116,6 +2144,14 @@
         },
         "headerHasher": {
             "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
         },
         "hasCommunityAddress": true,
         "shareMultiplier": 1,
@@ -2621,7 +2657,8 @@
     "ravencoin": {
         "name": "Ravencoin",
         "symbol": "RVN",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://www.bitcoin.org/",
         "market": "https://coinmarketcap.com/currencies/bitcoin/",
         "twitter": "https://twitter.com/bitcoin",
@@ -2633,6 +2670,14 @@
         "headerHasher": {
             "hash": "sha256d"
         },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
         "shareMultiplier": 1,
         "explorerBlockLink": "https://ravencoin.network/rvn/block/$hash$",
         "explorerTxLink": "https://ravencoin.network/rvn/transaction/{0}",
@@ -2641,7 +2686,8 @@
     "neurai": {
         "name": "Neurai",
         "symbol": "XNA",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://neurai.org/",
         "market": "https://xeggex.com/market/XNA_USDT",
         "twitter": "https://twitter.com/neuraiproject",
@@ -2653,10 +2699,49 @@
         "headerHasher": {
             "hash": "sha256d"
         },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
         "shareMultiplier": 1,
         "explorerBlockLink": "https://explorer.neurai.org/block/$hash$",
         "explorerTxLink": "https://explorer.neurai.org/tx/{0}",
         "explorerAccountLink": "https://explorer.neurai.org/address/{0}"
+    },
+    "firo": {
+        "name": "Firo",
+        "symbol": "FIRO",
+        "family": "progpow",
+        "website": "https://firo.org/",
+        "market": "https://coinmarketcap.com/currencies/firo/",
+        "twitter": "https://twitter.com/firoorg",
+        "telegram": "https://t.me/firoorg",
+        "discord": "https://discord.gg/TGZPRbRT3Y",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "shareMultiplier": 1,
+        "progpower": "firopow",
+        "explorerBlockLink": "https://explorer.firo.org/block/$hash$",
+        "explorerTxLink": "https://explorer.firo.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.firo.org/address/{0}"
     },
     "novo": {
         "name": "Novo",
@@ -2750,7 +2835,8 @@
     "satoxcoin": {
         "name": "SatoxCoin",
         "symbol": "SATOX",
-        "family": "ravencoin",
+        "family": "progpow",
+		"progpower": "kawpow",
         "website": "https://www.satoverse.io/",
         "market": "https://coinpaprika.com/coin/satox-satox-coin",
         "twitter": "https://twitter.com/Satoverse_io",
@@ -2761,6 +2847,14 @@
         },
         "headerHasher": {
             "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
         },
         "hasCommunityAddress": true,
         "shareMultiplier": 1,

@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Miningcore.Blockchain.Ravencoin;
+using Miningcore.Blockchain.Progpow;
 using Miningcore.Contracts;
 using Miningcore.Extensions;
 using Miningcore.Messaging;
@@ -7,9 +7,10 @@ using Miningcore.Native;
 using Miningcore.Notifications.Messages;
 using NLog;
 
-namespace Miningcore.Crypto.Hashing.Kawpow;
+namespace Miningcore.Crypto.Hashing.Progpow.Kawpow;
 
-public class Cache : IDisposable
+[Identifier("kawpow")]
+public class Cache : IProgpowCache
 {
     public Cache(int epoch)
     {
