@@ -1,13 +1,14 @@
-using Miningcore.Blockchain.Ravencoin;
+using Miningcore.Blockchain.Progpow;
 using NLog;
 
-namespace Miningcore.Crypto.Hashing.Kawpow;
+namespace Miningcore.Crypto.Hashing.Progpow.Kawpow;
 
-public class EthashLight : IDisposable
+[Identifier("kawpow")]
+public class KawpowLight : IProgpowLight
 {
-    public void Setup(int numCaches)
+    public void Setup(int totalCache, ulong hardForkBlock = 0)
     {
-        this.numCaches = numCaches;
+        this.numCaches = totalCache;
     }
 
     private int numCaches; // Maximum number of caches to keep before eviction (only init, don't modify)
@@ -22,7 +23,7 @@ public class EthashLight : IDisposable
             value.Dispose();
     }
 
-    public async Task<Cache> GetCacheAsync(ILogger logger, int block)
+    public async Task<IProgpowCache> GetCacheAsync(ILogger logger, int block)
     {
         var epoch = block / RavencoinConstants.EpochLength;
         Cache result;
