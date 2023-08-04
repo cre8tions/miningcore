@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Numerics;
 using System.Reactive.Linq;
@@ -21,6 +22,7 @@ using Contract = Miningcore.Contracts.Contract;
 using EC = Miningcore.Blockchain.Ethereum.EthCommands;
 using static Miningcore.Util.ActionUtils;
 using System.Reactive;
+using Microsoft.Extensions.Primitives;
 using Miningcore.Mining;
 using Miningcore.Rpc;
 using Newtonsoft.Json.Linq;
@@ -54,6 +56,7 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
     private readonly IExtraNonceProvider extraNonceProvider;
     private const int MaxBlockBacklog = 6;
     protected readonly Dictionary<string, EthereumJob> validJobs = new();
+	protected readonly ConcurrentDictionary<string, bool> submissions = new(StringComparer.OrdinalIgnoreCase);	
     private EthereumPoolConfigExtra extraPoolConfig;
 
     protected async Task<bool> UpdateJob(CancellationToken ct, string via = null)
@@ -400,10 +403,25 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
             if(job == null)
                 throw new StratumException(StratumError.MinusOne, "stale share");
         }
-
+		
+        // dupe check
+        if(!RegisterSubmit(nonce, header, context.Miner))
+            throw new StratumException(StratumError.DuplicateShare, "duplicate share");
+		
         return await SubmitShareAsync(worker, context, workerName, job, nonce.StripHexPrefix(), ct);
     }
 
+    private bool RegisterSubmit(string nonce, string header, string address)
+    {
+        var key = new StringBuilder()
+            .Append(nonce)
+            .Append(header)
+            .Append(address)
+            .ToString();
+
+        return submissions.TryAdd(key, true);
+    }
+	
     public async Task<Share> SubmitShareV2Async(StratumConnection worker, string[] request, CancellationToken ct)
     {
         Contract.RequiresNonNull(worker);
