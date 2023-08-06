@@ -24,7 +24,7 @@ public enum CoinFamily
 
     [EnumMember(Value = "conceal")]
     Conceal,
-    
+
     [EnumMember(Value = "cryptonote")]
     Cryptonote,
 
@@ -236,6 +236,9 @@ public partial class BitcoinTemplate : CoinTemplate
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public JToken BlockTemplateRpcExtraParams { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasMWEB { get; set; }
 
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public Dictionary<string, BitcoinNetworkParams> Networks { get; set; }
@@ -461,13 +464,13 @@ public partial class ConcealCoinTemplate : CoinTemplate
     /// </summary>
     [JsonProperty(Order = -4, DefaultValueHandling = DefaultValueHandling.Include)]
     public int HashVariant { get; set; }
-    
+
     /// <summary>
     /// Conceal network hashrate = `Difficulty / DifficultyTarget`
     /// See: parameter -> DIFFICULTY_TARGET in src/CryptoNoteConfig.h
     /// </summary>
     public ulong DifficultyTarget { get; set; }
-    
+
     /// <summary>
     /// Smallest unit for Blockreward formatting
     /// </summary>
@@ -866,7 +869,7 @@ public partial class ClusterPaymentProcessingConfig
     /// <summary>
     /// Indentifier used in coinbase transactions to identify the pool
     /// </summary>
-    public string CoinbaseString  { get; set; }
+    public string CoinbaseString { get; set; }
 }
 
 public partial class PersistenceConfig
