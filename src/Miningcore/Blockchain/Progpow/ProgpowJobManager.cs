@@ -2,6 +2,7 @@ using Autofac;
 using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Bitcoin.Configuration;
 using Miningcore.Blockchain.Bitcoin.DaemonResponses;
+using Miningcore.Blockchain.Progpow.Custom.Evrmore;
 using Miningcore.Blockchain.Progpow.Custom.Firo;
 using Miningcore.Configuration;
 using Miningcore.Contracts;
@@ -51,6 +52,9 @@ public class ProgpowJobManager : BitcoinJobManagerBase<ProgpowJob>
         {
             case "FIRO":
                 return new FiroJob();
+
+            case "EVR":
+                return new EvrmoreJob();
         }
         
         return new ProgpowJob();
