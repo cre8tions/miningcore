@@ -2022,7 +2022,12 @@
                 }
             ]
         },
-        "hasCommunityAddress": true,
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+		"hasSmartNodes": true,
+        "foundersRewardAddress": [
+            "GTbBCJzqRWyFBMrap2fY39eZaXnLnojJ3F"
+        ],
         "shareMultiplier": 1,
         "explorerBlockLink": "https://explorer.neoxa.net/block/$hash$",
         "explorerTxLink": "https://explorer.neoxa.net/tx/{0}",
@@ -2774,7 +2779,7 @@
         "explorerTxLink": "https://explorer.firo.org/tx/{0}",
         "explorerAccountLink": "https://explorer.firo.org/address/{0}"
     },
-        "kiirocoin": {
+	"kiirocoin": {
         "name": "KiiroCoin",
         "symbol": "KIIRO",
         "family": "progpow",
