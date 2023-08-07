@@ -2773,6 +2773,37 @@
         "explorerTxLink": "https://explorer.firo.org/tx/{0}",
         "explorerAccountLink": "https://explorer.firo.org/address/{0}"
     },
+        "kiirocoin": {
+        "name": "KiiroCoin",
+        "symbol": "KIIRO",
+        "family": "progpow",
+        "website": "https://kiirocoin.org/",
+        "market": "https://coinpaprika.com/coin/kiiro-kiirocoin",
+        "twitter": "https://twitter.com/kiirocoin",
+        "telegram": "https://t.me/kiirocoin",
+        "discord": "https://discord.com/invite/yFbbrtPscq",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "shareMultiplier": 1,
+        "progpower": "firopow",
+        "explorerBlockLink": "https://explorer.kiirocoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.kiirocoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.kiirocoin.org/address/{0}"
+    },
     "novo": {
         "name": "Novo",
         "symbol": "NOVO",
