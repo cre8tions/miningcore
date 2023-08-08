@@ -36,6 +36,18 @@ public class EthereumConstants
 
     public const string RpcRequestWorkerPropertyName = "worker";
 }
+//Rethereum
+public class RethereumConstants
+{
+    public const ulong EpochLength = 32000;
+    public const ulong LondonHeight = 15787969;
+    public const decimal LondonBlockReward = 3.0m;
+    public const ulong ArrowGlacierHeight = 27200177;
+    public const decimal ArrowGlacierBlockReward = 2.0m;
+    public const ulong GrayGlacierHeight = 40725107;
+    public const decimal GrayGlacierBlockReward = 1.0m;
+    public const decimal BaseRewardInitial = 4.0m;
+}
 
 // ETC block reward distribution - ECIP 1017
 // https://ecips.ethereumclassic.org/ECIPs/ecip-1017
@@ -128,6 +140,7 @@ public enum EthereumNetworkType
     MaxxChain = 10201,
     Pom = 801921,
     Canxium = 3003,
+    Rethereum = 622277,
 
     Unknown = -1,
 }
@@ -148,6 +161,7 @@ public enum GethChainType
     MaxxChain = 10201,
     Pom = 801921,
     Canxium = 3003,
+    Rethereum = 622277,
     
     Unknown = -1,
 }
