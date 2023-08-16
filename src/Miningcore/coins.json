@@ -5013,6 +5013,24 @@
         "explorerTxLink": "https://explorer.rethereum.org//tx/{0}",
         "explorerAccountLink": "https://explorer.rethereum.org//address/{0}"
     },
+    "bitnet": {
+        "name": "Bitnet Money",
+        "canonicalName": "Bitnet-Money",
+        "symbol": "BTN",
+        "family": "ethereum",
+	"ethasher": "ethash",
+        "website": "https://bitnet.money/",
+        "market": "https://xeggex.com/market/BTN_USDT",
+        "twitter": "",
+        "telegram": "https://t.me/Bitnet_Official_Group",
+        "discord": "https://discord.com/invite/dtw7rKQfRs",
+        "explorerBlockLinks": {
+            "block": "https://btnscan.com/block/$hash$?network=Bitnet",
+            "uncle": "https://btnscan.com/block/$hash$?network=Bitnet"
+        },
+        "explorerTxLink": "https://btnscan.com/tx/{0}?network=Bitnet",
+        "explorerAccountLink": "https://btnscan.com/address/{0}"
+    },
     "ergo": {
         "name": "Ergo",
         "canonicalName": "Ergo",

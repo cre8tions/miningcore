@@ -124,6 +124,11 @@ public class CanxiumConstants
     public const decimal BaseRewardInitial = 0.1875m;
 }
 
+public class BitnetConstants
+{
+    public const decimal BaseRewardInitial = 1.0m;
+}
+
 public enum EthereumNetworkType
 {
     Main = 1,
@@ -141,6 +146,7 @@ public enum EthereumNetworkType
     Pom = 801921,
     Canxium = 3003,
     Rethereum = 622277,
+    Bitnet = 210,
 
     Unknown = -1,
 }
@@ -162,6 +168,7 @@ public enum GethChainType
     Pom = 801921,
     Canxium = 3003,
     Rethereum = 622277,
+    Bitnet = 210,
     
     Unknown = -1,
 }
