@@ -1817,6 +1817,62 @@
         "explorerTxLink": "https://openchains.info/coin/luckybit/tx/{0}",
         "explorerAccountLink": "https://openchains.info/coin/luckybit/address/{0}"
     },
+    "mateable": {
+        "name": "Mateable Coin",
+        "canonicalName": "Mateable",
+        "symbol": "MTBC",
+        "family": "bitcoin",
+        "website": "https://coin.mateable.com/",
+        "twitter": "https://twitter.com/mateable",
+        "telegram": "https://t.me/mateablecoin",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.mateable.com/block/$height$",
+        "explorerTxLink": "https://explorer.mateable.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.mateable.com/address/{0}"
+    },
+    "mateable-yescrypt": {
+        "name": "Mateable Coin",
+        "canonicalName": "Mateable",
+        "symbol": "MTBC",
+        "family": "bitcoin",
+        "website": "https://coin.mateable.com/",
+        "twitter": "https://twitter.com/mateable",
+        "telegram": "https://t.me/mateablecoin",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yescryptr8"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.mateable.com/block/$height$",
+        "explorerTxLink": "https://explorer.mateable.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.mateable.com/address/{0}"
+    },
     "maza": {
         "name": "Maza",
         "canonicalName": "Maza",
