@@ -2256,11 +2256,11 @@
         "canonicalName": "PepePow",
         "symbol": "PEPEW",
         "family": "bitcoin",
-        "website": "https://pepecore.com/",
+        "website": "https://pepecore.wordpress.com/",
         "market": "",
-        "twitter": "https://twitter.com/pepepow_coin",
+        "twitter": "https://twitter.com/PEPEWCommunity",
         "telegram": "",
-        "discord": "https://discord.com/invite/jJgV73w8Zs",
+        "discord": "https://discord.gg/wHFMdbjP",
         "coinbaseHasher": {
             "hash": "sha256d"
         },
@@ -2276,10 +2276,9 @@
             ]
         },
         "hasMasterNodes": true,
-        "hasFoundation": true,
-        "explorerBlockLink": "https://explorer.pepecore.com/block/$hash$",
-        "explorerTxLink": "https://explorer.pepecore.com/tx/{0}",
-        "explorerAccountLink": "https://explorer.pepecore.com/address/{0}"
+        "explorerBlockLink": "https://pepew.mining4people.com/block/$hash$",
+        "explorerTxLink": "https://pepew.mining4people.com/tx/{0}",
+        "explorerAccountLink": "https://pepew.mining4people.com/address/{0}"
     },
     "peercoin": {
         "name": "Peercoin",
