@@ -1841,7 +1841,7 @@
             ]
         },
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.mateable.com/block/$height$",
+        "explorerBlockLink": "https://explorer.mateable.com/block/$hash$",
         "explorerTxLink": "https://explorer.mateable.com/tx/{0}",
         "explorerAccountLink": "https://explorer.mateable.com/address/{0}"
     },
@@ -1869,7 +1869,7 @@
             ]
         },
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.mateable.com/block/$height$",
+        "explorerBlockLink": "https://explorer.mateable.com/block/$hash$",
         "explorerTxLink": "https://explorer.mateable.com/tx/{0}",
         "explorerAccountLink": "https://explorer.mateable.com/address/{0}"
     },
