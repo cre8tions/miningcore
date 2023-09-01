@@ -1329,6 +1329,36 @@
         "explorerTxLink": "https://freecash.info/transaction?hash={0}",
         "explorerAccountLink": "https://freecash.info/address?address={0}"
     },
+    "fulminare": {
+        "name": "Fulminare",
+        "symbol": "FLMN",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://fulminareproject.com/",
+        "market": "",
+        "twitter": "https://twitter.com/FulminareTweet",
+        "telegram": "https://t.me/fulminarecommunity",
+        "discord": "https://discord.gg/rvPCJkYD7N",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 1,
+        "hasFounderValue": true,
+        "explorerBlockLink": "https://explorer.fulminareproject.com/block/$hash$",
+        "explorerTxLink": "https://explorer.fulminareproject.com/transaction/{0}",
+        "explorerAccountLink": "https://explorer.fulminareproject.com/address/{0}"
+    },
     "garlicoin": {
         "name": "Garlicoin",
         "symbol": "GRLC",
