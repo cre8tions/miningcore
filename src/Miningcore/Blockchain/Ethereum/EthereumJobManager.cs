@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Numerics;
 using System.Reactive.Linq;
@@ -8,7 +9,6 @@ using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Ethereum.Configuration;
 using Miningcore.Blockchain.Ethereum.DaemonResponses;
 using Miningcore.Configuration;
-using Miningcore.Crypto.Hashing.Ethash;
 using Miningcore.Extensions;
 using Miningcore.JsonRpc;
 using Miningcore.Messaging;
@@ -22,6 +22,7 @@ using Contract = Miningcore.Contracts.Contract;
 using EC = Miningcore.Blockchain.Ethereum.EthCommands;
 using static Miningcore.Util.ActionUtils;
 using System.Reactive;
+using Microsoft.Extensions.Primitives;
 using Miningcore.Mining;
 using Miningcore.Rpc;
 using Newtonsoft.Json.Linq;
@@ -45,16 +46,17 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
         this.clock = clock;
         this.extraNonceProvider = extraNonceProvider;
     }
-
+    
+    private EthereumCoinTemplate coin;
     private DaemonEndpointConfig[] daemonEndpoints;
     private RpcClient rpc;
     private EthereumNetworkType networkType;
     private GethChainType chainType;
-    private EthashFull ethash;
     private readonly IMasterClock clock;
     private readonly IExtraNonceProvider extraNonceProvider;
     private const int MaxBlockBacklog = 6;
     protected readonly Dictionary<string, EthereumJob> validJobs = new();
+	protected readonly ConcurrentDictionary<string, bool> submissions = new(StringComparer.OrdinalIgnoreCase);	
     private EthereumPoolConfigExtra extraPoolConfig;
 
     protected async Task<bool> UpdateJob(CancellationToken ct, string via = null)
@@ -102,7 +104,7 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
                 var jobId = NextJobId("x8");
 
                 // update template
-                job = new EthereumJob(jobId, blockTemplate, logger);
+                job = new EthereumJob(jobId, blockTemplate, logger, coin.Ethash);
 
                 lock(jobLock)
                 {
@@ -335,6 +337,7 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
     public override void Configure(PoolConfig pc, ClusterConfig cc)
     {
         extraPoolConfig = pc.Extra.SafeExtensionDataAs<EthereumPoolConfigExtra>();
+        coin = pc.Template.As<EthereumCoinTemplate>();
 
         // extract standard daemon endpoints
         daemonEndpoints = pc.Daemons
@@ -345,16 +348,21 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
 
         if(pc.EnableInternalStratum == true)
         {
-            // ensure dag location is configured
-            var dagDir = !string.IsNullOrEmpty(extraPoolConfig?.DagDir) ?
-                Environment.ExpandEnvironmentVariables(extraPoolConfig.DagDir) :
-                Dag.GetDefaultDagDirectory();
+            // Automatic switch between Full DAG and Light Cache
+            // If dagDir provided: Full DAG
+            // If darDir empty: Light Cache
+            string dagDir = null;
 
-            // create it if necessary
-            Directory.CreateDirectory(dagDir);
-
-            // setup ethash
-            ethash = new EthashFull(3, dagDir);
+            if(!string.IsNullOrEmpty(extraPoolConfig?.DagDir))
+            {
+                dagDir = Environment.ExpandEnvironmentVariables(extraPoolConfig.DagDir);
+            }
+            
+            logger.Info(() => $"Ethasher is: {coin.Ethasher}");
+            
+            var hardForkBlock = extraPoolConfig?.ChainTypeOverride == "Classic" ? EthereumClassicConstants.HardForkBlockMainnet : EthereumClassicConstants.HardForkBlockMordor;
+            // TODO: improve this
+            coin.Ethash.Setup(3, hardForkBlock, dagDir);
         }
     }
 
@@ -395,10 +403,25 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
             if(job == null)
                 throw new StratumException(StratumError.MinusOne, "stale share");
         }
-
+		
+        // dupe check
+        if(!RegisterSubmit(nonce, header, context.Miner))
+            throw new StratumException(StratumError.DuplicateShare, "duplicate share");
+		
         return await SubmitShareAsync(worker, context, workerName, job, nonce.StripHexPrefix(), ct);
     }
 
+    private bool RegisterSubmit(string nonce, string header, string address)
+    {
+        var key = new StringBuilder()
+            .Append(nonce)
+            .Append(header)
+            .Append(address)
+            .ToString();
+
+        return submissions.TryAdd(key, true);
+    }
+	
     public async Task<Share> SubmitShareV2Async(StratumConnection worker, string[] request, CancellationToken ct)
     {
         Contract.RequiresNonNull(worker);
@@ -428,29 +451,28 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
         EthereumWorkerContext context, string workerName, EthereumJob job, string nonce, CancellationToken ct)
     {
         // validate & process
-        var (share, fullNonceHex, headerHash, mixHash) = await job.ProcessShareAsync(worker, workerName, nonce, ethash, ct);
-
-        // enrich share with common data
+        var (share, fullNonceHex, headerHash, mixHash) = await job.ProcessShareAsync(worker, workerName, nonce, ct);
+        
         share.PoolId = poolConfig.Id;
         share.NetworkDifficulty = BlockchainStats.NetworkDifficulty;
         share.Source = clusterConfig.ClusterName;
         share.Created = clock.Now;
-
+        
         // if block candidate, submit & check if accepted by network
         if(share.IsBlockCandidate)
         {
             logger.Info(() => $"Submitting block {share.BlockHeight}");
-
+            
             share.IsBlockCandidate = await SubmitBlockAsync(share, fullNonceHex, headerHash, mixHash);
-
+            
             if(share.IsBlockCandidate)
             {
                 logger.Info(() => $"Daemon accepted block {share.BlockHeight} submitted by {context.Miner}");
-
+                
                 OnBlockFound();
             }
         }
-
+        
         return share;
     }
 
@@ -471,12 +493,21 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
     {
         var response = await rpc.ExecuteAsync<Block>(logger, EC.GetBlockByNumber, ct, new[] { (object) "latest", true });
 
-        return response.Error == null;
+        if(response.Error != null)
+        {
+            logger.Error(() => $"Daemon reports: {response.Error.Message}");
+            return false;
+        }
+        
+        return true;
     }
 
     protected override async Task<bool> AreDaemonsConnectedAsync(CancellationToken ct)
     {
         var response = await rpc.ExecuteAsync<string>(logger, EC.GetPeerCount, ct);
+        
+        if(response.Error != null)
+            logger.Error(() => $"Daemon reports: {response.Error.Message}");
 
         return response.Error == null && response.Response.IntegralFromHex<uint>() > 0;
     }
@@ -534,6 +565,7 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
         // var accounts = responses[1].Response.ToObject<string[]>();
         // var coinbase = responses[2].Response.ToObject<string>();
         var gethChain = extraPoolConfig?.ChainTypeOverride ?? "Ethereum";
+        var coin = poolConfig.Template.As<EthereumCoinTemplate>();
 
         EthereumUtils.DetectNetworkAndChain(netVersion, gethChain, out networkType, out chainType);
 
@@ -553,7 +585,7 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
 
         if(poolConfig.EnableInternalStratum == true)
         {
-            // make sure we have a current DAG
+            // make sure we have a current DAG/light cache
             using var timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
 
             do
@@ -562,11 +594,18 @@ public class EthereumJobManager : JobManagerBase<EthereumJob>
 
                 if(blockTemplate != null)
                 {
-                    logger.Info(() => "Loading current DAG ...");
-
-                    await ethash.GetDagAsync(blockTemplate.Height, logger, ct);
-
-                    logger.Info(() => "Loaded current DAG");
+                    if(!string.IsNullOrEmpty(extraPoolConfig?.DagDir))
+                        logger.Info(() => "Loading current DAG ...");
+                    else
+                        logger.Info(() => "Loading current light cache ...");
+                    
+                    await coin.Ethash.GetCacheAsync(logger, blockTemplate.Height, ct);
+                    
+                    if(!string.IsNullOrEmpty(extraPoolConfig?.DagDir))
+                        logger.Info(() => "Loaded current DAG");
+                    else
+                        logger.Info(() => "Loaded current light cache");
+                    
                     break;
                 }
 

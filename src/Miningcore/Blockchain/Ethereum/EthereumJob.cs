@@ -10,11 +10,12 @@ namespace Miningcore.Blockchain.Ethereum;
 
 public class EthereumJob
 {
-    public EthereumJob(string id, EthereumBlockTemplate blockTemplate, ILogger logger)
+    public EthereumJob(string id, EthereumBlockTemplate blockTemplate, ILogger logger, IEthashLight ethash)
     {
         Id = id;
         BlockTemplate = blockTemplate;
         this.logger = logger;
+	this.ethash = ethash;
 
         var target = blockTemplate.Target;
         if(target.StartsWith("0x"))
@@ -29,6 +30,7 @@ public class EthereumJob
     public EthereumBlockTemplate BlockTemplate { get; }
     private readonly uint256 blockTarget;
     private readonly ILogger logger;
+    private readonly IEthashLight ethash;
 
     public record SubmitResult(Share Share, string FullNonceHex = null, string HeaderHash = null, string MixHash = null);
 
@@ -45,14 +47,14 @@ public class EthereumJob
         else
         {
             if(nonces.Contains(nonceLower))
-                throw new StratumException(StratumError.MinusOne, "duplicate share");
+                throw new StratumException(StratumError.DuplicateShare, "duplicate share");
 
             nonces.Add(nonceLower);
         }
     }
-
+    
     public async Task<SubmitResult> ProcessShareAsync(StratumConnection worker,
-        string workerName, string fullNonceHex, EthashFull ethash, CancellationToken ct)
+        string workerName, string fullNonceHex, CancellationToken ct)
     {
         // dupe check
         lock(workerNonces)
@@ -65,11 +67,11 @@ public class EthereumJob
         if(!ulong.TryParse(fullNonceHex, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var fullNonce))
             throw new StratumException(StratumError.MinusOne, "bad nonce " + fullNonceHex);
 
-        // get dag for block
-        var dag = await ethash.GetDagAsync(BlockTemplate.Height, logger, CancellationToken.None);
+        // get dag/light cache for block
+        var cache = await ethash.GetCacheAsync(logger, BlockTemplate.Height, ct);
 
         // compute
-        if(!dag.Compute(logger, BlockTemplate.Header.HexToByteArray(), fullNonce, out var mixDigest, out var resultBytes))
+        if(!cache.Compute(logger, BlockTemplate.Header.HexToByteArray(), fullNonce, out var mixDigest, out var resultBytes))
             throw new StratumException(StratumError.MinusOne, "bad hash");
 
         // test if share meets at least workers current difficulty

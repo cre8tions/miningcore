@@ -4,6 +4,8 @@ using Autofac;
 using JetBrains.Annotations;
 using Miningcore.Crypto;
 using Miningcore.Crypto.Hashing.Algorithms;
+using Miningcore.Crypto.Hashing.Ethash;
+using Miningcore.Crypto.Hashing.Progpow;
 using NBitcoin;
 using Newtonsoft.Json;
 
@@ -146,17 +148,35 @@ public partial class EquihashCoinTemplate
     #endregion
 }
 
+public partial class ConcealCoinTemplate
+{
+    #region Overrides of CoinTemplate
+
+    public override string GetAlgorithmName()
+    {
+        //        switch(Hash)
+        //        {
+        //            case CryptonightHashType.RandomX:
+        //                return "RandomX";
+        //        }
+
+        return Hash.ToString();
+    }
+
+    #endregion
+}
+
 public partial class CryptonoteCoinTemplate
 {
     #region Overrides of CoinTemplate
 
     public override string GetAlgorithmName()
     {
-//        switch(Hash)
-//        {
-//            case CryptonightHashType.RandomX:
-//                return "RandomX";
-//        }
+        //        switch(Hash)
+        //        {
+        //            case CryptonightHashType.RandomX:
+        //                return "RandomX";
+        //        }
 
         return Hash.ToString();
     }
@@ -168,9 +188,21 @@ public partial class EthereumCoinTemplate
 {
     #region Overrides of CoinTemplate
 
+    public EthereumCoinTemplate()
+    {
+        ethashLightValue = new Lazy<IEthashLight>(() =>
+            EthashFactory.GetEthash(ComponentContext, Ethasher));
+    }
+
+    private readonly Lazy<IEthashLight> ethashLightValue;
+
+    public IComponentContext ComponentContext { get; [UsedImplicitly] init; }
+
+    public IEthashLight Ethash => ethashLightValue.Value;
+
     public override string GetAlgorithmName()
     {
-        return "Ethhash";
+        return Ethash.AlgoName;
     }
 
     #endregion
@@ -183,6 +215,28 @@ public partial class ErgoCoinTemplate
     public override string GetAlgorithmName()
     {
         return "Autolykos";
+    }
+
+    #endregion
+}
+
+public partial class ProgpowTemplate
+{
+    #region Overrides of CoinTemplate
+    
+    public ProgpowTemplate() : base()
+    {
+        progpowLightValue = new Lazy<IProgpowLight>(() =>
+            ProgpowFactory.GetProgpow(ComponentContext, Progpower));
+    }
+
+    private readonly Lazy<IProgpowLight> progpowLightValue;
+
+    public IProgpowLight ProgpowHasher => progpowLightValue.Value;
+
+    public override string GetAlgorithmName()
+    {
+        return ProgpowHasher.AlgoName;
     }
 
     #endregion

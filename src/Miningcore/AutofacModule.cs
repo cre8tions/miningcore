@@ -3,12 +3,16 @@ using Autofac;
 using Miningcore.Api;
 using Miningcore.Banning;
 using Miningcore.Blockchain.Bitcoin;
+using Miningcore.Blockchain.Conceal;
 using Miningcore.Blockchain.Cryptonote;
 using Miningcore.Blockchain.Equihash;
 using Miningcore.Blockchain.Ethereum;
+using Miningcore.Blockchain.Progpow;
 using Miningcore.Configuration;
 using Miningcore.Crypto;
 using Miningcore.Crypto.Hashing.Equihash;
+using Miningcore.Crypto.Hashing.Ethash;
+using Miningcore.Crypto.Hashing.Progpow;
 using Miningcore.Messaging;
 using Miningcore.Mining;
 using Miningcore.Notifications;
@@ -86,6 +90,18 @@ public class AutofacModule : Module
             .AsSelf();
 
         builder.RegisterAssemblyTypes(ThisAssembly)
+            .Where(t => t.GetCustomAttributes<IdentifierAttribute>().Any() &&
+                t.GetInterfaces().Any(i => i.IsAssignableFrom(typeof(IEthashLight))))
+            .Named<IEthashLight>(t => t.GetCustomAttributes<IdentifierAttribute>().First().Name)
+            .PropertiesAutowired();
+
+        builder.RegisterAssemblyTypes(ThisAssembly)
+            .Where(t => t.GetCustomAttributes<IdentifierAttribute>().Any() &&
+                t.GetInterfaces().Any(i => i.IsAssignableFrom(typeof(IProgpowLight))))
+            .Named<IProgpowLight>(t => t.GetCustomAttributes<IdentifierAttribute>().First().Name)
+            .PropertiesAutowired();
+
+        builder.RegisterAssemblyTypes(ThisAssembly)
             .Where(t => t.IsAssignableTo<ControllerBase>())
             .PropertiesAutowired()
             .AsSelf();
@@ -147,7 +163,12 @@ public class AutofacModule : Module
         // Bitcoin and family
 
         builder.RegisterType<BitcoinJobManager>();
+        
+        //////////////////////
+        // Conceal
 
+        builder.RegisterType<ConcealJobManager>();
+        
         //////////////////////
         // Cryptonote
 
@@ -156,7 +177,6 @@ public class AutofacModule : Module
         //////////////////////
         // Ethereum
 
-        builder.RegisterType<EthereumJobManager>();
         builder.RegisterType<EthereumJobManager>();
 
         //////////////////////
@@ -169,6 +189,11 @@ public class AutofacModule : Module
 
         builder.RegisterType<EquihashJobManager>();
         builder.RegisterType<ErgoJobManager>();
+
+        //////////////////////
+        // Progpow
+
+        builder.RegisterType<ProgpowJobManager>();
 
         base.Load(builder);
     }

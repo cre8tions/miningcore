@@ -15,6 +15,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include "allium.h"
 #include "bcrypt.h"
 #include "keccak.h"
 #include "quark.h"
@@ -34,6 +35,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "shavite3.h"
 #include "x13.h"
 #include "x14.h"
+#include "minotaurx.h"
 #include "nist5.h"
 #include "x15.h"
 #include "x17.h"
@@ -45,6 +47,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Lyra2RE.h"
 #include "Lyra2.h"
 #include "x16r.h"
+#include "x16rt.h"
 #include "x16s.h"
 #include "x16rv2.h"
 #include "x21s.h"
@@ -56,6 +59,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "verthash/h2.h"
 #include "equi/equihashverify.h"
 #include "heavyhash/heavyhash.h"
+#include "skydoge.h"
+#include "yescrypt/yescrypt.h"
+#include "yespower/yespower.h"
+#include "memehash.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -332,4 +339,89 @@ extern "C" MODULE_API bool equihash_verify_96_5_export(const char* header, int h
     const std::vector<unsigned char> vecSolution(solution, solution + solution_length);
 
     return verifyEH_96_5(header, vecSolution, personalization);
+}
+
+extern "C" MODULE_API void skydoge_export(const char* input, char* output, uint32_t input_len)
+{
+	skydoge_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescrypt_export(const char* input, char* output, uint32_t input_len)
+{
+    yescrypt_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR8_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR8_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR16_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR16_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yescryptR32_export(const char* input, char* output, uint32_t input_len)
+{
+    yescryptR32_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void allium_export(const char* input, char* output, uint32_t input_len)
+{
+	allium_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x16rt_export(const char* input, char* output, uint32_t input_len)
+{
+	x16rt_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void power2b_export(const char* input, char* output, uint32_t input_len)
+{
+    power2b_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void cpupower_export(const char* input, char* output, uint32_t input_len)
+{
+    cpupower_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespower_export(const char* input, char* output, uint32_t input_len)
+{
+    yespower_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespowerR16_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerR16_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespowerIC_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerIC_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespowerTIDE_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerTIDE_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespowerURX_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerURX_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void minotaurx_export(const char* input, char* output, uint32_t input_len)
+{
+    minotaurx_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void yespowerLTNCG_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerLTNCG_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void memehash_export(const char* input, char* output, uint32_t input_len)
+{
+    meme_hash(input, output, input_len);
 }
