@@ -22,6 +22,9 @@ public enum CoinFamily
     [EnumMember(Value = "equihash")]
     Equihash,
 
+    [EnumMember(Value = "conceal")]
+    Conceal,
+
     [EnumMember(Value = "cryptonote")]
     Cryptonote,
 
@@ -30,6 +33,10 @@ public enum CoinFamily
 
     [EnumMember(Value = "ergo")]
     Ergo,
+
+    [EnumMember(Value = "progpow")]
+    Progpow,
+
 }
 
 public abstract partial class CoinTemplate
@@ -129,9 +136,11 @@ public abstract partial class CoinTemplate
     {
         {CoinFamily.Bitcoin, typeof(BitcoinTemplate)},
         {CoinFamily.Equihash, typeof(EquihashCoinTemplate)},
+        {CoinFamily.Conceal, typeof(ConcealCoinTemplate)},
         {CoinFamily.Cryptonote, typeof(CryptonoteCoinTemplate)},
         {CoinFamily.Ethereum, typeof(EthereumCoinTemplate)},
         {CoinFamily.Ergo, typeof(ErgoCoinTemplate)},
+        {CoinFamily.Progpow, typeof(ProgpowTemplate)},
     };
 }
 
@@ -183,13 +192,37 @@ public partial class BitcoinTemplate : CoinTemplate
     public bool HasMasterNodes { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasSmartNodes { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool HasBrokenSendMany { get; set; } = false;
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool HasFounderFee { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasFounderReward { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] 
     public bool HasMinerFund { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasCommunityAddress { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasCoinbaseDevReward { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasProofOfGameplayAddress { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasDevFundAddress { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasFoundation { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasFounderValue { get; set; }
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
     [DefaultValue(1.0d)]
@@ -206,6 +239,9 @@ public partial class BitcoinTemplate : CoinTemplate
 
     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public JToken BlockTemplateRpcExtraParams { get; set; }
+
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool HasMWEB { get; set; }
 
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public Dictionary<string, BitcoinNetworkParams> Networks { get; set; }
@@ -322,6 +358,12 @@ public partial class EquihashCoinTemplate : CoinTemplate
     public bool UseBitcoinPayoutHandler { get; set; }
 }
 
+public enum ConcealSubfamily
+{
+    [EnumMember(Value = "none")]
+    None,
+}
+
 public enum CryptonoteSubfamily
 {
     [EnumMember(Value = "none")]
@@ -337,64 +379,64 @@ public enum CryptonightHashType
     RandomARQ,
 
     [EnumMember(Value = "cn0")]
-    Crytonight0,
+    Cryptonight0,
 
     [EnumMember(Value = "cn1")]
-    Crytonight1,
+    Cryptonight1,
 
     [EnumMember(Value = "cn2")]
-    Crytonight2,
+    Cryptonight2,
 
     [EnumMember(Value = "cn-half")]
-    CrytonightHalf,
+    CryptonightHalf,
 
     [EnumMember(Value = "cn-double")]
-    CrytonightDouble,
+    CryptonightDouble,
 
     [EnumMember(Value = "cn-r")]
-    CrytonightR,
+    CryptonightR,
 
     [EnumMember(Value = "cn-rto")]
-    CrytonightRTO,
+    CryptonightRTO,
 
     [EnumMember(Value = "cn-rwz")]
-    CrytonightRWZ,
+    CryptonightRWZ,
 
     [EnumMember(Value = "cn-zls")]
-    CrytonightZLS,
+    CryptonightZLS,
 
     [EnumMember(Value = "cn-ccx")]
-    CrytonightCCX,
+    CryptonightCCX,
 
     [EnumMember(Value = "cn-gpu")]
-    CrytonightGPU,
+    CryptonightGPU,
 
     [EnumMember(Value = "cn-fast")]
-    CrytonightFast,
+    CryptonightFast,
 
     [EnumMember(Value = "cn-xao")]
-    CrytonightXAO,
+    CryptonightXAO,
 
     [EnumMember(Value = "gr")]
     Ghostrider,
 
     [EnumMember(Value = "cn_lite0")]
-    CrytonightLite0,
+    CryptonightLite0,
 
     [EnumMember(Value = "cn_lite1")]
-    CrytonightLite1,
+    CryptonightLite1,
 
     [EnumMember(Value = "cn_heavy")]
-    CrytonightHeavy,
+    CryptonightHeavy,
 
     [EnumMember(Value = "cn_heavy_xhv")]
-    CrytonightHeavyXHV,
+    CryptonightHeavyXHV,
 
     [EnumMember(Value = "cn_heavy_tube")]
-    CrytonightHeavyTube,
+    CryptonightHeavyTube,
 
     [EnumMember(Value = "cn_pico")]
-    CrytonightPico,
+    CryptonightPico,
 
     [EnumMember(Value = "argon_chukwa")]
     ArgonCHUKWA,
@@ -404,6 +446,69 @@ public enum CryptonightHashType
 
     [EnumMember(Value = "argon_wrkz")]
     ArgonWRKZ,
+}
+
+public partial class ConcealCoinTemplate : CoinTemplate
+{
+    [JsonProperty(Order = -7, DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+    [DefaultValue(ConcealSubfamily.None)]
+    [JsonConverter(typeof(StringEnumConverter), true)]
+    public ConcealSubfamily Subfamily { get; set; }
+
+    /// <summary>
+    /// Broader Cryptonight hash family
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter), true)]
+    [JsonProperty(Order = -5)]
+    public CryptonightHashType Hash { get; set; }
+
+    /// <summary>
+    /// Set to 0 for automatic selection from blobtemplate
+    /// </summary>
+    [JsonProperty(Order = -4, DefaultValueHandling = DefaultValueHandling.Include)]
+    public int HashVariant { get; set; }
+
+    /// <summary>
+    /// Conceal network hashrate = `Difficulty / DifficultyTarget`
+    /// See: parameter -> DIFFICULTY_TARGET in src/CryptoNoteConfig.h
+    /// </summary>
+    public ulong DifficultyTarget { get; set; }
+
+    /// <summary>
+    /// Smallest unit for Blockreward formatting
+    /// </summary>
+    public decimal SmallestUnit { get; set; }
+
+    /// <summary>
+    /// Prefix of a valid address
+    /// See: parameter -> CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX in src/CryptoNoteConfig.h
+    /// </summary>
+    public ulong AddressPrefix { get; set; }
+
+    /// <summary>
+    /// Prefix of a valid testnet-address
+    /// See: parameter -> CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX in src/CryptoNoteConfig.h
+    /// </summary>
+    public ulong AddressPrefixTestnet { get; set; }
+
+    /// <summary>
+    /// Prefix of a valid integrated address
+    /// See: parameter -> CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX in src/CryptoNoteConfig.h
+    /// </summary>
+    public ulong AddressPrefixIntegrated { get; set; }
+
+    /// <summary>
+    /// Prefix of a valid integrated testnet-address
+    /// See: parameter -> CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX in src/CryptoNoteConfig.h
+    /// </summary>
+    public ulong AddressPrefixIntegratedTestnet { get; set; }
+
+    /// <summary>
+    /// Fraction of block reward, the pool really gets to keep
+    /// </summary>
+    [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+    [DefaultValue(1.0d)]
+    public decimal BlockrewardMultiplier { get; set; }
 }
 
 public partial class CryptonoteCoinTemplate : CoinTemplate
@@ -505,10 +610,23 @@ public partial class EthereumCoinTemplate : CoinTemplate
     [DefaultValue(EthereumSubfamily.None)]
     [JsonConverter(typeof(StringEnumConverter), true)]
     public EthereumSubfamily Subfamily { get; set; }
+
+    /// <summary>
+    /// Which hashing algorithm to use. (ethash, etchash or ubqhash)
+    /// </summary>
+    public string Ethasher { get; set; } = "ethash";
 }
 
 public partial class ErgoCoinTemplate : CoinTemplate
 {
+}
+
+public partial class ProgpowTemplate : BitcoinTemplate
+{
+    /// <summary>
+    /// Which hashing algorithm to use. (kawpow or firopow)
+    /// </summary>
+    public string Progpower { get; set; } = "kawpow";
 }
 
 #endregion // Coin Definitions
@@ -754,7 +872,7 @@ public partial class ClusterPaymentProcessingConfig
     /// <summary>
     /// Indentifier used in coinbase transactions to identify the pool
     /// </summary>
-    public string CoinbaseString  { get; set; }
+    public string CoinbaseString { get; set; }
 }
 
 public partial class PersistenceConfig

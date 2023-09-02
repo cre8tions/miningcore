@@ -6,8 +6,6 @@ namespace Miningcore.Blockchain.Ethereum;
 public class EthereumConstants
 {
     public const ulong EpochLength = 30000;
-    public const ulong CacheSizeForTesting = 1024;
-    public const ulong DagSizeForTesting = 1024 * 32;
     public static BigInteger BigMaxValue = BigInteger.Pow(2, 256);
     public static double Pow2x32 = Math.Pow(2, 32);
     public static BigInteger BigPow2x32 = new(Pow2x32);
@@ -38,6 +36,31 @@ public class EthereumConstants
 
     public const string RpcRequestWorkerPropertyName = "worker";
 }
+//Rethereum
+public class RethereumConstants
+{
+    public const ulong EpochLength = 32000;
+    public const ulong LondonHeight = 15787969;
+    public const decimal LondonBlockReward = 3.0m;
+    public const ulong ArrowGlacierHeight = 27200177;
+    public const decimal ArrowGlacierBlockReward = 2.0m;
+    public const ulong GrayGlacierHeight = 40725107;
+    public const decimal GrayGlacierBlockReward = 1.0m;
+    public const decimal BaseRewardInitial = 4.0m;
+}
+
+// ETC block reward distribution - ECIP 1017
+// https://ecips.ethereumclassic.org/ECIPs/ecip-1017
+public class EthereumClassicConstants
+{
+    public const ulong HardForkBlockMainnet = 11700000;
+    public const ulong HardForkBlockMordor = 2520000;
+    public const ulong EpochLength = 60000;
+    public const ulong EraLength = 5000001;
+    public const double DisinflationRateQuotient = 4.0;
+    public const double DisinflationRateDivisor = 5.0;
+    public const decimal BaseRewardInitial = 5.0m;
+}
 
 // Callisto Monetary Policy
 // https://github.com/EthereumCommonwealth/Roadmap/issues/56
@@ -57,14 +80,73 @@ public class PinkConstants
     public const decimal BaseRewardInitial = 1.0m;
 }
 
+// UBIQ block reward distribution - 
+// https://github.com/ubiq/UIPs/issues/16 - https://ubiqsmart.com/en/monetary-policy
+public class UbiqConstants
+{
+    public const ulong YearOneHeight = 358363;
+    public const decimal YearOneBlockReward = 7.0m;
+    public const ulong YearTwoHeight = 716727;
+    public const decimal YearTwoBlockReward = 6.0m;
+    public const ulong YearThreeHeight = 1075090;
+    public const decimal YearThreeBlockReward = 5.0m;
+    public const ulong YearFourHeight = 1433454;
+    public const decimal YearFourBlockReward = 4.0m;
+    public const ulong OrionHardForkHeight = 1791793;
+    public const decimal OrionBlockReward = 1.5m;
+    public const decimal BaseRewardInitial = 8.0m;
+}
+
+public class JibChainConstants
+{
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
+public class AltcoinConstants
+{
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
+public class MaxxChainConstants
+{
+    public const ulong MaxxHardForkHeight = 103307;
+    public const decimal MaxxBlockReward = 5.0m;
+    public const decimal BaseRewardInitial = 2.0m;
+}
+
+public class PomConstants
+{
+    public const decimal BaseRewardInitial = 7.0m;
+}
+
+public class CanxiumConstants
+{
+    public const decimal BaseRewardInitial = 0.1875m;
+}
+
+public class BitnetConstants
+{
+    public const decimal BaseRewardInitial = 1.0m;
+}
+
 public enum EthereumNetworkType
 {
     Main = 1,
     Ropsten = 3,
+    Ubiq = 8,
+    Classic = 1,
+    Mordor = 7,
     Callisto = 820,
     MainPow = 10001,
     EtherOne = 4949,
     Pink = 10100,
+    JibChain = 8899,
+    Altcoin = 2330,
+    MaxxChain = 10201,
+    Pom = 801921,
+    Canxium = 3003,
+    Rethereum = 622277,
+    Bitnet = 210,
 
     Unknown = -1,
 }
@@ -73,10 +155,20 @@ public enum GethChainType
 {
     Main,
     Ropsten,
+    Ubiq,
+    Classic,
+    Mordor,
     Callisto,
     MainPow = 10001,
     EtherOne = 4949,
     Pink = 10100,
+    JibChain = 8899,
+    Altcoin = 2330,
+    MaxxChain = 10201,
+    Pom = 801921,
+    Canxium = 3003,
+    Rethereum = 622277,
+    Bitnet = 210,
     
     Unknown = -1,
 }
