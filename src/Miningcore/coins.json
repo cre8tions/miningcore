@@ -1359,6 +1359,66 @@
         "explorerTxLink": "https://explorer.fulminareproject.com/transaction/{0}",
         "explorerAccountLink": "https://explorer.fulminareproject.com/address/{0}"
     },
+    "clore": {
+        "name": "Clore",
+        "symbol": "CLORE",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+		"hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://exploreblockchain.clore.ai/block/$hash$",
+        "explorerTxLink": "https://exploreblockchain.clore.ai/tx/{0}",
+        "explorerAccountLink": "https://exploreblockchain.clore.ai/address/{0}"
+    },
+    "meowcoin": {
+        "name": "Meowcoin",
+        "symbol": "MEWC",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+		"hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.mewccrypto.com/block/$hash$",
+        "explorerTxLink": "https://explorer.mewccrypto.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.mewccrypto.com/address/{0}"
+    },
     "garlicoin": {
         "name": "Garlicoin",
         "symbol": "GRLC",
@@ -5103,7 +5163,7 @@
         "canonicalName": "Bitnet-Money",
         "symbol": "BTN",
         "family": "ethereum",
-		"ethasher": "ethash",
+	"ethasher": "ethash",
         "website": "https://bitnet.money/",
         "market": "https://xeggex.com/market/BTN_USDT",
         "twitter": "",
@@ -5121,7 +5181,7 @@
         "canonicalName": "Octa.Space",
         "symbol": "OCTA",
         "family": "ethereum",
-		"ethasher": "ethash",
+        "ethasher": "ethash",
         "website": "https://octa.space/",
         "market": "https://coinmarketcap.com/currencies/octaspace/",
         "twitter": "https://twitter.com/octa_space",
@@ -5133,7 +5193,6 @@
         },
         "explorerTxLink": "https://explorer.octa.space/tx/{0}",
         "explorerAccountLink": "https://explorer.octa.space/address/{0}",
-        "ethasher": "ethash"
     },
     "ergo": {
         "name": "Ergo",
