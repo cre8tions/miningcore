@@ -40,7 +40,7 @@ public class EthereumConstants
 public class RethereumConstants
 {
     public const ulong EpochLength = 32000;
-    public const ulong LondonHeight = 15787969;
+    public const ulong LondonHeight = 13524557;
     public const decimal LondonBlockReward = 3.0m;
     public const ulong ArrowGlacierHeight = 27200177;
     public const decimal ArrowGlacierBlockReward = 2.0m;
@@ -60,6 +60,33 @@ public class EthereumClassicConstants
     public const double DisinflationRateQuotient = 4.0;
     public const double DisinflationRateDivisor = 5.0;
     public const decimal BaseRewardInitial = 5.0m;
+}
+
+// OCTA block reward distribution - 
+// https://docs.octa.space/cryptocurrency/monetary-policy
+public class OctaSpaceConstants
+{
+    public const ulong TriangulumHardForkHeight = 10000000;
+    public const decimal TriangulumBlockReward = 1.0m;
+    public const ulong VegaHardForkHeight = 8000000;
+    public const decimal VegaBlockReward = 1.1m;
+    public const ulong BlackeyeHardForkHeight = 6000000;
+    public const decimal BlackeyeBlockReward = 1.2m;
+    public const ulong DneprHardForkHeight = 4000000;
+    public const decimal DneprBlockReward = 1.85m;
+    public const ulong MahasimHardForkHeight = 3000000;
+    public const decimal MahasimBlockReward = 2.3m;
+    public const ulong PolarisHardForkHeight = 2500000;
+    public const decimal PolarisBlockReward = 2.8m;
+    public const ulong SpringwaterHardForkHeight = 2000000;
+    public const decimal SpringwaterBlockReward = 3.0m;
+    public const ulong ZagamiHardForkHeight = 1500000;
+    public const decimal ZagamiBlockReward = 3.5m;
+    public const ulong OldenburgHardForkHeight = 1000000;
+    public const decimal OldenburgBlockReward = 4.0m;
+    public const ulong ArcturusHardForkHeight = 650000;
+    public const decimal ArcturusBlockReward = 5.0m;
+    public const decimal BaseRewardInitial = 6.5m;
 }
 
 // Callisto Monetary Policy
@@ -147,6 +174,7 @@ public enum EthereumNetworkType
     Canxium = 3003,
     Rethereum = 622277,
     Bitnet = 210,
+	OctaSpace = 800001,
 
     Unknown = -1,
 }
@@ -169,6 +197,7 @@ public enum GethChainType
     Canxium = 3003,
     Rethereum = 622277,
     Bitnet = 210,
+	OctaSpace = 800001,
     
     Unknown = -1,
 }

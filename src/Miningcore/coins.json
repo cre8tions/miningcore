@@ -5103,7 +5103,7 @@
         "canonicalName": "Bitnet-Money",
         "symbol": "BTN",
         "family": "ethereum",
-	"ethasher": "ethash",
+		"ethasher": "ethash",
         "website": "https://bitnet.money/",
         "market": "https://xeggex.com/market/BTN_USDT",
         "twitter": "",
@@ -5115,6 +5115,25 @@
         },
         "explorerTxLink": "https://btnscan.com/tx/{0}?network=Bitnet",
         "explorerAccountLink": "https://btnscan.com/address/{0}"
+    },
+	"octaspace": {
+        "name": "OctaSpace",
+        "canonicalName": "Octa.Space",
+        "symbol": "OCTA",
+        "family": "ethereum",
+		"ethasher": "ethash",
+        "website": "https://octa.space/",
+        "market": "https://coinmarketcap.com/currencies/octaspace/",
+        "twitter": "https://twitter.com/octa_space",
+        "telegram": "https://t.me/octa_space",
+        "discord": "https://discord.gg/octaspace",
+        "explorerBlockLinks": {
+            "block": "https://explorer.octa.space/block/$height$",
+            "uncle": "https://explorer.octa.space/block/$height$"
+        },
+        "explorerTxLink": "https://explorer.octa.space/tx/{0}",
+        "explorerAccountLink": "https://explorer.octa.space/address/{0}",
+        "ethasher": "ethash"
     },
     "ergo": {
         "name": "Ergo",
