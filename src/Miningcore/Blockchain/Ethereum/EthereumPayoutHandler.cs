@@ -160,7 +160,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                             var gasUsed = blockHashResponse.Response.GasUsed;
 
                             var burnedFee = (decimal) 0;
-                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet")
+                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace")
                                 burnedFee = (baseGas * gasUsed / EthereumConstants.Wei);
 
                             block.Hash = blockHash;
@@ -291,7 +291,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
         // ensure we have peers
         var infoResponse = await rpcClient.ExecuteAsync<string>(logger, EC.GetPeerCount, ct);
 
-        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet") &&
+        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace") &&
            (infoResponse.Error != null || string.IsNullOrEmpty(infoResponse.Response) ||
                infoResponse.Response.IntegralFromHex<int>() < EthereumConstants.MinPayoutPeerCount))
         {
@@ -431,6 +431,30 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
 
 	    case GethChainType.Bitnet:
                return BitnetConstants.BaseRewardInitial;
+			   
+		case GethChainType.OctaSpace:
+                if(height >= OctaSpaceConstants.TriangulumHardForkHeight)
+                    return OctaSpaceConstants.TriangulumBlockReward;
+                if(height >= OctaSpaceConstants.VegaHardForkHeight)
+                    return OctaSpaceConstants.VegaBlockReward;
+                if(height >= OctaSpaceConstants.BlackeyeHardForkHeight)
+                    return OctaSpaceConstants.BlackeyeBlockReward;
+                if(height >= OctaSpaceConstants.DneprHardForkHeight)
+                    return OctaSpaceConstants.DneprBlockReward;
+                if(height >= OctaSpaceConstants.MahasimHardForkHeight)
+                    return OctaSpaceConstants.MahasimBlockReward;
+                if(height >= OctaSpaceConstants.PolarisHardForkHeight)
+                    return OctaSpaceConstants.PolarisBlockReward;
+                if(height >= OctaSpaceConstants.SpringwaterHardForkHeight)
+                    return OctaSpaceConstants.SpringwaterBlockReward;
+                if(height >= OctaSpaceConstants.ZagamiHardForkHeight)
+                    return OctaSpaceConstants.ZagamiBlockReward;
+                if(height >= OctaSpaceConstants.OldenburgHardForkHeight)
+                    return OctaSpaceConstants.OldenburgBlockReward;
+                if(height >= OctaSpaceConstants.ArcturusHardForkHeight)
+                    return OctaSpaceConstants.ArcturusBlockReward;
+
+               return OctaSpaceConstants.BaseRewardInitial;
             
             default:
                 throw new Exception("Unable to determine block reward: Unsupported chain type");
