@@ -156,6 +156,11 @@ public class BitnetConstants
     public const decimal BaseRewardInitial = 1.0m;
 }
 
+public class EtherChainConstants
+{
+    public const decimal BaseRewardInitial = 6.0m;
+}
+
 public enum EthereumNetworkType
 {
     Main = 1,
@@ -175,6 +180,7 @@ public enum EthereumNetworkType
     Rethereum = 622277,
     Bitnet = 210,
 	OctaSpace = 800001,
+    EtherChain = 11777,
 
     Unknown = -1,
 }
@@ -198,6 +204,7 @@ public enum GethChainType
     Rethereum = 622277,
     Bitnet = 210,
 	OctaSpace = 800001,
+    EtherChain = 11777,
     
     Unknown = -1,
 }

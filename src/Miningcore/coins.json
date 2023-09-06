@@ -5163,7 +5163,7 @@
         "canonicalName": "Bitnet-Money",
         "symbol": "BTN",
         "family": "ethereum",
-	"ethasher": "ethash",
+		"ethasher": "ethash",
         "website": "https://bitnet.money/",
         "market": "https://xeggex.com/market/BTN_USDT",
         "twitter": "",
@@ -5189,10 +5189,28 @@
         "discord": "https://discord.gg/octaspace",
         "explorerBlockLinks": {
             "block": "https://explorer.octa.space/block/$height$",
-            "uncle": "https://explorer.octa.space/block/$height$"
+            "uncle": "https://explorer.octa.space/block/$hash$"
         },
         "explorerTxLink": "https://explorer.octa.space/tx/{0}",
         "explorerAccountLink": "https://explorer.octa.space/address/{0}",
+    },
+    "etherchain": {
+        "name": "EtherChain",
+        "canonicalName": "EtherChain",
+        "symbol": "ETX",
+        "family": "ethereum",
+        "ethasher": "ethash",
+        "website": "https://etherchain.io/",
+        "market": "",
+        "twitter": "https://twitter.com/EtherchainPoW",
+        "telegram": "",
+        "discord": "https://discord.gg/MawMAE38ep",
+        "explorerBlockLinks": {
+            "block": "https://explorer.etherchain.io/block/$height$",
+            "uncle": "https://explorer.etherchain.io/block/$hash$"
+        },
+        "explorerTxLink": "https://explorer.etherchain.io/tx/{0}",
+        "explorerAccountLink": "https://explorer.etherchain.io/address/{0}"
     },
     "ergo": {
         "name": "Ergo",

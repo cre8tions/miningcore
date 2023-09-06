@@ -160,7 +160,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                             var gasUsed = blockHashResponse.Response.GasUsed;
 
                             var burnedFee = (decimal) 0;
-                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace")
+                            if(extraPoolConfig?.ChainTypeOverride == "Ethereum" || extraPoolConfig?.ChainTypeOverride == "Main" || extraPoolConfig?.ChainTypeOverride == "MainPow" || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace" || extraPoolConfig?.ChainTypeOverride == "EtherChain")
                                 burnedFee = (baseGas * gasUsed / EthereumConstants.Wei);
 
                             block.Hash = blockHash;
@@ -291,7 +291,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
         // ensure we have peers
         var infoResponse = await rpcClient.ExecuteAsync<string>(logger, EC.GetPeerCount, ct);
 
-        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace") &&
+        if((networkType == EthereumNetworkType.Main || extraPoolConfig?.ChainTypeOverride == "Classic" || extraPoolConfig?.ChainTypeOverride == "Mordor" || networkType == EthereumNetworkType.MainPow || extraPoolConfig?.ChainTypeOverride == "Ubiq" || extraPoolConfig?.ChainTypeOverride == "EtherOne" || extraPoolConfig?.ChainTypeOverride == "Pink" || extraPoolConfig?.ChainTypeOverride == "JibChain" || extraPoolConfig?.ChainTypeOverride == "Altcoin" || extraPoolConfig?.ChainTypeOverride == "Pom" || extraPoolConfig?.ChainTypeOverride == "MaxxChain" || extraPoolConfig?.ChainTypeOverride == "Canxium" || extraPoolConfig?.ChainTypeOverride == "Rethereum" || extraPoolConfig?.ChainTypeOverride == "Bitnet" || extraPoolConfig?.ChainTypeOverride == "OctaSpace" || extraPoolConfig?.ChainTypeOverride == "EtherChain") &&
            (infoResponse.Error != null || string.IsNullOrEmpty(infoResponse.Response) ||
                infoResponse.Response.IntegralFromHex<int>() < EthereumConstants.MinPayoutPeerCount))
         {
@@ -401,25 +401,25 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                 
                 return UbiqConstants.BaseRewardInitial;
 
-	    case GethChainType.JibChain:
+			case GethChainType.JibChain:
                return JibChainConstants.BaseRewardInitial;
 
-	    case GethChainType.Altcoin:
+			case GethChainType.Altcoin:
                return AltcoinConstants.BaseRewardInitial;
 
-	    case GethChainType.Pom:
+			case GethChainType.Pom:
                return PomConstants.BaseRewardInitial;
 
-	    case GethChainType.MaxxChain:
+			case GethChainType.MaxxChain:
                 if(height >= MaxxChainConstants.MaxxHardForkHeight)
                     return MaxxChainConstants.MaxxBlockReward;
 
                return MaxxChainConstants.BaseRewardInitial;
 
-	    case GethChainType.Canxium:
+			case GethChainType.Canxium:
                return CanxiumConstants.BaseRewardInitial;
             
-	    case GethChainType.Rethereum:
+			case GethChainType.Rethereum:
                 if(height >= RethereumConstants.LondonHeight)
                     return RethereumConstants.LondonBlockReward;
                 if(height >= RethereumConstants.ArrowGlacierHeight)
@@ -429,10 +429,10 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
 
                return RethereumConstants.BaseRewardInitial;
 
-	    case GethChainType.Bitnet:
+			case GethChainType.Bitnet:
                return BitnetConstants.BaseRewardInitial;
 			   
-		case GethChainType.OctaSpace:
+			case GethChainType.OctaSpace:
                 if(height >= OctaSpaceConstants.TriangulumHardForkHeight)
                     return OctaSpaceConstants.TriangulumBlockReward;
                 if(height >= OctaSpaceConstants.VegaHardForkHeight)
@@ -456,6 +456,9 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
 
                return OctaSpaceConstants.BaseRewardInitial;
             
+			case GethChainType.EtherChain:
+               return EtherChainConstants.BaseRewardInitial;
+
             default:
                 throw new Exception("Unable to determine block reward: Unsupported chain type");
         }
