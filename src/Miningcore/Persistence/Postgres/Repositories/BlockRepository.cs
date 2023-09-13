@@ -21,9 +21,9 @@ public class BlockRepository : IBlockRepository
 
         const string query =
             @"INSERT INTO blocks(poolid, blockheight, networkdifficulty, status, type, transactionconfirmationdata,
-                miner, reward, effort, confirmationprogress, source, hash, created)
+                miner, reward, effort, minereffort,confirmationprogress, source, hash, created)
             VALUES(@poolid, @blockheight, @networkdifficulty, @status, @type, @transactionconfirmationdata,
-                @miner, @reward, @effort, @confirmationprogress, @source, @hash, @created)";
+                @miner, @reward, @effort, @minereffort, @confirmationprogress, @source, @hash, @created)";
 
         await con.ExecuteAsync(query, mapped, tx);
     }
@@ -39,7 +39,7 @@ public class BlockRepository : IBlockRepository
         var mapped = mapper.Map<Entities.Block>(block);
 
         const string query = @"UPDATE blocks SET blockheight = @blockheight, status = @status, type = @type,
-            reward = @reward, effort = @effort, confirmationprogress = @confirmationprogress, hash = @hash WHERE id = @id";
+            reward = @reward, effort = @effort, minereffort = @minereffort, confirmationprogress = @confirmationprogress, hash = @hash WHERE id = @id";
 
         await con.ExecuteAsync(query, mapped, tx);
     }
@@ -118,6 +118,22 @@ public class BlockRepository : IBlockRepository
             .FirstOrDefault();
     }
 
+    public async Task<Block> GetMinerBlockBeforeAsync(IDbConnection con, string poolId, string miner, BlockStatus[] status, DateTime before)
+    {
+        const string query = @"SELECT * FROM blocks WHERE poolid = @poolid AND miner = @miner AND status = ANY(@status) AND created < @before
+            ORDER BY created DESC FETCH NEXT 1 ROWS ONLY";
+
+        return (await con.QueryAsync<Entities.Block>(query, new
+        {
+            poolId,
+            miner,
+            before,
+            status = status.Select(x => x.ToString().ToLower()).ToArray()
+        }))
+            .Select(mapper.Map<Block>)
+            .FirstOrDefault();
+    }
+
     public Task<uint> GetPoolBlockCountAsync(IDbConnection con, string poolId, CancellationToken ct)
     {
         const string query = @"SELECT COUNT(*) FROM blocks WHERE poolid = @poolId";
@@ -130,6 +146,13 @@ public class BlockRepository : IBlockRepository
         const string query = @"SELECT created FROM blocks WHERE poolid = @poolId ORDER BY created DESC LIMIT 1";
 
         return con.ExecuteScalarAsync<DateTime?>(query, new { poolId });
+    }
+    
+    public Task<DateTime?> GetLastMinerBlockTimeAsync(IDbConnection con, string poolId, string address)
+    {
+        const string query = @"SELECT created FROM blocks WHERE poolid = @poolId AND miner = @address ORDER BY created DESC LIMIT 1";
+
+        return con.ExecuteScalarAsync<DateTime?>(query, new { poolId, address });
     }
     
     public async Task<Block> GetBlockByPoolHeightAndTypeAsync(IDbConnection con, string poolId, long height, string type)
