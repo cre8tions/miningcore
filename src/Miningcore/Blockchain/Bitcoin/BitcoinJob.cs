@@ -673,7 +673,6 @@ public class BitcoinJob
         if(BlockTemplate.DevFundAddress != null && BlockTemplate.DevFundValue > 0)
         {
         	var payeeReward = BlockTemplate.DevFundValue;
-        	reward -= payeeReward;
         	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.DevFundAddress, network);
         	tx.Outputs.Add(payeeReward, payeeAddress);
         }
