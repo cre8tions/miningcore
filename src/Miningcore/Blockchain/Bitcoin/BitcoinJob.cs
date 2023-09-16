@@ -659,7 +659,6 @@ public class BitcoinJob
         if(BlockTemplate.ProofOfGameplayAddress != null && BlockTemplate.ProofOfGameplayValue > 0)
         {
         	var payeeReward = BlockTemplate.ProofOfGameplayValue;
-        	reward -= payeeReward;
         	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.ProofOfGameplayAddress, network);
         	tx.Outputs.Add(payeeReward, payeeAddress);
         }
