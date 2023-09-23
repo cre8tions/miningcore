@@ -49,20 +49,7 @@ public class RethereumConstants
     public const decimal BaseRewardInitial = 4.0m;
 }
 
-// ETC block reward distribution - ECIP 1017
-// https://ecips.ethereumclassic.org/ECIPs/ecip-1017
-public class EthereumClassicConstants
-{
-    public const ulong HardForkBlockMainnet = 11700000;
-    public const ulong HardForkBlockMordor = 2520000;
-    public const ulong EpochLength = 60000;
-    public const ulong EraLength = 5000001;
-    public const double DisinflationRateQuotient = 4.0;
-    public const double DisinflationRateDivisor = 5.0;
-    public const decimal BaseRewardInitial = 5.0m;
-}
-
-// OCTA block reward distribution - 
+// OCTA block reward distribution
 // https://docs.octa.space/cryptocurrency/monetary-policy
 public class OctaSpaceConstants
 {
@@ -87,6 +74,19 @@ public class OctaSpaceConstants
     public const ulong ArcturusHardForkHeight = 650000;
     public const decimal ArcturusBlockReward = 5.0m;
     public const decimal BaseRewardInitial = 6.5m;
+}
+
+// ETC block reward distribution - ECIP 1017
+// https://ecips.ethereumclassic.org/ECIPs/ecip-1017
+public class EthereumClassicConstants
+{
+    public const ulong HardForkBlockMainnet = 11700000;
+    public const ulong HardForkBlockMordor = 2520000;
+    public const ulong EpochLength = 60000;
+    public const ulong EraLength = 5000001;
+    public const double DisinflationRateQuotient = 4.0;
+    public const double DisinflationRateDivisor = 5.0;
+    public const decimal BaseRewardInitial = 5.0m;
 }
 
 // Callisto Monetary Policy
@@ -156,9 +156,41 @@ public class BitnetConstants
     public const decimal BaseRewardInitial = 1.0m;
 }
 
+public class RedeV2Constants
+{
+    public const decimal BaseRewardInitial = 0.5m;
+}
+
 public class EtherChainConstants
 {
     public const decimal BaseRewardInitial = 6.0m;
+}
+
+public class EtherGemConstants
+{
+    public const decimal BaseRewardInitial = 3.0m;
+}
+
+public class PowBlocksConstants
+{
+    public const decimal BaseRewardInitial = 9.0m;
+}
+
+public class SlayerXConstants
+{
+    public const decimal BaseRewardInitial = 60.0m;
+    public const decimal HalvingReward1 = 30.0m;
+    public const decimal HalvingReward2 = 15.0m;
+    public const decimal HalvingReward3 = 7.5m;
+    public const decimal HalvingReward4 = 3.75m;
+    public const decimal HalvingReward5 = 1.875m;
+    public const decimal StakePercent = 5m;
+
+    public const ulong HalvingHeight1 = 840000;
+    public const ulong HalvingHeight2 = 1680000;
+    public const ulong HalvingHeight3 = 2520000;
+    public const ulong HalvingHeight4 = 3360000;
+    public const ulong HalvingHeight5 = 4200000;
 }
 
 public enum EthereumNetworkType
@@ -179,8 +211,12 @@ public enum EthereumNetworkType
     Canxium = 3003,
     Rethereum = 622277,
     Bitnet = 210,
-	OctaSpace = 800001,
+    OctaSpace = 800001,
+    RedeV2 = 1972,
     EtherChain = 11777,
+    EtherGem = 1987,
+    PowBlocks = 12300,
+    SlayerX = 1,
 
     Unknown = -1,
 }
@@ -203,8 +239,12 @@ public enum GethChainType
     Canxium = 3003,
     Rethereum = 622277,
     Bitnet = 210,
-	OctaSpace = 800001,
+    OctaSpace = 800001,
+    RedeV2 = 1972,
     EtherChain = 11777,
+    EtherGem = 1987,
+    PowBlocks = 12300,
+    SlayerX = 9119,
     
     Unknown = -1,
 }
