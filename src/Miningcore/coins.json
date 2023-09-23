@@ -5214,6 +5214,24 @@
         "explorerTxLink": "https://explorer.octa.space/tx/{0}",
         "explorerAccountLink": "https://explorer.octa.space/address/{0}",
     },
+    "redev2": {
+        "name": "RedeV2",
+        "canonicalName": "RedeV2",
+        "symbol": "REDEV2",
+        "family": "ethereum",
+		"ethasher": "ethash",
+        "website": "https://www.redecoin.eu/",
+        "market": "",
+        "twitter": "https://mobile.twitter.com/CoinRede",
+        "telegram": "",
+        "discord": "https://discord.gg/MhBP2hEehU",
+        "explorerBlockLinks": {
+            "block": "https://explorer3.redecoin.eu/block/$height$",
+            "uncle": "https://explorer3.redecoin.eu/block/$hash$"
+        },
+        "explorerTxLink": "https://explorer3.redecoin.eu/tx/{0}",
+        "explorerAccountLink": "https://explorer3.redecoin.eu/address/{0}"
+    },
     "etherchain": {
         "name": "EtherChain",
         "canonicalName": "EtherChain",
@@ -5233,6 +5251,61 @@
         "explorerTxLink": "https://explorer.etherchain.io/tx/{0}",
         "explorerAccountLink": "https://explorer.etherchain.io/address/{0}"
     },
+    "ethergem": {
+        "name": "EtherGem",
+        "canonicalName": "EtherGem",
+        "symbol": "EGEM",
+        "family": "ethereum",
+        "ethasher": "ethash",
+        "website": "https://egem.io/",
+        "market": "https://www.coingecko.com/en/coins/ethergem",
+        "twitter": "https://twitter.com/ethergemcoin",
+        "telegram": "",
+        "discord": "https://discordapp.com/invite/zav3EkW",
+        "explorerBlockLinks": {
+            "block": "https://blockscout.egem.io/block/$height$",
+            "uncle": "https://blockscout.egem.io/block/$hash$"
+        },
+        "explorerTxLink": "https://blockscout.egem.io/tx/{0}",
+        "explorerAccountLink": "https://blockscout.egem.io/address/{0}"
+    },
+    "powblocks": {
+        "name": "PowBlocks",
+        "canonicalName": "PowBlocks",
+        "symbol": "XPB",
+        "family": "ethereum",
+        "ethasher": "ethash",
+        "website": "https://powblocks.com/",
+        "market": "",
+        "twitter": "https://twitter.com/PowBlocks",
+        "telegram": "https://t.me/PowBlocksChat",
+        "discord": "https://discord.gg/MawMAE38ep",
+        "explorerBlockLinks": {
+            "block": "https://scan.powblocks.com/block/$height$",
+            "uncle": "https://scan.powblocks.com/block/$hash$"
+        },
+        "explorerTxLink": "https://scan.powblocks.com/tx/{0}",
+        "explorerAccountLink": "https://scan.powblocks.com/address/{0}"
+    },
+    "slayerx": {
+        "name": "SlayerX",
+        "canonicalName": "SlayerX",
+        "symbol": "SLX",
+        "family": "ethereum",
+        "ethasher": "ethash",
+        "website": "https://slayerx-network.com/",
+        "github": "https://github.com/slxnetwork123/SlayerX",
+        "market": "https://xeggex.com/market/SLX_USDT",
+        "twitter": "https://twitter.com/SlayerX_",
+        "telegram": "",
+        "discord": "https://discord.gg/Th4rrECJqX",
+        "explorerBlockLinks": {
+            "block": "http://64.225.78.99:4000/block/$height$",
+            "uncle": "http://64.225.78.99:4000/block/$hash$"
+        },
+        "explorerTxLink": "http://64.225.78.99:4000/tx/{0}",
+        "explorerAccountLink": "http://64.225.78.99:4000/address/{0}"
+	},
     "ergo": {
         "name": "Ergo",
         "canonicalName": "Ergo",
