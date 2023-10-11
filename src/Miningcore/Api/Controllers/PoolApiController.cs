@@ -391,15 +391,6 @@ public class PoolApiController : ApiControllerBase
                     stats.LastPaymentLink = string.Format(baseUrl, statsResult.LastPayment.TransactionConfirmationData);
             }
 
- 	    var lastBlockTime = await cf.Run(con => blocksRepo.GetLastMinerBlockTimeAsync(con, pool.Id, address));
-            if(lastBlockTime.HasValue)
-           {
-            	var startTime = lastBlockTime.Value;
-            	var minerEffort = await cf.Run(con => shareRepo.GetMinerEffortBetweenCreatedAsync(con, pool.Id, address, startTime, clock.Now));
-            	if(minerEffort.HasValue)
-                	stats.MinerEffort = minerEffort.Value;
-           }
-
             stats.PerformanceSamples = await GetMinerPerformanceInternal(perfMode, pool, address, ct);
         }
 
