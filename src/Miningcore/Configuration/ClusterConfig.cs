@@ -37,6 +37,9 @@ public enum CoinFamily
     [EnumMember(Value = "progpow")]
     Progpow,
 
+    [EnumMember(Value = "nexa")]
+    Nexa,
+
 }
 
 public abstract partial class CoinTemplate
@@ -147,6 +150,7 @@ public abstract partial class CoinTemplate
         {CoinFamily.Ethereum, typeof(EthereumCoinTemplate)},
         {CoinFamily.Ergo, typeof(ErgoCoinTemplate)},
         {CoinFamily.Progpow, typeof(ProgpowTemplate)},
+        {CoinFamily.Nexa, typeof(BitcoinTemplate)},
     };
 }
 
@@ -257,6 +261,12 @@ public partial class BitcoinTemplate : CoinTemplate
 
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string BlockSerializer { get; set; }
+
+    /// <summary>
+    /// Amount of decimals used for payouts
+    /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public int? PayoutDecimalPlaces { get; set; } = 4;
 }
 
 public enum EquihashSubfamily
