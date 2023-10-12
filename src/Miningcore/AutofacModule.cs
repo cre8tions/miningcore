@@ -7,6 +7,7 @@ using Miningcore.Blockchain.Conceal;
 using Miningcore.Blockchain.Cryptonote;
 using Miningcore.Blockchain.Equihash;
 using Miningcore.Blockchain.Ethereum;
+using Miningcore.Blockchain.Nexa;
 using Miningcore.Blockchain.Progpow;
 using Miningcore.Configuration;
 using Miningcore.Crypto;
@@ -194,6 +195,10 @@ public class AutofacModule : Module
         // Progpow
 
         builder.RegisterType<ProgpowJobManager>();
+
+        //////////////////////
+        // Nexa
+        builder.RegisterType<NexaJobManager>();
 
         base.Load(builder);
     }

@@ -1062,7 +1062,7 @@
         "name": "Evrmore",
         "symbol": "EVR",
         "family": "progpow",
-	"progpower": "evrprogpow",
+		"progpower": "evrprogpow",
         "website": "https://evrmorecoin.org/",
         "market": "https://coinpaprika.com/coin/evr-evrmore",
         "twitter": "https://twitter.com/Evrcoin",
@@ -2197,6 +2197,26 @@
         "explorerBlockLink": "https://explorer.neoxa.net/block/$hash$",
         "explorerTxLink": "https://explorer.neoxa.net/tx/{0}",
         "explorerAccountLink": "https://explorer.neoxa.net/address/{0}"
+    },
+    "nexa": {
+        "name": "Nexa",
+        "canonicalName": "Nexa",
+        "symbol": "NEXA",
+        "family": "nexa",
+        "website": "https://www.nexa.org/",
+        "github": "https://gitlab.com/nexa/nexa",
+        "explorer": "https://explorer.nexa.org/",
+        "market": "https://www.coingecko.com/en/coins/nexacoin",
+        "twitter": "https://twitter.com/nexamoney",
+        "telegram": "https://t.me/nexacoin",
+        "discord": "https://discord.com/invite/2yQNsZV6EJ",
+        "headerHasher": {
+            "hash": "nexapow"
+        },
+        "explorerBlockLink": "https://explorer.nexa.org/block-height/$height$",
+        "explorerTxLink": "https://explorer.nexa.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.nexa.org/address/{0}",
+        "payoutDecimalPlaces": 2
     },
     "note-blockchain": {
         "name": "Note Blockchain",
