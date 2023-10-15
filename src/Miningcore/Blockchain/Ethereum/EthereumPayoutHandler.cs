@@ -431,7 +431,7 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
 
 			case GethChainType.Bitnet:
                return BitnetConstants.BaseRewardInitial;
-
+            
 			case GethChainType.OctaSpace:
                 if(height >= OctaSpaceConstants.TriangulumHardForkHeight)
                     return OctaSpaceConstants.TriangulumBlockReward;
@@ -466,11 +466,20 @@ public class EthereumPayoutHandler : PayoutHandlerBase,
                return EtherGemConstants.BaseRewardInitial;
 
 			case GethChainType.PowBlocks:
-               return PowBlocksConstants.BaseRewardInitial;
+				double XPBDivider = Convert.ToInt32(height)/200000;
+            	decimal XPBRewardInitial = PowBlocksConstants.BaseRewardInitial;
+            	if(Math.Floor(XPBDivider) > 0)
+				{
+                	for(var i = 0; i < XPBDivider; i++)
+					{
+                		XPBRewardInitial = Decimal.Multiply(XPBRewardInitial, Convert.ToDecimal(0.95));
+                	}
+            	}
+               	return XPBRewardInitial;
 
-            case GethChainType.SlayerX:
-                if(height >= SlayerXConstants.HalvingHeight1)
-                    return SlayerXConstants.HalvingReward1 - (SlayerXConstants.HalvingReward1 * (SlayerXConstants.StakePercent / 100));
+			case GethChainType.SlayerX:
+				if(height >= SlayerXConstants.HalvingHeight1)
+					return SlayerXConstants.HalvingReward1 - (SlayerXConstants.HalvingReward1 * (SlayerXConstants.StakePercent / 100));
 
                 if(height >= SlayerXConstants.HalvingHeight2)
                     return SlayerXConstants.HalvingReward2 - (SlayerXConstants.HalvingReward2 * (SlayerXConstants.StakePercent / 100));
