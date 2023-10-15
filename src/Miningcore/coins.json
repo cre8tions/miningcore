@@ -1895,6 +1895,34 @@
         "explorerTxLink": "https://chainz.cryptoid.info/lcc/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/lcc/address.dws?{0}.htm"
     },
+    "lightningcashr": {
+        "name": "LightningCash-Reborn",
+        "symbol": "LNCR",
+        "family": "bitcoin",
+        "website": "https://lightningcashr.org/",
+        "github": "https://github.com/MerlinMagic2018/LightningCash-R",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.com/invite/WrMVXcA8bt",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespowerltncg",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.lightningcashr.org/block/$hash$",
+        "explorerTxLink": "https://explorer.lightningcashr.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.lightningcashr.org/address/{0}"
+    },
     "luckybit": {
         "name": "Lucky Bit",
         "symbol": "LUCKY",
