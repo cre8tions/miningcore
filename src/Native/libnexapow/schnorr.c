@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <string.h>
 #include "secp256k1/include/secp256k1.h"
-#include "secp256k1/include/secp256k1_schnorrsig.h"
+#include "secp256k1/include/secp256k1_schnorr.h"
 #include "schnorr_random.h"
 #include <stdint.h>
 
