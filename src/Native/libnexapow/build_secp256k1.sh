@@ -3,5 +3,5 @@
 cd ./secp256k1
 
 ./autogen.sh
-./configure
+./configure --enable-module-schnorr
 make -j

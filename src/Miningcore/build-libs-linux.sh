@@ -23,7 +23,7 @@ HAVE_AVX512F=$(../Native/check_cpu.sh avx512f && echo -DHAVE_AVX512F || echo)
 export HAVE_FEATURE="$HAVE_AES $HAVE_SSE2 $HAVE_SSE3 $HAVE_SSSE3 $HAVE_AVX $HAVE_AVX2 $HAVE_AVX512F"
 
 (cd ../Native/libmultihash && make -j clean && make -j) && mv ../Native/libmultihash/libmultihash.so "$OutDir"
-(cd ../Native/libnexapow && rm -rf secp256k1 && git clone https://github.com/bitcoin-core/secp256k1) && (cd ../Native/libnexapow && make clean && make) && mv ../Native/libnexapow/libnexapow.so "$OutDir"
+(cd ../Native/libnexapow && rm -rf secp256k1 && git clone https://github.com/bitcoin-ABC/secp256k1) && (cd ../Native/libnexapow && make clean && make) && mv ../Native/libnexapow/libnexapow.so "$OutDir"
 (cd ../Native/libetchash && make -j clean && make -j) && mv ../Native/libetchash/libetchash.so "$OutDir"
 (cd ../Native/libethhash && make -j clean && make -j) && mv ../Native/libethhash/libethhash.so "$OutDir"
 (cd ../Native/libethhashb3 && make -j clean && make -j) && mv ../Native/libethhashb3/libethhashb3.so "$OutDir"
