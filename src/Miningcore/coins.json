@@ -2752,6 +2752,34 @@
         "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
         "explorerAccountLink": "https://explorer.raptoreum.com/address/{0}"
     },
+    "redblock": {
+        "name": "RedBlock",
+        "symbol": "REDB",
+        "family": "bitcoin",
+        "website": "https://www.redblockcoin.com/",
+        "github": "https://github.com/redblockdev/RedBlock",
+        "market": "",
+        "twitter": "https://twitter.com/RedBlock_Sha3d",
+        "telegram": "",
+        "discord": "https://discord.gg/kCgWjhbzV8",
+        "coinbaseHasher": {
+            "hash": "sha3-256d"
+        },
+        "headerHasher": {
+            "hash": "sha3-256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha3-256d"
+                }
+            ]
+        },
+		"explorerBlockLink": "http://explorer.redblockcoin.com/block/$height$",
+		"explorerTxLink": "http://explorer.redblockcoin.com/tx/{0}",
+		"explorerAccountLink": "http://explorer.redblockcoin.com/address/{0}"
+    },
 	"geckocoin": {
         "name": "Geckocoin",
         "canonicalName": "Geckocoin",
