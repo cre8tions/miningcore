@@ -43,14 +43,14 @@
         "shareRecoveryFile": "recovered-shares.txt"
     },
     "pools": [{
-        "id": "redblock",
+        "id": "kylacoin",
         "enabled": true,
-        "coin": "redblock",
-        "address": "rb1q4pv5tyyhmmje77766c7eaedufkmew8xh9v0vu8", //redblock-cli getnewaddress "" "bech32"
+        "coin": "kylacoin",
+        "address": "kc1q39e75kcrez9ramjhjguud43nwkcm8lw03psx28", //kylacoin-cli getnewaddress "" "bech32"
 		"addressType": "BechSegwit",
-		"bechPrefix": "rb",
+		"bechPrefix": "kc",
         "rewardRecipients": [{
-            "address": "rb1q4pv5tyyhmmje77766c7eaedufkmew8xh9v0vu8",
+            "address": "kc1q39e75kcrez9ramjhjguud43nwkcm8lw03psx28",
             "percentage": 0
         }],
         "blockRefreshInterval": 500,
@@ -63,7 +63,7 @@
             "checkThreshold": 50
         },
         "ports": {
-            "3064": {
+            "3063": {
                 "listenAddress": "0.0.0.0",
                 "difficulty": 2,
                 "name": "GPU/FPGA Mining",
@@ -77,7 +77,7 @@
         },
         "daemons": [{
             "host": "127.0.0.1",
-            "port": 8210,
+            "port": 5110,
             "user": "user",
             "password": "password"
         }],
