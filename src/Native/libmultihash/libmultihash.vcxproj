@@ -217,6 +217,7 @@
     <ClInclude Include="portable_endian.h" />
     <ClInclude Include="quark.h" />
     <ClInclude Include="qubit.h" />
+    <ClInclude Include="rwahash.h" />
     <ClInclude Include="s3.h" />
     <ClInclude Include="scryptjane.h" />
     <ClInclude Include="scryptn.h" />
@@ -327,6 +328,7 @@
     <ClCompile Include="phi.c" />
     <ClCompile Include="quark.c" />
     <ClCompile Include="qubit.c" />
+    <ClCompile Include="rwahash.c" />
     <ClCompile Include="s3.c" />
     <ClCompile Include="scryptn.c" />
     <ClCompile Include="sha256csm.c" />

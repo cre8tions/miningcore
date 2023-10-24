@@ -63,6 +63,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "yescrypt/yescrypt.h"
 #include "yespower/yespower.h"
 #include "memehash.h"
+#include "rwahash.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -424,4 +425,9 @@ extern "C" MODULE_API void yespowerLTNCG_export(const char* input, char* output,
 extern "C" MODULE_API void memehash_export(const char* input, char* output, uint32_t input_len)
 {
     meme_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void rwahash_export(const char* input, char* output, uint32_t input_len)
+{
+    rwahash_hash(input, output, input_len);
 }
