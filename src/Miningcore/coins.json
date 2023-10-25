@@ -1679,6 +1679,35 @@
         "explorerTxLink": "https://explorer.gamepass.network/tx/{0}",
         "explorerAccountLink": "https://explorer.gamepass.network/address/{0}"
     },
+    "garlicoin": {
+        "name": "Garlicoin",
+        "symbol": "GRLC",
+        "family": "bitcoin",
+        "website": "https://garlicoin.io/",
+        "market": "https://www.coingecko.com/en/coins/garlicoin",
+        "github": "https://github.com/GarlicoinOrg/Garlicoin",
+        "twitter": "https://twitter.com/garliccoin",
+        "telegram": "https://t.me/GarlicoinOfficial",
+        "discord": "https://discord.com/invite/hxR8wD6",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "allium"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://garlicblocks.com/block/$hash$",
+        "explorerTxLink": "https://garlicblocks.com/tx/{0}",
+        "explorerAccountLink": "https://garlicblocks.com/address/{0}"
+    },
     "indexchain": {
         "name": "IndexChain",
         "symbol": "IDX",
