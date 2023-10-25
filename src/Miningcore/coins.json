@@ -1708,6 +1708,37 @@
         "explorerTxLink": "https://garlicblocks.com/tx/{0}",
         "explorerAccountLink": "https://garlicblocks.com/address/{0}"
     },
+    "goodmorningnetwork": {
+        "name": "GoodmorningNetwork",
+        "symbol": "GM",
+        "family": "bitcoin",
+        "website": "https://goodmorningnetwork.org/",
+        "market": "",
+        "github": "https://github.com/GoodMorningNetWork/GoodMorningNetWork",
+        "twitter": "https://twitter.com/MorningWor94299",
+        "telegram": "https://t.me/GoodMorningNetWork",
+        "discord": "https://discord.gg/yZehDDGZsp",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "rwahash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "rwahash"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "hasMasterNodes": true,
+        "hasFoundation": true,
+        "explorerBlockLink": "https://explorer.goodmorningnetwork.org/block/$hash$",
+        "explorerTxLink": "https://explorer.goodmorningnetwork.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.goodmorningnetwork.org/address/{0}"
+    },
     "indexchain": {
         "name": "IndexChain",
         "symbol": "IDX",
