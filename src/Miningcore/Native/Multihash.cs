@@ -202,4 +202,7 @@ public static unsafe class Multihash
     [DllImport("libmultihash", EntryPoint = "rwahash_export", CallingConvention = CallingConvention.Cdecl)]
     public static extern void rwahash(byte* input, void* output, uint inputLength);
 
+    [DllImport("libmultihash", EntryPoint = "x20r_export", CallingConvention = CallingConvention.Cdecl)]
+    public static extern void x20r(byte* input, void* output, uint inputLength);
+
 }
