@@ -64,6 +64,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "yespower/yespower.h"
 #include "memehash.h"
 #include "rwahash.h"
+#include "x20r.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -379,55 +380,60 @@ extern "C" MODULE_API void x16rt_export(const char* input, char* output, uint32_
 
 extern "C" MODULE_API void power2b_export(const char* input, char* output, uint32_t input_len)
 {
-    power2b_hash(input, output, input_len);
+	power2b_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void cpupower_export(const char* input, char* output, uint32_t input_len)
 {
-    cpupower_hash(input, output, input_len);
+	cpupower_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespower_export(const char* input, char* output, uint32_t input_len)
 {
-    yespower_hash(input, output, input_len);
+	yespower_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespowerR16_export(const char* input, char* output, uint32_t input_len)
 {
-    yespowerR16_hash(input, output, input_len);
+	yespowerR16_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespowerIC_export(const char* input, char* output, uint32_t input_len)
 {
-    yespowerIC_hash(input, output, input_len);
+	yespowerIC_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespowerTIDE_export(const char* input, char* output, uint32_t input_len)
 {
-    yespowerTIDE_hash(input, output, input_len);
+	yespowerTIDE_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespowerURX_export(const char* input, char* output, uint32_t input_len)
 {
-    yespowerURX_hash(input, output, input_len);
+	yespowerURX_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void minotaurx_export(const char* input, char* output, uint32_t input_len)
 {
-    minotaurx_hash(input, output, input_len);
+	minotaurx_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yespowerLTNCG_export(const char* input, char* output, uint32_t input_len)
 {
-    yespowerLTNCG_hash(input, output, input_len);
+	yespowerLTNCG_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void memehash_export(const char* input, char* output, uint32_t input_len)
 {
-    meme_hash(input, output, input_len);
+	meme_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void rwahash_export(const char* input, char* output, uint32_t input_len)
 {
-    rwahash_hash(input, output, input_len);
+	rwahash_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x20r_export(const char* input, char* output, uint32_t input_len)
+{
+	x20r_hash(input, output, input_len);
 }
