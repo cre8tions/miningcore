@@ -2840,6 +2840,38 @@
 		"explorerTxLink": "http://explorer.redblockcoin.com/tx/{0}",
 		"explorerAccountLink": "http://explorer.redblockcoin.com/address/{0}"
     },
+    "russellcoin": {
+        "name": "RussellCoin",
+        "canonicalName": "RussellCoin",
+        "symbol": "RC",
+        "family": "bitcoin",
+        "website": "https://www.russellcoin.net/",
+        "github": "https://github.com/russellcoinpay/russellcoin",
+        "market": "https://coinpaprika.com/coin/rc-russiacoin",
+        "twitter": "https://twitter.com/russellcoin",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "x20r"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "x20r"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "hasMasterNodes": true,
+        "hasPayee": true,
+        "explorerBlockLink": "https://block.russellcoin.net/block/$height$",
+        "explorerTxLink": "https://block.russellcoin.net/tx/{0}",
+        "explorerAccountLink": "https://block.russellcoin.net/address/{0}"
+    },
 	"geckocoin": {
         "name": "Geckocoin",
         "canonicalName": "Geckocoin",
