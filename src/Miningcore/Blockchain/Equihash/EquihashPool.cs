@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.IO;
 using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Equihash.Configuration;
+using Miningcore.Blockchain.Equihash.Custom.Veruscoin;
 using Miningcore.Configuration;
 using Miningcore.Extensions;
 using Miningcore.JsonRpc;
@@ -59,10 +60,21 @@ public class EquihashPool : PoolBase
             throw new PoolStartupException("Pool z-address is not configured", pc.Id);
     }
 
+    private EquihashJobManager createEquihashExtraNonceProvider()
+    {
+        switch(coin.Symbol)
+        {
+            case "VRSC":
+                return ctx.Resolve<EquihashJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new VeruscoinExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+            
+            default:
+                return ctx.Resolve<EquihashJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new EquihashExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+        }
+    }
+
     protected override async Task SetupJobManager(CancellationToken ct)
     {
-        manager = ctx.Resolve<EquihashJobManager>(
-            new TypedParameter(typeof(IExtraNonceProvider), new EquihashExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
+        manager = createEquihashExtraNonceProvider();
 
         manager.Configure(poolConfig, clusterConfig);
 
@@ -109,6 +121,7 @@ public class EquihashPool : PoolBase
             throw new StratumException(StratumError.MinusOne, "missing request id");
 
         var requestParams = request.ParamsAs<string[]>();
+        context.UserAgent = requestParams.FirstOrDefault()?.Trim();
 
         var data = new object[]
         {
@@ -117,11 +130,21 @@ public class EquihashPool : PoolBase
         .Concat(manager.GetSubscriberData(connection))
         .ToArray();
 
-        await connection.RespondAsync(data, request.Id);
+        // Nicehash's stupid validator insists on "error" property present
+        // in successful responses which is a violation of the JSON-RPC spec
+        // [We miss you Oliver <3 We miss you so much <3 Respect the goddamn standards Nicehash :(]
+        var response = new JsonRpcResponse<object[]>(data, request.Id);
+
+        if(context.IsNicehash)
+        {
+            response.Extra = new Dictionary<string, object>();
+            response.Extra["error"] = null;
+        }
+
+        await connection.RespondAsync(response);
 
         // setup worker context
         context.IsSubscribed = true;
-        context.UserAgent = requestParams.FirstOrDefault()?.Trim();
     }
 
     protected async Task OnAuthorizeAsync(StratumConnection connection, Timestamped<JsonRpcRequest> tsRequest, CancellationToken ct)
@@ -149,8 +172,19 @@ public class EquihashPool : PoolBase
 
         if(context.IsAuthorized)
         {
+            // Nicehash's stupid validator insists on "error" property present
+            // in successful responses which is a violation of the JSON-RPC spec
+            // [We miss you Oliver <3 We miss you so much <3 Respect the goddamn standards Nicehash :(]
+            var response = new JsonRpcResponse<object>(context.IsAuthorized, request.Id);
+
+            if(context.IsNicehash)
+            {
+                response.Extra = new Dictionary<string, object>();
+                response.Extra["error"] = null;
+            }
+            
             // respond
-            await connection.RespondAsync(context.IsAuthorized, request.Id);
+            await connection.RespondAsync(response);
 
             // log association
             logger.Info(() => $"[{connection.ConnectionId}] Authorized worker {workerValue}");
@@ -240,7 +274,19 @@ public class EquihashPool : PoolBase
 
             // submit
             var share = await manager.SubmitShareAsync(connection, requestParams, ct);
-            await connection.RespondAsync(true, request.Id);
+            
+            // Nicehash's stupid validator insists on "error" property present
+            // in successful responses which is a violation of the JSON-RPC spec
+            // [We miss you Oliver <3 We miss you so much <3 Respect the goddamn standards Nicehash :(]
+            var response = new JsonRpcResponse<object>(true, request.Id);
+
+            if(context.IsNicehash)
+            {
+                response.Extra = new Dictionary<string, object>();
+                response.Extra["error"] = null;
+            }
+            
+            await connection.RespondAsync(response);
 
             // publish
             messageBus.SendMessage(share);
@@ -380,7 +426,7 @@ public class EquihashPool : PoolBase
     {
         var multiplier = BitcoinConstants.Pow2x32;
         var result = shares * multiplier / interval / 1000000 * 2;
-
+        
         result /= hashrateDivisor;
         return result;
     }
