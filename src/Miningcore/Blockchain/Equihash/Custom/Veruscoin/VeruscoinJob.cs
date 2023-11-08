@@ -1,14 +1,11 @@
-using System.Collections.Concurrent;
 using System.Globalization;
-using System.Reflection;
 using Miningcore.Blockchain.Bitcoin;
 using Miningcore.Blockchain.Equihash.DaemonResponses;
 using Miningcore.Configuration;
 using Miningcore.Contracts;
-using Miningcore.Crypto;
-using Miningcore.Crypto.Hashing.Algorithms;
 using Miningcore.Crypto.Hashing.Equihash;
 using Miningcore.Extensions;
+using Miningcore.Native;
 using Miningcore.Stratum;
 using Miningcore.Time;
 using Miningcore.Util;
@@ -16,53 +13,25 @@ using NBitcoin;
 using NBitcoin.DataEncoders;
 using NBitcoin.Zcash;
 
-namespace Miningcore.Blockchain.Equihash;
+namespace Miningcore.Blockchain.Equihash.Custom.Veruscoin;
 
-public class EquihashJob
+public class VeruscoinJob : EquihashJob
 {
-    protected IMasterClock clock;
-    protected static IHashAlgorithm headerHasher = new Sha256D();
-    protected EquihashCoinTemplate coin;
-    protected Network network;
-
-    protected IDestination poolAddressDestination;
-    protected readonly ConcurrentDictionary<string, bool> submissions = new(StringComparer.OrdinalIgnoreCase);
-    protected uint256 blockTargetValue;
-    protected byte[] coinbaseInitial;
-
-    protected EquihashCoinTemplate.EquihashNetworkParams networkParams;
-    protected decimal blockReward;
-    protected decimal rewardFees;
-
-    protected uint txVersionGroupId;
-    protected readonly IHashAlgorithm sha256D = new Sha256D();
-    protected byte[] coinbaseInitialHash;
-    protected byte[] merkleRoot;
-    protected byte[] merkleRootReversed;
-    protected string merkleRootReversedHex;
-    protected EquihashSolver solver;
-
-    // ZCash Sapling & Overwinter support
-    protected bool isOverwinterActive;
-    protected bool isSaplingActive;
-
-    // temporary reflection hack to force overwinter
-    protected static readonly FieldInfo overwinterField = typeof(ZcashTransaction).GetField("fOverwintered", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-    protected static readonly FieldInfo versionGroupField = typeof(ZcashTransaction).GetField("nVersionGroupId", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-
-    // serialization constants
-    protected byte[] sha256Empty = new byte[32];
-    protected uint txVersion = 1u; // transaction version (currently 1) - see https://en.bitcoin.it/wiki/Transaction
-
-    ///////////////////////////////////////////
-    // GetJobParams related properties
-
-    protected object[] jobParams;
-    protected string previousBlockHashReversedHex;
-    protected Money rewardToPool;
-    protected Transaction txOut;
-
-    protected virtual Transaction CreateOutputTransaction()
+    // PBaaS
+    public bool isPBaaSActive;
+    
+    protected uint coinbaseIndex = 4294967295u;
+    protected uint coinbaseSequence = 4294967295u;
+    // protected string poolHex = "56525343";
+    private static uint txInputCount = 1u;
+    private static uint txLockTime;
+    private static uint txExpiryHeight = 0u;
+    private static long txBalance = 0;
+    private static uint txVShieldedSpend = 0u;
+    private static uint txVShieldedOutput = 0u;
+    private static uint txJoinSplits = 0u;
+    
+    protected override Transaction CreateOutputTransaction()
     {
         var txNetwork = Network.GetNetwork(networkParams.CoinbaseTxNetwork);
         var tx = Transaction.Create(txNetwork);
@@ -70,11 +39,11 @@ public class EquihashJob
         // set versions
         tx.Version = txVersion;
 
-        if(isOverwinterActive)
+        /* if(isOverwinterActive)
         {
             overwinterField.SetValue(tx, true);
             versionGroupField.SetValue(tx, txVersionGroupId);
-        }
+        } */
 
         // calculate outputs
         if(networkParams.PayFundingStream)
@@ -116,7 +85,7 @@ public class EquihashJob
                 tx.Outputs.Add(rewardToPool, poolAddressDestination);
 
                 // treasury reward (t-addr)
-                var destination = FoundersAddressToScriptDestination(GetTreasuryRewardAddress());
+                var destination = FoundersAddressToScriptDestination(GetVeruscoinTreasuryRewardAddress());
                 var amount = new Money(Math.Round(blockReward * (networkParams.PercentTreasuryReward / 100m)), MoneyUnit.Satoshi);
                 tx.Outputs.Add(amount, destination);
             }
@@ -146,8 +115,8 @@ public class EquihashJob
 
         return tx;
     }
-
-    private string GetTreasuryRewardAddress()
+    
+    private string GetVeruscoinTreasuryRewardAddress()
     {
         var index = (int) Math.Floor((BlockTemplate.Height - networkParams.TreasuryRewardStartBlockHeight) /
             networkParams.TreasuryRewardAddressChangeInterval % networkParams.TreasuryRewardAddresses.Length);
@@ -155,45 +124,171 @@ public class EquihashJob
         var address = networkParams.TreasuryRewardAddresses[index];
         return address;
     }
-
-    protected virtual void BuildCoinbase()
+    
+    protected override void BuildCoinbase()
     {
         // output transaction
         txOut = CreateOutputTransaction();
+        
+        // when PBaaS activates we must use the coinbasetxn from daemon to get proper fee pool calculations in coinbase
+        var solutionVersion = BlockTemplate.Solution.Substring(0, 8);
+        var reversedSolutionVersion = uint.Parse(solutionVersion.HexToReverseByteArray().ToHexString(), NumberStyles.HexNumber);
+        isPBaaSActive = (reversedSolutionVersion > 6);
+        
+        if(!isPBaaSActive)
+        {
+            var script = TxIn.CreateCoinbase((int) BlockTemplate.Height).ScriptSig;
+
+            /* var blockHeight = (int) BlockTemplate.Height;
+            var blockHeightSerial = blockHeight.ToString();
+            if (blockHeightSerial.Length % 2 != 0)
+                blockHeightSerial = "0" + blockHeightSerial;
+
+            int shiftedHeight = blockHeight << 1;
+            int height = (int) Math.Ceiling((double) shiftedHeight.ToString().Length / 8);
+            int lengthDiff = blockHeightSerial.Length / 2 - height;
+            for (int i = 0; i < lengthDiff; i++) {
+                blockHeightSerial += "00";
+            }
+
+            var length = "0" + height.ToString();
+
+            var lengthBytes = (Span<byte>) length.HexToByteArray();
+            var blockHeightSerialBytes = (Span<byte>) blockHeightSerial.HexToReverseByteArray();
+            var opBytes = (Span<byte>) new byte[] { 0x00 };
+            var poolHexBytes = (Span<byte>) poolHex.HexToByteArray();
+
+            // concat length, blockHeightSerial, OP_0 and poolHex
+            Span<byte> serializedBlockHeightBytes = stackalloc byte[lengthBytes.Length + blockHeightSerialBytes.Length + opBytes.Length + poolHexBytes.Length];
+            lengthBytes.CopyTo(serializedBlockHeightBytes);
+            var offset = lengthBytes.Length;
+            blockHeightSerialBytes.CopyTo(serializedBlockHeightBytes[offset..]);
+            offset += blockHeightSerialBytes.Length;
+            opBytes.CopyTo(serializedBlockHeightBytes[offset..]);
+            offset += poolHexBytes.Length;
+            poolHexBytes.CopyTo(serializedBlockHeightBytes[offset..]); */
+            
+            using(var stream = new MemoryStream())
+            {
+                var bs = new ZcashStream(stream, true);
+
+                bs.Version = txVersion;
+                bs.Overwintered = isOverwinterActive;
+
+                /* if(isOverwinterActive)
+                {
+                    uint mask = (isOverwinterActive ? 1u : 0u );
+                    uint shiftedMask = mask << 31;
+                    uint versionWithOverwinter = txVersion | shiftedMask;
+
+                    // version
+                    bs.ReadWrite(ref versionWithOverwinter);
+                }
+                else
+                {
+                    // version
+                    bs.ReadWrite(ref txVersion);
+                }
+
+                if(isOverwinterActive || isSaplingActive)
+                {
+                    bs.ReadWrite(ref txVersionGroupId);
+                } */
+
+                // serialize (simulated) input transaction
+                bs.ReadWriteAsVarInt(ref txInputCount);
+                bs.ReadWrite(ref sha256Empty);
+                bs.ReadWrite(ref coinbaseIndex);
+                // bs.ReadWrite(ref serializedBlockHeightBytes);
+                bs.ReadWrite(ref script);
+                bs.ReadWrite(ref coinbaseSequence);
+
+                // serialize output transaction
+                var txOutBytes = SerializeOutputTransaction(txOut);
+                bs.ReadWrite(ref txOutBytes);
+
+                // misc
+                bs.ReadWrite(ref txLockTime);
+
+                if(isOverwinterActive || isSaplingActive)
+                {
+                    bs.ReadWrite(ref txExpiryHeight);
+                }
+
+                if(isSaplingActive)
+                {
+                    bs.ReadWrite(ref txBalance);
+                    bs.ReadWriteAsVarInt(ref txVShieldedSpend);
+                    bs.ReadWriteAsVarInt(ref txVShieldedOutput);
+                }
+
+                if(isOverwinterActive || isSaplingActive)
+                {
+                    bs.ReadWriteAsVarInt(ref txJoinSplits);
+                }
+
+                // done
+                coinbaseInitial = stream.ToArray();
+                coinbaseInitialHash = new byte[32];
+                sha256D.Digest(coinbaseInitial, coinbaseInitialHash);
+            }
+        }
+        else
+        {
+            coinbaseInitial = BlockTemplate.CoinbaseTx.Data.HexToByteArray();
+            coinbaseInitialHash = BlockTemplate.CoinbaseTx.Hash.HexToReverseByteArray();
+        }
+    }
+    
+    private byte[] SerializeOutputTransaction(Transaction tx)
+    {
+        var withDefaultWitnessCommitment = !string.IsNullOrEmpty(BlockTemplate.DefaultWitnessCommitment);
+
+        var outputCount = (uint) tx.Outputs.Count;
+        if(withDefaultWitnessCommitment)
+            outputCount++;
 
         using(var stream = new MemoryStream())
         {
-            var bs = new ZcashStream(stream, true);
-            bs.ReadWrite(ref txOut);
+            var bs = new BitcoinStream(stream, true);
 
-            // done
-            coinbaseInitial = stream.ToArray();
+            // write output count
+            bs.ReadWriteAsVarInt(ref outputCount);
 
-            coinbaseInitialHash = new byte[32];
-            sha256D.Digest(coinbaseInitial, coinbaseInitialHash);
+            long amount;
+            byte[] raw;
+            uint rawLength;
+            
+            // serialize outputs
+            foreach(var output in tx.Outputs)
+            {
+                amount = output.Value.Satoshi;
+                var outScript = output.ScriptPubKey;
+                raw = outScript.ToBytes(true);
+                rawLength = (uint) raw.Length;
+
+                bs.ReadWrite(ref amount);
+                bs.ReadWriteAsVarInt(ref rawLength);
+                bs.ReadWrite(ref raw);
+            }
+
+            // serialize witness (segwit)
+            if(withDefaultWitnessCommitment)
+            {
+                amount = 0;
+                raw = BlockTemplate.DefaultWitnessCommitment.HexToByteArray();
+                rawLength = (uint) raw.Length;
+
+                bs.ReadWrite(ref amount);
+                bs.ReadWriteAsVarInt(ref rawLength);
+                bs.ReadWrite(ref raw);
+            }
+
+            return stream.ToArray();
         }
     }
-
-
-    protected virtual byte[] SerializeHeader(uint nTime, string nonce)
-    {
-        var blockHeader = new EquihashBlockHeader
-        {
-            Version = (int) BlockTemplate.Version,
-            Bits = new Target(Encoders.Hex.DecodeData(BlockTemplate.Bits)),
-            HashPrevBlock = uint256.Parse(BlockTemplate.PreviousBlockhash),
-            HashMerkleRoot = new uint256(merkleRoot),
-            NTime = nTime,
-            Nonce = nonce
-        };
-
-        if(isSaplingActive && !string.IsNullOrEmpty(BlockTemplate.FinalSaplingRootHash))
-            blockHeader.HashReserved = BlockTemplate.FinalSaplingRootHash.HexToReverseByteArray();
-
-        return blockHeader.ToBytes();
-    }
-
-    private byte[] BuildRawTransactionBuffer()
+    
+    private byte[] BuildVeruscoinRawTransactionBuffer()
     {
         using(var stream = new MemoryStream())
         {
@@ -207,10 +302,10 @@ public class EquihashJob
         }
     }
 
-    private byte[] SerializeBlock(Span<byte> header, Span<byte> coinbase, Span<byte> solution)
+    private byte[] SerializeVeruscoinBlock(Span<byte> header, Span<byte> coinbase, Span<byte> solution)
     {
         var transactionCount = (uint) BlockTemplate.Transactions.Length + 1; // +1 for prepended coinbase tx
-        var rawTransactionBuffer = BuildRawTransactionBuffer();
+        var rawTransactionBuffer = BuildVeruscoinRawTransactionBuffer();
 
         using(var stream = new MemoryStream())
         {
@@ -218,6 +313,33 @@ public class EquihashJob
 
             bs.ReadWrite(ref header);
             bs.ReadWrite(ref solution);
+            
+            /* var txCount = transactionCount.ToString();
+            if (Math.Abs(txCount.Length % 2) == 1)
+                txCount = "0" + txCount;
+            
+            if (transactionCount <= 0x7f)
+            {
+                var simpleVarIntBytes = (Span<byte>) txCount.HexToByteArray();
+                
+                bs.ReadWrite(ref simpleVarIntBytes);
+            }
+            else if (transactionCount <= 0x7fff)
+            {
+                if (txCount.Length == 2)
+                    txCount = "00" + txCount;
+                
+                var complexHeader = (Span<byte>) new byte[] { 0xFD };
+                var complexVarIntBytes = (Span<byte>) txCount.HexToReverseByteArray();
+                
+                // concat header and varInt
+                Span<byte> complexHeaderVarIntBytes = stackalloc byte[complexHeader.Length + complexVarIntBytes.Length];
+                complexHeader.CopyTo(complexHeaderVarIntBytes);
+                complexVarIntBytes.CopyTo(complexHeaderVarIntBytes[complexHeader.Length..]);
+                
+                bs.ReadWrite(ref complexHeaderVarIntBytes);
+            } */
+            
             bs.ReadWriteAsVarInt(ref transactionCount);
             bs.ReadWrite(ref coinbase);
             bs.ReadWrite(ref rawTransactionBuffer);
@@ -225,8 +347,8 @@ public class EquihashJob
             return stream.ToArray();
         }
     }
-
-    private (Share Share, string BlockHex) ProcessShareInternal(StratumConnection worker, string nonce,
+    
+    private (Share Share, string BlockHex) ProcessVersucoinShareInternal(StratumConnection worker, string nonce,
         uint nTime, string solution)
     {
         var context = worker.ContextAs<BitcoinWorkerContext>();
@@ -235,18 +357,33 @@ public class EquihashJob
         // serialize block-header
         var headerBytes = SerializeHeader(nTime, nonce);
 
-        // verify solution
-        if(!solver.Verify(headerBytes, solutionBytes[networkParams.SolutionPreambleSize..]))
-            throw new StratumException(StratumError.Other, "invalid solution");
-
         // concat header and solution
         Span<byte> headerSolutionBytes = stackalloc byte[headerBytes.Length + solutionBytes.Length];
         headerBytes.CopyTo(headerSolutionBytes);
+
         solutionBytes.CopyTo(headerSolutionBytes[headerBytes.Length..]);
 
         // hash block-header
         Span<byte> headerHash = stackalloc byte[32];
-        headerHasher.Digest(headerSolutionBytes, headerHash, (ulong) nTime);
+        
+        Verushash headerHasherVerus = new Verushash();
+        
+        if (BlockTemplate.Version > 4 && !string.IsNullOrEmpty(BlockTemplate.Solution))
+        {
+            // make sure verus solution version matches expected version
+            if (solution.Substring(VeruscoinConstants.SolutionSlice, 2) != BlockTemplate.Solution.Substring(0, 2))
+                throw new StratumException(StratumError.Other, $"invalid solution - expected solution header: {BlockTemplate.Solution.Substring(0, 2)}");
+            
+            if (solution.Substring(VeruscoinConstants.SolutionSlice, 2) == "03")
+                headerHasherVerus.Digest(headerSolutionBytes, headerHash, VeruscoinConstants.HashVersion2b1);
+            else
+                headerHasherVerus.Digest(headerSolutionBytes, headerHash, VeruscoinConstants.HashVersion2b2);
+        }
+        else if (BlockTemplate.Version > 4)
+            headerHasherVerus.Digest(headerSolutionBytes, headerHash, VeruscoinConstants.HashVersion2b);
+        else
+            headerHasherVerus.Digest(headerSolutionBytes, headerHash);
+        
         var headerValue = new uint256(headerHash);
 
         // calc share-diff
@@ -286,12 +423,11 @@ public class EquihashJob
         if(isBlockCandidate)
         {
             var headerHashReversed = headerHash.ToNewReverseArray();
-
+            
             result.IsBlockCandidate = true;
             result.BlockReward = rewardToPool.ToDecimal(MoneyUnit.BTC);
             result.BlockHash = headerHashReversed.ToHexString();
-
-            var blockBytes = SerializeBlock(headerBytes, coinbaseInitial, solutionBytes);
+            var blockBytes = SerializeVeruscoinBlock(headerBytes, coinbaseInitial, solutionBytes);
             var blockHex = blockBytes.ToHexString();
 
             return (result, blockHex);
@@ -299,8 +435,8 @@ public class EquihashJob
 
         return (result, null);
     }
-
-    private bool RegisterSubmit(string nonce, string solution)
+    
+    private bool RegisterVersucoinSubmit(string nonce, string solution)
     {
         var key = nonce + solution;
 
@@ -309,7 +445,7 @@ public class EquihashJob
 
     #region API-Surface
 
-    public virtual void Init(EquihashBlockTemplate blockTemplate, string jobId,
+    public override void Init(EquihashBlockTemplate blockTemplate, string jobId,
         PoolConfig poolConfig, ClusterConfig clusterConfig, IMasterClock clock,
         IDestination poolAddressDestination, Network network,
         EquihashSolver solver)
@@ -358,14 +494,26 @@ public class EquihashJob
         }
 
         // Misc
+        isPBaaSActive = false;
         this.solver = solver;
-
-        if(!string.IsNullOrEmpty(BlockTemplate.Target))
+        
+         // pbaas minimal merged mining target
+        if(!string.IsNullOrEmpty(BlockTemplate.MergedBits))
+        {
+            var tmpMergedBits = new Target(BlockTemplate.MergedBits.HexToByteArray());
+            blockTargetValue = tmpMergedBits.ToUInt256();
+        }
+        else if(!string.IsNullOrEmpty(BlockTemplate.MergeMineBits))
+        {
+            var tmpMergeMineBits = new Target(BlockTemplate.MergeMineBits.HexToByteArray());
+            blockTargetValue = tmpMergeMineBits.ToUInt256();
+        }
+        else if(!string.IsNullOrEmpty(BlockTemplate.Target))
             blockTargetValue = new uint256(BlockTemplate.Target);
         else
         {
-            var tmp = new Target(BlockTemplate.Bits.HexToByteArray());
-            blockTargetValue = tmp.ToUInt256();
+            var tmpBits = new Target(BlockTemplate.Bits.HexToByteArray());
+            blockTargetValue = tmpBits.ToUInt256();
         }
 
         previousBlockHashReversedHex = BlockTemplate.PreviousBlockhash
@@ -399,9 +547,9 @@ public class EquihashJob
         }
 
         rewardFees = blockTemplate.Transactions.Sum(x => x.Fee);
-
+        
         BuildCoinbase();
-
+        
         // build tx hashes
         var txHashes = new List<uint256> { new(coinbaseInitialHash) };
         txHashes.AddRange(BlockTemplate.Transactions.Select(tx => new uint256(tx.Hash.HexToReverseByteArray())));
@@ -416,6 +564,17 @@ public class EquihashJob
             blockTemplate.FinalSaplingRootHash.HexToReverseByteArray().ToHexString() :
             sha256Empty.ToHexString();
 
+        string solutionIn = null;
+        // VerusHash V2.1 activation
+        if (!string.IsNullOrEmpty(blockTemplate.Solution))
+        {
+            char[] charsToTrim = {'0'};
+            solutionIn = blockTemplate.Solution.TrimEnd(charsToTrim);
+            
+            if ((solutionIn.Length % 2) == 1)
+                solutionIn += "0";
+        }
+
         jobParams = new object[]
         {
             JobId,
@@ -425,16 +584,12 @@ public class EquihashJob
             hashReserved,
             BlockTemplate.CurTime.ReverseByteOrder().ToStringHex8(),
             BlockTemplate.Bits.HexToReverseByteArray().ToHexString(),
-            false
+            true,
+            solutionIn
         };
     }
-
-    public EquihashBlockTemplate BlockTemplate { get; protected set; }
-    public double Difficulty { get; protected set; }
-
-    public string JobId { get; protected set; }
-
-    public virtual (Share Share, string BlockHex) ProcessShare(StratumConnection worker, string extraNonce2, string nTime, string solution)
+    
+    public override (Share Share, string BlockHex) ProcessShare(StratumConnection worker, string extraNonce2, string nTime, string solution)
     {
         Contract.RequiresNonNull(worker);
         Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(extraNonce2));
@@ -448,7 +603,10 @@ public class EquihashJob
             throw new StratumException(StratumError.Other, "incorrect size of ntime");
 
         var nTimeInt = uint.Parse(nTime.HexToReverseByteArray().ToHexString(), NumberStyles.HexNumber);
-        if(nTimeInt < BlockTemplate.CurTime || nTimeInt > ((DateTimeOffset) clock.Now).ToUnixTimeSeconds() + 7200)
+        // if(nTimeInt < BlockTemplate.CurTime || nTimeInt > ((DateTimeOffset) clock.Now).ToUnixTimeSeconds() + 7200)
+            // throw new StratumException(StratumError.Other, "ntime out of range");
+        
+        if(nTimeInt != BlockTemplate.CurTime)
             throw new StratumException(StratumError.Other, "ntime out of range");
 
         var nonce = context.ExtraNonce1 + extraNonce2;
@@ -456,42 +614,37 @@ public class EquihashJob
         // validate nonce
         if(nonce.Length != 64)
             throw new StratumException(StratumError.Other, "incorrect size of extraNonce2");
-
+        
         // validate solution
         if(solution.Length != (networkParams.SolutionSize + networkParams.SolutionPreambleSize) * 2)
             throw new StratumException(StratumError.Other, "incorrect size of solution");
 
         // dupe check
-        if(!RegisterSubmit(nonce, solution))
+        if(!RegisterVersucoinSubmit(nonce, solution))
             throw new StratumException(StratumError.DuplicateShare, "duplicate share");
-
-        return ProcessShareInternal(worker, nonce, nTimeInt, solution);
+        
+        // when pbaas activates use block header nonce from daemon, pool/miner can no longer manipulate
+        if(isPBaaSActive)
+        {
+            if(string.IsNullOrEmpty(BlockTemplate.Nonce))
+                throw new StratumException(StratumError.Other, "block header nonce not provided by daemon");
+            else
+                nonce = BlockTemplate.Nonce.HexToReverseByteArray().ToHexString();
+            
+            // verify pool nonce presence in solution
+            var solutionExtraData = solution.Substring(solution.Length - 30);
+            if(solutionExtraData.IndexOf(context.ExtraNonce1) < 0)
+                throw new StratumException(StratumError.Other, "invalid solution, pool nonce missing");
+        }
+            
+        return ProcessVersucoinShareInternal(worker, nonce, nTimeInt, solution);
     }
-
-    public virtual object GetJobParams(bool isNew)
+    
+    public override object GetJobParams(bool isNew)
     {
-        jobParams[^1] = isNew;
+        jobParams[^2] = isNew;
         return jobParams;
     }
-
-    public string GetFoundersRewardAddress()
-    {
-        var maxHeight = networkParams.LastFoundersRewardBlockHeight;
-
-        var addressChangeInterval = (maxHeight + (ulong) networkParams.FoundersRewardAddresses.Length) / (ulong) networkParams.FoundersRewardAddresses.Length;
-        var index = BlockTemplate.Height / addressChangeInterval;
-
-        var address = networkParams.FoundersRewardAddresses[index];
-        return address;
-    }
-
-    public static IDestination FoundersAddressToScriptDestination(string address)
-    {
-        var decoded = Encoders.Base58.DecodeData(address);
-        var hash = decoded.Skip(2).Take(20).ToArray();
-        var result = new ScriptId(hash);
-        return result;
-    }
-
+    
     #endregion // API-Surface
 }
