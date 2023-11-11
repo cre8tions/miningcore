@@ -2301,6 +2301,7 @@
         "headerHasher": {
             "hash": "nexapow"
         },
+        "coinbaseMinConfimations": 5001,
         "explorerBlockLink": "https://explorer.nexa.org/block-height/$height$",
         "explorerTxLink": "https://explorer.nexa.org/tx/{0}",
         "explorerAccountLink": "https://explorer.nexa.org/address/{0}",
