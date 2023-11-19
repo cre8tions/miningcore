@@ -245,6 +245,7 @@
     <ClInclude Include="sha3\sph_shavite.h" />
     <ClInclude Include="sha3\sph_simd.h" />
     <ClInclude Include="sha3\sph_skein.h" />
+    <ClInclude Include="sha3\sph_skein2.h" />
     <ClInclude Include="sha3\sph_sm3.h" />
     <ClInclude Include="sha3\sph_tiger.h" />
     <ClInclude Include="sha3\sph_types.h" />
@@ -252,6 +253,7 @@
     <ClInclude Include="sha3\SWIFFTX.h" />
     <ClInclude Include="shavite3.h" />
     <ClInclude Include="skein.h" />
+    <ClInclude Include="skein2.h" />
     <ClInclude Include="skydoge.h" />
     <ClInclude Include="Sponge.h" />
     <ClInclude Include="stdafx.h" />
@@ -360,11 +362,13 @@
     <ClCompile Include="sha3\sph_shavite.c" />
     <ClCompile Include="sha3\sph_simd.c" />
     <ClCompile Include="sha3\sph_skein.c" />
+    <ClCompile Include="sha3\sph_skein2.c" />
     <ClCompile Include="sha3\sph_tiger.c" />
     <ClCompile Include="sha3\sph_whirlpool.c" />
     <ClCompile Include="sha3\SWIFFTX.c" />
     <ClCompile Include="shavite3.c" />
     <ClCompile Include="skein.c" />
+    <ClCompile Include="skein2.c" />
     <ClCompile Include="skydoge.c" />
     <ClCompile Include="Sponge.c" />
     <ClCompile Include="stdafx.cpp" />
