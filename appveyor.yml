@@ -14,7 +14,7 @@ image:
 # scripts to run before build
 before_build:
   - cd src
-  - dotnet restore
+#  - dotnet restore
 
 build_script:
   - # Install Linux build-dependencies
