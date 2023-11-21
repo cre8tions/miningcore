@@ -66,6 +66,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "memehash.h"
 #include "rwahash.h"
 #include "x20r.h"
+#include "x11gost.h"
 
 #ifdef _WIN32
 #include "blake2/ref/blake2.h"
@@ -445,4 +446,9 @@ extern "C" MODULE_API void rwahash_export(const char *input, char *output, uint3
 extern "C" MODULE_API void x20r_export(const char *input, char *output, uint32_t input_len)
 {
 	x20r_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x11gost_export(const char *input, char *output, uint32_t input_len)
+{
+	x11gost_hash(input, output, input_len);
 }
