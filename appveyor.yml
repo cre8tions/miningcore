@@ -5,7 +5,7 @@
 # Build worker image (VM template)
 image:
 - Visual Studio 2022
-- Ubuntu2204
+- Ubuntu
 
 #---------------------------------#
 #       build configuration       #
