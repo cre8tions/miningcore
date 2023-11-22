@@ -3747,6 +3747,34 @@
         "explorerTxLink": "http://rtm.timyg.org:6950/tx/{0}",
         "explorerAccountLink": "http://rtm.timyg.org:6950/address/{0}"
     },
+    "tidecoin": {
+        "name": "Tidecoin",
+        "symbol": "TDC",
+        "family": "bitcoin",
+        "website": "http://tidecoin.org/",
+        "market": "https://coinpaprika.com/coin/tdc-tidecoin",
+        "twitter": "https://twitter.com/tidecoin",
+        "telegram": "",
+        "discord": "https://discord.com/invite/SnZW2ykXkH",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespowertide"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.tidecoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.tidecoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.tidecoin.org/address/{0}"
+    },
     "titcoin": {
         "name": "Titcoin",
         "symbol": "TIT",
