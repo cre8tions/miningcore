@@ -4396,6 +4396,34 @@
         "explorerTxLink": "https://explorer.yerbas.org/tx/{0}",
         "explorerAccountLink": "https://explorer.yerbas.org/address/{0}"
     },
+    "yenten": {
+        "name": "Yenten",
+        "canonicalName": "Yenten",
+        "symbol": "YTN",
+        "family": "bitcoin",
+        "website": "http://yentencoin.info/",
+        "twitter": "https://twitter.com/yentencoin",
+        "telegram": "https://t.me/yenten",
+        "discord": "https://discord.gg/RTbPxu3",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespowerr16"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "http://ytn.ccore.online/block/$height$",
+        "explorerTxLink": "http://ytn.ccore.online/transaction/{0}",
+        "explorerAccountLink": "http://ytn.ccore.online/address/{0}"
+    },
     "zetacoin": {
         "name": "Zetacoin",
         "canonicalName": "Zetacoin",
