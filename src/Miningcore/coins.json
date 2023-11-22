@@ -1348,6 +1348,36 @@
         "explorerTxLink": "https://freecash.info/transaction?hash={0}",
         "explorerAccountLink": "https://freecash.info/address?address={0}"
     },
+    "frencoin": {
+        "name": "Frencoin",
+        "symbol": "FREN",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://frencoin.org/",
+        "market": "https://www.coingecko.com/en/coins/frencoin-2",
+        "twitter": "https://twitter.com/frencoinfren",
+        "github": "https://github.com/Apushii/Frencoin",
+        "telegram": "",
+        "discord": "https://discord.com/invite/CA8ZVtFBEa",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.frencoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.frencoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.frencoin.org/address/{0}"
+    },
     "fulminare": {
         "name": "Fulminare",
         "symbol": "FLMN",
