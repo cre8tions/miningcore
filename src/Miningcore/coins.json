@@ -4194,6 +4194,33 @@
         "explorerTxLink": "https://explorer.voltpot.org/tx/{0}",
         "explorerAccountLink": "https://explorer.voltpot.org/address/{0}"
     },
+    "whive": {
+        "name": "Whive",
+        "symbol": "WHIVE",
+        "family": "bitcoin",
+        "website": "https://www.whive.io/",
+        "twitter": "https://twitter.com/whiveio",
+        "telegram": "https://t.me/whiveio",
+        "discord": "https://discord.com/invite/D6RRVemBRv",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespower",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://whiveexplorer.cointest.com/block/$hash$",
+        "explorerTxLink": "https://whiveexplorer.cointest.com/tx/{0}",
+        "explorerAccountLink": "https://whiveexplorer.cointest.com/address/{0}"
+    },
     "widecoin": {
         "name": "Widecoin",
         "canonicalName": "Widecoin",
