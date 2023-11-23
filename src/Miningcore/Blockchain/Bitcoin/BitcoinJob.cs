@@ -618,7 +618,6 @@ public class BitcoinJob
         if(BlockTemplate.CommunityAutonomousAddress != null && BlockTemplate.CommunityAutonomousValue > 0)
         {
         	var payeeReward = BlockTemplate.CommunityAutonomousValue;
-        	reward -= payeeReward;
         	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.CommunityAutonomousAddress, network);
         	tx.Outputs.Add(payeeReward, payeeAddress);
         }
