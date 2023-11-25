@@ -140,8 +140,10 @@ public class PayoutManager : BackgroundService
 
                 if(equihashTemplate.UseBitcoinPayoutHandler)
                     return CoinFamily.Bitcoin;
-
                 break;
+				
+            case CoinFamily.Progpow:
+                return CoinFamily.Bitcoin;				
         }
 
         return family;
