@@ -3596,6 +3596,37 @@
         "explorerTxLink": "https://scc.ccore.online/tx/{0}",
         "explorerAccountLink": "https://scc.ccore.online/address/{0}"
     },
+    "skytere": {
+        "name": "Skytere",
+        "canonicalName": "Skytere",
+        "symbol": "SKYT",
+        "family": "bitcoin",
+        "website": "https://skytere.com/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/UGfj5D6hEb",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+		"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.skytere.com/block/$hash$",
+        "explorerTxLink": "https://explorer.skytere.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.skytere.com/address/{0}"
+    },
     "susucoin": {
         "name": "Susucoin",
         "canonicalName": "Susucoin",
