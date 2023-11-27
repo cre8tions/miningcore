@@ -3627,6 +3627,34 @@
         "explorerTxLink": "https://explorer.skytere.com/tx/{0}",
         "explorerAccountLink": "https://explorer.skytere.com/address/{0}"
     },
+    "sugarchain": {
+        "name": "Sugarchain",
+        "symbol": "SUGAR",
+        "family": "bitcoin",
+        "website": "https://sugarchain.org/",
+        "twitter": "https://twitter.com/sugarchain_dev",
+        "market": "https://coinpaprika.com/coin/sugar-sugarchain",
+        "telegram": "https://t.me/sugarchain",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespowersugar",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://sugarchain.org/explorer/#/block/$hash$",
+        "explorerTxLink": "https://sugarchain.org/explorer/#/transaction/{0}",
+        "explorerAccountLink": "https://sugarchain.org/explorer/#/address/{0}"
+    },
     "susucoin": {
         "name": "Susucoin",
         "canonicalName": "Susucoin",
