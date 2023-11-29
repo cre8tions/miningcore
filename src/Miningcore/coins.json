@@ -1203,6 +1203,34 @@
         "explorerTxLink": "https://scan.fennecblockchain.com/tx/{0}",
         "explorerAccountLink": "https://scan.fennecblockchain.com/address/{0}"
     },
+    "qogecoin": {
+        "name": "Qogecoin",
+        "symbol": "QOGE",
+        "family": "bitcoin",
+        "website": "https://www.qogecoin.org/",
+        "market": "https://coinpaprika.com/coin/qoge-qogecoin/",
+        "twitter": "https://twitter.com/qogecoin",
+        "telegram": "",
+        "discord": "https://discord.com/invite/T8uYSDmtde",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yescryptr16"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://www.qogescan.com/block/$hash$",
+        "explorerTxLink": "https://www.qogescan.com/tx/{0}",
+        "explorerAccountLink": "https://www.qogescan.com/address/{0}"
+    },
     "flapx": {
         "name": "Flapx Coin",
         "symbol": "FLAPX",
