@@ -5703,6 +5703,20 @@
         "explorerTxLink": "http://64.225.78.99:4000/tx/{0}",
         "explorerAccountLink": "http://64.225.78.99:4000/address/{0}"
     },
+	"alephium": {
+        "name": "Alephium",
+        "canonicalName": "Alephium",
+        "symbol": "ALPH",
+        "family": "alephium",
+        "website": "https://alephium.org/",
+        "market": "https://coinmarketcap.com/currencies/alephium/",
+        "twitter": "https://twitter.com/alephium",
+        "telegram": "https://t.me/alephiumgroup",
+        "discord": "https://discord.gg/JErgRBfRSB",
+        "explorerBlockLink": "https://explorer.alephium.org/blocks/$hash$",
+        "explorerTxLink": "https://explorer.alephium.org/transactions/{0}",
+        "explorerAccountLink": "https://explorer.alephium.org/addresses/{0}"
+    },
     "ergo": {
         "name": "Ergo",
         "canonicalName": "Ergo",
