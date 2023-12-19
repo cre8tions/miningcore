@@ -650,6 +650,33 @@
         "explorerTxLink": "https://cann.tokenview.com/en/tx/{0}",
         "explorerAccountLink": "https://cann.tokenview.com/en/address/{0}"
     },
+    "cpuchain": {
+        "name": "CPUchain",
+        "symbol": "CPU",
+        "family": "bitcoin",
+        "website": "https://cpuchain.org/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discordapp.com/invite/SUAgC9f",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "cpupower"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "cpupower"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.cpuchain.tech/block/$hash$",
+        "explorerTxLink": "https://explorer.cpuchain.tech/tx/{0}",
+        "explorerAccountLink": "https://explorer.cpuchain.tech/address/{0}"
+    },
     "crionic": {
         "name": "Crionic",
         "symbol": "CRNC",
