@@ -2184,6 +2184,40 @@
         "explorerTxLink": "https://mazacha.in/tx/{0}",
         "explorerAccountLink": "https://mazacha.in/address/{0}"
     },
+    "mecuai": {
+        "name": "MecuAI",
+        "canonicalName": "MecuAI",
+        "symbol": "MECU",
+        "family": "bitcoin",
+        "website": "https://mecuai.com/",
+        "market": "",
+        "twitter": "https://x.com/WeAreMecuAI",
+        "telegram": "",
+        "discord": "https://discord.gg/2nn72UceUY",
+        "github": "https://github.com/mecuai",
+        "explorer": "https://explorer.mecuai.com/",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.mecuai.com/block/$hash$",
+        "explorerTxLink": "https://explorer.mecuai.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.mecuai.com/address/{0}"
+    },
     "microbitcoin": {
         "name": "MicroBitcoin",
         "canonicalName": "MicroBitcoin",
