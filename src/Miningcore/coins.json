@@ -4370,6 +4370,36 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
+    "vishai": {
+        "name": "VishAiCoin",
+        "symbol": "VISH",
+        "family": "bitcoin",
+        "website": "https://vishcoin.com/",
+        "twitter": "https://twitter.com/vishcoinai",
+        "telegram": "https://t.me/vishaiofficial",
+        "github": "https://github.com/vishcoin/vishai",
+        "explorer": "https://explorer.vishcoin.com",
+        "discord": "https://discord.com/invite/cxCfHuNpWn",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespower",
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+				{
+					"hash": "yespower"
+				}
+			]
+        },
+        "hasMasterNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.vishcoin.com/block/$hash$",
+        "explorerTxLink": "https://explorer.vishcoin.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.vishcoin.com/address/{0}"
+    },
     "volkshash": {
         "name": "VolksHash",
         "symbol": "VHH",
