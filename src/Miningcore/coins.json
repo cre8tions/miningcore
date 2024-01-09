@@ -2965,6 +2965,39 @@
         "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
         "explorerAccountLink": "https://explorer.raptoreum.com/address/{0}"
     },
+    "rheix": {
+        "name": "Rheix",
+        "canonicalName": "Rheix",
+        "symbol": "RHX",
+        "family": "bitcoin",
+        "website": "https://rheix.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/9wgVDHMMyR",
+        "github": "https://github.com/rheixverse/rheix",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.rheix.com/block/$hash$",
+        "explorerTxLink": "https://explorer.rheix.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.rheix.com/address/{0}"
+    },
     "redblock": {
         "name": "RedBlock",
         "symbol": "REDB",
