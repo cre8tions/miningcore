@@ -392,7 +392,6 @@
     <ClCompile Include="yescrypt\sha256.c" />
     <ClCompile Include="yescrypt\yescrypt.c" />
     <ClCompile Include="yescrypt\yescrypt-opt.c" />
-    <ClCompile Include="yescrypt\yescrypt.c" />
     <ClCompile Include="yespower\crypto\blake2b-yp.c" />
     <ClCompile Include="yespower\yespower-blake2b.c" />
     <ClCompile Include="yespower\yespower-combined.c" />
