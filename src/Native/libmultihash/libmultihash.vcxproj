@@ -247,7 +247,6 @@
     <ClInclude Include="sha3\sph_shavite.h" />
     <ClInclude Include="sha3\sph_simd.h" />
     <ClInclude Include="sha3\sph_skein.h" />
-    <ClInclude Include="sha3\sph_skein2.h" />
     <ClInclude Include="sha3\sph_sm3.h" />
     <ClInclude Include="sha3\sph_tiger.h" />
     <ClInclude Include="sha3\sph_types.h" />
@@ -377,7 +376,6 @@
     <ClCompile Include="sha3\sph_shavite.c" />
     <ClCompile Include="sha3\sph_simd.c" />
     <ClCompile Include="sha3\sph_skein.c" />
-    <ClCompile Include="sha3\sph_skein2.c" />
     <ClCompile Include="sha3\sph_tiger.c" />
     <ClCompile Include="sha3\sph_whirlpool.c" />
     <ClCompile Include="sha3\SWIFFTX.c" />
@@ -392,6 +390,7 @@
     <ClCompile Include="yescrypt\sha256.c" />
     <ClCompile Include="yescrypt\yescrypt.c" />
     <ClCompile Include="yescrypt\yescrypt-opt.c" />
+    <ClCompile Include="yescrypt\yescrypt-platform.c" />
     <ClCompile Include="yespower\crypto\blake2b-yp.c" />
     <ClCompile Include="yespower\yespower-blake2b.c" />
     <ClCompile Include="yespower\yespower-combined.c" />
