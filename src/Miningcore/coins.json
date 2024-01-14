@@ -37,6 +37,36 @@
         "explorerTxLink": "https://explorer.fiveg.cash/tx/{0}",
         "explorerAccountLink": "https://explorer.fiveg.cash/address/{0}"
     },
+    "aipowergrid": {
+        "name": "AIPowerGrid",
+        "symbol": "AIPG",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://www.aipowergrid.io/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/vZ9XrTSRYr",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+	"hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.aipowergrid.io/block/$hash$",
+        "explorerTxLink": "https://explorer.aipowergrid.io/tx/{0}",
+        "explorerAccountLink": "https://explorer.aipowergrid.io/address/{0}"
+    },
     "arsagility": {
         "name": "Arsagility",
         "canonicalName": "Arsagility",
@@ -738,6 +768,36 @@
         "explorerBlockLink": "https://explorer.crionic.org/block/$hash$",
         "explorerTxLink": "https://explorer.crionic.org/tx/{0}",
         "explorerAccountLink": "https://explorer.crionic.org/address/{0}"
+    },
+    "cryptoluck": {
+        "name": "Cryptoluck",
+        "symbol": "CL",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://cryptoluck.online/",
+        "market": "",
+        "twitter": "https://twitter.com/cryptoluck_cl",
+        "telegram": "",
+        "discord": "https://discord.gg/RNf7HHnb",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+	"hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.cryptoluck.online/block/$hash$",
+        "explorerTxLink": "https://explorer.cryptoluck.online/tx/{0}",
+        "explorerAccountLink": "https://explorer.cryptoluck.online/address/{0}"
     },
     "danecoin": {
         "name": "Danecoin",
@@ -1468,6 +1528,72 @@
         "explorerTxLink": "https://explorer.frencoin.org/tx/{0}",
         "explorerAccountLink": "https://explorer.frencoin.org/address/{0}"
     },
+    "fsociety": {
+        "name": "Fsociety",
+        "canonicalName": "Fsociety",
+        "symbol": "FSC",
+        "family": "bitcoin",
+        "website": "https://fsocietychain.com/",
+        "market": "",
+        "twitter": "https://twitter.com/fsocietychain",
+        "telegram": "",
+        "discord": "https://discord.gg/bnwTPMg5nJ",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.fsocietychain.com/block/$hash$",
+        "explorerTxLink": "https://explorer.fsocietychain.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.fsocietychain.com/address/{0}"
+    },
+    "fuertecoin": {
+        "name": "Fuertecoin",
+        "canonicalName": "Fuertecoin",
+        "symbol": "FUEC",
+        "family": "bitcoin",
+        "website": "https://fuertecoin.network/",
+        "market": "",
+        "github": "https://github.com/GitFuec/fuertecoin",
+        "explorer": "http://explorer.fuertecoin.network:3001/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/YNfBaK95J4",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "http://explorer.fuertecoin.network:3001/block/$hash$",
+        "explorerTxLink": "http://explorer.fuertecoin.network:3001/tx/{0}",
+        "explorerAccountLink": "http://explorer.fuertecoin.network:3001/address/{0}"
+    },
     "fulminare": {
         "name": "Fulminare",
         "symbol": "FLMN",
@@ -1643,6 +1769,128 @@
         "explorerTxLink": "https://groestlsight.groestlcoin.org/tx/{0}",
         "explorerAccountLink": "https://groestlsight.groestlcoin.org/address/{0}"
     },
+    "gainprox": {
+        "name": "GainProX",
+        "canonicalName": "GainProX",
+        "symbol": "GPRX",
+        "family": "bitcoin",
+        "website": "https://gainprox.com/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/ezMEyf7tcj",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.gainprox.com/block/$height$",
+        "explorerTxLink": "https://explorer.gainprox.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.gainprox.com/address/{0}"
+    },
+    "gamepass": {
+        "name": "Gamepass",
+        "symbol": "GPN",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://gamepass.network/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.com/invite/8TSkNhaDpS",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasProofOfGameplayAddress": true,
+        "hasDevFundAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.gamepass.network/block/$hash$",
+        "explorerTxLink": "https://explorer.gamepass.network/tx/{0}",
+        "explorerAccountLink": "https://explorer.gamepass.network/address/{0}"
+    },
+    "garlicoin": {
+        "name": "Garlicoin",
+        "symbol": "GRLC",
+        "family": "bitcoin",
+        "website": "https://garlicoin.io/",
+        "market": "https://www.coingecko.com/en/coins/garlicoin",
+        "github": "https://github.com/GarlicoinOrg/Garlicoin",
+        "twitter": "https://twitter.com/garliccoin",
+        "telegram": "https://t.me/GarlicoinOfficial",
+        "discord": "https://discord.com/invite/hxR8wD6",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "allium"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://garlicblocks.com/block/$hash$",
+        "explorerTxLink": "https://garlicblocks.com/tx/{0}",
+        "explorerAccountLink": "https://garlicblocks.com/address/{0}"
+    },
+    "goodmorningnetwork": {
+        "name": "GoodmorningNetwork",
+        "symbol": "GM",
+        "family": "bitcoin",
+        "website": "https://goodmorningnetwork.org/",
+        "market": "",
+        "github": "https://github.com/GoodMorningNetWork/GoodMorningNetWork",
+        "twitter": "https://twitter.com/MorningWor94299",
+        "telegram": "https://t.me/GoodMorningNetWork",
+        "discord": "https://discord.gg/yZehDDGZsp",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "rwahash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "rwahash"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "hasMasterNodes": true,
+        "hasFoundation": true,
+        "explorerBlockLink": "https://explorer.goodmorningnetwork.org/block/$hash$",
+        "explorerTxLink": "https://explorer.goodmorningnetwork.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.goodmorningnetwork.org/address/{0}"
+    },
     "hellar": {
         "name": "Hellar",
         "symbol": "HEL",
@@ -1768,6 +2016,37 @@
         "explorerBlockLink": "https://hvq.althashers.com/block/$hash$",
         "explorerTxLink": "https://hvq.althashers.com/tx/{0}",
         "explorerAccountLink": "https://hvq.althashers.com/address/{0}"
+    },
+    "gainprox": {
+        "name": "GainProX",
+        "canonicalName": "GainProX",
+        "symbol": "GPRX",
+        "family": "bitcoin",
+        "website": "https://gainprox.com/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/ezMEyf7tcj",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.gainprox.com/block/$height$",
+        "explorerTxLink": "https://explorer.gainprox.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.gainprox.com/address/{0}"
     },
     "gamepass": {
         "name": "Gamepass",
@@ -2965,39 +3244,6 @@
         "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
         "explorerAccountLink": "https://explorer.raptoreum.com/address/{0}"
     },
-    "rheix": {
-        "name": "Rheix",
-        "canonicalName": "Rheix",
-        "symbol": "RHX",
-        "family": "bitcoin",
-        "website": "https://rheix.com/",
-        "market": "",
-        "twitter": "",
-        "telegram": "",
-        "discord": "https://discord.gg/9wgVDHMMyR",
-        "github": "https://github.com/rheixverse/rheix",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "ghostrider"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "hasFounderFee": true,
-        "hasMasterNodes": true,
-        "hasSmartNodes": true,
-        "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.rheix.com/block/$hash$",
-        "explorerTxLink": "https://explorer.rheix.com/tx/{0}",
-        "explorerAccountLink": "https://explorer.rheix.com/address/{0}"
-    },
     "redblock": {
         "name": "RedBlock",
         "symbol": "REDB",
@@ -3025,6 +3271,40 @@
         "explorerBlockLink": "http://explorer.redblockcoin.com/block/$height$",
         "explorerTxLink": "http://explorer.redblockcoin.com/tx/{0}",
         "explorerAccountLink": "http://explorer.redblockcoin.com/address/{0}"
+    },
+    "rheix": {
+        "name": "Rheix",
+        "canonicalName": "Rheix",
+        "symbol": "RHX",
+        "family": "bitcoin",
+        "website": "https://rheix.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.gg/9wgVDHMMyR",
+        "github": "https://github.com/rheixverse/rheix",
+        "explorer": "https://explorer.rheix.com",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+	"hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.rheix.com/block/$hash$",
+        "explorerTxLink": "https://explorer.rheix.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.rheix.com/address/{0}"
     },
     "russellcoin": {
         "name": "RussellCoin",
@@ -4388,11 +4668,7 @@
         },
         "blockHasher": {
             "hash": "reverse",
-            "args": [
-				{
-					"hash": "yespower"
-				}
-			]
+            "args": [{"hash": "yespower"}]
         },
         "hasMasterNodes": true,
         "shareMultiplier": 65536,
