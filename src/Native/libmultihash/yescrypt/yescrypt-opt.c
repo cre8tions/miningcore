@@ -35,7 +35,7 @@
 #include "sha256.h"
 #include "sysendian.h"
 
-#include "yescrypt-platform.c"
+#include "yescrypt-platform.h"
 
 static inline uint32_t
 le32dec(const void *pp)
