@@ -14,7 +14,7 @@
         "banOnInvalidShares": false
     },
     "notifications": {
-        "enabled": true,
+        "enabled": false,
         "email": {
             "host": "smtp.example.com",
             "port": 587,
@@ -40,7 +40,7 @@
     },
     "paymentProcessing": {
         "enabled": true,
-        "interval": 600,
+        "interval": 3600,
         "shareRecoveryFile": "recovered-shares.txt"
     },
     "api": {
@@ -49,7 +49,7 @@
         "port": 4000,
         "metricsIpWhitelist": [ ],
         "rateLimiting": {
-            "disabled": true,
+            "disabled": false,
             "rules": [
                 {
                     "Endpoint": "*",
@@ -108,7 +108,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 0.01,
+                "minimumPayment": 1,
                 "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -162,8 +162,62 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 10,
+                "minimumPayment": 1,
                 "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "fren-solo",
+            "enabled": true,
+            "coin": "frencoin",
+            "address": "FHaCxyoRwW4u5WfcctbVvHsbU75Sn9JNw8",
+            "rewardRecipients": [
+                {
+                    "address": "FGzBdJXHRnQJyRT9fg4vm1nrxNSjh2HcNa",
+                    "percentage": 0.5
+                }
+            ],
+            "blockRefreshInterval": 1000,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3072": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 4206,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29200"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 10,
+                "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
