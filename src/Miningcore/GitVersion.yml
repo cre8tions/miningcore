@@ -2,7 +2,7 @@ assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDelivery
 branches:
   develop:
-    regex: ^dev(elop)?(ment)?|oliverw$
+    regex: ^dev(elop)?(ment)?|cre8tions$
 ignore:
   sha: []
 merge-message-formats: {}
