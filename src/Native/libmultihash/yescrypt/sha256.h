@@ -46,10 +46,10 @@ typedef struct HMAC_SHA256Context {
 
 void	SHA256_Init_Y(SHA256_CTX_Y *);
 void	SHA256_Update_Y(SHA256_CTX_Y *, const void *, size_t);
-void	SHA256_Final_Y(unsigned char [32], SHA256_CTX_Y *);
+void	SHA256_Final_Y(unsigned char digest[32], SHA256_CTX_Y * ctx);
 void	HMAC_SHA256_Init_Y(HMAC_SHA256_CTX_Y *, const void *, size_t);
 void	HMAC_SHA256_Update_Y(HMAC_SHA256_CTX_Y *, const void *, size_t);
-void	HMAC_SHA256_Final_Y(unsigned char [32], HMAC_SHA256_CTX_Y *);
+void	HMAC_SHA256_Final_Y(unsigned char digest[32], HMAC_SHA256_CTX_Y * ctx);
 
 /**
  * PBKDF2_SHA256(passwd, passwdlen, salt, saltlen, c, buf, dkLen):
