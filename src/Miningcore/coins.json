@@ -460,6 +460,36 @@
         "explorerTxLink": "https://explorer.btcnickel.com/tx/{0}",
         "explorerAccountLink": "https://explorer.btcnickel.com/address/{0}"
     },
+    "bitnet": {
+        "name": "BitNet",
+        "canonicalName": "BitNet",
+        "symbol": "BIT",
+        "family": "bitcoin",
+        "website": "https://bitnet-io.org/",
+        "market": "https://www.coingecko.com/en/coins/bitnet-io",
+        "github": "https://github.com/bitnet-io/bitnet-core",
+        "twitter": "https://twitter.com/Bitnet_io",
+        "telegram": "https://t.me/bitnet00",
+        "discord": "https://discord.com/invite/6Qq3wvrKRm",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "aurum"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://bitchair.io/block/$hash$",
+        "explorerTxLink": "https://bitchair.io/tx/{0}",
+        "explorerAccountLink": "https://bitchair.io/address/{0}"
+    },
     "bitflate": {
         "name": "Bitflate",
         "canonicalName": "Bitflate",
@@ -6167,7 +6197,7 @@
         "explorerTxLink": "https://explorer.rethereum.org//tx/{0}",
         "explorerAccountLink": "https://explorer.rethereum.org//address/{0}"
     },
-    "bitnet": {
+    "bitnetmoney": {
         "name": "Bitnet Money",
         "canonicalName": "Bitnet-Money",
         "symbol": "BTN",
