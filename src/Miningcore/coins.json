@@ -485,7 +485,7 @@
                 }
             ]
         },
-        "shareMultiplier": 65536,
+        "shareMultiplier": 4096,
         "explorerBlockLink": "https://bitchair.io/block/$hash$",
         "explorerTxLink": "https://bitchair.io/tx/{0}",
         "explorerAccountLink": "https://bitchair.io/address/{0}"
