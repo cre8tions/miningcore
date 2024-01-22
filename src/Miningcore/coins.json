@@ -4217,6 +4217,37 @@
         "explorerTxLink": "https://explorer.skytere.com/tx/{0}",
         "explorerAccountLink": "https://explorer.skytere.com/address/{0}"
     },
+    "subinetwork": {
+        "name": "Subi Network",
+        "canonicalName": "Subi Network",
+        "symbol": "SUBI",
+        "family": "bitcoin",
+        "website": "https://subinetwork.com/",
+        "market": "https://www.coingecko.com/en/coins/subi-network",
+        "twitter": "https://twitter.com/subi_network",
+        "discord": "https://discord.com/invite/nmaXNMg4RU",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.subinetwork.com/block/$hash$",
+        "explorerTxLink": "https://explorer.subinetwork.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.subinetwork.com/address/{0}"
+    },
     "sugarchain": {
         "name": "Sugarchain",
         "canonicalName": "SugarChain",
