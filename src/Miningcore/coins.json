@@ -1865,127 +1865,39 @@
         "explorerTxLink": "https://groestlsight.groestlcoin.org/tx/{0}",
         "explorerAccountLink": "https://groestlsight.groestlcoin.org/address/{0}"
     },
-"gainprox": {
-        "name": "GainProX",
-        "canonicalName": "GainProX",
-        "symbol": "GPRX",
+    "guncoin": {
+        "name": "Guncoin",
+        "symbol": "GUN",
         "family": "bitcoin",
-        "website": "https://gainprox.com/",
+        "website": "",
+        "market": "",
         "twitter": "",
         "telegram": "",
-        "discord": "https://discord.gg/ezMEyf7tcj",
+        "discord": "",
         "coinbaseHasher": {
             "hash": "sha256d"
         },
         "headerHasher": {
-            "hash": "ghostrider"
+            "hash": "neoscrypt",
+            "args": [
+                0
+            ]
         },
         "blockHasher": {
             "hash": "reverse",
             "args": [
                 {
-                    "hash": "sha256d"
+                    "hash": "neoscrypt",
+                    "args": [
+                        0
+                    ]
                 }
             ]
         },
-        "hasFounderFee": true,
-        "hasMasterNodes": true,
-	"hasSmartNodes": true,
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.gainprox.com/block/$height$",
-        "explorerTxLink": "https://explorer.gainprox.com/tx/{0}",
-        "explorerAccountLink": "https://explorer.gainprox.com/address/{0}"
-    },
-    "gamepass": {
-        "name": "Gamepass",
-        "symbol": "GPN",
-        "family": "progpow",
-        "progpower": "kawpow",
-        "website": "https://gamepass.network/",
-        "market": "",
-        "twitter": "",
-        "telegram": "",
-        "discord": "https://discord.com/invite/8TSkNhaDpS",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "sha256d"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "hasProofOfGameplayAddress": true,
-        "hasDevFundAddress": true,
-        "shareMultiplier": 1,
-        "explorerBlockLink": "https://explorer.gamepass.network/block/$hash$",
-        "explorerTxLink": "https://explorer.gamepass.network/tx/{0}",
-        "explorerAccountLink": "https://explorer.gamepass.network/address/{0}"
-    },
-    "garlicoin": {
-        "name": "Garlicoin",
-        "symbol": "GRLC",
-        "family": "bitcoin",
-        "website": "https://garlicoin.io/",
-        "market": "https://www.coingecko.com/en/coins/garlicoin",
-        "github": "https://github.com/GarlicoinOrg/Garlicoin",
-        "twitter": "https://twitter.com/garliccoin",
-        "telegram": "https://t.me/GarlicoinOfficial",
-        "discord": "https://discord.com/invite/hxR8wD6",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "allium"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "shareMultiplier": 256,
-        "explorerBlockLink": "https://garlicblocks.com/block/$hash$",
-        "explorerTxLink": "https://garlicblocks.com/tx/{0}",
-        "explorerAccountLink": "https://garlicblocks.com/address/{0}"
-    },
-    "goodmorningnetwork": {
-        "name": "GoodmorningNetwork",
-        "symbol": "GM",
-        "family": "bitcoin",
-        "website": "https://goodmorningnetwork.org/",
-        "market": "",
-        "github": "https://github.com/GoodMorningNetWork/GoodMorningNetWork",
-        "twitter": "https://twitter.com/MorningWor94299",
-        "telegram": "https://t.me/GoodMorningNetWork",
-        "discord": "https://discord.gg/yZehDDGZsp",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "rwahash"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "rwahash"
-                }
-            ]
-        },
-        "shareMultiplier": 256,
-        "hasMasterNodes": true,
-        "hasFoundation": true,
-        "explorerBlockLink": "https://explorer.goodmorningnetwork.org/block/$hash$",
-        "explorerTxLink": "https://explorer.goodmorningnetwork.org/tx/{0}",
-        "explorerAccountLink": "https://explorer.goodmorningnetwork.org/address/{0}"
+        "explorerBlockLink": "",
+        "explorerTxLink": "",
+        "explorerAccountLink": ""
     },
     "hellar": {
         "name": "Hellar",
@@ -6643,5 +6555,30 @@
         "explorerBlockLink": "https://explorer.ergoplatform.com/en/blocks/$hash$",
         "explorerTxLink": "https://explorer.ergoplatform.com/en/transactions/{0}",
         "explorerAccountLink": "https://explorer.ergoplatform.com/en/addresses/{0}"
+    },
+    "sispop": {
+        "name": "Sispop",
+        "canonicalName": "Sispop",
+        "symbol": "SISPOP",
+        "family": "cryptonote",
+        "website": "https://explorer.sispop.site/",
+        "market": "https://xeggex.com/market/SISPOP_USDT",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "hash": "randomx",
+        "hashVariant": 0,
+        "smallestUnit": 1000000000000,
+        "addressPrefix": 18,
+        "addressPrefixStagenet": 24,
+        "addressPrefixTestnet": 53,
+        "addressPrefixIntegrated": 19,
+        "addressPrefixIntegratedStagenet": 25,
+        "addressPrefixIntegratedTestnet": 54,
+        "subAddressPrefix": 42,
+        "subAddressPrefixTestnet": 63,
+        "subAddressPrefixStagenet": 36,
+        "explorerBlockLink": "https://explorer.sispop.site/block/$height$",
+        "explorerTxLink": "https://explorer.sispop.site/transaction/{0}"
     }
 }
