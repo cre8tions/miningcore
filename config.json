@@ -1,12 +1,12 @@
 {
     "logging": {
-        "level": "info",
+        "level": "debug",
         "enableConsoleLog": true,
         "enableConsoleColors": true,
         "logFile": "core.log",
         "apiLogFile": "api.log",
         "logBaseDirectory": "/home/joe/repos/miningcore/build/logs",
-        "perPoolLogFile": false
+        "perPoolLogFile": true
     },
     "banning": {
         "manager": "Integrated",
@@ -40,7 +40,7 @@
     },
     "paymentProcessing": {
         "enabled": true,
-        "interval": 3600,
+        "interval": 600,
         "shareRecoveryFile": "recovered-shares.txt"
     },
     "api": {
@@ -58,17 +58,20 @@
                 }
             ],
             "ipWhitelist": []
-        }
+        },
+        "adminIpWhitelist": [
+            "192.168.1.74"
+        ]
     },
     "pools": [
         {
-            "id": "fsc1",
+            "id": "fscsolo",
             "enabled": true,
             "coin": "fsociety",
-            "address": "FFYXQRobL4mVhs1mdHU4wsrwnun7gCeFgG",
+            "address": "FDGgSxLNNipFpZS4CHf7YqqhnNMP1EoUPR",
             "rewardRecipients": [
                 {
-                    "address": "FFYXQRobL4mVhs1mdHU4wsrwnun7gCeFgG",
+                    "address": "F6JC5m89B4acfg2DyKZ5KQDRuncDb3VQ63",
                     "percentage": 0.5
                 }
             ],
@@ -109,7 +112,7 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 1,
-                "payoutScheme": "PPLNS",
+                "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
@@ -163,14 +166,14 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 1,
-                "payoutScheme": "PPLNS",
+                "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
             }
         },
         {
-            "id": "fren-solo",
+            "id": "frensolo",
             "enabled": true,
             "coin": "frencoin",
             "address": "FHaCxyoRwW4u5WfcctbVvHsbU75Sn9JNw8",
@@ -212,6 +215,60 @@
                     "user": "admin",
                     "password": "admin",
                     "zmqBlockNotifySocket": "tcp://127.0.0.1:29200"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 10,
+                "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "gunsolo",
+            "enabled": true,
+            "coin": "guncoin",
+            "address": "GZRd4SrwDBovHnVUbtNU58WEUGh4XpvMRe",
+            "rewardRecipients": [
+                {
+                    "address": "Gd9pEbqKHYamq8aH7C5gfvK2jTM29w7kUd",
+                    "percentage": 0.5
+                }
+            ],
+            "blockRefreshInterval": 1000,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3082": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 42953,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29001"
                 }
             ],
             "paymentProcessing": {
