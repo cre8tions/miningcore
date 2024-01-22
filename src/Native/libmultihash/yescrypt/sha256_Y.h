@@ -26,8 +26,8 @@
  * $FreeBSD: src/lib/libmd/sha256_Y.h,v 1.2 2006/01/17 15:35:56 phk Exp $
  */
 
-#ifndef _SHA256_H_
-#define _SHA256_H_
+#ifndef _SHA256_Y_H_
+#define _SHA256_Y_H_
 
 #ifdef __cplusplus
 extern "C" {
