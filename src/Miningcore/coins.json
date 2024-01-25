@@ -509,6 +509,40 @@
         "explorerTxLink": "https://bitchair.io/tx/{0}",
         "explorerAccountLink": "https://bitchair.io/address/{0}"
     },
+    "bitfishcoin": {
+        "name": "BitFishCoin",
+        "canonicalName": "BitFishCoin",
+        "symbol": "BTSC",
+        "family": "bitcoin",
+        "website": "https://altcoin-master.github.io/bitfishcoin/",
+        "market": "",
+        "github": "https://github.com/Altcoin-Master/bitfishcoin",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "blockTime": 60,
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://btscchain.taichicoin.org/block/$hash$",
+        "explorerTxLink": "https://btscchain.taichicoin.org/tx/{0}",
+        "explorerAccountLink": "https://btscchain.taichicoin.org/address/{0}"
+    },
     "bitflate": {
         "name": "Bitflate",
         "canonicalName": "Bitflate",
@@ -674,35 +708,6 @@
             ]
         },
         "shareMultiplier": 65536,
-        "hasFounderFee": true,
-        "hasMasterNodes": true,
-        "hasSmartNodes": true,
-        "explorerBlockLink": "https://explorer.butkoin.com/block/$hash$/mainnet",
-        "explorerTxLink": "https://explorer.butkoin.com/tx/{0}/mainnet",
-        "explorerAccountLink": "https://explorer.butkoin.com/address/{0}/mainnet"
-    },
-    "butkoin-yespower": {
-        "name": "ButKoin YesPower",
-        "canonicalName": "ButKoin",
-        "symbol": "BUTK",
-        "family": "bitcoin",
-        "website": "https://butkoin.com/",
-        "market": "",
-        "twitter": "https://twitter.com/ButKoin",
-        "telegram": "",
-        "discord": "https://discord.com/invite/j7T82mKkrw",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "yespower"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [ { "hash": "sha256d" } ]
-        },
-        "blockTemplateRpcExtraParams": [ "yespower" ],
-        "shareMultiplier": 4194304,
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -1652,7 +1657,8 @@
         "shareMultiplier": 1,
         "explorerBlockLink": "https://explorer.frencoin.org/block/$hash$",
         "explorerTxLink": "https://explorer.frencoin.org/tx/{0}",
-        "explorerAccountLink": "https://explorer.frencoin.org/address/{0}"
+        "explorerAccountLink": "https://explorer.frencoin.org/address/{0}",
+        "blockTime": 30
     },
     "fsociety": {
         "name": "Fsociety",
@@ -1678,6 +1684,7 @@
                 }
             ]
         },
+        "blockTime": 120,
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -5198,8 +5205,8 @@
         "explorerAccountLink": "https://explorer.xazab.xyz/insight/address/{0}"
     },
     "varsechain": {
-        "name": "varsechain",
-        "canonicalName": "Yarvsechain",
+        "name": "VarseChain",
+        "canonicalName": "VarseChain",
         "symbol": "VARSE",
         "family": "bitcoin",
         "website": "https://varsechain.com/",
@@ -5221,6 +5228,7 @@
                 }
             ]
         },
+        "blockTime": 60,
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -5228,6 +5236,39 @@
         "explorerBlockLink": "https://explorer.varsechain.com/block/$height$",
         "explorerTxLink": "https://explorer.varsechain.com/tx/{0}",
         "explorerAccountLink": "https://explorer.varsechain.com/address/{0}"
+    },
+    "nikitonium": {
+        "name": "Nikitonium",
+        "canonicalName": "Nikitonium",
+        "symbol": "NIKI",
+        "family": "bitcoin",
+        "website": "https://nikitonium.com/",
+        "market": "https://xeggex.com/asset/NIKI",
+        "twitter": "https://twitter.com/nikitobase",
+        "telegram": "#",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "blockTime": 60,
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.nikitonium.com/block/$height$",
+        "explorerTxLink": "https://explorer.nikitonium.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.nikitonium.com/address/{0}"
     },
     "yerbas": {
         "name": "Yerbas",
