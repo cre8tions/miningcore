@@ -279,6 +279,168 @@
                     "factor": 2
                 }
             }
+        },
+        {
+            "id": "varsesolo",
+            "enabled": true,
+            "coin": "varsechain",
+            "address": "VKdDStc48Wy3Sso162u4tWXkaCkpzHupMp",
+            "rewardRecipients": [
+                {
+                    "address": "VC1WY3zxZGbULq7guhQV8YMpxNFpurBSUS",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 1000,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3083": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 17086,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29002"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1,
+                "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "btscsolo",
+            "enabled": true,
+            "coin": "bitfishcoin",
+            "address": "BhnZs1ahgab6sQ83ZmfMXfQZZFVMZJpaMv",
+            "rewardRecipients": [
+                {
+                    "address": "BVPMuBz5YjWVhet671QzghKEbkiDgoTveb",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 1000,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3084": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 11000,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29003"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 352,
+                "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "nikisolo",
+            "enabled": true,
+            "coin": "nikitonium",
+            "address": "NaAidW4qwkLn1nCsc6WuBVEbAjpTk3uZUY",
+            "rewardRecipients": [
+                {
+                    "address": "NNjjAZFvyp3CSZnbG9yCbmd7NWMZS4LmZn",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 1000,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3085": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 11001,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29004"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 352,
+                "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
         }
     ]
 }

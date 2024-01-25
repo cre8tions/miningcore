@@ -1,0 +1,196 @@
+/* .table {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 20px;
+	line-height: 22px;
+	color: #333;
+	max-width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+
+
+.table tr {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+}
+
+.table tr:hover {
+	background-color: #ccc;
+}
+
+.table td {
+    padding: 0.5rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+}
+
+.table td:hover {
+	cursor: pointer;
+}
+
+.table a {
+	color: #000000 ;
+}
+
+.table a:hover {
+	text-decoration: nounderline;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+} */
+
+.table th {
+	padding: 0.75rem;
+	vertical-align: middle;
+	border-top: 1px solid #dee2e6;
+	text-align: center;
+	font-size: 2rem;
+  }
+
+  .shadow {
+	box-shadow: 1px 2px 5px #000000;
+  }
+
+  #pool-coins tr {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.15rem;
+	text-align: right;
+  }
+
+  #pool-coins th {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.45rem;
+	text-align: right;
+  }
+
+  #pool-coins tr:hover {
+	background-color: #ccc;
+  }
+
+  #pool-coins td:hover {
+	cursor: pointer;
+  }
+
+  #pool-coins td {
+	font-size: 1.15rem;
+	vertical-align: middle;
+  }
+
+  #pool-coins td.coin {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+	font-size: 1.15rem;
+	text-align: right;
+  }
+
+  #pool-coins td.gomine {
+	text-align: left !important;
+  }
+
+  #pool-coins td.notconnected {
+	text-align: center !important;
+  }
+
+  #pool-coins td.fee {
+	text-align: right !important;
+  }
+
+  #pool-coins img.coinimg {
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin-left: .7rem;
+	margin-right: .7rem;
+	display: inline-block;
+  }
+
+  #pool-coins a {
+	color: #000000 ;
+  }
+
+  #pool-coins a:hover {
+	text-decoration: nounderline;
+  }
+
+  #miner-workers tr.miner-workers {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #miner-workers td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #miners tr.miners {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #miners td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #blocks tr.blocks {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #blocks td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #payments tr.payments {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #payments td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #pool-config tr.pool-config {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #pool-config td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #miner-config tr.miner-config {
+	background-color: #f4f6fa;
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #miner-config td {
+	border-top: 1px solid #dee2e6;
+	font-size: 1.05rem;
+  }
+
+  #pool-config td.card-btn {
+
+	text-transform: uppercase;
+	text-align: left;
+
+  }
