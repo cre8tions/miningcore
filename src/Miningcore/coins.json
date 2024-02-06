@@ -2920,6 +2920,40 @@
         "explorerTxLink": "https://openchains.info/coin/ntbc/tx/{0}",
         "explorerAccountLink": "https://openchains.info/coin/ntbc/address/{0}"
     },
+    "nikitonium": {
+        "name": "Nikitonium",
+        "canonicalName": "Nikitonium",
+        "symbol": "NIKI",
+        "family": "bitcoin",
+        "website": "https://nikitonium.com/",
+        "market": "https://coinpaprika.com/coin/niki-nikito/",
+        "twitter": "https://twitter.com/nikitobase",
+        "telegram": "",
+        "discord": "https://discord.com/invite/QFSvSuvgGq",
+        "github": "https://github.com/nikitonium/",
+        "explorer": "https://explorer.nikitonium.com/",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.nikitonium.com/block/$hash$",
+        "explorerTxLink": "https://explorer.nikitonium.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.nikitonium.com/address/{0}"
+    },
     "opticalbitcoin": {
         "name": "Optical BTC",
         "symbol": "OBTC",
@@ -4319,6 +4353,37 @@
         "explorerTxLink": "https://explorer.skytere.com/tx/{0}",
         "explorerAccountLink": "https://explorer.skytere.com/address/{0}"
     },
+    "subinetwork": {
+        "name": "Subi Network",
+        "canonicalName": "Subi Network",
+        "symbol": "SUBI",
+        "family": "bitcoin",
+        "website": "https://subinetwork.com/",
+        "market": "https://www.coingecko.com/en/coins/subi-network",
+        "twitter": "https://twitter.com/subi_network",
+        "discord": "https://discord.com/invite/nmaXNMg4RU",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.subinetwork.com/block/$hash$",
+        "explorerTxLink": "https://explorer.subinetwork.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.subinetwork.com/address/{0}"
+    },
     "sugarchain": {
         "name": "Sugarchain",
         "canonicalName": "SugarChain",
@@ -5081,7 +5146,7 @@
             "hash": "reverse",
             "args": [
                 {
-                    "hash": "sha256d"
+                    "hash": "yespower"
                 }
             ]
         },
