@@ -813,6 +813,37 @@
         "explorerTxLink": "https://cann.tokenview.com/en/tx/{0}",
         "explorerAccountLink": "https://cann.tokenview.com/en/address/{0}"
     },
+    "cointaft": {
+        "name": "CoinTAFT",
+        "canonicalName": "CoinTAFT",
+        "symbol": "TAFT",
+        "family": "bitcoin",
+        "website": "https://www.cointaft.cloud/",
+        "twitter": "",
+        "telegram": "",
+        "discord": "https://discord.com/invite/eJj4eAMAq7",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.cointaft.cloud/block/$height$",
+        "explorerTxLink": "https://explorer.cointaft.cloud/tx/{0}",
+        "explorerAccountLink": "https://explorer.cointaft.cloud/address/{0}"
+    },
     "cpuchain": {
         "name": "CPUchain",
         "canonicalName": "CPUchain",
@@ -1654,6 +1685,7 @@
                 }
             ]
         },
+        "blocktime": 30,
         "shareMultiplier": 1,
         "explorerBlockLink": "https://explorer.frencoin.org/block/$hash$",
         "explorerTxLink": "https://explorer.frencoin.org/tx/{0}",
@@ -1811,6 +1843,7 @@
                 }
             ]
         },
+        "blocktime": 60,
         "hasCommunityAddress": true,
         "shareMultiplier": 1,
         "explorerBlockLink": "https://explorer.mewccrypto.com/block/$hash$",
@@ -6653,3 +6686,4 @@
         "explorerTxLink": "https://explorer.sispop.site/transaction/{0}"
     }
 }
+
