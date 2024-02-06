@@ -75,9 +75,9 @@ body,
 button,
 input,
 textarea {
-  font-size: 13px;
+  font-size: 12px;
   font-family: "Roboto Condensed", sans-serif;
-  line-height: 15px;
+  line-height: 16px;
   color: #666666;
 }
 

@@ -1,0 +1,56 @@
+{{ include('header.html.twig') }}
+
+<div class="dashboard">
+  <div class="columns">
+    <div class="two-columns">
+    </div>
+    <div class="eight-columns">
+      <h1 class="big-message align-center blue">Best Miners </h1>
+    </div>
+    <div class="two-columns">
+   </div>
+  </div>
+</div>
+
+<div class="with-padding">
+  <div class="columns">
+    <div class="two-columns">
+      <h4 class="green underline">Pool Info</h4>
+      <dl class="definition inline">
+        <dt>Blockchain Height</dt>
+        <dd id="blockchainHeight"></dd>
+
+        <dt>Total blocks found</dt>
+        <dd id="totalBlocksFound"></dd>
+
+        <dt>Total Paid</dt>
+        <dd id="totalPaid"></dd>
+
+        <dt>Last Block Found by Pool</dt>
+        <dd id="lastBlockFound"></dd>
+
+        <dt>Price (USDT)</dt>
+        <dd id="lastPrice"></dd>
+      </dl>
+    </div>
+    <div class="ten-columns">
+      <div class="block margin-bottom">
+        <h3 class="block-title">Miners</h3>
+        <table class="simple-table responsive-table" id="pool-coins">
+          <thead>
+            <tr class="miners">
+              <th>Address</th>
+              <th>Hashrate</th>
+              <th>Share Rate</th>
+            </tr>
+          </thead>
+          <tbody id="minerList"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      {{ include('footer_menu.html.twig') }}

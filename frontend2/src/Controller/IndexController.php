@@ -29,4 +29,10 @@ class IndexController extends AbstractController
     {
         return $this->render('index.html.twig', []);
     }
+
+    #[Route('/support')]
+    public function support(): Response
+    {
+        return $this->render('support.html.twig', []);
+    }
 }
