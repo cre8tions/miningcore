@@ -44,7 +44,7 @@
 		.table-header + .table > thead > tr > th,
 		.table-header + .table > thead > tr > td {
 			border-top: 0;
-			font-size: 2.55rem;
+			font-size: 1.55rem;
 		}
 
 	.table > tbody > tr > th,
@@ -160,7 +160,7 @@ th.button-height {
 		.simple-table > thead > tr > th,
 		.simple-table > thead > tr > td {
 			font-weight: bold;
-			font-size: 15px;
+			font-size: 14px;
 			font-family: 'Roboto Condensed', sans-serif;
 		}
 		.simple-table > tfoot > tr > th,

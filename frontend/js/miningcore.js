@@ -707,6 +707,7 @@ function loadDashboardWorkerList(walletAddress) {
       }
       $("#workerCount").text(workerCount);
       $("#workerList").html(workerList);
+      $("#coinImage").html();
     })
     .fail(function () {
       $.notify(

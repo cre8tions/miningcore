@@ -1,0 +1,86 @@
+{{ include('header.html.twig') }}
+
+<div class="dashboard">
+  <div class="columns">
+    <div class="three-columns">
+
+      </div>
+    <div class="six-columns">
+      <h1 class="big-message align-center blue">Connection Info</h1>
+    </div>
+    <div class="three-columns">
+
+      </div>
+  </div>
+</div>
+
+<div class="with-padding">
+  <div class="columns">
+    <div class="three-columns">
+    </div>
+    <div class="three-columns">
+      <div class="block margin-bottom">
+        <h3 class="block-title">Payments</h3>
+        <table id="pool-config" class="simple-table responsive-table">
+            <thead>
+              <tr>
+                  <th class='align-right'>Item</th>
+                  <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="connectPoolConfig"></tbody>
+          </table>
+
+      </div>
+    </div>
+    <div class="three-columns">
+      <h1 class="underline">Getting started</h1><hr />
+      <p>
+        To get started mining and use this pool you need the following
+        <ul>
+          <li><span class="coinName"></span> Wallet address</li>
+          <li>crypto mining software that supports the  <span class="coinName"></span>  coin and aglorithm  <span class="algorithm"></span> </li>
+          <li>hardware to run it on. This can be you home PC, mining rig, ASIC miner or cloud mining</li>
+        </ul>
+        </br>
+
+        <h4> <span class="coinName"></span>  Wallet address</h4>
+        A wallet address is needed to payout you shares mined at this pool server.</br>
+        When the total mined value is past the payout threshold, we will send your coin to this wallet address.</br>
+        </br></br>
+
+        <h4>crypto mining software</h4>
+        To mine at this pool you can use any miner supporting the  <span class="algorithm"></span> aglorithm or  <span class="coinName"></span>  coin.</br>
+        Use an search engine and search for " <span class="coinName"></span>  miner software", and download the miner software and configure your crypto miner.</br>
+      </p>
+
+      <p>Where:</p>
+      <ul>
+        <li><strong>POOL STRATUM ADDRESS AND PORT</strong> - one off the stratum addresses above in the Pool Configuration section depending on the difficuty you want</li>
+        <li><strong>YOUR_WALLET_ADDRESS</strong>- your valid  <span class="coinName"></span>  wallet address</li>
+        <li>WORKERNAME</strong> - an optional workername can be used to identify the miner or RIG</li>
+        <li><strong>PASSWORD</strong> - use x or leave it blank</li>
+        </br>
+				Optional:
+				<li><strong>STATIC DIFFICULTY</strong> - to mine with a static (fixed) difficulty simply use&nbsp;<code>d=xxx</code>&nbsp;as password in your miner configuration where&nbsp;<code>xxx</code>&nbsp;denotes your preferred difficulty.</li>
+      </ul>
+      </br>
+
+      <hr />
+      <div class="well well-lg">
+        <span>For AMD Graphic cards in a Windows system, make sure you add this at the top of your .bat file:</span></br>
+        <pre class="pre-help">
+setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{ include('footer_menu.html.twig') }}

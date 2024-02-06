@@ -1,6 +1,6 @@
 {
     "logging": {
-        "level": "debug",
+        "level": "info",
         "enableConsoleLog": true,
         "enableConsoleColors": true,
         "logFile": "core.log",
@@ -40,7 +40,7 @@
     },
     "paymentProcessing": {
         "enabled": true,
-        "interval": 600,
+        "interval": 3600,
         "shareRecoveryFile": "recovered-shares.txt"
     },
     "api": {
@@ -49,18 +49,19 @@
         "port": 4000,
         "metricsIpWhitelist": [ ],
         "rateLimiting": {
-            "disabled": false,
+            "disabled": true,
             "rules": [
                 {
                     "Endpoint": "*",
                     "Period": "1s",
-                    "Limit": 5
+                    "Limit": 15
                 }
             ],
             "ipWhitelist": []
         },
         "adminIpWhitelist": [
-            "192.168.1.74"
+            "192.168.1.74",
+            "127.0.0.1"
         ]
     },
     "pools": [
@@ -75,7 +76,7 @@
                     "percentage": 0.5
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -129,7 +130,7 @@
                     "percentage": 0.5
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -183,7 +184,7 @@
                     "percentage": 0.5
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -219,7 +220,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 10,
+                "minimumPayment": 5000,
                 "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -237,7 +238,7 @@
                     "percentage": 0.5
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -291,7 +292,7 @@
                     "percentage": 0.45
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -327,7 +328,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 1,
+                "minimumPayment": 500,
                 "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -381,7 +382,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 352,
+                "minimumPayment": 5000,
                 "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -399,7 +400,7 @@
                     "percentage": 0.45
                 }
             ],
-            "blockRefreshInterval": 1000,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -437,6 +438,114 @@
                 "enabled": true,
                 "minimumPayment": 352,
                 "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "ltc",
+            "enabled": true,
+            "coin": "litecoin",
+            "address": "LbJdaUXgVRVGoxkSt5MmXztUrWdsh47Cwm",
+            "rewardRecipients": [
+                {
+                    "address": "LURBqeDwEeu8KyNwvWjQitAhpFoBowG4gS",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 0,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3086": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 9332,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29005"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 0.0001,
+                "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "cointaft",
+            "enabled": true,
+            "coin": "cointaft",
+            "address": "TBD1z7XHXxYDgHv5Tb3geoFCz3AmMPTF5f",
+            "rewardRecipients": [
+                {
+                    "address": "TR7cHTuCvy6rE4MfJkhkHsGMFKxDWvGdZK",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 0,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3087": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 10229,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29006"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1000,
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
