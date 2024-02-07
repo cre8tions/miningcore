@@ -2445,6 +2445,39 @@
         "explorerTxLink": "https://chainz.cryptoid.info/lcc/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/lcc/address.dws?{0}.htm"
     },
+    "litoreum": {
+        "name": "litoreum",
+        "canonicalName": "Litoreum",
+        "symbol": "LTRM",
+        "family": "bitcoin",
+        "website": "https://litoreum.org",
+        "market": "",
+        "github": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://ltrm.ghostrider.top/block/$hash$",
+        "explorerTxLink": "https://ltrm.ghostrider.top/tx/{0}",
+        "explorerAccountLink": "https://ltrm.ghostrider.top/address/{0}"
+    },
     "lightningcashr": {
         "name": "LightningCash-Reborn",
         "symbol": "LNCR",

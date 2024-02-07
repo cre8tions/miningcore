@@ -17,8 +17,7 @@
           <div class="one-column">
           </div>
           <div class="six-columns ">
-            <h1 class="big-message align-center blue">Super! Kunty Karen Koin (KKK) Main Pool</h1>
-            <div class="align-center"><img src="{{ asset('img/kkk128.png') }}"/></div>
+            <h1 class="big-message align-center blue">Don't let a Karen win, fuck that cunt</h1>
           </div>
           <div class="one-column">
           </div>
@@ -40,26 +39,11 @@
       <div class="with-padding">
         <div class="columns">
           <div class="two-columns">
-            <div class="block margin-bottom">
-              <span class="ribbon tiny"><span class="ribbon-inner">Cunts!</span></span>
-              <h3 class="block-title">News</h3>
-              <div class="align-center"><img src="{{ asset('img/kkk128.png') }}"/></div>
 
-              <div class="with-padding">
-                <div class="facts clearfix">
-                  <div class="fact">
-                    <span class="fact-value">Cunts everywhere!<span class="fact-unit"></span></span>
-                    Slap a cunt today!<br />
-                    <span class="fact-progress red">-5% ▼</span>
-                  </div>
-
-                </div>
-              </div>
-            </div>
           </div>
           <div class="eight-columns">
             <div class="block margin-bottom">
-              <span class="ribbon"><span class="ribbon-inner red-gradient glossy">Cunts</span></span>
+              <span class="ribbon"><span class="ribbon-inner red-gradient glossy">New!</span></span>
               <h3 class="block-title glossy licarbonen">Current Cunts</h3>
               <table class="simple-table" id="pool-coins">
                 <thead>
@@ -75,15 +59,55 @@
                     <th class="col-hide border-0"></th>
                   </tr>
                 </thead>
-
+                <tr class="coin-table-row"><td class="coin"><a href="/pool/kuntykaren"><img class="coinimg" src="../icon/kkk.png">Kunty Karen (KKK) </a></td><td class="algo">Plaintext</td><td class="miners">1</td><td class="pool-hash">--</td><td class="pool-ttf">∞</td><td class="fee"><span class="tag red-bg">PPLNS 95% </span></td><td class="net-hash">1 kH/s</td><td class="net-diff">0.000000001 </td><td class="gomine"><a href="pool/kkk.html"><button class="button">Go Mine <img class="coinimg" src="../icon/kkk.png">KuntyKaren</button></a></td></tr>
                 <tbody class="pool-coin-table"></tbody>
+
               </table>
             </div>
           </div>
           <div class="two-columns">
-            <h4 class="green underline">More Cunts</h4>
-            <div class="align-center"><img src="{{ asset('img/kkk128.png') }}"/>&nbsp;&nbsp;&nbsp;<img src="{{ asset('img/kkk128.png') }}"/>&nbsp;&nbsp;&nbsp;<img src="{{ asset('img/kkk128.png') }}"/></div>
+
           </div>
         </div>
+      </div>
+      <div class="new-row">
+        <div class="with-padding">
+          <div class="columns">
+            <div class="two-columns">
+
+            </div>
+            <div class="four-columns">
+              <div class="block margin-bottom">
+                <h3 class="block-title glossy licarbonen">Recent Blocks Found</h3>
+                <table class="simple-table responsive-table" id="pool-coins">
+                  <thead>
+                    <tr class="blocks">
+                        <th>Found</th>
+                        <th>Height</th>
+                        <th>Effort</th>
+                        <th>Status</th>
+                        <th>Reward</th>
+                        <th>Confirmation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="blockList"></tbody>
+                </table>
+
+              </div>
+            </div>
+            <div class="four-columns">
+              <div class="block margin-bottom">
+                <h3 class="block-title glossy licarbonen">Recent Payments Made</h3>
+
+              </div>
+
+            </div>
+            <div class="two-columns">
+
+            </div>
+          </div>
+        </div>
+
+
       </div>
       {{ include('/footer.html.twig') }}
