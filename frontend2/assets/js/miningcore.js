@@ -116,64 +116,68 @@ function loadIndex() {
 // Load HOME page content
 function loadHomePage() {
   console.log("Loading home page content");
-  return $.ajax(API + "pools")
-    .done(function (data) {
-      //const poolCoinTableTemplate = "";  //$(".index-coin-table-template").html();
 
-      var poolCoinTableTemplate = "";
-      var poolCount = 0;
-      var totalBlocks = 0;
-      var totalCoinPaid = 0;
-      var USDTPrice = 0
+    return $.ajax(API + "pools")
+      .done(function (data) {
+        //const poolCoinTableTemplate = "";  //$(".index-coin-table-template").html();
 
-      $.each(data.pools, function (index, value) {
-        poolCount++;
-        totalBlocks += value.totalBlocks;
-        totalCoinPaid += value.totalPaid;
+        var poolCoinTableTemplate = "";
+        var poolCount = 0;
+        var totalBlocks = 0;
+        var totalCoinPaid = 0;
+        var USDTPrice = 0
 
-        var coinLogo = "<img class='coinimg' src='../icon/" + value.coin.type.toLowerCase() + ".png' />";
-        var coinName = value.coin.name;
-        if (typeof coinName === "undefined" || coinName === null) {
-          coinName = value.coin.type;
-        }
+        $.each(data.pools, function (index, value) {
+          poolCount++;
+          totalBlocks += value.totalBlocks;
+          totalCoinPaid += value.totalPaid;
 
-        if (typeof value.coin.blockTime === "undefined" || value.coin.blockTime === null) var blocktime = 60;
-
-        if (value.poolStats.poolHashrate > 0) {
-          var ttf = ((value.networkStats.networkHashrate / value.poolStats.poolHashrate) * blocktime).toFixed(0);
-        } else var ttf = "--";
-
-
-        poolCoinTableTemplate += "<tr class='coin-table-row'>";
-        poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </a></td>";
-        poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
-        poolCoinTableTemplate += "<td class='miners'>" + (value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
-        poolCoinTableTemplate += "<td class='pool-hash'>" + (value.poolStats.poolHashrate > 0 ? _formatter(value.poolStats.poolHashrate, 3, "H/s") : "--") + "</td>";
-        poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf) + "</td>";
-        poolCoinTableTemplate += "<td class='fee'><small class='tag red-bg'>" + value.paymentProcessing.payoutScheme + " " + value.poolFeePercent + "% </small></td>";
-        poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 3, "H/s") + "</td>";
-        poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
-        poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + "</button></a></td>";
-        poolCoinTableTemplate += "</tr>";
-
-        var ttf2 = (value.networkStats.networkDifficulty * 2 ** 32) / value.poolStats.poolHashrate; // seconds
-        console.log(ttf2);
-      });
-
-      $(".pool-coin-table").html(poolCoinTableTemplate);
-      $("#poolCount").html(poolCount);
-      $("#totalBlocks").html(totalBlocks);
-      $("#totalCoinPaid").html(_formatter(totalCoinPaid, 0, "", false));
-
-      $(document).ready(function () {
-        $("#pool-coins tr").click(function () {
-          var href = $(this).find("a").attr("href");
-          if (href) {
-            window.location = href;
+          var coinLogo = "<img class='coinimg' src='../icon/" + value.coin.type.toLowerCase() + ".png' />";
+          var coinName = value.coin.name;
+          if (typeof coinName === "undefined" || coinName === null) {
+            coinName = value.coin.type;
           }
+
+          if (typeof value.coin.blockTime === "undefined" || value.coin.blockTime === null) var blocktime = 60;
+
+          if (value.poolStats.poolHashrate > 0) {
+            var ttf = ((value.networkStats.networkHashrate / value.poolStats.poolHashrate) * blocktime).toFixed(0);
+          } else var ttf = "--";
+
+
+          poolCoinTableTemplate += "<tr class='coin-table-row'>";
+          poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </a></td>";
+          poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
+          poolCoinTableTemplate += "<td class='miners'>" + (value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-hash'>" + (value.poolStats.poolHashrate > 0 ? _formatter(value.poolStats.poolHashrate, 3, "H/s") : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf) + "</td>";
+          poolCoinTableTemplate += "<td class='fee'><small class='tag red-bg'>" + value.paymentProcessing.payoutScheme + " " + value.poolFeePercent + "% </small></td>";
+          poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 3, "H/s") + "</td>";
+          poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
+          poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + "</button></a></td>";
+          poolCoinTableTemplate += "</tr>";
+
+          var ttf2 = (value.networkStats.networkDifficulty * 2 ** 32) / value.poolStats.poolHashrate; // seconds
+          console.log(ttf2);
         });
-      });
-    })
+
+        $(".pool-coin-table").html(poolCoinTableTemplate);
+        $("#poolCount").html(poolCount);
+        $("#totalBlocks").html(totalBlocks);
+        $("#totalCoinPaid").html(_formatter(totalCoinPaid, 0, "", false));
+
+        var blocks = loadBlocksPage(1);
+        $("#blockList").html(blocks);
+
+        $(document).ready(function () {
+          $("#pool-coins tr").click(function () {
+            var href = $(this).find("a").attr("href");
+            if (href) {
+              window.location = href;
+            }
+          });
+        });
+      })
     .fail(function () {
       var poolCoinTableTemplate = "";
 
@@ -188,7 +192,7 @@ function loadHomePage() {
 
       $(".pool-coin-table").html(poolCoinTableTemplate);
     });
-}
+  }
 
 // Load STATS page content
 function loadStatsPage() {
@@ -271,8 +275,15 @@ function loadMinersPage() {
 }
 
 // Load BLOCKS page content
-function loadBlocksPage() {
-  return $.ajax(API + "pools/" + currentPool + "/blocks?page=0&pageSize=100")
+function loadBlocksPage(isIndex = 0) {
+  var ajaxUrl = ""
+  if (isIndex) {
+    ajaxUrl = API + "blocks?page=0&pageSize=25"
+  } else {
+    ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=100"
+  }
+
+  return $.ajax(ajaxUrl)
     .done(function (data) {
       loadStatsData();
       var blockList = "";
