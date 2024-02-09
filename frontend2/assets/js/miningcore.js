@@ -192,7 +192,7 @@ function loadHomePage() {
 
       $(".pool-coin-table").html(poolCoinTableTemplate);
     });
-  }
+}
 
 // Load STATS page content
 function loadStatsPage() {
@@ -277,10 +277,12 @@ function loadMinersPage() {
 // Load BLOCKS page content
 function loadBlocksPage(isIndex = 0) {
   var ajaxUrl = ""
+  var showPoolId = 0;
   if (isIndex) {
-    ajaxUrl = API + "blocks?page=0&pageSize=25"
+    ajaxUrl = API + "blocks?page=0&pageSize=10"
+    showPoolId = 1;
   } else {
-    ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=100"
+    ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=25"
   }
 
   return $.ajax(ajaxUrl)
@@ -296,6 +298,9 @@ function loadBlocksPage(isIndex = 0) {
 
           blockList += "<tr>";
           blockList += "<td>" + createDate + "</td>";
+          if (showPoolId) {
+            blockList += "<td>" + value.poolId + "</td>";
+          }
           blockList += "<td><a href='" + value.infoLink + "' target='_blank'>" + value.blockHeight + "</a></td>";
           if (typeof value.effort !== "undefined") {
             blockList += "<td>" + formatLuck(effort) + "</td>";
@@ -332,7 +337,7 @@ function loadBlocksPage(isIndex = 0) {
 
 // Load PAYMENTS page content
 function loadPaymentsPage() {
-  return $.ajax(API + "pools/" + currentPool + "/payments?page=0&pageSize=500")
+  return $.ajax(API + "pools/" + currentPool + "/payments?page=0&pageSize=15")
     .done(function (data) {
       loadStatsData();
 
@@ -444,8 +449,6 @@ function loadWallet() {
   if ($("#walletAddress").val().length > 0) {
     localStorage.setItem(currentPool + "-walletAddress", $("#walletAddress").val());
   }
-  // var coin = window.location.hash.split(/[#/?]/)[1];
-  // var currentPage = window.location.hash.split(/[#/?]/)[2] || "stats";
   window.location.href = "#" + currentPool + "/" + currentPage + "/" + $("#walletAddress").val();
 }
 
@@ -530,13 +533,8 @@ function loadStatsData() {
           $("#website").html("<a href='" + value.coin.website + "' target='_blank'>" + value.coin.website + "</a>");
           $("#discord").html("<a href='" + value.coin.discord + "' target='_blank'>" + value.coin.discord + "</a>");
           $("#poolAddress").html("<a href='" + value.addressInfoLink + "' target='_blank'>" + value.address + "</a>");
-
-
-
-
           $("#poolHashRate").text(_formatter(value.poolStats.poolHashrate, 2, "H/s"));
           $("#poolMiners").text(value.poolStats.connectedMiners + " Miner(s)");
-
           $("#networkHashRate").text(_formatter(value.networkStats.networkHashrate, 2, "H/s"));
           $("#networkDifficulty").text(_formatter(value.networkStats.networkDifficulty, 4, ""));
           $("#poolEffort").text(_formatter(value.poolEffort * 100, 0, "%"));

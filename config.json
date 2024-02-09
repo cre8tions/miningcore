@@ -126,7 +126,7 @@
             "address": "MDSprkpLSStsXgHAHPMZakZ1yYN7PEQHFS",
             "rewardRecipients": [
                 {
-                    "address": "M82Jh9d9CTfGpjry2NKfDT8nFhFbkYQUur",
+                    "address": "MAVLH82NK3faipo3TU8vGS3iRupnsfMEFk",
                     "percentage": 0.5
                 }
             ],
@@ -555,10 +555,10 @@
             "id": "litoreum",
             "enabled": true,
             "coin": "litoreum",
-            "address": "TBD1z7XHXxYDgHv5Tb3geoFCz3AmMPTF5f",
+            "address": "LMbTMpnj3UGmWkgnYTj7fRjvcKwJPvpkh3",
             "rewardRecipients": [
                 {
-                    "address": "TR7cHTuCvy6rE4MfJkhkHsGMFKxDWvGdZK",
+                    "address": "Law6XzEBpm4v1fE9N4TJoakFUCPJBoynAP",
                     "percentage": 0.45
                 }
             ],
@@ -590,7 +590,7 @@
             "daemons": [
                 {
                     "host": "127.0.0.1",
-                    "port": 10229,
+                    "port": 12001,
                     "user": "admin",
                     "password": "admin",
                     "zmqBlockNotifySocket": "tcp://127.0.0.1:29007"
@@ -598,7 +598,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 1000,
+                "minimumPayment": 100,
                 "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
