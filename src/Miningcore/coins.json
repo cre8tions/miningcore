@@ -6782,6 +6782,40 @@
         "subAddressPrefixStagenet": 36,
         "explorerBlockLink": "https://explorer.sispop.site/block/$height$",
         "explorerTxLink": "https://explorer.sispop.site/transaction/{0}"
+    },
+    "zeroonecore": {
+        "name": "ZeroOneCore",
+        "symbol": "ZOC",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "neoscrypt",
+            "args": [
+                0
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "neoscrypt",
+                    "args": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://zoc.ccore.online/block/$height$",
+        "explorerTxLink": "https://zoc.ccore.online/transaction/{0}",
+        "explorerAccountLink": "https://zoc.ccore.online/address/{0}"
     }
 }
 
