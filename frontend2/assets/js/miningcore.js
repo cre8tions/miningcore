@@ -164,7 +164,7 @@ function loadHomePage() {
         $(".pool-coin-table").html(poolCoinTableTemplate);
         $("#poolCount").html(poolCount);
         $("#totalBlocks").html(totalBlocks);
-        $("#totalCoinPaid").html(_formatter(totalCoinPaid, 0, "", false));
+        $("#totalCoinPaid").html(totalCoinPaid.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 
         var blocks = loadBlocksPage(1);
         $("#blockList").html(blocks);
@@ -514,7 +514,8 @@ function doesFileExist(urlToFile) {
   }
 }
 
-// STATS page data
+
+ //  STATS page data
 function loadStatsData() {
   return $.ajax(API + "pools")
     .done(function (data) {
