@@ -120,7 +120,7 @@
             }
         },
         {
-            "id": "mewc",
+            "id": "mewc_pplns",
             "enabled": true,
             "coin": "meowcoin",
             "address": "MDSprkpLSStsXgHAHPMZakZ1yYN7PEQHFS",
@@ -167,7 +167,7 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 1,
-                "payoutScheme": "SOLO",
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
