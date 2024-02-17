@@ -164,7 +164,7 @@ function loadHomePage() {
         $(".pool-coin-table").html(poolCoinTableTemplate);
         $("#poolCount").html(poolCount);
         $("#totalBlocks").html(totalBlocks);
-        $("#totalCoinPaid").html(totalCoinPaid.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        $("#totalCoinPaid").html(totalCoinPaid.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }));
 
         var blocks = loadBlocksPage(1);
         $("#blockList").html(blocks);
