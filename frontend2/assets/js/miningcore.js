@@ -279,10 +279,10 @@ function loadBlocksPage(isIndex = 0) {
   var ajaxUrl = ""
   var showPoolId = 0;
   if (isIndex) {
-    ajaxUrl = API + "blocks?page=0&pageSize=10"
+    ajaxUrl = API + "blocks?page=0&pageSize=20"
     showPoolId = 1;
   } else {
-    ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=25"
+    ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=50"
   }
 
   return $.ajax(ajaxUrl)
