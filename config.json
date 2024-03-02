@@ -1,6 +1,6 @@
 {
     "logging": {
-        "level": "warn",
+        "level": "info",
         "enableConsoleLog": true,
         "enableConsoleColors": true,
         "logFile": "core.log",
@@ -229,7 +229,7 @@
         },
         {
             "id": "gunsolo",
-            "enabled": true,
+            "enabled": false,
             "coin": "guncoin",
             "address": "GZRd4SrwDBovHnVUbtNU58WEUGh4XpvMRe",
             "rewardRecipients": [
@@ -445,7 +445,7 @@
         },
         {
             "id": "ltc",
-            "enabled": true,
+            "enabled": false,
             "coin": "litecoin",
             "address": "LbJdaUXgVRVGoxkSt5MmXztUrWdsh47Cwm",
             "rewardRecipients": [
@@ -607,7 +607,7 @@
         },
         {
             "id": "zeroone",
-            "enabled": true,
+            "enabled": false,
             "coin": "zeroonecore",
             "address": "ZMkYZy5JY1pMSw4d553x5WWnY4TavvAmWD",
             "rewardRecipients": [
@@ -663,10 +663,10 @@
             "id": "raptoreum",
             "enabled": true,
             "coin": "raptoreum",
-            "address": "ZMkYZy5JY1pMSw4d553x5WWnY4TavvAmWD",
+            "address": "RGAjUDaoeJsdjewwstNDxFqRLXSUgDyw9J",
             "rewardRecipients": [
                 {
-                    "address": "ZXCcURiR2rLcz1Vw2MBggbLbrLTihfpzYV",
+                    "address": "RLuc8tAB4zVCoGSryjMSNz1d7NbYPhA5WZ",
                     "percentage": 0.45
                 }
             ],
