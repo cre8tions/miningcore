@@ -126,6 +126,7 @@ function loadHomePage() {
         var totalBlocks = 0;
         var totalCoinPaid = 0;
         var USDTPrice = 0
+        var poolHashrate = 0.00;
 
         $.each(data.pools, function (index, value) {
           poolCount++;
@@ -140,25 +141,30 @@ function loadHomePage() {
 
           if (typeof value.coin.blockTime === "undefined" || value.coin.blockTime === null) var blocktime = 60;
 
-          if (value.poolStats.poolHashrate > 0) {
-            var ttf = ((value.networkStats.networkHashrate / value.poolStats.poolHashrate) * blocktime).toFixed(0);
-          } else var ttf = "--";
+          console.log(value);
+          if (typeof value.poolStats === "undefined") {
+            var ttf = "--";
+          }
+          else {
+            poolHashrate = value.poolStats.poolHashrate;
+            var ttf = ((value.networkStats.networkHashrate / poolHashrate) * blocktime).toFixed(0);
+          }
 
 
           poolCoinTableTemplate += "<tr class='coin-table-row'>";
           poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") </a></td>";
           poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
-          poolCoinTableTemplate += "<td class='miners'>" + (value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
-          poolCoinTableTemplate += "<td class='pool-hash'>" + (value.poolStats.poolHashrate > 0 ? _formatter(value.poolStats.poolHashrate, 3, "H/s") : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='miners'>" + (typeof value.poolStats !== "undefined" && value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-hash'>" + (poolHashrate > 0 ? _formatter(poolHashrate, 3, "H/s") : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf) + "</td>";
           poolCoinTableTemplate += "<td class='fee'><small class='tag red-bg'>" + value.paymentProcessing.payoutScheme + " " + value.poolFeePercent + "% </small></td>";
-          poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(value.networkStats.networkHashrate, 3, "H/s") + "</td>";
-          poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(value.networkStats.networkDifficulty, 5, "") + "</td>";
+          poolCoinTableTemplate += "<td class='net-hash'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkHashrate, 3, "H/s") : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='net-diff'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkDifficulty, 5, "") : "--") + "</td > ";
           poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + "</button></a></td>";
           poolCoinTableTemplate += "</tr>";
 
-          var ttf2 = (value.networkStats.networkDifficulty * 2 ** 32) / value.poolStats.poolHashrate; // seconds
-          console.log(ttf2);
+          // var ttf2 = (value.networkStats.networkDifficulty * 2 ** 32) / poolHashrate; // seconds
+          // console.log(ttf2);
         });
 
         $(".pool-coin-table").html(poolCoinTableTemplate);
