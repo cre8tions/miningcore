@@ -1,6 +1,6 @@
 {
     "logging": {
-        "level": "info",
+        "level": "warning",
         "enableConsoleLog": true,
         "enableConsoleColors": true,
         "logFile": "core.log",
@@ -40,7 +40,7 @@
     },
     "paymentProcessing": {
         "enabled": true,
-        "interval": 3600,
+        "interval": 600,
         "shareRecoveryFile": "recovered-shares.txt"
     },
     "api": {
@@ -229,7 +229,7 @@
         },
         {
             "id": "gunsolo",
-            "enabled": false,
+            "enabled": true,
             "coin": "guncoin",
             "address": "GZRd4SrwDBovHnVUbtNU58WEUGh4XpvMRe",
             "rewardRecipients": [
@@ -348,7 +348,7 @@
             ],
             "blockRefreshInterval": 1000,
             "jobRebroadcastTimeout": 10,
-            "clientConnectionTimeout": 600,
+            "clientConnectionTimeout": 300,
             "banning": {
                 "enabled": true,
                 "time": 600,
@@ -382,7 +382,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 5000,
+                "minimumPayment": 1,
                 "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -445,7 +445,7 @@
         },
         {
             "id": "ltc",
-            "enabled": false,
+            "enabled": true,
             "coin": "litecoin",
             "address": "LbJdaUXgVRVGoxkSt5MmXztUrWdsh47Cwm",
             "rewardRecipients": [
@@ -505,7 +505,7 @@
             "rewardRecipients": [
                 {
                     "address": "TR7cHTuCvy6rE4MfJkhkHsGMFKxDWvGdZK",
-                    "percentage": 0.45
+                    "percentage": 1
                 }
             ],
             "blockRefreshInterval": 0,
@@ -559,12 +559,12 @@
             "rewardRecipients": [
                 {
                     "address": "Law6XzEBpm4v1fE9N4TJoakFUCPJBoynAP",
-                    "percentage": 0.45
+                    "percentage": 0.95
                 }
             ],
             "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
-            "clientConnectionTimeout": 600,
+            "clientConnectionTimeout": 300,
             "banning": {
                 "enabled": true,
                 "time": 600,
@@ -618,7 +618,7 @@
             ],
             "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
-            "clientConnectionTimeout": 600,
+            "clientConnectionTimeout": 300,
             "banning": {
                 "enabled": true,
                 "time": 600,
@@ -672,7 +672,7 @@
             ],
             "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
-            "clientConnectionTimeout": 600,
+            "clientConnectionTimeout": 300,
             "banning": {
                 "enabled": true,
                 "time": 600,
@@ -707,6 +707,60 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 100,
+                "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "vultaic_pplns",
+            "enabled": true,
+            "coin": "vultaic",
+            "address": "VGghi5WZDidfWVUZB5AQ77nce2yqFn8VUX",
+            "rewardRecipients": [
+                {
+                    "address": "VZxzXxDULKV4Hv4MBRnAiYsjvxTfGgSSuC",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 0,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 300,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3091": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 9150,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29010"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1,
                 "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
