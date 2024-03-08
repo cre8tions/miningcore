@@ -5161,6 +5161,36 @@
         "explorerTxLink": "https://explorer.voltpot.org/tx/{0}",
         "explorerAccountLink": "https://explorer.voltpot.org/address/{0}"
     },
+    "vultaic": {
+        "name": "Vultaic",
+        "symbol": "VLC",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://https://vultaicnetwork.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasCommunityAddress": true,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.aipowergrid.io/block/$hash$",
+        "explorerTxLink": "https://explorer.aipowergrid.io/tx/{0}",
+        "explorerAccountLink": "https://explorer.aipowergrid.io/address/{0}"
+    },
     "whive": {
         "name": "Whive",
         "symbol": "WHIVE",
