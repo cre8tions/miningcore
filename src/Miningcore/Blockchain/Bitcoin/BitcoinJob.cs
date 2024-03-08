@@ -11,6 +11,7 @@ using Miningcore.Time;
 using Miningcore.Util;
 using NBitcoin;
 using NBitcoin.DataEncoders;
+using NLog;
 using Newtonsoft.Json.Linq;
 using Contract = Miningcore.Contracts.Contract;
 using Transaction = NBitcoin.Transaction;
@@ -19,6 +20,7 @@ namespace Miningcore.Blockchain.Bitcoin;
 
 public class BitcoinJob
 {
+    private static readonly Logger logger = LogManager.GetCurrentClassLogger();
     protected IHashAlgorithm blockHasher;
     protected IMasterClock clock;
     protected IHashAlgorithm coinbaseHasher;
@@ -431,17 +433,25 @@ public class BitcoinJob
             // POS coins require a zero byte appended to block which the daemon replaces with the signature
             if(isPoS)
                 bs.ReadWrite((byte) 0);
-            
+
             // if pool supports MWEB, we have to append the MWEB data to the block
             // https://github.com/litecoin-project/litecoin/blob/0.21/doc/mweb/mining-changes.md
             if(coin.HasMWEB)
             {
-                var separator = new byte[] { 0x01 };
                 var mweb = BlockTemplate.Extra.SafeExtensionDataAs<MwebBlockTemplateExtra>();
-                var mwebRaw = mweb.Mweb.HexToByteArray();
 
-                bs.ReadWrite(ref separator);
-                bs.ReadWrite(ref mwebRaw);
+                if(mweb != null && mweb.Mweb != null)
+                {
+                    var separator = new byte[] { 0x01 };
+                    // var mweb = BlockTemplate.Extra.SafeExtensionDataAs<MwebBlockTemplateExtra>();
+                    var mwebRaw = mweb.Mweb.HexToByteArray();
+                    bs.ReadWrite(ref separator);
+                    bs.ReadWrite(ref mwebRaw);
+                }
+                else
+                {
+                    logger.Warn(() => $"MWEB IS NULL");
+                }
             }
 
             return stream.ToArray();
@@ -610,7 +620,7 @@ public class BitcoinJob
     }
 
     #endregion // Founder
-	
+
     #region CommunityAddress
 
     protected virtual Money CreateCommunityAddressOutputs(Transaction tx, Money reward)
@@ -817,7 +827,7 @@ public class BitcoinJob
 
 		if(coin.HasMinerFund)
 			minerFundParameters = BlockTemplate.Extra.SafeExtensionDataAs<MinerFundTemplateExtra>("coinbasetxn", "minerfund");
-		
+
         if(coin.HasCoinbaseDevReward)
             CoinbaseDevRewardParams = BlockTemplate.Extra.SafeExtensionDataAs<CoinbaseDevRewardTemplateExtra>();
 
