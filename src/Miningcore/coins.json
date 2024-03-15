@@ -363,6 +363,37 @@
         "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
         "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
     },
+    "lyncoin": {
+        "name": "Lyncoin",
+        "canonicalName": "Lyncoin",
+        "symbol": "LYN",
+        "family": "bitcoin",
+        "website": "https://www.lyncoin.org/",
+        "market": "https://coinmarketcap.com/currencies/bitcoin/",
+        "twitter": "https://twitter.com/bitcoin",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "blocktime": 60,
+        "hasFounderFee": true,
+        "explorerBlockLink": "https://www.blockchain.com/btc/block/$hash$",
+        "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
+        "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
+    },
     "bitcoin-cash": {
         "name": "Bitcoin Cash",
         "canonicalName": "Bitcoin-Cash",
@@ -1299,8 +1330,8 @@
         "explorerAccountLink": "https://explorer.ergon.network/address.dws?{0}.htm"
     },
     "etitanium": {
-        "name": "eTitanium ",
-        "canonicalName": "eTitanium ",
+        "name": "eTitanium",
+        "canonicalName": "eTitanium",
         "symbol": "ETIT",
         "family": "bitcoin",
         "website": "",
@@ -2959,12 +2990,10 @@
         "symbol": "NIKI",
         "family": "bitcoin",
         "website": "https://nikitonium.com/",
-        "market": "https://coinpaprika.com/coin/niki-nikito/",
+        "market": "https://xeggex.com/asset/NIKI",
         "twitter": "https://twitter.com/nikitobase",
-        "telegram": "",
-        "discord": "https://discord.com/invite/QFSvSuvgGq",
-        "github": "https://github.com/nikitonium/",
-        "explorer": "https://explorer.nikitonium.com/",
+        "telegram": "#",
+        "discord": "",
         "coinbaseHasher": {
             "hash": "sha256d"
         },
@@ -2979,11 +3008,12 @@
                 }
             ]
         },
+        "blockTime": 60,
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.nikitonium.com/block/$hash$",
+        "explorerBlockLink": "https://explorer.nikitonium.com/block/$height$",
         "explorerTxLink": "https://explorer.nikitonium.com/tx/{0}",
         "explorerAccountLink": "https://explorer.nikitonium.com/address/{0}"
     },
@@ -4722,6 +4752,33 @@
         "explorerTxLink": "https://explorer.tiltcoin.io/tx/{0}",
         "explorerAccountLink": "https://explorer.tiltcoin.io/address/{0}"
     },
+    "ursula": {
+        "name": "Ursula",
+        "symbol": "URSA",
+        "family": "bitcoin",
+        "website": "https://bigursula.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "heavyhash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "heavyhash"
+                }
+            ]
+        },
+        "explorerBlockLink": "https://explorer.bigursula.com/block/$hash$",
+        "explorerTxLink": "https://explorer.bigursula.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.bigursula.com/address/{0}"
+    },
     "veles-sha256": {
         "name": "Veles-Sha256",
         "canonicalName": "Veles",
@@ -5397,39 +5454,6 @@
         "explorerBlockLink": "https://explorer.varsechain.com/block/$height$",
         "explorerTxLink": "https://explorer.varsechain.com/tx/{0}",
         "explorerAccountLink": "https://explorer.varsechain.com/address/{0}"
-    },
-    "nikitonium": {
-        "name": "Nikitonium",
-        "canonicalName": "Nikitonium",
-        "symbol": "NIKI",
-        "family": "bitcoin",
-        "website": "https://nikitonium.com/",
-        "market": "https://xeggex.com/asset/NIKI",
-        "twitter": "https://twitter.com/nikitobase",
-        "telegram": "#",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "ghostrider"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "blockTime": 60,
-        "hasFounderFee": true,
-        "hasMasterNodes": true,
-        "hasSmartNodes": true,
-        "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.nikitonium.com/block/$height$",
-        "explorerTxLink": "https://explorer.nikitonium.com/tx/{0}",
-        "explorerAccountLink": "https://explorer.nikitonium.com/address/{0}"
     },
     "yerbas": {
         "name": "Yerbas",
@@ -6846,6 +6870,39 @@
         "explorerBlockLink": "https://zoc.ccore.online/block/$height$",
         "explorerTxLink": "https://zoc.ccore.online/transaction/{0}",
         "explorerAccountLink": "https://zoc.ccore.online/address/{0}"
+    },
+    "qubix": {
+        "name": "Qubix",
+        "canonicalName": "Qubix",
+        "symbol": "QBX",
+        "family": "bitcoin",
+        "website": "https://bitoreum.org/",
+        "market": "https://www.coingecko.com/en/coins/bitoreum",
+        "twitter": "https://twitter.com/bitoreum",
+        "discord": "https://discord.gg/E3E9Ef3kZT",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasFounderFee": true,
+        "hasMasterNodes": true,
+        "hasSmartNodes": true,
+        "foundersRewardAddress": [
+            "1ML1wnr7pJvn8r9L9NppinFxhrCtayJg8V"
+        ],
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.reaction.network/block/$hash$",
+        "explorerTxLink": "https://explorer.reaction.network/tx/{0}",
+        "explorerAccountLink": "https://explorer.reaction.network/address/{0}"
     }
 }
-
