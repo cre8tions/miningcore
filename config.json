@@ -1,6 +1,6 @@
 {
     "logging": {
-        "level": "warning",
+        "level": "info",
         "enableConsoleLog": true,
         "enableConsoleColors": true,
         "logFile": "core.log",
@@ -66,7 +66,7 @@
     },
     "pools": [
         {
-            "id": "fscsolo",
+            "id": "fsc_pplns",
             "enabled": true,
             "coin": "fsociety",
             "address": "FDGgSxLNNipFpZS4CHf7YqqhnNMP1EoUPR",
@@ -113,7 +113,7 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 1,
-                "payoutScheme": "SOLO",
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
@@ -184,7 +184,7 @@
                     "percentage": 0.5
                 }
             ],
-            "blockRefreshInterval": 0,
+            "blockRefreshInterval": 500,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -228,8 +228,8 @@
             }
         },
         {
-            "id": "gunsolo",
-            "enabled": true,
+            "id": "gun_solo",
+            "enabled": false,
             "coin": "guncoin",
             "address": "GZRd4SrwDBovHnVUbtNU58WEUGh4XpvMRe",
             "rewardRecipients": [
@@ -282,14 +282,14 @@
             }
         },
         {
-            "id": "varsesolo",
+            "id": "varse_pplns",
             "enabled": true,
             "coin": "varsechain",
             "address": "VKdDStc48Wy3Sso162u4tWXkaCkpzHupMp",
             "rewardRecipients": [
                 {
                     "address": "VC1WY3zxZGbULq7guhQV8YMpxNFpurBSUS",
-                    "percentage": 0.45
+                    "percentage": 0.95
                 }
             ],
             "blockRefreshInterval": 0,
@@ -329,21 +329,21 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 500,
-                "payoutScheme": "SOLO",
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
             }
         },
         {
-            "id": "btscsolo",
+            "id": "btsc_pplns",
             "enabled": true,
             "coin": "bitfishcoin",
             "address": "BhnZs1ahgab6sQ83ZmfMXfQZZFVMZJpaMv",
             "rewardRecipients": [
                 {
                     "address": "BVPMuBz5YjWVhet671QzghKEbkiDgoTveb",
-                    "percentage": 0.45
+                    "percentage": 0.95
                 }
             ],
             "blockRefreshInterval": 1000,
@@ -383,21 +383,21 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 1,
-                "payoutScheme": "SOLO",
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
             }
         },
         {
-            "id": "nikisolo",
+            "id": "niki_pplns",
             "enabled": true,
             "coin": "nikitonium",
             "address": "NaAidW4qwkLn1nCsc6WuBVEbAjpTk3uZUY",
             "rewardRecipients": [
                 {
                     "address": "NNjjAZFvyp3CSZnbG9yCbmd7NWMZS4LmZn",
-                    "percentage": 0.45
+                    "percentage": 0.95
                 }
             ],
             "blockRefreshInterval": 0,
@@ -437,15 +437,15 @@
             "paymentProcessing": {
                 "enabled": true,
                 "minimumPayment": 352,
-                "payoutScheme": "SOLO",
+                "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
             }
         },
         {
-            "id": "ltc",
-            "enabled": true,
+            "id": "ltc_pplns",
+            "enabled": false,
             "coin": "litecoin",
             "address": "LbJdaUXgVRVGoxkSt5MmXztUrWdsh47Cwm",
             "rewardRecipients": [
@@ -498,14 +498,14 @@
             }
         },
         {
-            "id": "cointaft",
+            "id": "taft_pplns",
             "enabled": true,
             "coin": "cointaft",
             "address": "TBD1z7XHXxYDgHv5Tb3geoFCz3AmMPTF5f",
             "rewardRecipients": [
                 {
                     "address": "TR7cHTuCvy6rE4MfJkhkHsGMFKxDWvGdZK",
-                    "percentage": 1
+                    "percentage": 0.95
                 }
             ],
             "blockRefreshInterval": 0,
@@ -552,7 +552,7 @@
             }
         },
         {
-            "id": "litoreum",
+            "id": "ltrm_pplns",
             "enabled": true,
             "coin": "litoreum",
             "address": "LMbTMpnj3UGmWkgnYTj7fRjvcKwJPvpkh3",
@@ -598,7 +598,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 100,
+                "minimumPayment": 1,
                 "payoutScheme": "PPLNS",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -606,7 +606,7 @@
             }
         },
         {
-            "id": "zeroone",
+            "id": "zoc_pplns",
             "enabled": false,
             "coin": "zeroonecore",
             "address": "ZMkYZy5JY1pMSw4d553x5WWnY4TavvAmWD",
@@ -660,8 +660,8 @@
             }
         },
         {
-            "id": "raptoreum",
-            "enabled": true,
+            "id": "raptoreum_pplns",
+            "enabled": false,
             "coin": "raptoreum",
             "address": "RGAjUDaoeJsdjewwstNDxFqRLXSUgDyw9J",
             "rewardRecipients": [
@@ -714,8 +714,8 @@
             }
         },
         {
-            "id": "vultaic_pplns",
-            "enabled": true,
+            "id": "vlc_pplns",
+            "enabled": false,
             "coin": "vultaic",
             "address": "VGghi5WZDidfWVUZB5AQ77nce2yqFn8VUX",
             "rewardRecipients": [
@@ -762,6 +762,276 @@
                 "enabled": true,
                 "minimumPayment": 1,
                 "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "ursa_pplns",
+            "enabled": false,
+            "coin": "ursula",
+            "address": "UeRV8hfVWeYQWzF2gPdWz8LaPwq8zXREQc",
+            "rewardRecipients": [
+                {
+                    "address": "UUKkKybtMm8RKehmADq9cHKxwvWgHi9RTr",
+                    "percentage": 0.45
+                }
+            ],
+            "blockRefreshInterval": 0,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 300,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3092": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 9998,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29011"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1,
+                "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "nexa_pplns",
+            "enabled": false,
+            "coin": "nexa",
+            "address": "nexa:nqtsq5g58vuzmv6t7y2yen9vx3n4uyxkdcsfvkm56gmjyauq",
+            "rewardRecipients": [
+                {
+                    "address": "nexa:nqtsq5g5a93t96kk65j7mxawp8l83k6yva62p6504qew938h",
+                    "percentage": 0.95
+                }
+            ],
+            "blockRefreshInterval": 120,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 300,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3093": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 7227,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29012"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1,
+                "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "qubix_pplns",
+            "enabled": false,
+            "coin": "qubix",
+            "address": "1DjhAM4pzs1ixCZJC74x8DpzfVtvrfw7Kx",
+            "rewardRecipients": [
+                {
+                    "address": "173tnE6R4xRPeiEBe2hiWdB2Dq73adJodm",
+                    "percentage": 0.95
+                }
+            ],
+            "blockRefreshInterval": 120,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 300,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3094": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 0.1,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 0.1,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 12255,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29013"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 1,
+                "payoutScheme": "PPLNS",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "btc_solo",
+            "enabled": true,
+            "coin": "bitcoin",
+            "address": "14wLfVitRktxnqm2NKLNmPBCHDFeZkVtm7",
+            "rewardRecipients": [
+                {
+                    "address": "13FkwbatnGp3Y8YeHCGZPpgAGQGyv85FX4",
+                    "percentage": 0.95
+                }
+            ],
+            "blockRefreshInterval": 120,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3095": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 1024,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 512,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 8332,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29014"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 0.000001,
+                "payoutScheme": "SOLO",
+                "payoutSchemeConfig": {
+                    "factor": 2
+                }
+            }
+        },
+        {
+            "id": "dgb_solo",
+            "enabled": true,
+            "coin": "digibyte-sha256",
+            "address": "DJ1Sp5crHrGCYiBziF87mKJjXkvvSa44hM",
+            "rewardRecipients": [
+                {
+                    "address": "DJ1Sp5crHrGCYiBziF87mKJjXkvvSa44hM",
+                    "percentage": 0.95
+                }
+            ],
+            "blockRefreshInterval": 120,
+            "jobRebroadcastTimeout": 10,
+            "clientConnectionTimeout": 600,
+            "banning": {
+                "enabled": true,
+                "time": 600,
+                "invalidPercent": 50,
+                "checkThreshold": 50
+            },
+            "ports": {
+                "3096": {
+                    "listenAddress": "0.0.0.0",
+                    "difficulty": 1024,
+                    "tls": false,
+                    "tlsPfxFile": "/var/lib/certs/mycert.pfx",
+                    "varDiff": {
+                        "minDiff": 256,
+                        "maxDiff": null,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30,
+                        "maxDelta": 500
+                    }
+                }
+            },
+            "daemons": [
+                {
+                    "host": "127.0.0.1",
+                    "port": 14022,
+                    "user": "admin",
+                    "password": "admin",
+                    "zmqBlockNotifySocket": "tcp://127.0.0.1:29015"
+                }
+            ],
+            "paymentProcessing": {
+                "enabled": true,
+                "minimumPayment": 0.000001,
+                "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
                 }
