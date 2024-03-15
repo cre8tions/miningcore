@@ -3,7 +3,7 @@
   vertical-align: middle;
   border-top: 1px solid #dee2e6;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .shadow {
@@ -31,7 +31,7 @@
 }
 
 #pool-coins td {
-  font-size: 1.15rem;
+  font-size: 1rem;
   vertical-align: middle;
 }
 
@@ -40,10 +40,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
-  font-size: 1.15rem;
+  font-size: 1rem;
   text-align: left;
 }
 
+#pool-coins th.coin {
+  text-align: left !important;
+}
 #pool-coins td.gomine {
   text-align: left !important;
 }
@@ -52,8 +55,12 @@
   text-align: center !important;
 }
 
-#pool-coins td.fee {
-  text-align: right !important;
+#pool-coins th.price {
+  text-align: center !important;
+}
+
+#pool-coins td.price {
+  text-align: center !important;
 }
 
 #pool-coins img.coinimg {
