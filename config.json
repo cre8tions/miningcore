@@ -57,7 +57,9 @@
                     "Limit": 15
                 }
             ],
-            "ipWhitelist": []
+            "ipWhitelist": [
+                "192.168.1.71"
+            ]
         },
         "adminIpWhitelist": [
             "192.168.1.74",
@@ -337,7 +339,7 @@
         },
         {
             "id": "btsc_pplns",
-            "enabled": true,
+            "enabled": false,
             "coin": "bitfishcoin",
             "address": "BhnZs1ahgab6sQ83ZmfMXfQZZFVMZJpaMv",
             "rewardRecipients": [
@@ -553,7 +555,7 @@
         },
         {
             "id": "ltrm_pplns",
-            "enabled": true,
+            "enabled": false,
             "coin": "litoreum",
             "address": "LMbTMpnj3UGmWkgnYTj7fRjvcKwJPvpkh3",
             "rewardRecipients": [
@@ -666,7 +668,7 @@
             "address": "RGAjUDaoeJsdjewwstNDxFqRLXSUgDyw9J",
             "rewardRecipients": [
                 {
-                    "address": "RLuc8tAB4zVCoGSryjMSNz1d7NbYPhA5WZ",
+                    "address": "RGAjUDaoeJsdjewwstNDxFqRLXSUgDyw9J",
                     "percentage": 0.45
                 }
             ],
@@ -715,7 +717,7 @@
         },
         {
             "id": "vlc_pplns",
-            "enabled": false,
+            "enabled": true,
             "coin": "vultaic",
             "address": "VGghi5WZDidfWVUZB5AQ77nce2yqFn8VUX",
             "rewardRecipients": [
@@ -940,7 +942,7 @@
                     "percentage": 0.95
                 }
             ],
-            "blockRefreshInterval": 120,
+            "blockRefreshInterval": 0,
             "jobRebroadcastTimeout": 10,
             "clientConnectionTimeout": 600,
             "banning": {
@@ -976,7 +978,7 @@
             ],
             "paymentProcessing": {
                 "enabled": true,
-                "minimumPayment": 0.000001,
+                "minimumPayment": 1,
                 "payoutScheme": "SOLO",
                 "payoutSchemeConfig": {
                     "factor": 2
@@ -984,13 +986,13 @@
             }
         },
         {
-            "id": "dgb_solo",
+            "id": "virsai_pplns",
             "enabled": true,
-            "coin": "digibyte-sha256",
-            "address": "DJ1Sp5crHrGCYiBziF87mKJjXkvvSa44hM",
+            "coin": "virsai",
+            "address": "1CRsF5DjChXeeHUi1jWnwfYqSK2ydrrkjW",
             "rewardRecipients": [
                 {
-                    "address": "DJ1Sp5crHrGCYiBziF87mKJjXkvvSa44hM",
+                    "address": "1CRsF5DjChXeeHUi1jWnwfYqSK2ydrrkjW",
                     "percentage": 0.95
                 }
             ],
@@ -1022,7 +1024,7 @@
             "daemons": [
                 {
                     "host": "127.0.0.1",
-                    "port": 14022,
+                    "port": 16541,
                     "user": "admin",
                     "password": "admin",
                     "zmqBlockNotifySocket": "tcp://127.0.0.1:29015"

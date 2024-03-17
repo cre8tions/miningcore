@@ -160,7 +160,7 @@ th.button-height {
 		.simple-table > thead > tr > th,
 		.simple-table > thead > tr > td {
 			font-weight: bold;
-			font-size: 14px;
+			font-size: 12px;
 			font-family: 'Roboto Condensed', sans-serif;
 		}
 		.simple-table > tfoot > tr > th,
@@ -169,7 +169,7 @@ th.button-height {
 		}
 	.simple-table > tbody > tr > th,
 	.simple-table > tbody > tr > td {
-		padding: 8px 12px;
+		padding: 6px 12px;
 		color: #333333;
 		border-top: 1px solid #e6e6e6;
 		}

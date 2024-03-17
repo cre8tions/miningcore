@@ -363,12 +363,12 @@
         "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
         "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
     },
-    "lyncoin": {
-        "name": "Lyncoin",
-        "canonicalName": "Lyncoin",
-        "symbol": "LYN",
+    "virsai": {
+        "name": "VirsAI",
+        "canonicalName": "VirsAI",
+        "symbol": "VIRS",
         "family": "bitcoin",
-        "website": "https://www.lyncoin.org/",
+        "website": "https://www.org/",
         "market": "https://coinmarketcap.com/currencies/bitcoin/",
         "twitter": "https://twitter.com/bitcoin",
         "telegram": "",
@@ -389,7 +389,6 @@
             ]
         },
         "blocktime": 60,
-        "hasFounderFee": true,
         "explorerBlockLink": "https://www.blockchain.com/btc/block/$hash$",
         "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
         "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
