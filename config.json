@@ -41,7 +41,7 @@
     "paymentProcessing": {
         "enabled": true,
         "interval": 600,
-        "shareRecoveryFile": "recovered-shares.txt"
+        "shareRecoveryFile": "/home/joe/repos/miningcore/build/recovered-shares.txt"
     },
     "api": {
         "enabled": true,
@@ -989,10 +989,10 @@
             "id": "virsai_pplns",
             "enabled": true,
             "coin": "virsai",
-            "address": "1CRsF5DjChXeeHUi1jWnwfYqSK2ydrrkjW",
+            "address": "15Eg2ToNwL9KFVN1eCqRQLJY5tC43yhbvp",
             "rewardRecipients": [
                 {
-                    "address": "1CRsF5DjChXeeHUi1jWnwfYqSK2ydrrkjW",
+                    "address": "16ebSUu3M5Z7xhRx564NiyP9FYAujZ7KYb",
                     "percentage": 0.95
                 }
             ],
@@ -1008,11 +1008,11 @@
             "ports": {
                 "3096": {
                     "listenAddress": "0.0.0.0",
-                    "difficulty": 1024,
+                    "difficulty": 32,
                     "tls": false,
                     "tlsPfxFile": "/var/lib/certs/mycert.pfx",
                     "varDiff": {
-                        "minDiff": 256,
+                        "minDiff": 32,
                         "maxDiff": null,
                         "targetTime": 15,
                         "retargetTime": 90,
