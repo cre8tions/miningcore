@@ -282,10 +282,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -315,10 +312,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -359,36 +353,6 @@
             ]
         },
         "coinbaseIgnoreAuxFlags": true,
-        "explorerBlockLink": "https://www.blockchain.com/btc/block/$hash$",
-        "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
-        "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
-    },
-    "virsai": {
-        "name": "VirsAI",
-        "canonicalName": "VirsAI",
-        "symbol": "VIRS",
-        "family": "bitcoin",
-        "website": "https://www.org/",
-        "market": "https://coinmarketcap.com/currencies/bitcoin/",
-        "twitter": "https://twitter.com/bitcoin",
-        "telegram": "",
-        "github": "",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "sha256d"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "blocktime": 60,
         "explorerBlockLink": "https://www.blockchain.com/btc/block/$hash$",
         "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
         "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
@@ -687,9 +651,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "sha256d"
-        ],
+        "blockTemplateRpcExtraParams": ["sha256d"],
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -712,10 +674,7 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [
-                1024,
-                1
-            ]
+            "args": [1024, 1]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -730,10 +689,7 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [
-                        1024,
-                        1
-                    ]
+                    "args": [1024, 1]
                 }
             ]
         },
@@ -804,9 +760,7 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": [
-            "ghostrider"
-        ],
+        "blockTemplateRpcExtraParams": ["ghostrider"],
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -5112,6 +5066,36 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
+    "virsai": {
+        "name": "VirsAI",
+        "canonicalName": "VirsAI",
+        "symbol": "VIRS",
+        "family": "bitcoin",
+        "website": "https://virsai.online/",
+        "market": "",
+        "twitter": "https://twitter.com/bitcoin",
+        "telegram": "",
+        "github": "https://github.com/VirsAI",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "explorerBlockLink": "https://explorervirsai.online/block/$hash$",
+        "explorerTxLink": "https://explorervirsai.online/tx/{0}",
+        "explorerAccountLink": "https://explorervirsai.online/address/{0}"
+    },
     "vishai": {
         "name": "VishAiCoin",
         "canonicalName": "VishAiCoin",
@@ -5137,7 +5121,7 @@
                 }
             ]
         },
-        "hasMasterNodes": true,
+        "hasMasterNodes": false,
         "shareMultiplier": 65536,
         "explorerBlockLink": "https://explorer.vishcoin.com/block/$hash$",
         "explorerTxLink": "https://explorer.vishcoin.com/tx/{0}",
