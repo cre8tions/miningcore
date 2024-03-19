@@ -1,0 +1,214 @@
+.table th {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.shadow {
+  box-shadow: 1px 2px 5px #000000;
+}
+
+#pool-coins tr {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.15rem;
+  text-align: right;
+}
+
+#pool-coins th {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.25rem;
+  text-align: right;
+}
+
+#pool-coins tr:hover {
+  background-color: #ccc;
+}
+
+#pool-coins td:hover {
+  cursor: pointer;
+}
+
+#pool-coins td {
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+#pool-coins td.coin {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 1rem;
+  text-align: left;
+}
+
+#pool-coins th.coin {
+  text-align: left !important;
+}
+#pool-coins td.gomine {
+  text-align: left !important;
+}
+
+#pool-coins td.notconnected {
+  text-align: center !important;
+}
+
+#pool-coins th.ttf {
+  text-align: center !important;
+}
+
+#pool-coins th.price {
+  text-align: center !important;
+}
+
+#pool-coins td.price {
+  text-align: center !important;
+}
+
+#pool-coins img.coinimg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
+  display: inline-block;
+}
+
+#pool-coins a {
+  color: #000000;
+}
+
+#pool-coins a:hover {
+  text-decoration: nounderline;
+}
+
+#miner-workers tr.miner-workers {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#miner-workers td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#miners tr.miners {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#miners td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#blocks tr.blocks {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#blocks td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#payments tr.payments {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#payments td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#pool-config tr.pool-config {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#pool-config td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#miner-config tr.miner-config {
+  background-color: #f4f6fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#miner-config td {
+  border-top: 1px solid #dee2e6;
+  font-size: 1.05rem;
+}
+
+#pool-config td.card-btn {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.ct-line {
+  stroke-width: 2px !important;
+  stroke: #0544d3;
+}
+
+.info-box {
+  box-shadow: 0 0 1px rgba(var(--bs-body-color-rgb), 0.125), 0 1px 3px rgba(var(--bs-body-color-rgb), 0.2);
+  border-radius: 0.375rem;
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+}
+.info-box .progress {
+  height: 2px;
+  margin: 5px 0;
+  background-color: rgba(var(--lte-card-variant-color-rgb), 0.125);
+}
+.info-box .progress .progress-bar {
+  background-color: var(--lte-card-variant-color);
+}
+.info-box .info-box-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  font-size: 1.875rem;
+  text-align: center;
+  border-radius: 0.375rem;
+}
+.info-box .info-box-icon > img {
+  max-width: 100%;
+}
+.info-box .info-box-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+  line-height: 1.8;
+}
+.info-box .info-box-number {
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 700;
+}
+.info-box .progress-description,
+.info-box .info-box-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

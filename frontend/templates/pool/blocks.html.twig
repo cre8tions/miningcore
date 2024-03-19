@@ -1,0 +1,73 @@
+{{ include('header.html.twig') }}
+
+<div class="dashboard">
+  <div class="columns">
+    <div class="three-columns">
+      <ul class="stats split-on-mobile">
+        <li><strong class="blue" id="payoutScheme"></strong> mining <br />pool </a></li>
+        <li><strong class="blue" id="networkHashRate"></strong> network <br />hashrate</li>
+        <li><strong class="blue" id="networkDifficulty"></strong> difficulty<br>pay</li>
+        <li><strong class="blue" id="poolEffort"></strong> pool <br />effort </a></li>
+
+      </ul>
+    </div>
+    <div class="six-columns">
+      <h1 class="big-message align-center blue"><span id="coinname"></span> Recent Blocks</h1>
+    </div>
+    <div class="three-columns">
+      <ul class="stats split-on-mobile">
+        <li><strong class="blue" id="poolHashRate"></strong> pool <br />hashrate </li>
+        <li><strong class="blue" id="connectedPeers"></strong> connected <br />peers</li>
+        <li><strong class="blue" id="poolFeePercent"></strong> pool <br />fee </a></li>
+        <li><strong class="blue" id="minimumPayment"></strong> min<br>pay</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="with-padding">
+  <div class="columns">
+    <div class="three-columns">
+      <h4 class="green underline">Pool Info</h4>
+      <dl class="definition inline">
+        <dt>Payouts Enabled</dt>
+        <dd id="paymentProcessing"></dd>
+
+        <dt>Total blocks found</dt>
+        <dd id="totalBlocksFound"></dd>
+
+        <dt>Total Paid</dt>
+        <dd id="totalPaid"></dd>
+
+        <dt>Last Block Found by Pool</dt>
+        <dd id="lastBlockFound"></dd>
+
+        <dt>Price (USDT)</dt>
+        <dd id="lastPrice"></dd>
+      </dl>
+
+    </div>
+    <div class="six-columns">
+      <div class="block margin-bottom">
+        <h3 class="block-title">Blocks Found</h3>
+        <table class="simple-table responsive-table" id="pool-coins">
+          <thead>
+            <tr class="blocks">
+                <th>Found</th>
+                <th>Height</th>
+                <th>Effort</th>
+                <th>Status</th>
+                <th>Reward</th>
+                <th>Confirmation</th>
+            </tr>
+          </thead>
+          <tbody id="blockList"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      {{ include('footer_menu.html.twig') }}
