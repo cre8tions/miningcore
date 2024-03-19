@@ -357,8 +357,6 @@ public class BitcoinJob
         // check if the share meets the much harder block difficulty (block candidate)
         var isBlockCandidate = headerValue <= blockTargetValue;
 
-        logger.Warn(() => $"===== SHARE ACCEPTED =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
-
         // test if share meets at least workers current difficulty
         if(!isBlockCandidate && ratio < 0.99)
         {
@@ -383,10 +381,13 @@ public class BitcoinJob
             BlockHeight = BlockTemplate.Height,
             NetworkDifficulty = Difficulty,
             Difficulty = stratumDifficulty / shareMultiplier,
+            ShareDifficulty = shareDiff
         };
 
         if(isBlockCandidate)
         {
+            logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
+
             result.IsBlockCandidate = true;
 
             Span<byte> blockHash = stackalloc byte[32];
