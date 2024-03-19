@@ -101,4 +101,7 @@ public class Share
     /// </summary>
     [ProtoMember(15)]
     public DateTime Created { get; set; }
+
+    [ProtoMember(16)]
+    public double ShareDifficulty { get; set; }
 }
