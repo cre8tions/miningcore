@@ -5066,6 +5066,36 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
+    "virsai": {
+        "name": "VirsAI",
+        "canonicalName": "VirsAI",
+        "symbol": "VIRS",
+        "family": "bitcoin",
+        "website": "https://virsai.online/",
+        "market": "",
+        "twitter": "https://twitter.com/bitcoin",
+        "telegram": "",
+        "github": "https://github.com/VirsAI",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "explorerBlockLink": "https://explorervirsai.online/block/$hash$",
+        "explorerTxLink": "https://explorervirsai.online/tx/{0}",
+        "explorerAccountLink": "https://explorervirsai.online/address/{0}"
+    },
     "zenyxqord": {
         "name": "Zenyxqord",
         "canonicalName": "Zenyxqord",
