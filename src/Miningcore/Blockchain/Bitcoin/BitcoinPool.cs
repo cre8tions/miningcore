@@ -228,7 +228,7 @@ public class BitcoinPool : PoolBase
 
         try
         {
-            var requestedDiff = (double) Convert.ChangeType(request.Params, TypeCode.Double)!;
+            var requestedDiff = (double) Convert.ChangeType(request.Params, TypeCode.Double);
 
             // client may suggest higher-than-base difficulty, but not a lower one
             var poolEndpoint = poolConfig.Ports[connection.LocalEndpoint.Port];
@@ -244,7 +244,7 @@ public class BitcoinPool : PoolBase
 
         catch(Exception ex)
         {
-            logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params}");
+            // logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params}");
         }
     }
 

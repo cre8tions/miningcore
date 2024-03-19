@@ -12,6 +12,7 @@ using Miningcore.Util;
 using NBitcoin;
 using NBitcoin.DataEncoders;
 using NLog;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Contract = Miningcore.Contracts.Contract;
 using Transaction = NBitcoin.Transaction;
@@ -356,6 +357,8 @@ public class BitcoinJob
         // check if the share meets the much harder block difficulty (block candidate)
         var isBlockCandidate = headerValue <= blockTargetValue;
 
+        logger.Warn(() => $"===== SHARE ACCEPTED =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
+
         // test if share meets at least workers current difficulty
         if(!isBlockCandidate && ratio < 0.99)
         {
@@ -392,6 +395,8 @@ public class BitcoinJob
 
             var blockBytes = SerializeBlock(headerBytes, coinbase);
             var blockHex = blockBytes.ToHexString();
+
+            logger.Warn(() => JsonConvert.SerializeObject(result, Formatting.Indented));
 
             return (result, blockHex);
         }

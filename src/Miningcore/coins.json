@@ -5066,12 +5066,12 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
-    "virsai": {
-        "name": "VirsAI",
-        "canonicalName": "VirsAI",
-        "symbol": "VIRS",
+    "zenyxqord": {
+        "name": "Zenyxqord",
+        "canonicalName": "Zenyxqord",
+        "symbol": "ZENYX",
         "family": "bitcoin",
-        "website": "https://virsai.online/",
+        "website": "https://zenyxqord.net/",
         "market": "",
         "twitter": "https://twitter.com/bitcoin",
         "telegram": "",
@@ -5092,6 +5092,7 @@
             ]
         },
         "hasMasterNodes": true,
+        "blockTime": 120,
         "explorerBlockLink": "https://explorervirsai.online/block/$hash$",
         "explorerTxLink": "https://explorervirsai.online/tx/{0}",
         "explorerAccountLink": "https://explorervirsai.online/address/{0}"
