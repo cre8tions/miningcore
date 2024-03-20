@@ -41,7 +41,7 @@ public class ProgpowPool : PoolBase
     private long currentJobId;
     private ProgpowJobManager manager;
     private ProgpowTemplate coin;
-    
+
     private string createEncodeTarget(double difficulty)
     {
         switch(coin.Symbol)
@@ -49,10 +49,10 @@ public class ProgpowPool : PoolBase
             case "FIRO":
             case "KIIRO":
                 return ProgpowUtils.FiroEncodeTarget(difficulty);
-            
+
             case "EVR":
                 return ProgpowUtils.EvrmoreEncodeTarget(difficulty);
-          
+
             default:
                 return ProgpowUtils.RavencoinEncodeTarget(difficulty);
         }
@@ -238,7 +238,7 @@ public class ProgpowPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={Math.Round(share.Difficulty * coin.ShareMultiplier, 3)}");
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={Math.Round(share.ShareDifficulty, 5)} | ND={Math.Round(share.NetworkDifficulty * {coin.ShareMultiplier}, 5)} | M={coin.ShareMultiplier}");
 
             // update pool stats
             if(share.IsBlockCandidate)
@@ -298,7 +298,7 @@ public class ProgpowPool : PoolBase
     }
 
     public override double ShareMultiplier => coin.ShareMultiplier;
-    
+
     private ProgpowJobManager createProgpowExtraNonceProvider()
     {
         switch(coin.Symbol)
@@ -306,10 +306,10 @@ public class ProgpowPool : PoolBase
             case "FIRO":
             case "KIIRO":
                 return ctx.Resolve<ProgpowJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new FiroExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
-            
+
             case "EVR":
                 return ctx.Resolve<ProgpowJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new EvrmoreExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
-            
+
             default:
                 return ctx.Resolve<ProgpowJobManager>(new TypedParameter(typeof(IExtraNonceProvider), new RavencoinExtraNonceProvider(poolConfig.Id, clusterConfig.InstanceId)));
         }
@@ -323,7 +323,7 @@ public class ProgpowPool : PoolBase
 
         base.Configure(pc, cc);
     }
-    
+
     protected override async Task SetupJobManager(CancellationToken ct)
     {
         manager = createProgpowExtraNonceProvider();
@@ -383,7 +383,7 @@ public class ProgpowPool : PoolBase
                 case ProgpowStratumMethods.Authorize:
                     await OnAuthorizeAsync(connection, tsRequest, ct);
                     break;
-                
+
                 case ProgpowStratumMethods.SubmitShare:
                     await OnSubmitAsync(connection, tsRequest, ct);
                     break;
@@ -391,7 +391,7 @@ public class ProgpowPool : PoolBase
                 case BitcoinStratumMethods.MiningMultiVersion:
                     // ignored
                     break;
-                
+
                 case BitcoinStratumMethods.ExtraNonceSubscribe:
                 case BitcoinStratumMethods.GetTransactions:
                 case ProgpowStratumMethods.SubmitHashrate:
@@ -399,7 +399,7 @@ public class ProgpowPool : PoolBase
 
                     await connection.RespondErrorAsync(StratumError.Other, $"Unsupported request {request.Method}", request.Id);
                     break;
-                
+
                 default:
                     logger.Debug(() => $"[{connection.ConnectionId}] Unknown RPC request: {JsonConvert.SerializeObject(request, serializerSettings)}");
 
