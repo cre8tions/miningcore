@@ -4,7 +4,7 @@ using NLog;
 namespace Miningcore.Crypto.Hashing.Progpow.Meowpow;
 
 [Identifier("meowpow")]
-public class KawpowLight : IProgpowLight
+public class MeowpowLight : IProgpowLight
 {
     public void Setup(int totalCache, ulong hardForkBlock = 0)
     {
