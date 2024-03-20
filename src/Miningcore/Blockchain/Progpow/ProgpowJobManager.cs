@@ -60,7 +60,7 @@ public class ProgpowJobManager : BitcoinJobManagerBase<ProgpowJob>
             case "KIIRO":
                 return new KiiroJob();
         }
-        
+
         return new ProgpowJob();
     }
 
@@ -296,9 +296,12 @@ public class ProgpowJobManager : BitcoinJobManagerBase<ProgpowJob>
         // if block candidate, submit & check if accepted by network
         if(share.IsBlockCandidate)
         {
-            logger.Info(() => $"Submitting block {share.BlockHeight} [{share.BlockHash}]");
+            logger.Warn(() => $"Submitting block {share.BlockHeight} [{share.BlockHash}]");
+            logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
+            logger.Warn(() => JsonConvert.SerializeObject(submission, Formatting.Indented));
 
             var acceptResponse = await SubmitBlockAsync(share, blockHex, ct);
+            logger.Warn(() => JsonConvert.SerializeObject(acceptResponse, Formatting.Indented));
 
             // is it still a block candidate?
             share.IsBlockCandidate = acceptResponse.Accepted;
