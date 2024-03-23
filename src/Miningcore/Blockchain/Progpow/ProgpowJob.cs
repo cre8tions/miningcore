@@ -117,12 +117,15 @@ public class ProgpowJob : BitcoinJob
             BlockHeight = BlockTemplate.Height,
             NetworkDifficulty = Difficulty,
             Difficulty = stratumDifficulty / shareMultiplier,
+            ShareDifficulty = shareDiff
         };
 
         if(!isBlockCandidate)
         {
             return (result, null);
         }
+
+        logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
 
         result.IsBlockCandidate = true;
         result.BlockHash = resultBytes.ReverseInPlace().ToHexString();
@@ -206,7 +209,7 @@ public class ProgpowJob : BitcoinJob
 
         this.extraNoncePlaceHolderLength = RavencoinConstants.ExtranoncePlaceHolderLength;
         this.shareMultiplier = shareMultiplier;
-        
+
         if(coin.HasMasterNodes)
         {
             masterNodeParameters = BlockTemplate.Extra.SafeExtensionDataAs<MasterNodeBlockTemplateExtra>();
@@ -234,7 +237,7 @@ public class ProgpowJob : BitcoinJob
                 txVersion += txType << 16;
             }
         }
-        
+
         if(coin.HasPayee)
             payeeParameters = BlockTemplate.Extra.SafeExtensionDataAs<PayeeBlockTemplateExtra>();
 
@@ -251,7 +254,7 @@ public class ProgpowJob : BitcoinJob
         this.headerHasher = headerHasher;
         this.blockHasher = blockHasher;
         this.progpowHasher = progpowHasher;
-        
+
         if(!string.IsNullOrEmpty(BlockTemplate.Target))
             this.blockTargetValue = new uint256(BlockTemplate.Target);
         else

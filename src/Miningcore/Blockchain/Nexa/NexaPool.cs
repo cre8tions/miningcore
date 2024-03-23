@@ -188,7 +188,7 @@ public class NexaPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={Math.Round(share.Difficulty * coin.ShareMultiplier, 3)}");
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={share.ShareDifficulty} | ND={Math.Round(share.NetworkDifficulty * coin.ShareMultiplier, 5)} | M={coin.ShareMultiplier}");
 
             // update pool stats
             if(share.IsBlockCandidate)

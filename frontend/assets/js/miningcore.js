@@ -12,19 +12,19 @@
 // --------------------------------------------------------------------------------------------
 
 // read WebURL from current browser
-var WebURL = "http://192.168.1.84/"; // Website URL is:  https://domain.com/
+var WebURL = "http://10.0.0.100/"; // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
 if (WebURL.substring(WebURL.length - 1) != "/") {
   WebURL = WebURL + "/";
   console.log("Corrected WebURL, does not end with / -> New WebURL : ", WebURL);
 }
-var API = "http://192.168.1.84:4000/api/"; // API address is:  https://domain.com/api/
+var API = "http://10.0.0.100:4000/api/"; // API address is:  https://domain.com/api/
 // // API correction if not ends with /
 // if (API.substring(API.length - 1) != "/") {
 //   API = API + "/";
 //   console.log("Corrected API, does not end with / -> New API : ", API);
 // }
-var stratumAddress = "192.168.1.84"; // Stratum address is:  domain.com
+var stratumAddress = "10.0.0.100"; // Stratum address is:  domain.com
 
 // --------------------------------------------------------------------------------------------
 // no need to change anything below here

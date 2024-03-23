@@ -189,15 +189,15 @@
 		}
 		.facts > .fact {
 			float: left;
-			margin: 0 0 20px 20px;
+			margin: 0 0 0px 20px;
 			width: 129px;
 		}
 	.fact-value {
 		float: left;
 		margin: -6px 4px 0 0;
 		font-family: 'Open Sans', sans-serif;
-		font-size: 48px;
-		line-height: 48px;
+		font-size: 36px;
+		line-height: 36px;
 		position: relative;
 		color: #666666;
 		letter-spacing: -2px;
@@ -255,13 +255,13 @@
 			line-height: 16px;
 			}
 			.facts > .fact {
-				margin: 0 0 30px 30px;
-				width: 180px;
+				margin: 0 0 0px 30px;
+				width: 220px;
 			}
 		.fact-value {
-			margin: -6px 8px 0 0;
-			font-size: 60px;
-			line-height: 60px;
+			margin: 0px 38px 0 0;
+			font-size: 36px;
+			line-height: 36px;
 			letter-spacing: -3px;
 			}
 			.ie7 .fact-value {
