@@ -1676,6 +1676,38 @@
         "explorerAccountLink": "https://explorer.frencoin.org/address/{0}",
         "blockTime": 30
     },
+    "anokas": {
+        "name": "Anokas",
+        "symbol": "ANOK",
+        "family": "progpow",
+        "progpower": "kawpow",
+        "website": "https://anokas.tech/",
+        "market": "",
+        "twitter": "https://twitter.com/frencoinfren",
+        "github": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "blocktime": 30,
+        "shareMultiplier": 1,
+        "explorerBlockLink": "https://explorer.anokas.tech/block/$hash$",
+        "explorerTxLink": "https://explorer.anokas.tech/tx/{0}",
+        "explorerAccountLink": "https://explorer.anokas.tech/address/{0}",
+        "blockTime": 30
+    },
     "fsociety": {
         "name": "Fsociety",
         "canonicalName": "Fsociety",

@@ -298,8 +298,8 @@ public class BitcoinJobManager : BitcoinJobManagerBase<BitcoinJob>
         if(share.IsBlockCandidate)
         {
             logger.Warn(() => $"Submitting block {share.BlockHeight} [{share.BlockHash}]");
-            logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
-            logger.Warn(() => JsonConvert.SerializeObject(submission, Formatting.Indented));
+            // logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
+            // logger.Warn(() => JsonConvert.SerializeObject(submission, Formatting.Indented));
 
             var acceptResponse = await SubmitBlockAsync(share, blockHex, ct);
             logger.Warn(() => JsonConvert.SerializeObject(acceptResponse, Formatting.Indented));
