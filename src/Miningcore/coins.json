@@ -5100,67 +5100,6 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
-    "virsai": {
-        "name": "VirsAI",
-        "canonicalName": "VirsAI",
-        "symbol": "VIRS",
-        "family": "bitcoin",
-        "website": "https://virsai.online/",
-        "market": "",
-        "twitter": "https://twitter.com/bitcoin",
-        "telegram": "",
-        "github": "https://github.com/VirsAI",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "sha256d"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "hasMasterNodes": true,
-        "explorerBlockLink": "https://explorervirsai.online/block/$hash$",
-        "explorerTxLink": "https://explorervirsai.online/tx/{0}",
-        "explorerAccountLink": "https://explorervirsai.online/address/{0}"
-    },
-    "zenyxqord": {
-        "name": "Zenyxqord",
-        "canonicalName": "Zenyxqord",
-        "symbol": "ZENYX",
-        "family": "bitcoin",
-        "website": "https://zenyxqord.net/",
-        "market": "",
-        "twitter": "https://twitter.com/bitcoin",
-        "telegram": "",
-        "github": "https://github.com/VirsAI",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "sha256d"
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "sha256d"
-                }
-            ]
-        },
-        "hasMasterNodes": true,
-        "blockTime": 120,
-        "explorerBlockLink": "https://explorervirsai.online/block/$hash$",
-        "explorerTxLink": "https://explorervirsai.online/tx/{0}",
-        "explorerAccountLink": "https://explorervirsai.online/address/{0}"
-    },
     "vishai": {
         "name": "VishAiCoin",
         "canonicalName": "VishAiCoin",
@@ -6952,5 +6891,34 @@
         "explorerBlockLink": "https://explorer.reaction.network/block/$hash$",
         "explorerTxLink": "https://explorer.reaction.network/tx/{0}",
         "explorerAccountLink": "https://explorer.reaction.network/address/{0}"
+    },
+    "x1coin": {
+        "name": "X1Coin",
+        "canonicalName": "X1CoinBitcoin",
+        "symbol": "X1C",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "",
+        "explorerTxLink": "",
+        "explorerAccountLink": ""
     }
 }
