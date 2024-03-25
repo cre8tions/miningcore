@@ -191,6 +191,7 @@ function loadHomePage() {
           poolCoinTableTemplate += "<td class='miners'>" + (typeof value.poolStats !== "undefined" && value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-hash'>" + (poolHashrate > 0 ? _formatter(poolHashrate, 3, "H/s") + " (" + poolpercentage + "%)" : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf2) + "</td>";
+          poolCoinTableTemplate += "<td class='pool-effort'>" + (value.poolEffort * 100).toFixed(4) + "%</td>";
           poolCoinTableTemplate += "<td class='net-hash'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkHashrate, 2, "H/s") : "--") + "</td>";
           poolCoinTableTemplate += "<td class='net-diff'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkDifficulty, 4, "") : "--") + "</td > ";
           poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + " (" + value.paymentProcessing.payoutScheme  + ")</button></a></td>";
