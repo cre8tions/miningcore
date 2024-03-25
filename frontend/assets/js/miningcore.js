@@ -160,7 +160,7 @@ function loadHomePage() {
 
           var price = 0.00;
           var change = 0.00;
-          $.ajax({
+                    $.ajax({
             url: priceURL,
             async: false,
             success: function (pricedata) {
