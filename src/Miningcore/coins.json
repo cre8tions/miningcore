@@ -6920,5 +6920,34 @@
         "explorerBlockLink": "",
         "explorerTxLink": "",
         "explorerAccountLink": ""
+    },
+    "rebelcoin": {
+        "name": "RebelCoin",
+        "canonicalName": "RebelCoin",
+        "symbol": "RBL",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "",
+        "explorerTxLink": "",
+        "explorerAccountLink": ""
     }
 }

@@ -158,9 +158,11 @@ function loadHomePage() {
 
             var diff = value.networkStats.networkDifficulty
             ttf2 = diff * 4294967296 / poolHashrate; // 2^32 = 4294967296
+
+            poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(2);
           }
 
-          poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(2);
+
 
           const ticker = value.coin.type.toLowerCase().split("_");
           var priceURL = "https://api.xeggex.com/api/v2/ticker/" + ticker[0] + "%2Fusdt"
@@ -189,11 +191,11 @@ function loadHomePage() {
           poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") <span class='tag small float-right" + changecolor + "'>" + change + "%</span></a></td>";
           poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
           poolCoinTableTemplate += "<td class='miners'>" + (typeof value.poolStats !== "undefined" && value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
-          poolCoinTableTemplate += "<td class='pool-hash'>" + (poolHashrate > 0 ? _formatter(poolHashrate, 3, "H/s") + " (" + poolpercentage + "%)" : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-hash'>" + (poolHashrate > 0 ? _formatter(poolHashrate, 3, "H/s") + " <sup>(<i>" + poolpercentage + "%</i>)</sup>" : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf2) + "</td>";
-          poolCoinTableTemplate += "<td class='pool-effort'>" + (value.poolEffort * 100).toFixed(4) + "%</td>";
-          poolCoinTableTemplate += "<td class='net-hash'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkHashrate, 2, "H/s") : "--") + "</td>";
-          poolCoinTableTemplate += "<td class='net-diff'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkDifficulty, 4, "") : "--") + "</td > ";
+          poolCoinTableTemplate += "<td class='pool-effort'>" + (value.poolEffort != 0 ? (value.poolEffort * 100).toFixed(4) + "%" : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='net-hash'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkHashrate, 2, "H/s") : "Loading...") + "</td>";
+          poolCoinTableTemplate += "<td class='net-diff'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkDifficulty, 4, "") : "Loading...") + "</td > ";
           poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + " (" + value.paymentProcessing.payoutScheme  + ")</button></a></td>";
           poolCoinTableTemplate += "</tr>";
         });
@@ -316,7 +318,7 @@ function loadBlocksPage(isIndex = 0) {
   var ajaxUrl = ""
   var showPoolId = 0;
   if (isIndex) {
-    ajaxUrl = API + "blocks?page=0&pageSize=20"
+    ajaxUrl = API + "blocks?page=0&pageSize=40"
     showPoolId = 1;
   } else {
     ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=50"
@@ -328,6 +330,9 @@ function loadBlocksPage(isIndex = 0) {
       var blockList = "";
       if (data.length > 0) {
         $.each(data, function (index, value) {
+          console.log("Blockdata");
+          console.log(value);
+
           var createDate = convertLocalDateToUTCDate(new Date(value.created), false).toISOString();
           var effort = Math.round(value.effort * 100);
           var progress = Math.round(value.confirmationProgress * 100)
@@ -347,6 +352,9 @@ function loadBlocksPage(isIndex = 0) {
           var statustext = "<span class='tag'>Confirmed</span>";
           if (value.status == "pending")
             statustext = "<span class='tag orange-bg'>Pending</span>";
+          else if (value.status == "orphaned")
+            statustext = "<span class='tag red-bg'>Orphaned</span>";
+
           blockList += "<td>" + statustext + "</td>";
           blockList += "<td>" + value.reward + "</td>";
           blockList += "<td><span class='progress' style='width: 50%'><span class='progress-text'>" + Math.round(value.confirmationProgress * 100) + "%</span><span class='progress-bar " + progress_color + "-gradient glossy' style='width: " + Math.round(value.confirmationProgress * 100) + "%'><span class='progress-text'>" + Math.round(value.confirmationProgress * 100) + "%</span></span></td>";
