@@ -275,12 +275,11 @@ public class BitcoinPool : PoolBase
             }
         }
 
-        // var response = new JsonRpcResponse<object>(result, request.Id);
-        // response.Extra = new Dictionary<string, object>();
-        // response.Extra["error"] = null;
+        var response = new JsonRpcResponse<object>(result, request.Id);
+        response.Extra = new Dictionary<string, object>();
+        response.Extra["error"] = null;
 
-        // await connection.RespondAsync(response);
-        await connection.RespondAsync(result, request.Id);
+        await connection.RespondAsync(response);
     }
 
     private void ConfigureVersionRolling(StratumConnection connection, BitcoinWorkerContext context,
