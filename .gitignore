@@ -212,5 +212,5 @@ fabric.properties
 /*/*/*/*/*/*/*/*/*.o
 /*/*/*/*/*/*/*/*/*/*.o
 frontend_old
-
+frontend
 /config.json

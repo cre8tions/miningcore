@@ -159,27 +159,39 @@ function loadHomePage() {
             var diff = value.networkStats.networkDifficulty
             ttf2 = diff * 4294967296 / poolHashrate; // 2^32 = 4294967296
 
-            poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(2);
+            poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(8);
           }
 
 
 
           const ticker = value.coin.type.toLowerCase().split("_");
           var priceURL = "https://api.xeggex.com/api/v2/ticker/" + ticker[0] + "%2Fusdt"
-          console.log(priceURL);
 
           var price = 0.00;
           var change = 0.00;
-                    $.ajax({
+          $.ajax({
             url: priceURL,
             async: false,
             success: function (pricedata) {
-              console.log("Getting price data...");
-              console.log(pricedata);
               price = pricedata.last_price;
-              change = pricedata.change_percent
+              change = pricedata.change_percent;
             }
           });
+
+          if (typeof change == "undefined") {
+            priceURL = "https://api.nonkyc.io/api/v2/market/getbysymbol/" + ticker[0] + "_usdt";
+            $.ajax({
+              url: priceURL,
+              async: false,
+              success: function (pricedata) {
+                price = pricedata.lastPrice;
+                change = pricedata.changePercent;
+              }
+            });
+          }
+
+
+
 
           totalUSDTEquivPaid += value.totalPaid * price;
 
@@ -318,7 +330,7 @@ function loadBlocksPage(isIndex = 0) {
   var ajaxUrl = ""
   var showPoolId = 0;
   if (isIndex) {
-    ajaxUrl = API + "blocks?page=0&pageSize=40"
+    ajaxUrl = API + "blocks?page=0&pageSize=100"
     showPoolId = 1;
   } else {
     ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=50"
@@ -330,13 +342,12 @@ function loadBlocksPage(isIndex = 0) {
       var blockList = "";
       if (data.length > 0) {
         $.each(data, function (index, value) {
-          console.log("Blockdata");
-          console.log(value);
+          console.log("Blockdata" + value);
 
           var createDate = convertLocalDateToUTCDate(new Date(value.created), false).toISOString();
           var effort = Math.round(value.effort * 100);
           var progress = Math.round(value.confirmationProgress * 100)
-          var progress_color = progress <= 50 ? "red" : progress < 100 ? "orange" : "green";
+          var progress_color = progress <= 25 ? "red" : progress < 100 ? "orange" : "green";
 
           blockList += "<tr>";
           blockList += "<td>" + createDate + "</td>";
