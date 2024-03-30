@@ -6949,5 +6949,34 @@
         "explorerBlockLink": "",
         "explorerTxLink": "",
         "explorerAccountLink": ""
+    },
+    "cheetahcoin": {
+        "name": "CheetahCoin",
+        "canonicalName": "CheetahCoin",
+        "symbol": "CHTA",
+        "family": "bitcoin",
+        "website": "https://cheetahcoin.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "http://chtaexplorer.mooo.com:3002/block/$hash$",
+        "explorerTxLink": "http://chtaexplorer.mooo.com:3002/tx/{0}",
+        "explorerAccountLink": "http://chtaexplorer.mooo.com:3002/address/{0}"
     }
 }
