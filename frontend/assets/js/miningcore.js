@@ -159,7 +159,7 @@ function loadHomePage() {
             var diff = value.networkStats.networkDifficulty
             ttf2 = diff * 4294967296 / poolHashrate; // 2^32 = 4294967296
 
-            poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(8);
+            poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(2);
           }
 
 
