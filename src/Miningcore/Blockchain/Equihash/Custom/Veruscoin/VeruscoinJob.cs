@@ -19,7 +19,7 @@ public class VeruscoinJob : EquihashJob
 {
     // PBaaS
     public bool isPBaaSActive;
-    
+
     protected uint coinbaseIndex = 4294967295u;
     protected uint coinbaseSequence = 4294967295u;
     // protected string poolHex = "56525343";
@@ -30,7 +30,7 @@ public class VeruscoinJob : EquihashJob
     private static uint txVShieldedSpend = 0u;
     private static uint txVShieldedOutput = 0u;
     private static uint txJoinSplits = 0u;
-    
+
     protected override Transaction CreateOutputTransaction()
     {
         var txNetwork = Network.GetNetwork(networkParams.CoinbaseTxNetwork);
@@ -115,7 +115,7 @@ public class VeruscoinJob : EquihashJob
 
         return tx;
     }
-    
+
     private string GetVeruscoinTreasuryRewardAddress()
     {
         var index = (int) Math.Floor((BlockTemplate.Height - networkParams.TreasuryRewardStartBlockHeight) /
@@ -124,17 +124,17 @@ public class VeruscoinJob : EquihashJob
         var address = networkParams.TreasuryRewardAddresses[index];
         return address;
     }
-    
+
     protected override void BuildCoinbase()
     {
         // output transaction
         txOut = CreateOutputTransaction();
-        
+
         // when PBaaS activates we must use the coinbasetxn from daemon to get proper fee pool calculations in coinbase
         var solutionVersion = BlockTemplate.Solution.Substring(0, 8);
         var reversedSolutionVersion = uint.Parse(solutionVersion.HexToReverseByteArray().ToHexString(), NumberStyles.HexNumber);
         isPBaaSActive = (reversedSolutionVersion > 6);
-        
+
         if(!isPBaaSActive)
         {
             var script = TxIn.CreateCoinbase((int) BlockTemplate.Height).ScriptSig;
@@ -167,7 +167,7 @@ public class VeruscoinJob : EquihashJob
             opBytes.CopyTo(serializedBlockHeightBytes[offset..]);
             offset += poolHexBytes.Length;
             poolHexBytes.CopyTo(serializedBlockHeightBytes[offset..]); */
-            
+
             using(var stream = new MemoryStream())
             {
                 var bs = new ZcashStream(stream, true);
@@ -197,7 +197,7 @@ public class VeruscoinJob : EquihashJob
 
                 // serialize (simulated) input transaction
                 bs.ReadWriteAsVarInt(ref txInputCount);
-                bs.ReadWrite(ref sha256Empty);
+                bs.ReadWrite(sha256Empty);
                 bs.ReadWrite(ref coinbaseIndex);
                 // bs.ReadWrite(ref serializedBlockHeightBytes);
                 bs.ReadWrite(ref script);
@@ -205,7 +205,7 @@ public class VeruscoinJob : EquihashJob
 
                 // serialize output transaction
                 var txOutBytes = SerializeOutputTransaction(txOut);
-                bs.ReadWrite(ref txOutBytes);
+                bs.ReadWrite(txOutBytes);
 
                 // misc
                 bs.ReadWrite(ref txLockTime);
@@ -239,7 +239,7 @@ public class VeruscoinJob : EquihashJob
             coinbaseInitialHash = BlockTemplate.CoinbaseTx.Hash.HexToReverseByteArray();
         }
     }
-    
+
     private byte[] SerializeOutputTransaction(Transaction tx)
     {
         var withDefaultWitnessCommitment = !string.IsNullOrEmpty(BlockTemplate.DefaultWitnessCommitment);
@@ -258,7 +258,7 @@ public class VeruscoinJob : EquihashJob
             long amount;
             byte[] raw;
             uint rawLength;
-            
+
             // serialize outputs
             foreach(var output in tx.Outputs)
             {
@@ -269,7 +269,7 @@ public class VeruscoinJob : EquihashJob
 
                 bs.ReadWrite(ref amount);
                 bs.ReadWriteAsVarInt(ref rawLength);
-                bs.ReadWrite(ref raw);
+                bs.ReadWrite(raw);
             }
 
             // serialize witness (segwit)
@@ -281,13 +281,13 @@ public class VeruscoinJob : EquihashJob
 
                 bs.ReadWrite(ref amount);
                 bs.ReadWriteAsVarInt(ref rawLength);
-                bs.ReadWrite(ref raw);
+                bs.ReadWrite(raw);
             }
 
             return stream.ToArray();
         }
     }
-    
+
     private byte[] BuildVeruscoinRawTransactionBuffer()
     {
         using(var stream = new MemoryStream())
@@ -311,43 +311,43 @@ public class VeruscoinJob : EquihashJob
         {
             var bs = new BitcoinStream(stream, true);
 
-            bs.ReadWrite(ref header);
-            bs.ReadWrite(ref solution);
-            
+            bs.ReadWrite(header);
+            bs.ReadWrite(solution);
+
             /* var txCount = transactionCount.ToString();
             if (Math.Abs(txCount.Length % 2) == 1)
                 txCount = "0" + txCount;
-            
+
             if (transactionCount <= 0x7f)
             {
                 var simpleVarIntBytes = (Span<byte>) txCount.HexToByteArray();
-                
+
                 bs.ReadWrite(ref simpleVarIntBytes);
             }
             else if (transactionCount <= 0x7fff)
             {
                 if (txCount.Length == 2)
                     txCount = "00" + txCount;
-                
+
                 var complexHeader = (Span<byte>) new byte[] { 0xFD };
                 var complexVarIntBytes = (Span<byte>) txCount.HexToReverseByteArray();
-                
+
                 // concat header and varInt
                 Span<byte> complexHeaderVarIntBytes = stackalloc byte[complexHeader.Length + complexVarIntBytes.Length];
                 complexHeader.CopyTo(complexHeaderVarIntBytes);
                 complexVarIntBytes.CopyTo(complexHeaderVarIntBytes[complexHeader.Length..]);
-                
+
                 bs.ReadWrite(ref complexHeaderVarIntBytes);
             } */
-            
+
             bs.ReadWriteAsVarInt(ref transactionCount);
-            bs.ReadWrite(ref coinbase);
-            bs.ReadWrite(ref rawTransactionBuffer);
+            bs.ReadWrite(coinbase);
+            bs.ReadWrite(rawTransactionBuffer);
 
             return stream.ToArray();
         }
     }
-    
+
     private (Share Share, string BlockHex) ProcessVersucoinShareInternal(StratumConnection worker, string nonce,
         uint nTime, string solution)
     {
@@ -365,15 +365,15 @@ public class VeruscoinJob : EquihashJob
 
         // hash block-header
         Span<byte> headerHash = stackalloc byte[32];
-        
+
         Verushash headerHasherVerus = new Verushash();
-        
+
         if (BlockTemplate.Version > 4 && !string.IsNullOrEmpty(BlockTemplate.Solution))
         {
             // make sure verus solution version matches expected version
             if (solution.Substring(VeruscoinConstants.SolutionSlice, 2) != BlockTemplate.Solution.Substring(0, 2))
                 throw new StratumException(StratumError.Other, $"invalid solution - expected solution header: {BlockTemplate.Solution.Substring(0, 2)}");
-            
+
             if (solution.Substring(VeruscoinConstants.SolutionSlice, 2) == "03")
                 headerHasherVerus.Digest(headerSolutionBytes, headerHash, VeruscoinConstants.HashVersion2b1);
             else
@@ -383,7 +383,7 @@ public class VeruscoinJob : EquihashJob
             headerHasherVerus.Digest(headerSolutionBytes, headerHash, VeruscoinConstants.HashVersion2b);
         else
             headerHasherVerus.Digest(headerSolutionBytes, headerHash);
-        
+
         var headerValue = new uint256(headerHash);
 
         // calc share-diff
@@ -423,7 +423,7 @@ public class VeruscoinJob : EquihashJob
         if(isBlockCandidate)
         {
             var headerHashReversed = headerHash.ToNewReverseArray();
-            
+
             result.IsBlockCandidate = true;
             result.BlockReward = rewardToPool.ToDecimal(MoneyUnit.BTC);
             result.BlockHash = headerHashReversed.ToHexString();
@@ -435,7 +435,7 @@ public class VeruscoinJob : EquihashJob
 
         return (result, null);
     }
-    
+
     private bool RegisterVersucoinSubmit(string nonce, string solution)
     {
         var key = nonce + solution;
@@ -496,7 +496,7 @@ public class VeruscoinJob : EquihashJob
         // Misc
         isPBaaSActive = false;
         this.solver = solver;
-        
+
          // pbaas minimal merged mining target
         if(!string.IsNullOrEmpty(BlockTemplate.MergedBits))
         {
@@ -547,9 +547,9 @@ public class VeruscoinJob : EquihashJob
         }
 
         rewardFees = blockTemplate.Transactions.Sum(x => x.Fee);
-        
+
         BuildCoinbase();
-        
+
         // build tx hashes
         var txHashes = new List<uint256> { new(coinbaseInitialHash) };
         txHashes.AddRange(BlockTemplate.Transactions.Select(tx => new uint256(tx.Hash.HexToReverseByteArray())));
@@ -570,7 +570,7 @@ public class VeruscoinJob : EquihashJob
         {
             char[] charsToTrim = {'0'};
             solutionIn = blockTemplate.Solution.TrimEnd(charsToTrim);
-            
+
             if ((solutionIn.Length % 2) == 1)
                 solutionIn += "0";
         }
@@ -588,7 +588,7 @@ public class VeruscoinJob : EquihashJob
             solutionIn
         };
     }
-    
+
     public override (Share Share, string BlockHex) ProcessShare(StratumConnection worker, string extraNonce2, string nTime, string solution)
     {
         Contract.RequiresNonNull(worker);
@@ -605,7 +605,7 @@ public class VeruscoinJob : EquihashJob
         var nTimeInt = uint.Parse(nTime.HexToReverseByteArray().ToHexString(), NumberStyles.HexNumber);
         // if(nTimeInt < BlockTemplate.CurTime || nTimeInt > ((DateTimeOffset) clock.Now).ToUnixTimeSeconds() + 7200)
             // throw new StratumException(StratumError.Other, "ntime out of range");
-        
+
         if(nTimeInt != BlockTemplate.CurTime)
             throw new StratumException(StratumError.Other, "ntime out of range");
 
@@ -614,7 +614,7 @@ public class VeruscoinJob : EquihashJob
         // validate nonce
         if(nonce.Length != 64)
             throw new StratumException(StratumError.Other, "incorrect size of extraNonce2");
-        
+
         // validate solution
         if(solution.Length != (networkParams.SolutionSize + networkParams.SolutionPreambleSize) * 2)
             throw new StratumException(StratumError.Other, "incorrect size of solution");
@@ -622,7 +622,7 @@ public class VeruscoinJob : EquihashJob
         // dupe check
         if(!RegisterVersucoinSubmit(nonce, solution))
             throw new StratumException(StratumError.DuplicateShare, "duplicate share");
-        
+
         // when pbaas activates use block header nonce from daemon, pool/miner can no longer manipulate
         if(isPBaaSActive)
         {
@@ -630,21 +630,21 @@ public class VeruscoinJob : EquihashJob
                 throw new StratumException(StratumError.Other, "block header nonce not provided by daemon");
             else
                 nonce = BlockTemplate.Nonce.HexToReverseByteArray().ToHexString();
-            
+
             // verify pool nonce presence in solution
             var solutionExtraData = solution.Substring(solution.Length - 30);
             if(solutionExtraData.IndexOf(context.ExtraNonce1) < 0)
                 throw new StratumException(StratumError.Other, "invalid solution, pool nonce missing");
         }
-            
+
         return ProcessVersucoinShareInternal(worker, nonce, nTimeInt, solution);
     }
-    
+
     public override object GetJobParams(bool isNew)
     {
         jobParams[^2] = isNew;
         return jobParams;
     }
-    
+
     #endregion // API-Surface
 }
