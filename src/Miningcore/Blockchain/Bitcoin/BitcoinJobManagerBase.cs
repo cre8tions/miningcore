@@ -16,11 +16,14 @@ using NBitcoin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using static Miningcore.Util.ActionUtils;
+using NLog;
+
 
 namespace Miningcore.Blockchain.Bitcoin;
 
 public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
 {
+
     protected BitcoinJobManagerBase(
         IComponentContext ctx,
         IMasterClock clock,
@@ -473,9 +476,14 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
 
         PostChainIdentifyConfigure();
 
+
+
         // ensure pool owns wallet
         if(validateAddressResponse is not { IsValid: true })
+        {
+            logger.Error(() => $"validateAddressResponse: address{poolConfig.Address}: '{validateAddressResponse.ToString()}'");
             throw new PoolStartupException($"Daemon reports pool-address '{poolConfig.Address}' as invalid", poolConfig.Id);
+        }
 
         isPoS = poolConfig.Template is BitcoinTemplate { IsPseudoPoS: true } ||
             (difficultyResponse.Values().Any(x => x.Path == "proof-of-stake" && !difficultyResponse.Values().Any(x => x.Path == "proof-of-work")));
