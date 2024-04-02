@@ -190,7 +190,7 @@ public class BitcoinPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={share.ShareDifficulty:N3} | ND={(share.NetworkDifficulty * coin.ShareMultiplier):N3} | M={coin.ShareMultiplier:N0}");
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={share.ShareDifficulty:N0} | ND={(share.NetworkDifficulty * coin.ShareMultiplier):N0} | M={coin.ShareMultiplier:N0}");
 
             // update pool stats
             if(share.IsBlockCandidate)
