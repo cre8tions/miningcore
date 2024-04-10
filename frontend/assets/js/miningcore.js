@@ -152,12 +152,10 @@ function loadHomePage() {
             ttf = "--";
           }
           else {
-            poolHashrate = value.poolStats.poolHashrate;
-            totalHashrate += poolHashrate;
-            ttf = ((value.networkStats.networkHashrate / poolHashrate) * blocktime).toFixed(0);
+            totalHashrate += value.poolStats.poolHashrate;
 
-            var diff = value.networkStats.networkDifficulty
-            ttf2 = diff * 4294967296 / poolHashrate; // 2^32 = 4294967296
+            ttf = ((value.networkStats.networkHashrate / value.poolStats.poolHashrate) * blocktime).toFixed(0);
+            ttf2 = (value.networkStats.networkDifficulty * 4294967296) / value.poolStats.poolHashrate; // 2^32 = 4294967296
 
             poolpercentage = (value.poolStats.poolHashrate / value.networkStats.networkHashrate * 100).toFixed(2);
           }
@@ -203,9 +201,9 @@ function loadHomePage() {
           poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") <span class='tag small float-right" + changecolor + "'>" + change + "%</span></a></td>";
           poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
           poolCoinTableTemplate += "<td class='miners'>" + (typeof value.poolStats !== "undefined" && value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
-          poolCoinTableTemplate += "<td class='pool-hash'>" + (poolHashrate > 0 ? _formatter(poolHashrate, 3, "H/s") + " <sup>(<i>" + poolpercentage + "%</i>)</sup>" : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-hash'>" + (value.poolStats.poolHashrate > 0 ? _formatter(value.poolStats.poolHashrate, 3, "H/s") + " <sup>(<i>" + poolpercentage + "%</i>)</sup>" : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-ttf'>" + readableSeconds(ttf2) + "</td>";
-          poolCoinTableTemplate += "<td class='pool-effort'>" + (value.poolEffort != 0 ? (value.poolEffort * 100).toFixed(4) + "%" : "--") + "</td>";
+          poolCoinTableTemplate += "<td class='pool-effort'>" + (value.poolEffort != 0 ? formatLuck((value.poolEffort * 100).toFixed(0)) : "--") + "</td>";
           poolCoinTableTemplate += "<td class='net-hash'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkHashrate, 2, "H/s") : "Loading...") + "</td>";
           poolCoinTableTemplate += "<td class='net-diff'>" + (typeof value.networkStats !== "undefined" ? _formatter(value.networkStats.networkDifficulty, 4, "") : "Loading...") + "</td > ";
           poolCoinTableTemplate += "<td class='gomine'><a href='pool/" + value.id + ".html'><button class='button'>Go Mine " + coinLogo + coinName + " (" + value.paymentProcessing.payoutScheme  + ")</button></a></td>";
@@ -330,7 +328,7 @@ function loadBlocksPage(isIndex = 0) {
   var ajaxUrl = ""
   var showPoolId = 0;
   if (isIndex) {
-    ajaxUrl = API + "blocks?page=0&pageSize=100"
+    ajaxUrl = API + "blocks?page=0&pageSize=25"
     showPoolId = 1;
   } else {
     ajaxUrl = API + "pools/" + currentPool + "/blocks?page=0&pageSize=50"
