@@ -244,7 +244,7 @@ public class BitcoinPool : PoolBase
 
         catch(Exception ex)
         {
-            // logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params}");
+            logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params}");
         }
     }
 
@@ -375,8 +375,8 @@ public class BitcoinPool : PoolBase
         {
             disposables.Add(manager.Jobs
                 .Select(job => Observable.FromAsync(() =>
-                    Guard(()=> OnNewJobAsync(job),
-                        ex=> logger.Debug(() => $"{nameof(OnNewJobAsync)}: {ex.Message}"))))
+                    Guard(() => OnNewJobAsync(job),
+                        ex => logger.Debug(() => $"{nameof(OnNewJobAsync)}: {ex.Message}"))))
                 .Concat()
                 .Subscribe(_ => { }, ex =>
                 {
