@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
 using static Miningcore.Util.ActionUtils;
+using static Miningcore.Util.FormatUtil;
 
 namespace Miningcore.Blockchain.Bitcoin;
 
@@ -190,7 +191,14 @@ public class BitcoinPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: D={share.ShareDifficulty:N0} | ND={(share.NetworkDifficulty * coin.ShareMultiplier):N0} | M={coin.ShareMultiplier:N0}");
+            if(share.Difficulty >= 1000000000)
+            {
+                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} | M={coin.ShareMultiplier} ***** HIGH VALUE SHARE *****");
+            }
+            else
+            {
+                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} | M={coin.ShareMultiplier}");
+            }
 
             // update pool stats
             if(share.IsBlockCandidate)
