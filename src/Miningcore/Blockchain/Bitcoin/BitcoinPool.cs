@@ -191,13 +191,19 @@ public class BitcoinPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
+            if (share.Difficulty >= connection.BestSessionDifficulty)
+            {
+                connection.BestSessionDifficulty = share.Difficulty;
+            }
+
+
             if(share.Difficulty >= 1000000000)
             {
-                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} | M={coin.ShareMultiplier} ***** HIGH VALUE SHARE *****");
+                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadLeft(8)} ***** HIGH VALUE SHARE *****");
             }
             else
             {
-                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} | M={coin.ShareMultiplier}");
+                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadLeft(8)}");
             }
 
             // update pool stats
@@ -284,8 +290,10 @@ public class BitcoinPool : PoolBase
         }
 
         var response = new JsonRpcResponse<object>(result, request.Id);
-        response.Extra = new Dictionary<string, object>();
-        response.Extra["error"] = null;
+        // {
+        //     Extra = new Dictionary<string, object>()
+        // };
+        // response.Extra["error"] = null;
 
         await connection.RespondAsync(response);
     }
@@ -333,7 +341,7 @@ public class BitcoinPool : PoolBase
     {
         currentJobParams = jobParams;
 
-        logger.Info(() => $"Broadcasting job {((object[]) jobParams)[0]}");
+        logger.Debug(() => $"Broadcasting job {((object[]) jobParams)[0]}");
 
         await Guard(() => ForEachMinerAsync(async (connection, ct) =>
         {

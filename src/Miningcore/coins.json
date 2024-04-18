@@ -282,7 +282,10 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [1024, 1]
+            "args": [
+                1024,
+                1
+            ]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -312,7 +315,10 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [1024, 1]
+            "args": [
+                1024,
+                1
+            ]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -651,7 +657,9 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": ["sha256d"],
+        "blockTemplateRpcExtraParams": [
+            "sha256d"
+        ],
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -674,7 +682,10 @@
         },
         "headerHasher": {
             "hash": "scrypt",
-            "args": [1024, 1]
+            "args": [
+                1024,
+                1
+            ]
         },
         "blockHasher": {
             "hash": "reverse",
@@ -689,7 +700,10 @@
             "args": [
                 {
                     "hash": "scrypt",
-                    "args": [1024, 1]
+                    "args": [
+                        1024,
+                        1
+                    ]
                 }
             ]
         },
@@ -760,7 +774,9 @@
                 }
             ]
         },
-        "blockTemplateRpcExtraParams": ["ghostrider"],
+        "blockTemplateRpcExtraParams": [
+            "ghostrider"
+        ],
         "hasFounderFee": true,
         "hasMasterNodes": true,
         "hasSmartNodes": true,
@@ -6978,5 +6994,34 @@
         "explorerBlockLink": "http://chtaexplorer.mooo.com:3002/block/$hash$",
         "explorerTxLink": "http://chtaexplorer.mooo.com:3002/tx/{0}",
         "explorerAccountLink": "http://chtaexplorer.mooo.com:3002/address/{0}"
+    },
+    "itsameme": {
+        "name": "ItsAMeme",
+        "canonicalName": "ItsAMeme",
+        "symbol": "IAM",
+        "family": "bitcoin",
+        "website": "https://its-a-meme.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "https://explorer.its-a-meme.com/block/$hash$",
+        "explorerTxLink": "https://explorer.its-a-meme.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.its-a-meme.com/address/{0}"
     }
 }
