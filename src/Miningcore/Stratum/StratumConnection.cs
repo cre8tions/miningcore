@@ -171,6 +171,7 @@ public class StratumConnection
     public bool IsAlive { get; set; }
     public IObservable<Unit> Terminated => terminated.AsObservable();
     public WorkerContextBase Context => context;
+    public double BestSessionDifficulty { get; set; }
 
     public void SetContext<T>(T value) where T : WorkerContextBase
     {
