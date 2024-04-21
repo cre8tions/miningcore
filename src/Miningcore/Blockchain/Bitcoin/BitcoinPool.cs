@@ -155,6 +155,7 @@ public class BitcoinPool : PoolBase
     {
         var request = tsRequest.Value;
         var context = connection.ContextAs<BitcoinWorkerContext>();
+        var newHighScore = false;
 
         try
         {
@@ -191,20 +192,30 @@ public class BitcoinPool : PoolBase
             // telemetry
             PublishTelemetry(TelemetryCategory.Share, clock.Now - tsRequest.Timestamp.UtcDateTime, true);
 
-            if (share.Difficulty >= connection.BestSessionDifficulty)
+
+            // #WIP
+            if (share.ShareDifficulty >= connection.BestSessionDifficulty)
             {
-                connection.BestSessionDifficulty = share.Difficulty;
+                connection.BestSessionDifficulty = share.ShareDifficulty;
+                // connection.SessionDifficulty["Best"] = share.ShareDifficulty.ToString();
+                newHighScore = true;
+            }
+            // #WIP
+
+            connection.SessionDifficulty[FormatQuantity(share.ShareDifficulty).Last().ToString()]++;
+            connection.SessionDifficulty["Total"]++;
+
+            var diffStats = $"K:{connection.SessionDifficulty["K"]} | M:{connection.SessionDifficulty["M"]} | G:{connection.SessionDifficulty["G"]} | T:{connection.SessionDifficulty["T"]} | P:{connection.SessionDifficulty["P"]} Total:{connection.SessionDifficulty["Total"]}";
+
+            var highScore = newHighScore ? $" | High Score: {FormatQuantity(connection.BestSessionDifficulty).PadLeft(8)}" : string.Empty;
+            if(share.ShareDifficulty >= 1000000000)
+            {
+                highScore += " ***** HIGH VALUE SHARE *****";
             }
 
 
-            if(share.Difficulty >= 1000000000)
-            {
-                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadLeft(8)} ***** HIGH VALUE SHARE *****");
-            }
-            else
-            {
-                logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadLeft(8)}");
-            }
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} ({diffStats}) {highScore}");
+
 
             // update pool stats
             if(share.IsBlockCandidate)
@@ -246,6 +257,7 @@ public class BitcoinPool : PoolBase
 
             // client may suggest higher-than-base difficulty, but not a lower one
             var poolEndpoint = poolConfig.Ports[connection.LocalEndpoint.Port];
+            logger.Info(() => $"[{connection.ConnectionId}] Suggesting difficulty of {request.Params} Type: {requestedDiff.GetType()} {poolEndpoint.Difficulty.GetType()}");
 
             if(requestedDiff > poolEndpoint.Difficulty)
             {
@@ -258,7 +270,7 @@ public class BitcoinPool : PoolBase
 
         catch(Exception ex)
         {
-            logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params}");
+            logger.Error(ex, () => $"Unable to convert suggested difficulty {request.Params} ");
         }
     }
 
