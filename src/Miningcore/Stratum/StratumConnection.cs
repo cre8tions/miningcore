@@ -22,6 +22,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NLog;
 using Contract = Miningcore.Contracts.Contract;
+using System.Collections.Generic;
 
 namespace Miningcore.Stratum;
 
@@ -43,6 +44,18 @@ public class StratumConnection
         ConnectionId = connectionId;
         IsAlive = true;
         this.gpdrCompliantLogging = gpdrCompliantLogging;
+
+        SessionDifficulty = new Dictionary<string, int>()
+        {
+            { "Total", 0 },
+            { "K", 0 },
+            { "M", 0 },
+            { "G", 0 },
+            { "T", 0 },
+            { "P", 0 },
+            { "E", 0 }
+
+        };
     }
 
     private readonly ILogger logger;
@@ -171,7 +184,17 @@ public class StratumConnection
     public bool IsAlive { get; set; }
     public IObservable<Unit> Terminated => terminated.AsObservable();
     public WorkerContextBase Context => context;
-    public double BestSessionDifficulty { get; set; }
+    public double BestSessionDifficulty = 0;
+    public Dictionary<string, int> SessionDifficulty;
+
+    public void SetSessionDifficulty(string qty)
+    {
+        if(SessionDifficulty.ContainsKey(qty)){
+            SessionDifficulty[qty]++;
+        }else{
+            SessionDifficulty.Add(qty, 1);
+        }
+     }
 
     public void SetContext<T>(T value) where T : WorkerContextBase
     {
