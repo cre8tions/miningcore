@@ -202,20 +202,21 @@ public class BitcoinPool : PoolBase
             }
             // #WIP
 
-            connection.SessionDifficulty[FormatQuantity(share.ShareDifficulty).Last().ToString()]++;
-            connection.SessionDifficulty["Total"]++;
+            // connection.SessionDifficulty[FormatQuantity(share.ShareDifficulty).Last().ToString()]++;
+            // connection.SessionDifficulty["Total"]++;
 
-            var diffStats = $"K:{connection.SessionDifficulty["K"]} | M:{connection.SessionDifficulty["M"]} | G:{connection.SessionDifficulty["G"]} | T:{connection.SessionDifficulty["T"]} | P:{connection.SessionDifficulty["P"]} Total:{connection.SessionDifficulty["Total"]}";
+            connection.SetSessionDifficulty(FormatQuantity(share.ShareDifficulty * coin.ShareMultiplier).Last().ToString());
 
-            var highScore = newHighScore ? $" | High Score: {FormatQuantity(connection.BestSessionDifficulty).PadLeft(8)}" : string.Empty;
+            var diffStats = $" [{connection.SessionDifficulty["K"],6}|{connection.SessionDifficulty["M"],4}|{connection.SessionDifficulty["G"],2}|{connection.SessionDifficulty["T"],2}|{connection.SessionDifficulty["P"],2}|{connection.SessionDifficulty["Total"],6}]";
+            // var diffStats = $"K:{connection.GetSessionDifficultyPercentage("K")} | M:{connection.GetSessionDifficultyPercentage("M")} | G:{connection.GetSessionDifficultyPercentage("G")} | T:{connection.GetSessionDifficultyPercentage("T")} | P:{connection.GetSessionDifficultyPercentage("P")} Total:{connection.SessionDifficultyPercentage["Total"]}";
+
+            var highScore = newHighScore ? $" | High Score: {FormatQuantity(connection.BestSessionDifficulty).PadLeft(6)}" : "";
             if(share.ShareDifficulty >= 1000000000)
             {
                 highScore += " ***** HIGH VALUE SHARE *****";
             }
 
-
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier)} ({diffStats}) {highScore}");
-
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadRight(5)}{diffStats}{highScore}");
 
             // update pool stats
             if(share.IsBlockCandidate)
