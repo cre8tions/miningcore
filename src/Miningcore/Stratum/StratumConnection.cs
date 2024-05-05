@@ -23,6 +23,8 @@ using Newtonsoft.Json.Serialization;
 using NLog;
 using Contract = Miningcore.Contracts.Contract;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Npgsql.Replication;
 
 namespace Miningcore.Stratum;
 
@@ -194,7 +196,19 @@ public class StratumConnection
         }else{
             SessionDifficulty.Add(qty, 1);
         }
-     }
+
+        SessionDifficulty["Total"]++;
+    }
+
+    public string GetSessionDifficultyPercentage(string qty)
+    {
+        if(this.SessionDifficulty.ContainsKey(qty) && this.SessionDifficulty[qty] > 0){
+            return $"{(SessionDifficulty[qty] / SessionDifficulty["Total"]) * 100}%";
+        }else{
+            return "0%";
+        }
+
+    }
 
     public void SetContext<T>(T value) where T : WorkerContextBase
     {

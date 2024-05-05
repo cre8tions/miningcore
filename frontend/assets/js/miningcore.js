@@ -125,7 +125,7 @@ function loadHomePage() {
         var poolCount = 0;
         var totalBlocks = 0;
         var totalCoinPaid = 0;
-        var totalUSDTEquivPaid = 0;
+        var totalUSDTEquivPaid = 0.00;
         var totalHashrate = 0;
 
 
@@ -167,6 +167,8 @@ function loadHomePage() {
 
           var price = 0.00;
           var change = 0.00;
+          var changetext = ""
+
           $.ajax({
             url: priceURL,
             async: false,
@@ -188,17 +190,13 @@ function loadHomePage() {
             });
           }
 
-
-
-
-          totalUSDTEquivPaid += value.totalPaid * price;
-
-          var changecolor = ""
-          if (change <= 0) changecolor = " red-bg";
-          else changecolor = " green-bg";
+          if (typeof change != "undefined") {
+            changetext = "<span class='tag small float-right" + (change <= 0 ? " red-bg" : " green-bg") + "'>" + change + "%</span>";
+            totalUSDTEquivPaid += value.totalPaid * price;
+          }
 
           poolCoinTableTemplate += "<tr class='coin-table-row'>";
-          poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") <span class='tag small float-right" + changecolor + "'>" + change + "%</span></a></td>";
+          poolCoinTableTemplate += "<td class='coin'><a href='/pool/" + value.id + "'>" + coinLogo + coinName + " (" + value.coin.type.toUpperCase() + ") " + changetext + "</a></td>";
           poolCoinTableTemplate += "<td class='algo'>" + value.coin.algorithm + "</td>";
           poolCoinTableTemplate += "<td class='miners'>" + (typeof value.poolStats !== "undefined" && value.poolStats.connectedMiners > 0 ? value.poolStats.connectedMiners : "--") + "</td>";
           poolCoinTableTemplate += "<td class='pool-hash'>" + (value.poolStats.poolHashrate > 0 ? _formatter(value.poolStats.poolHashrate, 3, "H/s") + " <sup>(<i>" + poolpercentage + "%</i>)</sup>" : "--") + "</td>";

@@ -7023,5 +7023,34 @@
         "explorerBlockLink": "https://explorer.its-a-meme.com/block/$hash$",
         "explorerTxLink": "https://explorer.its-a-meme.com/tx/{0}",
         "explorerAccountLink": "https://explorer.its-a-meme.com/address/{0}"
+    },
+    "palladium": {
+        "name": "Palladium",
+        "canonicalName": "Palladium",
+        "symbol": "PLM",
+        "family": "bitcoin",
+        "website": "https://palladium-coin.com/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "explorerBlockLink": "https://explorer.palladium-coin.com/block/$hash$",
+        "explorerTxLink": "https://explorer.palladium-coin.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.palladium-coin.com/address/{0}"
     }
 }
