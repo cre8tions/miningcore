@@ -7052,5 +7052,46 @@
         "explorerBlockLink": "https://explorer.palladium-coin.com/block/$hash$",
         "explorerTxLink": "https://explorer.palladium-coin.com/tx/{0}",
         "explorerAccountLink": "https://explorer.palladium-coin.com/address/{0}"
+    },
+    "egulden": {
+        "name": "eGulden",
+        "symbol": "EFL",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "posBlockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "scrypt",
+                   
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.e-gulden.org/block/$height$",
+        "explorerTxLink": "https://explorer.e-gulden.org/transaction/{0}",
+        "explorerAccountLink": "https://explorer.e-gulden.org/address/{0}"
     }
 }
