@@ -7080,18 +7080,87 @@
                 }
             ]
         },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.e-gulden.org/block/$height$",
+        "explorerTxLink": "https://explorer.e-gulden.org/transaction/{0}",
+        "explorerAccountLink": "https://explorer.e-gulden.org/address/{0}"
+    },
+    "obsidian": {
+        "name": "Obsidian",
+        "symbol": "OBN",
+        "family": "bitcoin",
+        "website": "https://obsidiancoin.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://obsidianexplorer.org/block/$height$",
+        "explorerTxLink": "https://obsidianexplorer.org/tx/{0}",
+        "explorerAccountLink": "https://obsidianexplorer.org/address/{0}"
+    },
+    "infinitecoin": {
+        "name": "InfiniteCoin",
+        "canonicalName": "InfiniteCoin",
+        "symbol": "IFC",
+        "family": "bitcoin",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
         "posBlockHasher": {
             "hash": "reverse",
             "args": [
                 {
                     "hash": "scrypt",
-                   
+                    "args": [
+                        1024,
+                        1
+                    ]
                 }
             ]
         },
+        "hasMWEB": true,
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://explorer.e-gulden.org/block/$height$",
-        "explorerTxLink": "https://explorer.e-gulden.org/transaction/{0}",
-        "explorerAccountLink": "https://explorer.e-gulden.org/address/{0}"
+        "explorerBlockLink": "https://chainz.cryptoid.info/ifc/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/ifc/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/ifc/address.dws?{0}.htm"
     }
 }
