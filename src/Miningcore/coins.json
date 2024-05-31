@@ -7113,7 +7113,7 @@
             ]
         },
         "shareMultiplier": 65536,
-        "explorerBlockLink": "https://obsidianexplorer.org/block/$height$",
+        "explorerBlockLink": "https://obsidianexplorer.org/block/$hash$",
         "explorerTxLink": "https://obsidianexplorer.org/tx/{0}",
         "explorerAccountLink": "https://obsidianexplorer.org/address/{0}"
     },
@@ -7162,5 +7162,37 @@
         "explorerBlockLink": "https://chainz.cryptoid.info/ifc/block.dws?$height$.htm",
         "explorerTxLink": "https://chainz.cryptoid.info/ifc/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/ifc/address.dws?{0}.htm"
+    },
+    "fiurycoin": {
+        "name": "Fiurycoin",
+        "symbol": "FIURY",
+        "family": "bitcoin",
+        "website": "https://www.fiurycoin.online/",
+        "market": "https://xeggex.com/market/FIURY_USDT",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.fiurycoin.online:448/block/$hash$",
+        "explorerTxLink": "https://explorer.fiurycoin.online:448/tx/{0}",
+        "explorerAccountLink": "https://explorer.fiurycoin.online:448/address/{0}"
     }
 }
