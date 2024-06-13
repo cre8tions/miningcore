@@ -19,6 +19,7 @@ using Miningcore.Time;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
+using ProtoBuf.WellKnownTypes;
 using static Miningcore.Util.ActionUtils;
 using static Miningcore.Util.FormatUtil;
 
@@ -197,7 +198,6 @@ public class BitcoinPool : PoolBase
             if (share.ShareDifficulty >= connection.BestSessionDifficulty)
             {
                 connection.BestSessionDifficulty = share.ShareDifficulty;
-                // connection.SessionDifficulty["Best"] = share.ShareDifficulty.ToString();
                 newHighScore = true;
             }
             // #WIP
@@ -225,6 +225,13 @@ public class BitcoinPool : PoolBase
             // update client stats
             context.Stats.ValidShares++;
 
+            // scatterplot
+            var ts = (int) DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            ts -= ts % 1800;
+            using (StreamWriter w = File.AppendText("./logs/stats.csv")) {
+                w.WriteLine($"{context.Stats.ValidShares},{ts},{(int)share.ShareDifficulty}");
+            }
+
             await UpdateVarDiffAsync(connection, false, ct);
         }
 
@@ -246,6 +253,7 @@ public class BitcoinPool : PoolBase
 
     private async Task OnSuggestDifficultyAsync(StratumConnection connection, Timestamped<JsonRpcRequest> tsRequest)
     {
+        logger.Info(tsRequest.ToString(), tsRequest.Value.ToString(), tsRequest.Timestamp);
         var request = tsRequest.Value;
         var context = connection.ContextAs<BitcoinWorkerContext>();
 
