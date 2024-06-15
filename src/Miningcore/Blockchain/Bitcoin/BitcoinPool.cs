@@ -226,11 +226,11 @@ public class BitcoinPool : PoolBase
             context.Stats.ValidShares++;
 
             // scatterplot
-            var ts = (int) DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            ts -= ts % 1800;
-            using (StreamWriter w = File.AppendText("./logs/stats.csv")) {
-                w.WriteLine($"{context.Stats.ValidShares},{ts},{(int)share.ShareDifficulty}");
-            }
+            // var ts = (int) DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            // ts -= ts % 1800;
+            // using (StreamWriter w = File.AppendText("./logs/stats.csv")) {
+            //     w.WriteLine($"{context.Stats.ValidShares},{ts},{(int)share.ShareDifficulty}");
+            // }
 
             await UpdateVarDiffAsync(connection, false, ct);
         }
