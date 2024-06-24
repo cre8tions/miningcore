@@ -203,7 +203,7 @@ public class StratumConnection
     public string GetSessionDifficultyPercentage(string qty)
     {
         if(this.SessionDifficulty.ContainsKey(qty) && this.SessionDifficulty[qty] > 0){
-            return $"{(SessionDifficulty[qty] / SessionDifficulty["Total"]) * 100}%";
+            return $"{(float)SessionDifficulty[qty] / (float)SessionDifficulty["Total"] * 100}%";
         }else{
             return "0%";
         }

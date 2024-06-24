@@ -310,6 +310,7 @@ public class BitcoinJobManager : BitcoinJobManagerBase<BitcoinJob>
             if(share.IsBlockCandidate)
             {
                 logger.Info(() => $"Daemon accepted block {share.BlockHeight} [{share.BlockHash}] submitted by {context.Miner}");
+                logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
 
                 OnBlockFound();
 

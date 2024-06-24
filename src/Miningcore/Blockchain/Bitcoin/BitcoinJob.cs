@@ -386,7 +386,7 @@ public class BitcoinJob
 
         if(isBlockCandidate)
         {
-            logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
+            // logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
 
             result.IsBlockCandidate = true;
 
@@ -397,7 +397,7 @@ public class BitcoinJob
             var blockBytes = SerializeBlock(headerBytes, coinbase);
             var blockHex = blockBytes.ToHexString();
 
-            logger.Warn(() => JsonConvert.SerializeObject(result, Formatting.Indented));
+            // logger.Warn(() => JsonConvert.SerializeObject(result, Formatting.Indented));
 
             return (result, blockHex);
         }

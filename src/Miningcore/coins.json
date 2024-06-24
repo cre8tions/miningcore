@@ -4862,7 +4862,7 @@
         "canonicalName": "Verge",
         "symbol": "XVG",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://vergecurrency.com/",
         "market": "",
         "twitter": "",
         "telegram": "",
@@ -4899,7 +4899,7 @@
         "canonicalName": "Verge",
         "symbol": "XVG",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://vergecurrency.com/",
         "market": "",
         "twitter": "",
         "telegram": "",
@@ -4940,7 +4940,7 @@
         "canonicalName": "Verge",
         "symbol": "XVG",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://vergecurrency.com/",
         "market": "",
         "twitter": "",
         "telegram": "",
@@ -4976,7 +4976,7 @@
         "canonicalName": "Verge",
         "symbol": "XVG",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://vergecurrency.com/",
         "market": "",
         "twitter": "",
         "telegram": "",
@@ -5012,7 +5012,7 @@
         "canonicalName": "Verge",
         "symbol": "XVG",
         "family": "bitcoin",
-        "website": "",
+        "website": "https://vergecurrency.com/",
         "market": "",
         "twitter": "",
         "telegram": "",
@@ -7162,5 +7162,51 @@
         "explorerBlockLink": "https://explorer.fiurycoin.online:448/block/$hash$",
         "explorerTxLink": "https://explorer.fiurycoin.online:448/tx/{0}",
         "explorerAccountLink": "https://explorer.fiurycoin.online:448/address/{0}"
-    }
+    },
+    "bitbarcoin": {
+        "name": "BitBar",
+        "canonicalName": "BitBar",
+        "symbol": "BTB",
+        "family": "bitcoin",
+        "website": "https://bitbar.co/",
+        "market": "",
+        "twitter": "http://twitter.com/spider_BTB",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "posBlockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                }
+            ]
+        },
+        "hasMWEB": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "http://btb.altcoinwarz.com/block/$hash$",
+        "explorerTxLink": "http://btb.altcoinwarz.com/tx/{0}",
+        "explorerAccountLink": "http://btb.altcoinwarz.com/address/{0}"
+    },
 }
