@@ -7209,4 +7209,33 @@
         "explorerTxLink": "http://btb.altcoinwarz.com/tx/{0}",
         "explorerAccountLink": "http://btb.altcoinwarz.com/address/{0}"
     },
+    "stronghands": {
+        "name": "StrongHands",
+        "canonicalName": "StrongHands",
+        "symbol": "SHND",
+        "family": "bitcoin",
+        "website": "https://www.stronghands.info/",
+        "market": "",
+        "twitter": "https://twitter.com/shndxofficial",
+        "telegram": "https://t.me/StrongHands",
+        "discord": "https://discord.com/invite/WrA8TNXaa5",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "explorerBlockLink": "https://www.coinexplorer.net/SHND/block/$height$",
+        "explorerTxLink": "https://www.coinexplorer.net/SHND/transaction/{0}",
+        "explorerAccountLink": "https://www.coinexplorer.net/SHND/address/{0}"
+    }
 }

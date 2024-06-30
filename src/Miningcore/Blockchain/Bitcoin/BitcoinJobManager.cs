@@ -298,11 +298,9 @@ public class BitcoinJobManager : BitcoinJobManagerBase<BitcoinJob>
         if(share.IsBlockCandidate)
         {
             logger.Warn(() => $"Submitting block {share.BlockHeight} [{share.BlockHash}]");
-            // logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
-            // logger.Warn(() => JsonConvert.SerializeObject(submission, Formatting.Indented));
 
             var acceptResponse = await SubmitBlockAsync(share, blockHex, ct);
-            logger.Warn(() => JsonConvert.SerializeObject(acceptResponse, Formatting.Indented));
+            // logger.Warn(() => JsonConvert.SerializeObject(acceptResponse, Formatting.Indented));
 
             // is it still a block candidate?
             share.IsBlockCandidate = acceptResponse.Accepted;
@@ -310,8 +308,6 @@ public class BitcoinJobManager : BitcoinJobManagerBase<BitcoinJob>
             if(share.IsBlockCandidate)
             {
                 logger.Info(() => $"Daemon accepted block {share.BlockHeight} [{share.BlockHash}] submitted by {context.Miner}");
-                logger.Warn(() => JsonConvert.SerializeObject(share, Formatting.Indented));
-
                 OnBlockFound();
 
                 // persist the coinbase transaction-hash to allow the payment processor

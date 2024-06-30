@@ -216,7 +216,7 @@ public class BitcoinPool : PoolBase
                 highScore += " ***** HIGH VALUE SHARE *****";
             }
 
-            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadRight(5)}{diffStats}{highScore}");
+            logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadRight(7)}{diffStats}{highScore}");
 
             // update pool stats
             if(share.IsBlockCandidate)

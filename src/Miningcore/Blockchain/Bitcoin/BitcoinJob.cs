@@ -261,17 +261,17 @@ public class BitcoinJob
         if(coin.HasFounderReward)
             rewardToPool = CreateFounderRewardOutputs(tx, rewardToPool);
 
-        if (coin.HasProofOfGameplayAddress)
+        if(coin.HasProofOfGameplayAddress)
             rewardToPool = CreateProofOfGameplayAddressOutputs(tx, rewardToPool);
 
-        if (coin.HasDevFundAddress)
+        if(coin.HasDevFundAddress)
             rewardToPool = CreateDevFundAddressOutputs(tx, rewardToPool);
 
-        if (coin.HasFoundation)
+        if(coin.HasFoundation)
             rewardToPool = CreateFoundationOutputs(tx, rewardToPool);
 
-		if(coin.HasFounderValue)
-			rewardToPool = CreateFounderValueOutputs(tx, rewardToPool);
+        if(coin.HasFounderValue)
+            rewardToPool = CreateFounderValueOutputs(tx, rewardToPool);
 
         // Remaining amount goes to pool
         tx.Outputs.Add(rewardToPool, poolAddressDestination);
@@ -386,7 +386,7 @@ public class BitcoinJob
 
         if(isBlockCandidate)
         {
-            // logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
+            logger.Info(() => $"===== Block Candidate Found =====> Height: {BlockTemplate.Height} Block Candidate? {isBlockCandidate} || ShareDiff={shareDiff:0.00000000} / StratumDiff={stratumDifficulty:0.00000000} = Ratio={ratio:0.00000000} | NetworkDiff={Difficulty:0.00000000} | ShareMultiplier={shareMultiplier:0.00000000}");
 
             result.IsBlockCandidate = true;
 
@@ -396,8 +396,6 @@ public class BitcoinJob
 
             var blockBytes = SerializeBlock(headerBytes, coinbase);
             var blockHex = blockBytes.ToHexString();
-
-            // logger.Warn(() => JsonConvert.SerializeObject(result, Formatting.Indented));
 
             return (result, blockHex);
         }
@@ -449,7 +447,6 @@ public class BitcoinJob
                 if(mweb != null && mweb.Mweb != null)
                 {
                     var separator = new byte[] { 0x01 };
-                    // var mweb = BlockTemplate.Extra.SafeExtensionDataAs<MwebBlockTemplateExtra>();
                     var mwebRaw = mweb.Mweb.HexToByteArray();
                     bs.ReadWrite(separator);
                     bs.ReadWrite(mwebRaw);
@@ -500,7 +497,7 @@ public class BitcoinJob
                 {
                     if(!string.IsNullOrEmpty(masterNode.Script))
                     {
-						Script payeeAddress = new (masterNode.Script.HexToByteArray());
+                        Script payeeAddress = new(masterNode.Script.HexToByteArray());
                         var payeeReward = masterNode.Amount;
 
                         tx.Outputs.Add(payeeReward, payeeAddress);
@@ -633,9 +630,9 @@ public class BitcoinJob
     {
         if(BlockTemplate.CommunityAutonomousAddress != null && BlockTemplate.CommunityAutonomousValue > 0)
         {
-        	var payeeReward = BlockTemplate.CommunityAutonomousValue;
-        	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.CommunityAutonomousAddress, network);
-        	tx.Outputs.Add(payeeReward, payeeAddress);
+            var payeeReward = BlockTemplate.CommunityAutonomousValue;
+            var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.CommunityAutonomousAddress, network);
+            tx.Outputs.Add(payeeReward, payeeAddress);
         }
         return reward;
     }
@@ -656,7 +653,7 @@ public class BitcoinJob
             {
                 if(!string.IsNullOrEmpty(CBReward.ScriptPubkey))
                 {
-                    Script payeeAddress = new (CBReward.ScriptPubkey.HexToByteArray());
+                    Script payeeAddress = new(CBReward.ScriptPubkey.HexToByteArray());
                     var payeeReward = CBReward.Value;
                     tx.Outputs.Add(payeeReward, payeeAddress);
                 }
@@ -673,9 +670,9 @@ public class BitcoinJob
     {
         if(BlockTemplate.ProofOfGameplayAddress != null && BlockTemplate.ProofOfGameplayValue > 0)
         {
-        	var payeeReward = BlockTemplate.ProofOfGameplayValue;
-        	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.ProofOfGameplayAddress, network);
-        	tx.Outputs.Add(payeeReward, payeeAddress);
+            var payeeReward = BlockTemplate.ProofOfGameplayValue;
+            var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.ProofOfGameplayAddress, network);
+            tx.Outputs.Add(payeeReward, payeeAddress);
         }
         return reward;
     }
@@ -687,9 +684,9 @@ public class BitcoinJob
     {
         if(BlockTemplate.DevFundAddress != null && BlockTemplate.DevFundValue > 0)
         {
-        	var payeeReward = BlockTemplate.DevFundValue;
-        	var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.DevFundAddress, network);
-        	tx.Outputs.Add(payeeReward, payeeAddress);
+            var payeeReward = BlockTemplate.DevFundValue;
+            var payeeAddress = BitcoinUtils.AddressToDestination(BlockTemplate.DevFundAddress, network);
+            tx.Outputs.Add(payeeReward, payeeAddress);
         }
         return reward;
     }
@@ -744,9 +741,9 @@ public class BitcoinJob
             {
                 if(!string.IsNullOrEmpty(FValue.Script))
                 {
-                    Script payeeAddress = new (FValue.Script.HexToByteArray());
+                    Script payeeAddress = new(FValue.Script.HexToByteArray());
                     var payeeReward = FValue.Value;
-					tx.Outputs.Add(payeeReward, payeeAddress);
+                    tx.Outputs.Add(payeeReward, payeeAddress);
                 }
             }
         }
@@ -831,17 +828,17 @@ public class BitcoinJob
         if(coin.HasFounderReward)
             founderrewardParameters = BlockTemplate.Extra.SafeExtensionDataAs<FounderRewardBlockTemplateExtra>();
 
-		if(coin.HasMinerFund)
-			minerFundParameters = BlockTemplate.Extra.SafeExtensionDataAs<MinerFundTemplateExtra>("coinbasetxn", "minerfund");
+        if(coin.HasMinerFund)
+            minerFundParameters = BlockTemplate.Extra.SafeExtensionDataAs<MinerFundTemplateExtra>("coinbasetxn", "minerfund");
 
         if(coin.HasCoinbaseDevReward)
             CoinbaseDevRewardParams = BlockTemplate.Extra.SafeExtensionDataAs<CoinbaseDevRewardTemplateExtra>();
 
-		if(coin.HasFoundation)
+        if(coin.HasFoundation)
             foundationParameters = BlockTemplate.Extra.SafeExtensionDataAs<FoundationBlockTemplateExtra>();
 
-		if(coin.HasFounderValue)
-			FounderValueParams = BlockTemplate.Extra.SafeExtensionDataAs<FounderValueBlockTemplateExtra>();
+        if(coin.HasFounderValue)
+            FounderValueParams = BlockTemplate.Extra.SafeExtensionDataAs<FounderValueBlockTemplateExtra>();
 
         this.coinbaseHasher = coinbaseHasher;
         this.headerHasher = headerHasher;
