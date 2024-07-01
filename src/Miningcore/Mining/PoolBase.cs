@@ -154,7 +154,7 @@ public abstract class PoolBase : StratumServer,
 
             if(newDiff != null)
             {
-                logger.Info(() => $"[{connection.ConnectionId}] VarDiff update to {Math.Round(newDiff.Value, 3)}{(idle ? " [IDLE]" : "")}");
+                logger.Debug(() => $"[{connection.ConnectionId}] VarDiff update to {Math.Round(newDiff.Value, 3)}{(idle ? " [IDLE]" : "")}");
 
                 await OnVarDiffUpdateAsync(connection, newDiff.Value, ct);
             }
