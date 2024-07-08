@@ -170,9 +170,9 @@ public class BitcoinJobManager : BitcoinJobManagerBase<BitcoinJob>
                 if(isNew)
                 {
                     if(via != null)
-                        logger.Debug(() => $"Detected new block {blockTemplate.Height} [{via}]");
+                        logger.Info(() => $"Detected new block {blockTemplate.Height} [{via}]");
                     else
-                        logger.Debug(() => $"Detected new block {blockTemplate.Height}");
+                        logger.Info(() => $"Detected new block {blockTemplate.Height}");
 
                     // update stats
                     BlockchainStats.LastNetworkBlockTime = clock.Now;

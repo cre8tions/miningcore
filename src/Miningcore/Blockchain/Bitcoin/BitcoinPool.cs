@@ -215,6 +215,18 @@ public class BitcoinPool : PoolBase
             {
                 highScore += " ***** HIGH VALUE SHARE *****";
             }
+            else if(share.ShareDifficulty >= 750000000)
+            {
+                highScore += "***";
+            }
+            else if(share.ShareDifficulty >= 250000000)
+            {
+                highScore += "**";
+            }
+            else if(share.ShareDifficulty >= 100000000)
+            {
+                highScore += "*";
+            }
 
             logger.Info(() => $"[{connection.ConnectionId}] Share accepted: {FormatQuantity(share.ShareDifficulty).PadLeft(8)} / {FormatQuantity(share.NetworkDifficulty * coin.ShareMultiplier).PadLeft(7)}{diffStats}{highScore}");
 

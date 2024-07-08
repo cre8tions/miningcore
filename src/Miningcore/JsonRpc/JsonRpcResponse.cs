@@ -47,13 +47,13 @@ public class JsonRpcResponse<T>
     //[JsonProperty(PropertyName = "jsonrpc")]
     //public string JsonRpc => "2.0";
 
-    [JsonProperty(PropertyName = "result", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonProperty(PropertyName = "result", NullValueHandling = NullValueHandling.Include)]
     public object Result { get; set; }
 
     [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Include)]
     public JsonRpcError Error { get; set; }
 
-    [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Include)]
     public object Id { get; set; }
 
     [JsonExtensionData]

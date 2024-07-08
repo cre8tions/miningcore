@@ -7237,5 +7237,39 @@
         "explorerBlockLink": "https://www.coinexplorer.net/SHND/block/$height$",
         "explorerTxLink": "https://www.coinexplorer.net/SHND/transaction/{0}",
         "explorerAccountLink": "https://www.coinexplorer.net/SHND/address/{0}"
+    },
+    "stohncoin": {
+        "name": "StohnCoin",
+        "canonicalName": "StohnCoin",
+        "symbol": "SOH",
+        "family": "bitcoin",
+        "website": "https://stohncoin.org/",
+        "market": "https://www.xt.com/en/trade/soh_usdt",
+        "twitter": "https://twitter.com/stohncoin",
+        "telegram": "https://t.me/+Z8kt1hnG3mswYTQ5",
+        "discord": "https://discord.gg/BhjA4kXNUc",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "hasMWEB": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://stohnexplorer.com/block/$hash$",
+        "explorerTxLink": "https://stohnexplorer.com/tx/{0}",
+        "explorerAccountLink": "https://stohnexplorer.com/address/{0}"
     }
 }
