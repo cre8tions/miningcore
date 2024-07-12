@@ -207,7 +207,7 @@ public class BitcoinPool : PoolBase
 
             connection.SetSessionDifficulty(FormatQuantity(share.ShareDifficulty).Last().ToString());
 
-            var diffStats = $" [{connection.SessionDifficulty["K"],6}|{connection.SessionDifficulty["M"],4}|{connection.SessionDifficulty["G"],2}|{connection.SessionDifficulty["T"],2}|{connection.SessionDifficulty["P"],2}|{connection.SessionDifficulty["Total"],6}]";
+            var diffStats = $" [{connection.SessionDifficulty["K"],5}|{connection.SessionDifficulty["M"],5}|{connection.SessionDifficulty["G"],2}|{connection.SessionDifficulty["T"],2}|{connection.SessionDifficulty["P"],2}|{connection.SessionDifficulty["Total"],6}]";
             // var diffStats = $"K:{connection.GetSessionDifficultyPercentage("K")} | M:{connection.GetSessionDifficultyPercentage("M")} | G:{connection.GetSessionDifficultyPercentage("G")} | T:{connection.GetSessionDifficultyPercentage("T")} | P:{connection.GetSessionDifficultyPercentage("P")} Total:{connection.SessionDifficultyPercentage["Total"]}";
 
             var highScore = newHighScore ? $" | High Score: {FormatQuantity(connection.BestSessionDifficulty).PadLeft(6)}" : "";
