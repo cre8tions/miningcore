@@ -7271,5 +7271,35 @@
         "explorerBlockLink": "https://stohnexplorer.com/block/$hash$",
         "explorerTxLink": "https://stohnexplorer.com/tx/{0}",
         "explorerAccountLink": "https://stohnexplorer.com/address/{0}"
+    },
+    "nitocoin": {
+        "name": "Nito",
+        "canonicalName": "Nito",
+        "symbol": "NITO",
+        "family": "bitcoin",
+        "website": "https://nito.org/",
+        "market": "",
+        "twitter": "https://x.com/NitoNetwork",
+        "telegram": "",
+        "github": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "coinbaseIgnoreAuxFlags": true,
+        "explorerBlockLink": "https://nitocore.org/block/$hash$",
+        "explorerTxLink": "https://nitocore.org/tx/{0}",
+        "explorerAccountLink": "https://nitocore.org/address/{0}"
     }
 }
